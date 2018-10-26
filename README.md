@@ -15,7 +15,7 @@ a combat system that takes heavy influence from Pokémon!
 Our technology stack can be separated into two divisions: technologies which are utilised to develop the game itself and those that are used to produce our Development Blog.
 
 [Godot](https://godotengine.org/) - Godot is an open source game engine written in C++ with an engine defined language known as GDScript (Python)  
-[Gut](https://github.com/bitwes/Gut) - Godot extension that exposes Unit Testing features in GDScript
+[Gut](https://github.com/bitwes/Gut) - Godot extension that exposes Unit Testing features in GDScript  
 [NodeJS](https://nodejs.org/en/) - Server side scripting language that will handle connections to our website and serve dynamic content  
 [Express](https://expressjs.com/) - Lightweight framework for producing dynamic web pages on the server side using NodeJS  
 [MongoDB](https://www.mongodb.com/) - Database Management System that stores and serves all data as JSON objects  
