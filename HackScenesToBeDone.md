@@ -1,4 +1,4 @@
-# Hack scene:
+# For the Hack:
 We have a small list of Scenes that need to be created for the hack. They are the following:
 
 ## Main Scene - last thing to do
@@ -8,7 +8,7 @@ Here we need the main scene to where we will attach all the worlds. Fot our case
 Has movement, collsion and animations. There should be a blank journal when you click on the player.
 The inventory system i say we dont include that now but do that for the next version.
 
-## World - Nathen / vikram
+## World - Nathan / Vikram
 1 world, 5 rooms. Each room will have its own scene therfor 5 scenes are required. Atrifacts, 3 items to be scatteded accorss the 5 rooms. Each room must be diffrent. 
 world -> room -> items
 Items: these can be anything like artifacts,
