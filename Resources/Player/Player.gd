@@ -4,10 +4,30 @@
 # Author: Jamie Massey
 # Created: 04/11/2018
 
-extends AnimatedSprite
+extends KinematicBody2D
+
+export(float) var moveSpeed = 250
+export(float) var velocitySpeed = 1
+
+var velocity = Vector2()
 
 func _ready():
 	pass
 
-func _process(delta):
-	pass
+func calulate_input():
+	velocity = Vector2()
+	if (Input.is_action_pressed("ui_right")):
+		velocity.x += velocitySpeed
+	elif (Input.is_action_pressed("ui_left")):
+		velocity.x -= velocitySpeed
+		
+	if (Input.is_action_pressed("ui_up")):
+		velocity.y -= velocitySpeed
+	elif (Input.is_action_pressed("ui_down")):
+		velocity.y += velocitySpeed
+		
+	velocity = velocity.normalized() * moveSpeed
+	
+func _physics_process(delta):
+	calulate_input()
+	move_and_slide(velocity)
