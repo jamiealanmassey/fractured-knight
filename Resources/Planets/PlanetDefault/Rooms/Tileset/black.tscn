@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Resources/Planets/PlanetDefault/Rooms/Tileset/JungleDirtTileSet.png" type="Texture" id=1]
+[ext_resource path="res://Resources/Planets/PlanetDefault/Rooms/Tileset/Webp.net-resizeimage.png" type="Texture" id=1]
+[ext_resource path="res://Resources/Planets/PlanetDefault/Rooms/Tileset/Webp.net-resizeimage (1).png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -9,9 +10,8 @@ extents = Vector2( 16.0098, 15.823 )
 
 [node name="Node" type="Node" index="0"]
 
-[node name="0" type="Sprite" parent="." index="0"]
+[node name="black" type="Sprite" parent="." index="0"]
 
-editor/display_folded = true
 texture = ExtResource( 1 )
 centered = false
 region_enabled = true
@@ -21,9 +21,8 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="0" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="black" index="0"]
 
-editor/display_folded = true
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -32,17 +31,16 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="0/StaticBody2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="black/StaticBody2D" index="0"]
 
 position = Vector2( 16, 16 )
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="1" type="Sprite" parent="." index="1"]
+[node name="red" type="Sprite" parent="." index="1"]
 
-editor/display_folded = true
-position = Vector2( 51.9135, 0 )
-texture = ExtResource( 1 )
+position = Vector2( 50.9869, 0.463287 )
+texture = ExtResource( 2 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 32, 32, 32 )
@@ -51,9 +49,8 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="1" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="red" index="0"]
 
-editor/display_folded = true
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -62,7 +59,7 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="1/StaticBody2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="red/StaticBody2D" index="0"]
 
 position = Vector2( 16, 16 )
 shape = SubResource( 1 )
