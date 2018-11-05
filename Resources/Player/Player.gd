@@ -16,14 +16,13 @@ func _ready():
 
 func calulate_input():
 	velocity = Vector2()
-	if (Input.is_action_pressed("ui_right")):
+	if (Input.is_action_pressed("right")):
 		velocity.x += velocitySpeed
-	elif (Input.is_action_pressed("ui_left")):
+	elif (Input.is_action_pressed("left")):
 		velocity.x -= velocitySpeed
-		
-	if (Input.is_action_pressed("ui_up")):
+	elif (Input.is_action_pressed("up")):
 		velocity.y -= velocitySpeed
-	elif (Input.is_action_pressed("ui_down")):
+	elif (Input.is_action_pressed("down")):
 		velocity.y += velocitySpeed
 		
 	velocity = velocity.normalized() * moveSpeed
