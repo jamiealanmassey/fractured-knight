@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=3 format=2]
+[gd_resource type="TileSet" load_steps=4 format=2]
 
-[ext_resource path="res://Resources/Planets/PlanetDefault/Rooms/Tileset/JungleDirtTileSet.png" type="Texture" id=1]
+[ext_resource path="res://Resources/Planets/PlanetDefault/Rooms/Tileset/Webp.net-resizeimage.png" type="Texture" id=1]
+[ext_resource path="res://Resources/Planets/PlanetDefault/Rooms/Tileset/Webp.net-resizeimage (1).png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -9,11 +10,11 @@ extents = Vector2( 16.0098, 15.823 )
 
 [resource]
 
-0/name = "0"
+0/name = "black"
 0/texture = ExtResource( 1 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 160, 160, 32, 32 )
+0/region = Rect2( 160, 160, 64, 64 )
 0/is_autotile = false
 0/occluder_offset = Vector2( 0, 0 )
 0/navigation_offset = Vector2( 0, 0 )
@@ -23,12 +24,20 @@ extents = Vector2( 16.0098, 15.823 )
 "shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
 } ]
-1/name = "1"
-1/texture = ExtResource( 1 )
+1/name = "red"
+1/texture = ExtResource( 2 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
-1/region = Rect2( 0, 32, 32, 32 )
-1/is_autotile = false
+1/region = Rect2( 0, 32, 64, 64 )
+1/is_autotile = true
+1/autotile/bitmask_mode = 0
+1/autotile/icon_coordinate = Vector2( 0, 0 )
+1/autotile/tile_size = Vector2( 64, 64 )
+1/autotile/spacing = 0
+1/autotile/bitmask_flags = [  ]
+1/autotile/occluder_map = [  ]
+1/autotile/navpoly_map = [  ]
+1/autotile/priority_map = [  ]
 1/occluder_offset = Vector2( 0, 0 )
 1/navigation_offset = Vector2( 0, 0 )
 1/shapes = [ {
@@ -37,4 +46,5 @@ extents = Vector2( 16.0098, 15.823 )
 "shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
 } ]
+_sections_unfolded = [ "0", "1" ]
 

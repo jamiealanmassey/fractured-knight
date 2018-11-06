@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/JungleDirtTileSet.png-cc58775d76eb1e142ae304888d3f494a.stex"
+path="res://.import/Webp.net-resizeimage (1).png-83a17935b268a590b8898dea9e2ddc04.stex"
 
 [deps]
 
-source_file="res://Resources/Planets/PlanetDefault/Rooms/Tileset/JungleDirtTileSet.png"
-dest_files=[ "res://.import/JungleDirtTileSet.png-cc58775d76eb1e142ae304888d3f494a.stex" ]
+source_file="res://Resources/Planets/PlanetDefault/Rooms/Tileset/Webp.net-resizeimage (1).png"
+dest_files=[ "res://.import/Webp.net-resizeimage (1).png-83a17935b268a590b8898dea9e2ddc04.stex" ]
 
 [params]
 
@@ -16,7 +16,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -25,5 +25,5 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=false
+detect_3d=true
 svg/scale=1.0
