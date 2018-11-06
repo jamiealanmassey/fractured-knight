@@ -12,6 +12,8 @@ export(float) var velocitySpeed = 1
 var velocity = Vector2()
 var keyStates = []
 
+signal player_moved
+
 ## Defines the KeyState as tuples of (bool, int, string)
 ##   => where bool is pressed state, and
 ##   => where int is timestamp of when they key was pressed, and
@@ -61,6 +63,7 @@ func calulate_input():
 					velocity.y -= velocitySpeed * moveSpeed
 				"down":
 					velocity.y += velocitySpeed * moveSpeed
+			emit_signal("player_moved")
 			break
 
 

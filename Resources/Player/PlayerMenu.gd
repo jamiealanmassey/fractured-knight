@@ -9,10 +9,14 @@ onready var sprite = get_node("../AnimatedSprite")
 
 func _on_Area2D_input_event(viewport, event, shape_idx):
 	if (event is InputEventMouseButton && event.pressed):
-		print("clicked")
+		print("clicked player -> open menu")
+		$CanvasLayer/Menu.show()
 
 func _on_Area2D_mouse_entered():
 	sprite.set_material(shader)
 
 func _on_Area2D_mouse_exited():
 	sprite.set_material(null)
+
+func _on_player_moved():
+	$CanvasLayer/Menu.hide()
