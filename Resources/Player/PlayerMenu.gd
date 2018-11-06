@@ -20,3 +20,6 @@ func _on_Area2D_mouse_exited():
 
 func _on_player_moved():
 	$CanvasLayer/Menu.hide()
+
+func _on_close_pressed():
+	$CanvasLayer/Menu.hide()
