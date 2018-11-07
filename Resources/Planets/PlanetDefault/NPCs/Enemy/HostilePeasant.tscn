@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Resources/Planets/PlanetDefault/NPCs/Enemy/HostilePeasant.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Planets/PlanetDefault/NPCs/Enemy/Yellow.png" type="Texture" id=2]
@@ -7,6 +7,11 @@
 
 custom_solver_bias = 0.0
 radius = 280.184
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32.0845, 31.9797 )
 
 [node name="BaseClass" type="Node" index="0"]
 
@@ -22,6 +27,7 @@ _sections_unfolded = [ "Offset", "Transform" ]
 
 [node name="DectRadius" type="Area2D" parent="." index="1"]
 
+editor/display_folded = true
 position = Vector2( 0, -0.00964737 )
 scale = Vector2( 1, 1.0003 )
 input_pickable = true
@@ -35,5 +41,19 @@ audio_bus_name = "Master"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DectRadius" index="0"]
 
 shape = SubResource( 1 )
+
+[node name="ContactRadius" type="Area2D" parent="." index="2"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ContactRadius" index="0"]
+
+shape = SubResource( 2 )
 
 
