@@ -8,7 +8,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 16.0098, 15.823 )
 
-[node name="Node" type="Node" index="0"]
+[node name="Node" type="Node"]
 
 [node name="black" type="Sprite" parent="." index="0"]
 
@@ -48,21 +48,5 @@ _sections_unfolded = [ "Region" ]
 __meta__ = {
 "_edit_group_": true
 }
-
-[node name="StaticBody2D" type="StaticBody2D" parent="red" index="0"]
-
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="red/StaticBody2D" index="0"]
-
-position = Vector2( 16, 16 )
-shape = SubResource( 1 )
-_sections_unfolded = [ "Transform" ]
 
 
