@@ -17,4 +17,4 @@ func _ready():
 func control(delta):
 	if parent is PathFollow2D:
 		parent.set_offset(parent.get_offset() + Speed * delta)
-		position = Vector2()
+		position = Vector2Q
