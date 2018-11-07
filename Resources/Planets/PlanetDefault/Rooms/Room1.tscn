@@ -8,6 +8,7 @@
 
 [node name="TileMap" type="TileMap" parent="." index="0"]
 
+position = Vector2( 380, 450 )
 mode = 0
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 64, 64 )
@@ -29,8 +30,10 @@ _sections_unfolded = [ "Cell" ]
 
 [node name="RoomComplete" parent="." index="1" instance=ExtResource( 2 )]
 
-position = Vector2( 2462.24, 1052.67 )
+position = Vector2( 2510.24, 1412.67 )
 
 [node name="Player" parent="." index="2" instance=ExtResource( 3 )]
+
+position = Vector2( 850, 650 )
 
 

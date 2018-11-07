@@ -43,7 +43,7 @@ extents = Vector2( 16.0098, 15.823 )
 1/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 1 ),
+"shape": null,
 "shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
 } ]
 _sections_unfolded = [ "0", "1" ]

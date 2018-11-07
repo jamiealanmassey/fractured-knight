@@ -17,4 +17,10 @@ func _ready():
 func control(delta):
 	if parent is PathFollow2D:
 		parent.set_offset(parent.get_offset() + Speed * delta)
-		position = Vector2()
+		position = Vector2Q
+		
+
+#Once the player enters its dection radis (Defined by CollisionShape 2D under DecRadius) do this methon (Signal from player)
+#Typically will announce some threat if hostile 
+func on_detect_player():
+	return $BaseClass.coverse()

@@ -1,0 +1,93 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Resources/Planets/PlanetDefault/NPCs/Enemy/HostilePeasant.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Planets/PlanetDefault/NPCs/Enemy/Yellow.png" type="Texture" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 280.184
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32.0845, 31.9797 )
+
+[node name="BaseClass" type="Node" index="0"]
+
+script = ExtResource( 1 )
+health = null
+detectRadius = null
+detect_radius = null
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="DectRadius" type="Area2D" parent="." index="1"]
+
+editor/display_folded = true
+position = Vector2( 0, -0.00964737 )
+scale = Vector2( 1, 1.0003 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DectRadius" index="0"]
+
+shape = SubResource( 1 )
+
+[node name="ContactRadius" type="Area2D" parent="." index="2"]
+
+editor/display_folded = true
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ContactRadius" index="0"]
+
+shape = SubResource( 2 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -120.0
+margin_top = -162.0
+margin_right = 120.0
+margin_bottom = -42.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+bbcode_enabled = false
+bbcode_text = ""
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = ""
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+_sections_unfolded = [ "BBCode", "Rect" ]
+
+[connection signal="area_entered" from="DectRadius" to="." method="_on_DectRadius_area_entered"]
+
+[connection signal="area_entered" from="ContactRadius" to="." method="_on_ContactRadius_area_entered"]
+
+
