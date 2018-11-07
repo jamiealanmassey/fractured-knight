@@ -18,3 +18,12 @@ func threaten():
 	return threat
 	
 	
+func _on_DectRadius_area_entered(area):
+	$SpeechOutput.text = threaten()
+	pass # replace with function body
+	
+
+#player is within combat radius (has contacted player)
+func _on_ContactRadius_area_entered(area):
+	$SpeechOutput.text = "Initate combat"
+	pass # replace with function body

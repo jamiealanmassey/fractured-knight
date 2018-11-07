@@ -8,7 +8,7 @@
 custom_solver_bias = 0.0
 radius = 10.0
 
-[node name="Edward" type="Node" index="0"]
+[node name="BaseClass" type="Node" index="0"]
 
 script = ExtResource( 1 )
 health = null
@@ -22,6 +22,7 @@ _sections_unfolded = [ "Offset", "Transform" ]
 
 [node name="DectRadius" type="Area2D" parent="." index="1"]
 
+editor/display_folded = true
 position = Vector2( 0, -0.00964737 )
 scale = Vector2( 1, 1.0003 )
 input_pickable = true

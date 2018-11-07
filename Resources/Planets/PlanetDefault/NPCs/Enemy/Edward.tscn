@@ -36,4 +36,36 @@ audio_bus_name = "Master"
 
 shape = SubResource( 1 )
 
+[node name="SpeechOutput" type="RichTextLabel" parent="." index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -122.0
+margin_top = -162.0
+margin_right = 118.0
+margin_bottom = -42.0
+grow_horizontal = 0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+bbcode_enabled = false
+bbcode_text = ""
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = ""
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+_sections_unfolded = [ "Grow Direction", "Rect" ]
+
+[connection signal="area_entered" from="DectRadius" to="." method="_on_DectRadius_area_entered"]
+
 
