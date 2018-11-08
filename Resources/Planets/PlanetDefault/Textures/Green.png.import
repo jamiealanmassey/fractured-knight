@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Yellow.png-c6c977ed7c72b623ea3bef5c22066977.stex"
+path="res://.import/Green.png-e61a34ac84844ca8e3f445c8a0348734.stex"
 
 [deps]
 
-source_file="res://Resources/Planets/PlanetDefault/NPCs/Enemy/Yellow.png"
-dest_files=[ "res://.import/Yellow.png-c6c977ed7c72b623ea3bef5c22066977.stex" ]
+source_file="res://Resources/Planets/PlanetDefault/Textures/Green.png"
+dest_files=[ "res://.import/Green.png-e61a34ac84844ca8e3f445c8a0348734.stex" ]
 
 [params]
 
