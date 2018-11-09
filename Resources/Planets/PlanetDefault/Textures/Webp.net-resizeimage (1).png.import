@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Green.png-241348f2b837c36e612d94405dd3215b.stex"
+path="res://.import/Webp.net-resizeimage (1).png-baa66f47750630719a0ab30defb92e7f.stex"
 
 [deps]
 
-source_file="res://Resources/Planets/PlanetDefault/Rooms/Green.png"
-dest_files=[ "res://.import/Green.png-241348f2b837c36e612d94405dd3215b.stex" ]
+source_file="res://Resources/Planets/PlanetDefault/Textures/Webp.net-resizeimage (1).png"
+dest_files=[ "res://.import/Webp.net-resizeimage (1).png-baa66f47750630719a0ab30defb92e7f.stex" ]
 
 [params]
 
