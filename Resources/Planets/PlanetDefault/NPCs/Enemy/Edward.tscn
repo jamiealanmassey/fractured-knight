@@ -3,13 +3,12 @@
 [ext_resource path="res://Resources/Planets/PlanetDefault/NPCs/Enemy/Edward.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Planets/PlanetDefault/Textures/Yellow.png" type="Texture" id=2]
 
-
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
 radius = 99.5201
 
-[node name="BaseClass" type="Node" index="0"]
+[node name="BaseClass" type="Node"]
 
 script = ExtResource( 1 )
 health = null
@@ -66,7 +65,5 @@ scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
 _sections_unfolded = [ "Grow Direction", "Rect" ]
-
-[connection signal="area_entered" from="DectRadius" to="." method="_on_DectRadius_area_entered"]
 
 

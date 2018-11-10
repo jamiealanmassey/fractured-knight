@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Untitled.png-b478a130e9a9e85c37bf634ee421bfcb.stex"
+path="res://.import/Green.png-2de6046a1725a95252e125c242322d1c.stex"
 
 [deps]
 
-source_file="res://Resources/Planets/PlanetDefault/Rooms/Untitled.png"
-dest_files=[ "res://.import/Untitled.png-b478a130e9a9e85c37bf634ee421bfcb.stex" ]
+source_file="res://Resources/Planets/PlanetDefault/Rooms/Tileset/Green.png"
+dest_files=[ "res://.import/Green.png-2de6046a1725a95252e125c242322d1c.stex" ]
 
 [params]
 
