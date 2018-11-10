@@ -1,7 +1,7 @@
 # Filename: RoomComplete.gd
-# Breif: 
-# Author: 
-# Created: 
+# Breif: changes to the next room for thr player
+# Author: Vikram Singh Kainth
+# Created: 02/11/2018
 extends Area2D
 
 #getting the next world and adding it to the var, world 
