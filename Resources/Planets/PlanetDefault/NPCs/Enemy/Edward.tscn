@@ -6,13 +6,15 @@
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 99.5201
+radius = 99.5
 
-[node name="BaseClass" type="Node"]
+[node name="BaseClass" type="Node2D"]
 
 script = ExtResource( 1 )
 health = null
 detectRadius = null
+positionX = null
+positionY = null
 detect_radius = null
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
@@ -22,6 +24,7 @@ _sections_unfolded = [ "Offset", "Transform" ]
 
 [node name="DectRadius" type="Area2D" parent="." index="1"]
 
+editor/display_folded = true
 position = Vector2( 0, -0.00964737 )
 scale = Vector2( 1, 1.0003 )
 input_pickable = true
@@ -65,5 +68,7 @@ scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
 _sections_unfolded = [ "Grow Direction", "Rect" ]
+
+[connection signal="area_entered" from="DectRadius" to="." method="_on_DectRadius_area_entered"]
 
 

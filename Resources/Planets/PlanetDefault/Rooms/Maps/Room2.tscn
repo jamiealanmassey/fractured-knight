@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Resources/Planets/PlanetDefault/Rooms/Scripts/Room2.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Planets/PlanetDefault/Rooms/Area.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Resources/player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Resources/Planets/PlanetDefault/Rooms/RoomComplete.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Resources/Planets/PlanetDefault/NPCs/Enemy/Edward.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Resources/Planets/PlanetDefault/NPCs/Enemy/Bandit.tscn" type="PackedScene" id=6]
 
 [node name="Room2" type="Node" index="0"]
 
@@ -23,6 +24,16 @@ position = Vector2( -853.562, 1206.76 )
 position = Vector2( 2930, 1520 )
 world = "res://Resources/Planets/PlanetDefault/Rooms/Maps/Room3.tscn"
 
-[node name="BaseClass" parent="." index="3" instance=ExtResource( 5 )]
+[node name="Edward" parent="." index="3" instance=ExtResource( 5 )]
+
+position = Vector2( 139.089, 1078.72 )
+detectRadius = 75
+detect_radius = 75
+
+[node name="Bandit" parent="." index="4" instance=ExtResource( 6 )]
+
+position = Vector2( 652.174, 244.179 )
+detectRadius = 300
+detect_radius = 300
 
 
