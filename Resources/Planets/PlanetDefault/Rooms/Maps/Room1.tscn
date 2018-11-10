@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Resources/Planets/PlanetDefault/Rooms/Scripts/Room1.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Resources/Planets/PlanetDefault/Rooms/Area.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Resources/Planets/PlanetDefault/Rooms/RoomComplete.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Resources/Planets/PlanetDefault/Objects/Object.tscn" type="PackedScene" id=5]
 
-[node name="Room1" type="Node" index="0"]
+[node name="Room1" type="Node"]
 
 script = ExtResource( 1 )
 
@@ -20,5 +21,10 @@ tile_data = PoolIntArray( -131063, 0, 0, -131062, 0, 0, -131061, 0, 0, -131045, 
 [node name="RoomComplete" parent="." index="2" instance=ExtResource( 4 )]
 
 position = Vector2( 2200.97, 1020.8 )
+world = "res://Resources/Planets/PlanetDefault/Rooms/Maps/Room2.tscn"
+
+[node name="Object" parent="." index="3" instance=ExtResource( 5 )]
+
+position = Vector2( 1544.47, 1252.28 )
 
 
