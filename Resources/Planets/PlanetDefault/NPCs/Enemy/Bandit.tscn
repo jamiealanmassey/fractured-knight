@@ -3,7 +3,6 @@
 [ext_resource path="res://Resources/Planets/PlanetDefault/NPCs/Enemy/Bandit.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Planets/PlanetDefault/Textures/Yellow.png" type="Texture" id=2]
 
-
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
@@ -14,11 +13,13 @@ radius = 331.286
 custom_solver_bias = 0.0
 extents = Vector2( 32.764, 31.6424 )
 
-[node name="BaseClass" type="Node" index="0"]
+[node name="Bandit" type="Node2D"]
 
 script = ExtResource( 1 )
 health = null
 detectRadius = null
+positionX = null
+positionY = null
 detect_radius = null
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
