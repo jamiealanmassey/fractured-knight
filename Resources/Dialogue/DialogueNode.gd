@@ -1,15 +1,21 @@
-extends Node
+# Filename: DialogueNode.gd
+# Brief: Defines a DialogueNode that exists in the tree and can be extended to exhibit 
+#        different behaviours
+# Author: Jamie Massey
+# Created: 29/11/2018
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
-
-func _ready():
-	# Called when the node is added to the scene for the first time.
-	# Initialization here
-	pass
-
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
+class DialogueNode:
+	var nextNodes = []
+	var parentNode = null
+	
+	func select(context):
+		pass
+		
+	func continue(context):
+		self.next(context)
+		
+	func process(context):
+		pass
+		
+	func next(context):
+		context.current = self
