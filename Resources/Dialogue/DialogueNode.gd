@@ -18,3 +18,6 @@ func process(context):
 	
 func next(context):
 	context.current = self
+
+func get_type():
+	return "unknown"

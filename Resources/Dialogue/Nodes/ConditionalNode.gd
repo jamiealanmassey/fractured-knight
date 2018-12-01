@@ -15,3 +15,6 @@ func _init():
 	
 func passes():
 	return true # TODO: Parse condition to see if it is met
+
+func get_type():
+	return "conditional"

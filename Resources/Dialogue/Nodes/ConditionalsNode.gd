@@ -22,3 +22,6 @@ func next(context):
 		context.conditionalSkip.next(context)
 	else:
 		context.finish()
+
+func get_type():
+	return "conditionals"

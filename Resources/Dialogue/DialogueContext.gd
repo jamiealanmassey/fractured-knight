@@ -22,6 +22,7 @@ var xmlContext = null
 var xmlNodeType = XMLParser.NODE_UNKNOWN
 
 var lastNodes = []
+var choiceNodes = []
 
 func _ready():
 	if (dialogueFile != ""):
@@ -36,118 +37,85 @@ func parse(file):
 	xmlContext = XMLParser.new()
 	xmlContext.open(file)
 	xmlContext.read()
-	xmlNodeType = xmlContext.get_node_type()
+	xmlContext.read()
+	nodeRoot = parse_node()
+	nodeCurrent = nodeRoot
 	
-	var lastNode = null
-	var lastDepth = []
-	var lastDepthNode = []
-	
-	var choiceNext = false
-	var choiceNodes = []
-	var conditionNodes = []
-	
-	while (xmlNodeType != XMLParser.NODE_NONE):
-		# Parse current node
-		var node = null
-		if (xmlContext.get_node_name() == "line"):
-			node = line_node.new(xmlContext.get_node_data())
-		elif (xmlContext.get_node_name() == "location"):
-			node = location_node.new(xmlContext.get_attribute_value(0))
-			locationNodes[xmlContext.get_attribute_value(0)] = node
-		elif (xmlContext.get_node_name() == "choices"):
-			node = choices_node.new()
-			lastDepth.push_front(xmlStack.size())
-			lastDepthNode.push_front(node)
-			choiceNodes.clear()
-		elif (xmlContext.get_node_name() == "choice" && xmlStack.front() is choices_node):
-			var goto = xmlContext.get_attribute_value(0)
-			var restart = bool(xmlContext.get_attribute_value(1))
-			node = choice_node.new(goto, restart)
-			choiceNodes.push_back(node)
-		
-		# If there are any choiceNodes and the choice block has finished
-		# we must set the next parsed node as the child of each valid choice node
-		if (choiceNext == true):
-			for choice in choiceNodes:
-				if (choice.goto == "" && !choice.restart):
-					choice.nextNodes.push_back(node)
-			
-			choiceNext = false
-		
-		# Assign lastNode and add new child
-		if (node != null):
-			lastNode = node
-			lastNode.nextNodes.push_back(node)
-			
-			if (nodeRoot == null):
-				nodeRoot = node
-				nodeCurrent = node
-		
-		# Assign the next node to evaluate
-		xmlContext.read()
-		xmlNodeType = xmlContext.get_node_type()
-		
-		# Update the stack so we know how deep we are
-		if (xmlNodeType != XMLParser.NODE_NONE && xmlNodeType != XMLParser.NODE_ELEMENT_END):
-			xmlStack.push_front(xmlNodeType)
-		elif (xmlNodeType == XMLParser.NODE_ELEMENT_END):
-			if (lastDepth.size() > 0 && lastDepthNode.front() is choices_node):
-				choiceNext = true
-				lastDepth.pop_front()
-				lastDepthNode.pop_front()
-			
-			xmlStack.pop_front()
+	while (nodeCurrent != null):
+		print(nodeCurrent.get_type())
+		if (nodeCurrent.nextNodes[0] != null):
+			nodeCurrent = nodeCurrent.nextNodes[0]
+		else:
+			nodeCurrent = null
 
 func parse_node():
 	xmlContext.read()
 	xmlNodeType = xmlContext.get_node_type()
 	var node = null
 	var result = null
+	var choicesFlush = false
+	var node_name = xmlContext.get_node_name()
 	
 	if (choiceNodes.size() > 0):
-		for choice in choiceNodes:
-			if (choice.goto == "" && !choice.restart):
-				node.nextNodes.push_back(choice)
+		choicesFlush = true
 	
 	if xmlNodeType == XMLParser.NODE_ELEMENT:
 		if xmlContext.get_node_name() == "line":
 			node = parse_line()
+		elif xmlContext.get_node_name() == "location":
+			node = parse_location()
 		elif xmlContext.get_node_name() == "choices":
-			node = parse_choices()[0]
+			node = parse_choices()
 		elif xmlContext.get_node_name() == "conditionals":
 			parse_conditionals()
 		
+	if choicesFlush:
+		for choice in choiceNodes:
+			if (choice.goto == "" && !choice.restart):
+				choice.nextNodes.push_back(node)
+				
+		choiceNodes.clear()
+		
+	xmlContext.read()
 	if (node != null):
-		parse_node().nextNodes.push_back(node)
+		node.nextNodes.push_back(parse_node())
 	
 	return node
 
 func parse_line():
 	var text = ""
 	xmlContext.read()
-	text = xmlContext.get_node_value()
+	text = xmlContext.get_node_data()
 	xmlContext.read()
 	var node = line_node.new(text)
 	return node
 
+func parse_location():
+	var name = xmlContext.get_attribute_value(0)
+	var node = location_node.new(name)
+	locationNodes[name] = node
+	return node
+
 func parse_choices():
-	var choices = []
+	xmlContext.read()
+	var node = choices_node.new()
 	while (xmlNodeType != XMLParser.NODE_ELEMENT_END):
 		if (xmlContext.get_node_name() == "choice"):
-			choices.push_back(parse_choice(node))
+			choiceNodes.push_back(parse_choice())
 			
 		xmlContext.read()
 		xmlNodeType = xmlContext.get_node_type()
 	
-	return [node, choices]
+	return node
 	
 func parse_choice():
 	var goto = xmlContext.get_attribute_value(0)
 	var restart = bool(xmlContext.get_attribute_value(1))
 	var node = choice_node.new(goto, restart)
 	xmlContext.read()
-	node.text = xmlContext.get_node_value()
+	node.text = xmlContext.get_node_data()
 	xmlContext.read()
+	return node
 
 func parse_conditionals():
 	pass

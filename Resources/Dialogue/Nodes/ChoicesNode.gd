@@ -17,3 +17,6 @@ func select(context):
 func continue(context):
 	if (choice >= 0):
 		nextNodes[choice].next(context)
+
+func get_type():
+	return "choices"

@@ -23,3 +23,6 @@ func next(context):
 		context.redirect(goto)
 	else:
 		context.current = self
+
+func get_type():
+	return "choice"

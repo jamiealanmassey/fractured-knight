@@ -21,3 +21,6 @@ func select(context):
 func continue(context):
 	if (Input.is_action_pressed("ui_select")):
 		self.next(context)
+
+func get_type():
+	return "line"
