@@ -4,19 +4,21 @@
 # Author: Jamie Massey
 # Created: 29/11/2018
 
-var dialogue_node = load("res://Resources/Dialogue/DialogueNode.gd")
+extends "res://Resources/Dialogue/DialogueNode.gd"
 
-class ConditionalsNode extends dialogue_node.DialogueNode:
+#var dialogue_node = load("res://Resources/Dialogue/DialogueNode.gd")
+
+#class ConditionalsNode extends dialogue_node.DialogueNode:
 	
-	func _init():
-		pass
-	
-	func next(context):
-		for condition in nextNodes:
-			if (condition is ConditionalNode && condition.passes()):
-				condition.next(context)
-					
-		if (context.conditionalSkip != null):
-			context.conditionalSkip.next(context)
-		else:
-			context.finish()
+func _init():
+	pass
+
+func next(context):
+	for condition in nextNodes:
+		if (condition is ConditionalNode && condition.passes()):
+			condition.next(context)
+				
+	if (context.conditionalSkip != null):
+		context.conditionalSkip.next(context)
+	else:
+		context.finish()

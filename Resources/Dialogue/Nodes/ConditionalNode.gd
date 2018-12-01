@@ -3,13 +3,15 @@
 # Author: Jamie Massey
 # Created: 29/11/2018
 
-var dialogue_node = load("res://Resources/Dialogue/DialogueNode.gd")
+extends "res://Resources/Dialogue/DialogueNode.gd"
 
-class ConditionalNode extends dialogue_node.DialogueNode:
-	var condition = ""
+#var dialogue_node = load("res://Resources/Dialogue/DialogueNode.gd")
+
+#class ConditionalNode extends dialogue_node.DialogueNode:
+var condition = ""
+
+func _init():
+	pass
 	
-	func _init():
-		pass
-		
-	func passes():
-		return true # TODO: Parse condition to see if it is met
+func passes():
+	return true # TODO: Parse condition to see if it is met

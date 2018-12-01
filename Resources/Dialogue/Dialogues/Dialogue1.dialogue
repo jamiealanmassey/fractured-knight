@@ -1,0 +1,14 @@
+<dialogue>
+	<line>This is the first line</line>
+	<line>This is the second line!</line>
+	<location id="programmer_talk" />
+	<line>Foo bar programmar rawr</line>
+	<choices>
+		<choice goto="programmer_talk" restart="false">Reapeat Yourself</choice>
+		<choice goto="" restart="true">Begin Again</choice>
+		<choice goto="" restart="false">Continue.</choice>
+	</choices>
+	<location id="questions" />
+	<line>Do you possess the %items.6%?</line>
+	<line>Farewell traveller!</line>
+</dialogue>

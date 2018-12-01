@@ -4,18 +4,17 @@
 # Author: Jamie Massey
 # Created: 29/11/2018
 
-class DialogueNode:
-	var nextNodes = []
-	var parentNode = null
+var nextNodes = []
+var parentNode = null
+
+func select(context):
+	pass
 	
-	func select(context):
-		pass
-		
-	func continue(context):
-		self.next(context)
-		
-	func process(context):
-		pass
-		
-	func next(context):
-		context.current = self
+func continue(context):
+	self.next(context)
+	
+func process(context):
+	pass
+	
+func next(context):
+	context.current = self

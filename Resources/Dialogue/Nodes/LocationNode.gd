@@ -3,10 +3,12 @@
 # Author: Jamie Massey
 # Created: 29/11/2018
 
-var dialogue_node = load("res://Resources/Dialogue/DialogueNode.gd")
+extends "res://Resources/Dialogue/DialogueNode.gd"
 
-class LocationNode extends dialogue_node.DialogueNode:
-	var name = ""
-	
-	func _init(name):
-		self.name = name
+#var dialogue_node = load("res://Resources/Dialogue/DialogueNode.gd")
+
+#class LocationNode extends dialogue_node.DialogueNode:
+var name = ""
+
+func _init(name):
+	self.name = name
