@@ -108,7 +108,7 @@ selection_enabled = false
 override_selected_font_color = false
 _sections_unfolded = [ "Grow Direction", "Rect", "Size Flags" ]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer" index="2"]
+[node name="Buttons" type="HBoxContainer" parent="Panel/VBoxContainer" index="2"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -127,7 +127,7 @@ size_flags_vertical = 3
 alignment = 0
 _sections_unfolded = [ "Grow Direction", "Margin", "Rect", "Size Flags" ]
 
-[node name="Button" type="Button" parent="Panel/VBoxContainer/HBoxContainer" index="0"]
+[node name="Button1" type="Button" parent="Panel/VBoxContainer/Buttons" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -152,7 +152,7 @@ flat = false
 align = 1
 _sections_unfolded = [ "Hint", "Rect", "Size Flags" ]
 
-[node name="Button2" type="Button" parent="Panel/VBoxContainer/HBoxContainer" index="1"]
+[node name="Button2" type="Button" parent="Panel/VBoxContainer/Buttons" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -179,7 +179,7 @@ flat = false
 align = 1
 _sections_unfolded = [ "Grow Direction", "Rect", "Size Flags" ]
 
-[node name="Button3" type="Button" parent="Panel/VBoxContainer/HBoxContainer" index="2"]
+[node name="Button3" type="Button" parent="Panel/VBoxContainer/Buttons" index="2"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -206,7 +206,7 @@ flat = false
 align = 1
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Size Flags" ]
 
-[node name="Button4" type="Button" parent="Panel/VBoxContainer/HBoxContainer" index="3"]
+[node name="Button4" type="Button" parent="Panel/VBoxContainer/Buttons" index="3"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -252,12 +252,12 @@ size_flags_vertical = 1
 color = Color( 0.804688, 0.157166, 0.157166, 1 )
 _sections_unfolded = [ "Rect" ]
 
-[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/Button" to="." method="_on_Button1_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Buttons/Button1" to="." method="_on_Button1_pressed"]
 
-[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/Button2" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Buttons/Button2" to="." method="_on_Button2_pressed"]
 
-[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/Button3" to="." method="_on_Button3_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Buttons/Button3" to="." method="_on_Button3_pressed"]
 
-[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/Button4" to="." method="_on_Button4_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Buttons/Button4" to="." method="_on_Button4_pressed"]
 
 
