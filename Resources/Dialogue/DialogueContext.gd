@@ -15,13 +15,9 @@ onready var choice_node = preload("res://Resources/Dialogue/Nodes/ChoiceNode.gd"
 
 var nodeRoot = null
 var nodeCurrent = null
-var conditionalLast = null
-var locationNodes = {}
-var xmlStack = []
 var xmlContext = null
 var xmlNodeType = XMLParser.NODE_UNKNOWN
-
-var lastNodes = []
+var locationNodes = {}
 var choiceNodes = []
 
 func _ready():
@@ -41,13 +37,15 @@ func parse(file):
 	nodeRoot = parse_node()
 	nodeCurrent = nodeRoot
 	
-	while (nodeCurrent != null):
-		print(nodeCurrent.get_type())
-		if (nodeCurrent.nextNodes[0] != null):
-			nodeCurrent = nodeCurrent.nextNodes[0]
-		else:
-			nodeCurrent = null
+	#while (nodeCurrent != null):
+	#	print(nodeCurrent.get_type())
+	#	if (nodeCurrent.nextNodes[0] != null):
+	#		nodeCurrent = nodeCurrent.nextNodes[0]
+	#	else:
+	#		nodeCurrent = null
 
+# Parses a single node and makes a recursive call to itself if another node
+# has been instantiated
 func parse_node():
 	xmlContext.read()
 	xmlNodeType = xmlContext.get_node_type()
@@ -82,6 +80,7 @@ func parse_node():
 	
 	return node
 
+# Parse and create a LineNode.gd
 func parse_line():
 	var text = ""
 	xmlContext.read()
@@ -90,12 +89,14 @@ func parse_line():
 	var node = line_node.new(text)
 	return node
 
+# Parse and create a LocationNode.gd
 func parse_location():
 	var name = xmlContext.get_attribute_value(0)
 	var node = location_node.new(name)
 	locationNodes[name] = node
 	return node
 
+# Parse and create a ChoicesNode.gd
 func parse_choices():
 	xmlContext.read()
 	var node = choices_node.new()
@@ -108,6 +109,7 @@ func parse_choices():
 	
 	return node
 	
+# Parse and create a ChoiceNode.gd
 func parse_choice():
 	var goto = xmlContext.get_attribute_value(0)
 	var restart = bool(xmlContext.get_attribute_value(1))
@@ -117,8 +119,10 @@ func parse_choice():
 	xmlContext.read()
 	return node
 
+## Parse and create a ConditionalsNode.gd
 func parse_conditionals():
 	pass
 	
+# Parse and create a ConditionalNode.gd
 func parse_conditional():
 	pass
