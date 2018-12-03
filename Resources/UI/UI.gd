@@ -10,18 +10,18 @@ signal option_4_chosen
 # var a = 2
 # var b = "textvar"
 
-export (int) var x;
-export (int) var y;
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
 	pass
 
-func on_new_choice():
-	#called when a new choice is needed
-	#
+func set_text(text):
+	$Panel/VBoxContainer/ConversationText.text = text
 	pass
+
+func clear_text():
+	$Panel/VBoxContainer/ConversationText.text = ""
 
 #sets health as percentage
 func set_heatlh(health):
