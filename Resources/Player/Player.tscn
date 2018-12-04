@@ -24,7 +24,7 @@ height = 20.0
 custom_solver_bias = 0.0
 extents = Vector2( 10.3441, 29.8042 )
 
-[node name="Player" type="KinematicBody2D" index="0"]
+[node name="Player" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 1
@@ -47,6 +47,7 @@ shape = SubResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="." index="2"]
 
+editor/display_folded = true
 position = Vector2( 0, -0.0460691 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -73,6 +74,7 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="Menu" type="Panel" parent="Area2D/CanvasLayer" index="0"]
 
+editor/display_folded = true
 visible = false
 anchor_left = 0.5
 anchor_top = 0.5
