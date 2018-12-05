@@ -38,10 +38,18 @@ position = Vector2( 0, 8 )
 
 [connection signal="option_1_chosen" from="UI" to="NPC/Combat" method="_on_UI_attack_chosen"]
 
+[connection signal="option_1_chosen" from="UI" to="NPC" method="_on_UI_option_1_chosen"]
+
 [connection signal="option_2_chosen" from="UI" to="NPC/Combat" method="_on_UI_dodge_chosen"]
+
+[connection signal="option_2_chosen" from="UI" to="NPC" method="_on_UI_option_2_chosen"]
 
 [connection signal="option_3_chosen" from="UI" to="NPC/Combat" method="_on_UI_defend_chosen"]
 
+[connection signal="option_3_chosen" from="UI" to="NPC" method="_on_UI_option_3_chosen"]
+
 [connection signal="hit_player" from="NPC" to="NPC/Combat" method="_on_NPC_hit_player"]
+
+[connection signal="round_complete" from="NPC/Combat" to="UI" method="set_health"]
 
 

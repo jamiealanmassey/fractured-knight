@@ -16,14 +16,19 @@ func _ready():
 	pass
 
 func prepare_combat():
+	player_health = 100
+	player_damage = 10
 	enemy_health = 25
 	enemy_damage = 4
+	get_tree().get_root().find_node("UI", true, false).change_to_fighting()
+	currently_in_combat = true
 	emit_signal("combat_ready")
 
 func player_attack():
-	player_health = player_health - enemy_damage
-	enemy_health = enemy_health - player_damage
-	emit_signal("round_complete", player_health)
+	if (currently_in_combat):
+		player_health = player_health - enemy_damage
+		enemy_health = enemy_health - player_damage
+		emit_signal("round_complete", player_health)
 	pass
 
 func player_dodge():
@@ -47,17 +52,12 @@ func _on_NPC_hit_player():
 	print("signal sent and recieved")
 	prepare_combat()
 	currently_in_combat = true
-	var UI = get_tree().get_root().find_node("UI", true, false)
-	get_tree().get_root().find_node("UI", true, false).get_node("Panel").show()
-	#UI.change_to_combat()
-	get_tree().get_root().find_node("UI", true, false).change_to_combat()
 	pass # replace with function body
 
 
 func _on_UI_attack_chosen():
 	if (currently_in_combat):
 		player_attack()
-		get_tree().get_root().find_node("UI", true, false).set_heatlh(player_health)
 	pass # replace with function body
 
 
