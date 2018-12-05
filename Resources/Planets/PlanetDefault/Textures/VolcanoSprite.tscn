@@ -26,6 +26,7 @@ extents = Vector2( 32.1087, 31.2803 )
 
 frames = SubResource( 1 )
 animation = "VolcanoSprite"
+frame = 5
 playing = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." index="0"]
@@ -41,6 +42,8 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
 
+position = Vector2( 0, 9.55692 )
+scale = Vector2( 1, 0.721212 )
 shape = SubResource( 2 )
 
 
