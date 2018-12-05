@@ -79,3 +79,9 @@ func _process(delta):
 
 func _physics_process(delta):
 	move_and_slide(velocity)
+
+
+func _on_EntranceExitPair_entrance_entered(pos):
+	position.x = pos.x
+	position.y = pos.y
+	pass # replace with function body

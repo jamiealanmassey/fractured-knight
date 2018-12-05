@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Resources/Planets/EntranceExitPair.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Planets/PlanetDefault/NPCs/Enemy/icon.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Planets/PlanetDefault/NPCs/Enemy/Yellow.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 27.2993, 32.6801 )
+
+[node name="EntranceExitPair" type="Node"]
+
+script = ExtResource( 1 )
+entrance_x = null
+entrance_y = null
+exit_x = null
+exit_y = null
+
+[node name="Entrace" type="Area2D" parent="." index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entrace" index="0"]
+
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Entrace" index="1"]
+
+position = Vector2( 4.35624, 0.659064 )
+scale = Vector2( 0.537729, 0.520925 )
+texture = ExtResource( 2 )
+
+[node name="Exit" type="Area2D" parent="." index="1"]
+
+position = Vector2( 91.7724, 3.22637 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" index="0"]
+
+position = Vector2( 1.79248, -4.66032 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Exit" index="1"]
+
+position = Vector2( 2.20538, -5.07671 )
+scale = Vector2( 0.851404, 1.04185 )
+texture = ExtResource( 3 )
+
+[connection signal="area_entered" from="Entrace" to="." method="_on_Entrace_area_entered"]
+
+
