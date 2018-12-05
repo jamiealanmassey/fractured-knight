@@ -1,0 +1,13 @@
+<dialogue>
+  <line>Peter: Collision detected! System malfunction! Phase 2 activated: Shields up.</line>
+  <choices>
+    <choice goto="" restart="">Peter Lewis! What happened!?</choice>
+    <choice goto="" restart="">Peter Lewis! Please inform the situation.</choice>
+  </choices>
+  <line>Peter: The Spaceship has crashed, main system is in need of urgent repairs.</line>
+  <choices>
+    <choice goto="" restart="">I request an independent AI.</choice>
+  </choices>
+  <line>Peter: Request accepted. PL2010  will accompany with you.</line>
+  <line>Peter: Detective, you can call me Peter, I’ll be happy to assist you with any needs you have.</line>
+</dialogue>
