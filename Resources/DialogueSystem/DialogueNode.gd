@@ -1,0 +1,31 @@
+# Filename: DialogueNode.gd
+# Brief: Defines a DialogueNode that exists in the tree and can be extended to exhibit 
+#        different behaviours
+# Author: Jamie Massey
+# Created: 29/11/2018
+
+extends Node2D
+
+var nextNodes = []
+var parentNode = null
+
+func select(context):
+	pass
+	
+func continue(context):
+	self.next(context)
+	
+func process(context):
+	pass
+
+func cleanup(context):
+	pass
+
+func next(context):
+	if (nextNodes.size() > 0):
+		context.switchNode(nextNodes[0])
+	else:
+		context.switchNode(null)
+
+func get_type():
+	return "unknown"
