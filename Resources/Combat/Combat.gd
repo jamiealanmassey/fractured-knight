@@ -9,6 +9,7 @@ var currently_in_combat = false
 
 signal combat_ready
 signal round_complete
+signal enemy_died
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
@@ -17,7 +18,7 @@ func _ready():
 
 func prepare_combat():
 	player_health = 100
-	player_damage = 10
+	player_damage = 7
 	enemy_health = 25
 	enemy_damage = 4
 	get_tree().get_root().find_node("UI", true, false).change_to_fighting()
@@ -29,6 +30,7 @@ func player_attack():
 		player_health = player_health - enemy_damage
 		enemy_health = enemy_health - player_damage
 		emit_signal("round_complete", player_health)
+		handle_enemy_death()
 	pass
 
 func player_dodge():
@@ -71,3 +73,8 @@ func _on_UI_defend_chosen():
 	if (currently_in_combat):
 		player_block()
 	pass # replace with function body
+	
+func handle_enemy_death():
+	if (enemy_health <= 0):
+		get_tree().get_root().find_node("UI", true, false).get_node("Panel").hide()
+		emit_signal("enemy_died")
