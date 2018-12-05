@@ -16,14 +16,14 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 32.5242, 31.1601 )
+extents = Vector2( 32.5242, 37.8175 )
 
 [node name="FireDecoration" type="AnimatedSprite"]
 
 position = Vector2( 364.858, 34.8175 )
 frames = SubResource( 1 )
 animation = "Fire1"
-frame = 1
+frame = 2
 playing = true
 __meta__ = {
 "_edit_group_": true
@@ -41,6 +41,8 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
 
+position = Vector2( 0, 11.5 )
+scale = Vector2( 1, 0.695908 )
 shape = SubResource( 2 )
 
 

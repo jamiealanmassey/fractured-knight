@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 33.8055, 31.2672 )
+extents = Vector2( 30.1183, 31.5799 )
 
 [node name="Node" type="Node"]
 
