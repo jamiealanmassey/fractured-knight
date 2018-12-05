@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Webp.net-resizeimage.png-6e90bfac4ee2863dbd5599e212e3bcb0.stex"
+path="res://.import/Heat1.png-097e708da34d6530d53badd204854d94.stex"
 
 [deps]
 
-source_file="res://Resources/Planets/PlanetDefault/Textures/Webp.net-resizeimage.png"
-dest_files=[ "res://.import/Webp.net-resizeimage.png-6e90bfac4ee2863dbd5599e212e3bcb0.stex" ]
+source_file="res://Resources/Minigames/Texture/Heat1.png"
+dest_files=[ "res://.import/Heat1.png-097e708da34d6530d53badd204854d94.stex" ]
 
 [params]
 
