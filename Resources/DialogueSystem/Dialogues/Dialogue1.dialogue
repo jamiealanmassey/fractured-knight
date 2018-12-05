@@ -3,6 +3,7 @@
 	<line>This is the second line!</line>
 	<location id="programmer_talk" />
 	<line>Foo bar programmar rawr</line>
+	<line>Now it is time to decide.</line>
 	<choices>
 		<choice goto="programmer_talk" restart="">Reapeat Yourself</choice>
 		<choice goto="" restart="1">Begin Again</choice>

@@ -3,11 +3,8 @@
 # Author: Jamie Massey
 # Created: 29/11/2018
 
-extends "res://Resources/Dialogue/DialogueNode.gd"
+extends "res://Resources/DialogueSystem/DialogueNode.gd"
 
-#var dialogue_node = load("res://Resources/Dialogue/DialogueNode.gd")
-
-#class ChoiceNode extends dialogue_node.DialogueNode:
 var goto = ""
 var restart = false
 var text = ""

@@ -4,14 +4,7 @@
 # Author: Jamie Massey
 # Created: 29/11/2018
 
-extends "res://Resources/Dialogue/DialogueNode.gd"
-
-#var dialogue_node = load("res://Resources/Dialogue/DialogueNode.gd")
-
-#class ConditionalsNode extends dialogue_node.DialogueNode:
-	
-func _init():
-	pass
+extends "res://Resources/DialogueSystem/DialogueNode.gd"
 
 func next(context):
 	for condition in nextNodes:
