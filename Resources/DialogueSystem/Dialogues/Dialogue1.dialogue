@@ -3,7 +3,6 @@
 	<line>This is the second line!</line>
 	<location id="programmer_talk" />
 	<line>Foo bar programmar rawr</line>
-	<line>Now it is time to decide.</line>
 	<choices>
 		<choice goto="programmer_talk" restart="">Reapeat Yourself</choice>
 		<choice goto="" restart="1">Begin Again</choice>
@@ -12,8 +11,4 @@
 	<location id="questions" />
 	<line>Do you possess the %items.6%?</line>
 	<line>Farewell traveller!</line>
-	<choices>
-		<choice goto="questions" restart="">I have more questions!</choice>
-		<choice goto="" restart="">Farewell.</choice>
-	</choices>
 </dialogue>

@@ -1,0 +1,7 @@
+<dialogue>
+  <choices>
+    <choice goto="" restart="">What just happened!?</choice>
+  </choices>
+  <line>Peter: Sir, we appear to be 100 meters below the surface of the planet.. But I’m not sure how.</line>
+  <line>Peter: Life form detected. Existence has 93.65% identical of human trait.</line>
+</dialogue>
