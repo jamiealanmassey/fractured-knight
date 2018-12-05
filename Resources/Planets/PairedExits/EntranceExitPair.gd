@@ -33,6 +33,7 @@ func _ready():
 
 
 func _on_Entrace_area_entered(area):
+	print("Entrance entered")
 	emit_signal("entrance_entered", $Exit.position)
 	pass # replace with function body
 

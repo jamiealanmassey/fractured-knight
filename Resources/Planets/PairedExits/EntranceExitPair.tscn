@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Resources/Planets/EntranceExitPair.gd" type="Script" id=1]
-[ext_resource path="res://Resources/Planets/PlanetDefault/NPCs/Enemy/icon.png" type="Texture" id=2]
-[ext_resource path="res://Resources/Planets/PlanetDefault/NPCs/Enemy/Yellow.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Planets/PairedExits/EntranceExitPair.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Planets/PlanetDefault/Textures/Green.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -14,7 +13,7 @@ extents = Vector2( 31, 32.6801 )
 custom_solver_bias = 0.0
 extents = Vector2( 32.2709, 33.1372 )
 
-[node name="EntranceExitPair" type="Node" index="0"]
+[node name="EntranceExitPair" type="Node"]
 
 script = ExtResource( 1 )
 entrance_x = null
@@ -37,11 +36,11 @@ _sections_unfolded = [ "Transform" ]
 
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="Entrace" index="1"]
+[node name="Sprite2" type="Sprite" parent="Entrace" index="1"]
 
-position = Vector2( 1.5, -0.550201 )
-scale = Vector2( 1.01563, 1.04688 )
+scale = Vector2( 0.934623, 1.00878 )
 texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="Exit" type="Area2D" parent="." index="1"]
 
@@ -62,9 +61,8 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Sprite" type="Sprite" parent="Exit" index="1"]
 
-position = Vector2( 1.43533, 2.93479 )
 scale = Vector2( 1.11239, 1.14723 )
-texture = ExtResource( 3 )
+texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
 [connection signal="area_entered" from="Entrace" to="." method="_on_Entrace_area_entered"]
