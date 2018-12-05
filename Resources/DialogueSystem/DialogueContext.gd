@@ -8,10 +8,15 @@ extends Node
 
 export(String, FILE, "*.dialogue") var dialogueFile
 
-onready var line_node = preload("res://Resources/Dialogue/Nodes/LineNode.gd")
-onready var location_node = preload("res://Resources/Dialogue/Nodes/LocationNode.gd")
-onready var choices_node = preload("res://Resources/Dialogue/Nodes/ChoicesNode.gd")
-onready var choice_node = preload("res://Resources/Dialogue/Nodes/ChoiceNode.gd")
+onready var line_node = preload("res://Resources/DialogueSystem/Nodes/LineNode.gd")
+onready var location_node = preload("res://Resources/DialogueSystem/Nodes/LocationNode.gd")
+onready var choices_node = preload("res://Resources/DialogueSystem/Nodes/ChoicesNode.gd")
+onready var choice_node = preload("res://Resources/DialogueSystem/Nodes/ChoiceNode.gd")
+
+onready var ui = get_tree().get_root().find_node("UI", true, false)
+
+signal dialogue_node_changed;
+signal dialogue_complete;
 
 var nodeRoot = null
 var nodeCurrent = null
@@ -25,7 +30,32 @@ func _ready():
 		parse(dialogueFile)
 
 func _process(delta):
-	pass
+	if (nodeCurrent != null):
+		nodeCurrent.continue(self)
+
+func switchNode(node):
+	if (nodeCurrent != null):
+		nodeCurrent.cleanup(self)
+		remove_child(nodeCurrent)
+	
+	nodeCurrent = node
+	if (nodeCurrent != null):
+		add_child(nodeCurrent)
+		nodeCurrent.select(self)
+		emit_signal("dialogue_node_changed", nodeCurrent)
+	else:
+		ui.get_node("Panel").hide()
+		emit_signal("dialogue_complete")
+
+func restart():
+	switchNode(nodeRoot)
+
+func redirect(gotoLocation):
+	switchNode(locationNodes[gotoLocation])
+
+func trigger():
+	ui.get_node("Panel").show()
+	switchNode(nodeRoot)
 
 # Takes the specified file and linearly parses it as an XML file converting
 # it into a context that resembles a graph for the dialogue system to traverse
@@ -35,7 +65,7 @@ func parse(file):
 	xmlContext.read()
 	xmlContext.read()
 	nodeRoot = parse_node()
-	nodeCurrent = nodeRoot
+	trigger()
 	
 	#while (nodeCurrent != null):
 	#	print(nodeCurrent.get_type())
@@ -103,6 +133,7 @@ func parse_choices():
 	while (xmlNodeType != XMLParser.NODE_ELEMENT_END):
 		if (xmlContext.get_node_name() == "choice"):
 			choiceNodes.push_back(parse_choice())
+			node.nextNodes.push_back(choiceNodes.back())
 			
 		xmlContext.read()
 		xmlNodeType = xmlContext.get_node_type()

@@ -45,27 +45,37 @@ func change_to_talking():
 	$Panel/VBoxContainer/Buttons/Button3.text = "Option 3"
 	$Panel/VBoxContainer/Buttons/Button4.text = "Option 4"	
 
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
+func set_button_label(index, label):
+	if (index == 0):
+		$Panel/VBoxContainer/Buttons/Button1.text = label
+	elif (index == 1):
+		$Panel/VBoxContainer/Buttons/Button2.text = label
+	elif (index == 2):
+		$Panel/VBoxContainer/Buttons/Button3.text = label
+	elif (index == 3):
+		$Panel/VBoxContainer/Buttons/Button4.text = label
 
+func set_button_visibility(index, flag):
+	if (index == 0):
+		$Panel/VBoxContainer/Buttons/Button1.visible = flag
+	elif (index == 1):
+		$Panel/VBoxContainer/Buttons/Button2.visible = flag
+	elif (index == 2):
+		$Panel/VBoxContainer/Buttons/Button3.visible = flag
+	elif (index == 3):
+		$Panel/VBoxContainer/Buttons/Button4.visible = flag
 
 func _on_Button1_pressed():
-	emit_signal("option_1_chosen")
-	pass # replace with function body
+	emit_signal("option_1_chosen", self)
 
 
 func _on_Button2_pressed():
-	emit_signal("option_2_chosen")
-	pass # replace with function body
+	emit_signal("option_2_chosen", self)
 
 
 func _on_Button3_pressed():
-	emit_signal("option_3_chosen")
-	pass # replace with function body
+	emit_signal("option_3_chosen", self)
 
 
 func _on_Button4_pressed():
-	emit_signal("option_3_chosen")
-	pass # replace with function body
+	emit_signal("option_3_chosen", self)

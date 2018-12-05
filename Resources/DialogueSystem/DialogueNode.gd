@@ -4,6 +4,8 @@
 # Author: Jamie Massey
 # Created: 29/11/2018
 
+extends Node2D
+
 var nextNodes = []
 var parentNode = null
 
@@ -15,9 +17,15 @@ func continue(context):
 	
 func process(context):
 	pass
-	
+
+func cleanup(context):
+	pass
+
 func next(context):
-	context.current = self
+	if (nextNodes.size() > 0):
+		context.switchNode(nextNodes[0])
+	else:
+		context.switchNode(null)
 
 func get_type():
 	return "unknown"
