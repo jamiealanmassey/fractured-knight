@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Resources/Planets/EntranceExitPair.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Planets/PlanetDefault/NPCs/Enemy/icon.png" type="Texture" id=2]
@@ -7,9 +7,14 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 27.2993, 32.6801 )
+extents = Vector2( 31, 32.6801 )
 
-[node name="EntranceExitPair" type="Node"]
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32.2709, 33.1372 )
+
+[node name="EntranceExitPair" type="Node" index="0"]
 
 script = ExtResource( 1 )
 entrance_x = null
@@ -34,13 +39,14 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Entrace" index="1"]
 
-position = Vector2( 4.35624, 0.659064 )
-scale = Vector2( 0.537729, 0.520925 )
+position = Vector2( 1.5, -0.550201 )
+scale = Vector2( 1.01563, 1.04688 )
 texture = ExtResource( 2 )
 
 [node name="Exit" type="Area2D" parent="." index="1"]
 
-position = Vector2( 91.7724, 3.22637 )
+position = Vector2( 96.8862, 7.08809 )
+scale = Vector2( 0.840194, 0.879321 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -51,14 +57,15 @@ audio_bus_name = "Master"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" index="0"]
 
-position = Vector2( 1.79248, -4.66032 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="Sprite" type="Sprite" parent="Exit" index="1"]
 
-position = Vector2( 2.20538, -5.07671 )
-scale = Vector2( 0.851404, 1.04185 )
+position = Vector2( 1.43533, 2.93479 )
+scale = Vector2( 1.11239, 1.14723 )
 texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
 
 [connection signal="area_entered" from="Entrace" to="." method="_on_Entrace_area_entered"]
 
