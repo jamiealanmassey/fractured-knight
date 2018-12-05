@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Green.png-e61a34ac84844ca8e3f445c8a0348734.stex"
+path="res://.import/purple.png-1375079f81f17f8afef47d158b1b21bc.stex"
 
 [deps]
 
-source_file="res://Resources/Planets/PlanetDefault/Textures/Green.png"
-dest_files=[ "res://.import/Green.png-e61a34ac84844ca8e3f445c8a0348734.stex" ]
+source_file="res://Resources/Minigames/Texture/purple.png"
+dest_files=[ "res://.import/purple.png-1375079f81f17f8afef47d158b1b21bc.stex" ]
 
 [params]
 

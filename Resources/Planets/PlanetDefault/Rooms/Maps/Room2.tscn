@@ -7,6 +7,8 @@
 [ext_resource path="res://Resources/Planets/PlanetDefault/NPCs/Enemy/Edward.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Resources/Planets/PlanetDefault/NPCs/Enemy/Bandit.tscn" type="PackedScene" id=6]
 
+
+
 [node name="Room2" type="Node" index="0"]
 
 script = ExtResource( 1 )

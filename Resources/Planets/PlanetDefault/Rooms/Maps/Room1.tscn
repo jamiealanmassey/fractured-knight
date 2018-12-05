@@ -6,6 +6,8 @@
 [ext_resource path="res://Resources/Planets/PlanetDefault/Rooms/RoomComplete.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Resources/Planets/PlanetDefault/Objects/Object.tscn" type="PackedScene" id=5]
 
+
+
 [node name="Room1" type="Node"]
 
 script = ExtResource( 1 )
