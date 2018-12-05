@@ -32,10 +32,13 @@ func set_heatlh(health):
 
 #Changes button texts to show combat options
 func change_to_combat():
+	$Panel/VBoxContainer/Buttons/Button1.show()
 	$Panel/VBoxContainer/Buttons/Button1.text = "Attack"
+	$Panel/VBoxContainer/Buttons/Button2.show()
 	$Panel/VBoxContainer/Buttons/Button2.text = "Talk"
-	$Panel/VBoxContainer/Buttons/Button3.hide()
-	$Panel/VBoxContainer/Buttons/Button4.text = "Flee"
+	$Panel/VBoxContainer/Buttons/Button3.show()
+	$Panel/VBoxContainer/Buttons/Button3.text = "Flee"
+	$Panel/VBoxContainer/Buttons/Button4.hide()
 
 #Changes button texts to chat options
 func change_to_talking():
@@ -66,16 +69,16 @@ func set_button_visibility(index, flag):
 		$Panel/VBoxContainer/Buttons/Button4.visible = flag
 
 func _on_Button1_pressed():
-	emit_signal("option_1_chosen", self)
+	emit_signal("option_1_chosen")
 
 
 func _on_Button2_pressed():
-	emit_signal("option_2_chosen", self)
+	emit_signal("option_2_chosen")
 
 
 func _on_Button3_pressed():
-	emit_signal("option_3_chosen", self)
+	emit_signal("option_3_chosen")
 
 
 func _on_Button4_pressed():
-	emit_signal("option_3_chosen", self)
+	emit_signal("option_4_chosen")

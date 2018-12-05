@@ -20,14 +20,9 @@ func _ready():
 
 func _process(delta):
 	if (player_location != null):
-		print(player_location.x)
-		print(player_location.y)
 		var x_diff = position.x - player_location.x
 		var y_diff = position.y - player_location.y
-		var x_y_ratio = x_diff/y_diff
 		var vector = Vector2(x_diff, y_diff).normalized()
-		print(vector.x)
-		print(vector.y)
 		position.x = position.x - vector.x
 		position.y = position.y - vector.y
 		player_location = player.position
@@ -49,5 +44,9 @@ func _on_DetectionRadius_area_exited(area):
 
 
 func _on_CollisionArea_area_entered(area):
-	emit_signal("hit_player")
+	if (area.get_owner().get_name() == "Player"):
+		print("Area entered by player")
+		emit_signal("hit_player")
 	pass # replace with function body
+	
+
