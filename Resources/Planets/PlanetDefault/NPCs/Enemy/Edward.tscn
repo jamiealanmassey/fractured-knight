@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Resources/Planets/PlanetDefault/NPCs/Enemy/Edward.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Planets/PlanetDefault/Textures/Yellow.png" type="Texture" id=2]
@@ -8,13 +8,16 @@
 custom_solver_bias = 0.0
 radius = 99.5
 
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 30.5, 31.01 )
+
 [node name="BaseClass" type="Node2D"]
 
 script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
 health = null
-detectRadius = null
-positionX = null
-positionY = null
 detect_radius = null
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
@@ -29,7 +32,7 @@ position = Vector2( 0, -0.00964737 )
 scale = Vector2( 1, 1.0003 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
+gravity = 150.0
 linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
@@ -68,6 +71,21 @@ scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
 _sections_unfolded = [ "Grow Direction", "Rect" ]
+
+[node name="CollisionArea" type="Area2D" parent="." index="3"]
+
+editor/display_folded = true
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea" index="0"]
+
+shape = SubResource( 2 )
 
 [connection signal="area_entered" from="DectRadius" to="." method="_on_DectRadius_area_entered"]
 
