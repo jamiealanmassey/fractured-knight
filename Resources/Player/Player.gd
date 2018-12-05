@@ -12,6 +12,9 @@ export(float) var velocitySpeed = 1
 var velocity = Vector2()
 var keyStates = []
 
+#Keeps track if a player has just moved and is still inside an eit/entrance tile
+var in_exit = false
+
 signal player_moved
 
 ## Defines the KeyState as tuples of (bool, int, string)
@@ -82,6 +85,27 @@ func _physics_process(delta):
 
 
 func _on_EntranceExitPair_entrance_entered(pos):
-	position.x = pos.x
-	position.y = pos.y
+	if (!in_exit):
+		position.x = pos.x
+		position.y = pos.y
+		in_exit = true
+	pass # replace with function body
+
+
+func _on_EntranceExitPair_exit_entered(pos):
+	if (!in_exit):
+		position.x = pos.x
+		position.y = pos.y
+		in_exit = true
+	pass # replace with function body
+
+
+func _on_EntranceExitPair_entrance_exited():
+	in_exit = false
+	pass # replace with function body
+	
+
+
+func _on_EntranceExitPair_exit_exited():
+	in_exit = false
 	pass # replace with function body

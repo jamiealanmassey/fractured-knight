@@ -62,4 +62,10 @@ texture = ExtResource( 3 )
 
 [connection signal="area_entered" from="Entrace" to="." method="_on_Entrace_area_entered"]
 
+[connection signal="area_exited" from="Entrace" to="." method="_on_Entrace_area_exited"]
+
+[connection signal="area_entered" from="Exit" to="." method="_on_Exit_area_entered"]
+
+[connection signal="area_exited" from="Exit" to="." method="_on_Exit_area_exited"]
+
 

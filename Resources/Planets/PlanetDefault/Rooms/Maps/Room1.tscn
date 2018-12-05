@@ -38,4 +38,10 @@ exit_y = 1050
 
 [connection signal="entrance_entered" from="EntranceExitPair" to="Player" method="_on_EntranceExitPair_entrance_entered"]
 
+[connection signal="entrance_exited" from="EntranceExitPair" to="Player" method="_on_EntranceExitPair_entrance_exited"]
+
+[connection signal="exit_entered" from="EntranceExitPair" to="Player" method="_on_EntranceExitPair_exit_entered"]
+
+[connection signal="exit_exited" from="EntranceExitPair" to="Player" method="_on_EntranceExitPair_exit_exited"]
+
 

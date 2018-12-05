@@ -11,6 +11,10 @@ export (int) var exit_x
 export (int) var exit_y
 
 signal entrance_entered
+signal exit_entered
+
+signal exit_exited
+signal entrance_exited
 
 func _ready():
 	$Entrace.position.x = entrance_x
@@ -30,4 +34,19 @@ func _ready():
 
 func _on_Entrace_area_entered(area):
 	emit_signal("entrance_entered", $Exit.position)
+	pass # replace with function body
+
+
+func _on_Exit_area_entered(area):
+	emit_signal("exit_entered", $Entrace.position)
+	pass # replace with function body
+
+
+func _on_Exit_area_exited(area):
+	emit_signal("exit_exited")
+	pass # replace with function body
+	
+
+func _on_Entrace_area_exited(area):
+	emit_signal("entrance_exited")
 	pass # replace with function body
