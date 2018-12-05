@@ -3,7 +3,8 @@
 # Author:
 # Created: 
 
-extends Node
+extends "res://Resources/Planets/PlanetDefaut/NPCs/AStar.gd"
+
 ## Calls function set_camera_limits to set a boundrary for the camera
 func _ready():
 	set_camera_limits()

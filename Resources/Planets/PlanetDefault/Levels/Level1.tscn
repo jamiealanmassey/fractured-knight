@@ -1,9 +1,10 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Resources/Planets/PlanetDefault/Rooms/Tileset/default_env.tres" type="TileSet" id=1]
+[ext_resource path="res://Resources/Planets/PlanetDefault/Levels/Tileset/default_env.tres" type="TileSet" id=1]
 
+[node name="Node" type="Node" index="0"]
 
-[node name="TileMap" type="TileMap" index="0"]
+[node name="TileMap" type="TileMap" parent="." index="0"]
 
 mode = 0
 tile_set = ExtResource( 1 )

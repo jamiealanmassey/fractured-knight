@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Webp.net-resizeimage (1).png-83a17935b268a590b8898dea9e2ddc04.stex"
+path="res://.import/sprite_tile1.png-3e8e4c2b2f75d369f4b8ae04b69a7d65.stex"
 
 [deps]
 
-source_file="res://Resources/Planets/PlanetDefault/Rooms/Tileset/Webp.net-resizeimage (1).png"
-dest_files=[ "res://.import/Webp.net-resizeimage (1).png-83a17935b268a590b8898dea9e2ddc04.stex" ]
+source_file="res://Resources/Planets/PlanetDefault/Textures/sprite_tile1.png"
+dest_files=[ "res://.import/sprite_tile1.png-3e8e4c2b2f75d369f4b8ae04b69a7d65.stex" ]
 
 [params]
 
