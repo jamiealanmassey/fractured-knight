@@ -17,7 +17,10 @@ func continue(context):
 	
 func process(context):
 	pass
-	
+
+func cleanup(context):
+	pass
+
 func next(context):
 	if (nextNodes.size() > 0):
 		context.switchNode(nextNodes[0])

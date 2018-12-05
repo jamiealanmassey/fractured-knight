@@ -18,8 +18,9 @@ func select(context):
 	ui.connect("option_4_chosen", self, "_react_option_4")
 	
 	for i in nextNodes.size():
-		if (nextNodes[i] is choice_node):
+		if (nextNodes[i] != null && nextNodes[i] is choice_node):
 			ui.set_button_label(i, nextNodes[i].text)
+			ui.set_button_visibility(i, true)
 	
 func continue(context):
 	if (choice >= 0):
@@ -32,6 +33,11 @@ func next(context):
 		ui.disconnect("option_3_chosen", self, "_react_option_3")
 		ui.disconnect("option_4_chosen", self, "_react_option_4")
 		context.switchNode(nextNodes[choice])
+		
+func cleanup(context):
+	choice = -1
+	for i in 4:
+		ui.set_button_visibility(i, false)
 
 func get_type():
 	return "choices"

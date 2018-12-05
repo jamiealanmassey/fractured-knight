@@ -19,7 +19,7 @@ func next(context):
 	elif (goto != ""):
 		context.redirect(goto)
 	else:
-		context.current = self
+		context.switchNode(nextNodes[0])
 
 func get_type():
 	return "choice"

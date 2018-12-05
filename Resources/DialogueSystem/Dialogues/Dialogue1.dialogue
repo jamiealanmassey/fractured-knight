@@ -12,4 +12,8 @@
 	<location id="questions" />
 	<line>Do you possess the %items.6%?</line>
 	<line>Farewell traveller!</line>
+	<choices>
+		<choice goto="questions" restart="">I have more questions!</choice>
+		<choice goto="" restart="">Farewell.</choice>
+	</choices>
 </dialogue>
