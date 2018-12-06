@@ -75,5 +75,6 @@ func _on_UI_option_3_chosen():
 
 
 func _on_Combat_enemy_died():
+	queue_free()
 	hide()
 	pass # replace with function body
