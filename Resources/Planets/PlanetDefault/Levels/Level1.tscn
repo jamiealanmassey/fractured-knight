@@ -12,7 +12,7 @@
 custom_solver_bias = 0.0
 radius = 150.0
 
-[node name="Node" type="Node" index="0"]
+[node name="Node" type="Node"]
 
 [node name="TileMap" type="TileMap" parent="." index="0"]
 
@@ -42,82 +42,70 @@ scale = Vector2( 1, 1.125 )
 [node name="FireDecoration" parent="." index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 418.25, 993.255 )
-frame = 0
 
 [node name="FireDecoration3" parent="." index="2" instance=ExtResource( 3 )]
 
 position = Vector2( 607.941, 992.849 )
-frame = 0
 
 [node name="FireDecoration4" parent="." index="3" instance=ExtResource( 3 )]
 
 position = Vector2( 1249.48, 606.302 )
-frame = 0
 
 [node name="FireDecoration9" parent="." index="4" instance=ExtResource( 3 )]
 
 position = Vector2( 2145.58, 672.979 )
-frame = 0
+frame = 2
 
 [node name="FireDecoration8" parent="." index="5" instance=ExtResource( 3 )]
 
 position = Vector2( 2146.01, 406.093 )
-frame = 0
 
 [node name="FireDecoration7" parent="." index="6" instance=ExtResource( 3 )]
 
 position = Vector2( 2146.52, 162.084 )
-frame = 0
+frame = 2
 
 [node name="FireDecoration2" parent="." index="7" instance=ExtResource( 3 )]
 
 position = Vector2( 1249.47, 418.991 )
-frame = 0
+frame = 2
 
 [node name="FireDecoration5" parent="." index="8" instance=ExtResource( 3 )]
 
 position = Vector2( 1883.41, 1310.29 )
-frame = 0
 
 [node name="FireDecoration6" parent="." index="9" instance=ExtResource( 3 )]
 
 position = Vector2( 1706.68, 1311.83 )
-frame = 0
 
 [node name="FireDecoration10" parent="." index="10" instance=ExtResource( 3 )]
 
 position = Vector2( 802.897, 1759.36 )
-frame = 0
 
 [node name="FireDecoration11" parent="." index="11" instance=ExtResource( 3 )]
 
 position = Vector2( 986.919, 1761.54 )
-frame = 0
 
 [node name="FireDecoration12" parent="." index="12" instance=ExtResource( 3 )]
 
 position = Vector2( 1256.96, 2139.38 )
-frame = 0
 
 [node name="FireDecoration13" parent="." index="13" instance=ExtResource( 3 )]
 
 position = Vector2( 1252.61, 2335.38 )
-frame = 0
 
 [node name="FireDecoration14" parent="." index="14" instance=ExtResource( 3 )]
 
 position = Vector2( 2403.59, 1951.81 )
-frame = 0
+frame = 2
 
 [node name="FireDecoration15" parent="." index="15" instance=ExtResource( 3 )]
 
 position = Vector2( 2402.73, 2145.68 )
-frame = 0
 
 [node name="FireDecoration16" parent="." index="16" instance=ExtResource( 3 )]
 
 position = Vector2( 2665.82, 1309.93 )
-frame = 0
 
 [node name="FireDecoration17" parent="." index="17" instance=ExtResource( 3 )]
 
@@ -132,85 +120,63 @@ texture = ExtResource( 4 )
 [node name="AnimatedSprite2" parent="." index="19" instance=ExtResource( 5 )]
 
 position = Vector2( 260, 470 )
-frame = 4
 
 [node name="AnimatedSprite3" parent="." index="20" instance=ExtResource( 5 )]
 
 position = Vector2( 3280, 340 )
-frame = 4
 
 [node name="AnimatedSprite4" parent="." index="21" instance=ExtResource( 5 )]
 
 position = Vector2( 2950, 560 )
-frame = 4
+frame = 6
 
 [node name="AnimatedSprite5" parent="." index="22" instance=ExtResource( 5 )]
 
 position = Vector2( 1020, 230 )
-frame = 4
+frame = 6
 
 [node name="AnimatedSprite6" parent="." index="23" instance=ExtResource( 5 )]
 
 position = Vector2( 880, 860 )
-frame = 4
+frame = 5
 
 [node name="AnimatedSprite7" parent="." index="24" instance=ExtResource( 5 )]
 
 position = Vector2( 100, 1760 )
-frame = 4
+frame = 5
 
 [node name="AnimatedSprite8" parent="." index="25" instance=ExtResource( 5 )]
 
 position = Vector2( 1020, 1400 )
-frame = 4
+frame = 5
 
 [node name="AnimatedSprite10" parent="." index="26" instance=ExtResource( 5 )]
 
 position = Vector2( 1470, 1720 )
-frame = 2
+frame = 5
 
 [node name="AnimatedSprite11" parent="." index="27" instance=ExtResource( 5 )]
 
 position = Vector2( 2360, 1450 )
-frame = 2
+frame = 4
 
 [node name="AnimatedSprite12" parent="." index="28" instance=ExtResource( 5 )]
 
 position = Vector2( 1400, 2570 )
-frame = 2
+frame = 4
 
 [node name="AnimatedSprite13" parent="." index="29" instance=ExtResource( 5 )]
 
 position = Vector2( 3280, 1700 )
-frame = 2
+frame = 4
 
 [node name="AnimatedSprite9" parent="." index="30" instance=ExtResource( 5 )]
 
 position = Vector2( 480, 1890 )
-frame = 2
+frame = 4
 
 [node name="AnimatedSprite15" parent="." index="31" instance=ExtResource( 5 )]
 
 position = Vector2( 100, 1890 )
-frame = 4
-
-[node name="Sprite2" type="Sprite" parent="." index="32"]
-
-position = Vector2( 310, 2020 )
-texture = ExtResource( 6 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2" index="0"]
-
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2/StaticBody2D" index="0"]
-
-shape = SubResource( 1 )
-
+frame = 3
 
