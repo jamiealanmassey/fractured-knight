@@ -55,23 +55,31 @@ func calulate_input():
 		update_input(keyStates[key_index])
 	
 	keyStates.sort_custom(KeyStateSorter, "sort")
+	var moving = false
 	for key in keyStates:
 		if (key.state):
 			match key.name:
 				"left":
 					velocity.x -= velocitySpeed * moveSpeed
 					$Sprite.play("Left")
+					moving = true
 				"right":
 					velocity.x += velocitySpeed * moveSpeed
 					$Sprite.play("Right")
+					moving = true
 				"up":
 					velocity.y -= velocitySpeed * moveSpeed
 					$Sprite.play("up")
+					moving = true
 				"down":
 					velocity.y += velocitySpeed * moveSpeed
 					$Sprite.play("Down")
+					moving = true
 			emit_signal("player_moved")
 			break
+		
+	if (!moving):
+		$Sprite.frame = 0
 
 
 func _ready():
