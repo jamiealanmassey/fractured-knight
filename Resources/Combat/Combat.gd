@@ -14,6 +14,7 @@ signal enemy_died
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
+	randomize()
 	pass
 
 func prepare_combat():
@@ -34,14 +35,16 @@ func player_attack():
 	pass
 
 func player_dodge():
-	if (randi() > 60):
-		player_health = player_health - enemy_damage 
-	emit_signal("round_complete", player_health)
+	if (currently_in_combat):
+		if (randi()%101+1 > 60):
+			player_health = player_health - enemy_damage 
+		emit_signal("round_complete", player_health)
 	pass
 
 func player_block():
-	player_health = player_health - enemy_damage/2
-	emit_signal("round_complete", player_health)
+	if (currently_in_combat):
+		player_health = player_health - enemy_damage/2
+		emit_signal("round_complete", player_health)
 	pass
 
 #func _process(delta):
@@ -78,3 +81,11 @@ func handle_enemy_death():
 	if (enemy_health <= 0):
 		get_tree().get_root().find_node("UI", true, false).get_node("Panel").hide()
 		emit_signal("enemy_died")
+
+
+func _on_UI_option_2_chosen():
+	pass # replace with function body
+
+
+func _on_UI_block_chosen():
+	pass # replace with function body

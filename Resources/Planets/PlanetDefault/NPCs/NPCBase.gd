@@ -72,3 +72,8 @@ func _on_UI_option_2_chosen():
 func _on_UI_option_3_chosen():
 	#TODO: Figure out what to do here
 	pass # replace with function body
+
+
+func _on_Combat_enemy_died():
+	hide()
+	pass # replace with function body
