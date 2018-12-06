@@ -1,13 +1,14 @@
-<dialogue>
-  <line>PL2010: Collision detected! System malfunction! Phase 2 activated: Shields up.</line>
-  <choices>
-    <choice goto="" restart="">PL2010! What happened!?</choice>
-    <choice goto="" restart="">PL2010! Please inform the situation.</choice>
-  </choices>
-  <line>PL2010: The Spaceship has crashed, main system is in need of urgent repairs.</line>
-  <choices>
-    <choice goto="" restart="">I request an independent AI.</choice>
-  </choices>
-  <line>PL2010: Request accepted. PL2010  will accompany with you.</line>
-  <line>PL2010: Detective, you can call me PL2010, I’ll be happy to assist you with any needs you have.</line>
+﻿<dialogue>
+	<line>This is the first line</line>
+	<line>This is the second line!</line>
+	<location id="programmer_talk" />
+	<line>Foo bar programmar rawr</line>
+	<choices>
+		<choice goto="programmer_talk" restart="">Reapeat Yourself</choice>
+		<choice goto="" restart="1">Begin Again</choice>
+		<choice goto="" restart="">Continue.</choice>
+	</choices>
+	<location id="questions" />
+	<line>Do you possess the %items.6%?</line>
+	<line>Farewell traveller!</line>
 </dialogue>

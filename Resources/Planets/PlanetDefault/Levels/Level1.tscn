@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Resources/Planets/PlanetDefault/Levels/Tileset/default_env.tres" type="TileSet" id=1]
 [ext_resource path="res://Resources/Player/Player.tscn" type="PackedScene" id=2]
@@ -7,12 +7,26 @@
 [ext_resource path="res://Resources/Planets/PlanetDefault/Textures/VolcanoSprite.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Resources/Planets/PlanetDefault/Textures/Spaceship.png" type="Texture" id=6]
 [ext_resource path="res://Resources/Planets/PlanetDefault/Levels/Scripts/ship.gd" type="Script" id=7]
-[ext_resource path="res://Resources/Planets/PlanetDefault/Levels/NextLevel.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Resources/Planets/PlanetDefault/Levels/MinigameTrigger.gd" type="Script" id=8]
+[ext_resource path="res://Resources/Planets/PlanetDefault/Levels/NextLevel.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Resources/UI/UI.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Resources/DialogueSystem/DialogueContext.gd" type="Script" id=11]
+[ext_resource path="res://Resources/Planets/PlanetDefault/Levels/Area2D.gd" type="Script" id=12]
 
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
 radius = 49.7892
+
+[sub_resource type="CircleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 10.0
+
+[sub_resource type="CircleShape2D" id=3]
+
+custom_solver_bias = 0.0
+radius = 10.0
 
 [node name="Node" type="Node" index="0"]
 
@@ -39,7 +53,7 @@ tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 
 
 [node name="Player" parent="TileMap" index="0" instance=ExtResource( 2 )]
 
-position = Vector2( 187.14, 96 )
+position = Vector2( 271.212, 188.274 )
 scale = Vector2( 1, 1.125 )
 
 [node name="FireDecoration" parent="." index="1" instance=ExtResource( 3 )]
@@ -199,6 +213,7 @@ frame = 1
 
 [node name="Ship" type="Sprite" parent="." index="32"]
 
+editor/display_folded = true
 position = Vector2( 310, 2020 )
 texture = ExtResource( 6 )
 script = ExtResource( 7 )
@@ -206,6 +221,7 @@ world = "res://Resources/Minigames/Welding/Welding.tscn"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Ship" index="0"]
 
+editor/display_folded = true
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -218,9 +234,81 @@ bounce = 0.0
 
 shape = SubResource( 1 )
 
-[node name="Area2D" parent="." index="33" instance=ExtResource( 8 )]
+[node name="Area2D" type="Area2D" parent="Ship" index="1"]
+
+editor/display_folded = true
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ship/Area2D" index="0"]
+
+position = Vector2( -1.62039, 0.421997 )
+scale = Vector2( 7.25391, 7.64539 )
+shape = SubResource( 2 )
+
+[node name="Teleporter" parent="." index="33" instance=ExtResource( 9 )]
 
 position = Vector2( 3280.17, 2320.87 )
 world = "res://Resources/Planets/PlanetDefault/Levels/Level2.tscn"
+
+[node name="UI" parent="." index="34" instance=ExtResource( 10 )]
+
+[node name="DialogueInfo1" type="Node2D" parent="." index="35"]
+
+editor/display_folded = true
+script = ExtResource( 11 )
+dialogueFile = "res://Resources/DialogueSystem/Dialogues/IntroDialogue.dialogue"
+
+[node name="Area2D" type="Area2D" parent="DialogueInfo1" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueInfo1/Area2D" index="0"]
+
+position = Vector2( 271.707, 194.02 )
+scale = Vector2( 10.9317, 10.9956 )
+shape = SubResource( 3 )
+
+[node name="DialogueInfo2" type="Node2D" parent="." index="36"]
+
+editor/display_folded = true
+script = ExtResource( 11 )
+dialogueFile = "res://Resources/DialogueSystem/Dialogues/OutsideShip.dialogue"
+
+[node name="Area2D" type="Area2D" parent="DialogueInfo2" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueInfo2/Area2D" index="0"]
+
+position = Vector2( 1321.4, 514.381 )
+scale = Vector2( 10.9317, 10.9956 )
+shape = SubResource( 3 )
+
+[connection signal="area_entered" from="Ship/Area2D" to="Ship/Area2D" method="_on_Area2D_area_entered"]
+
+[connection signal="area_entered" from="DialogueInfo1/Area2D" to="DialogueInfo1/Area2D" method="_on_Area2D_area_entered"]
+
+[connection signal="area_entered" from="DialogueInfo2/Area2D" to="DialogueInfo2/Area2D" method="_on_Area2D_area_entered"]
 
 
