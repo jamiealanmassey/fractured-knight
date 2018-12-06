@@ -16,8 +16,8 @@ animations = [ {
 [sub_resource type="CapsuleShape2D" id=2]
 
 custom_solver_bias = 0.0
-radius = 22.6998
-height = 20.0
+radius = 34.5
+height = 0.217918
 
 [sub_resource type="RectangleShape2D" id=3]
 
@@ -43,6 +43,8 @@ _sections_unfolded = [ "Material", "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
+position = Vector2( -7.5, 1.25582 )
+scale = Vector2( 1.4, 1.24984 )
 shape = SubResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="." index="2"]
