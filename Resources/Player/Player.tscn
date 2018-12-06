@@ -1,15 +1,47 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Resources/Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://Resources/Player/Sprites/sprite_CharacterFront0.png" type="Texture" id=2]
-[ext_resource path="res://Resources/Player/PlayerMenu.gd" type="Script" id=3]
+[ext_resource path="res://Resources/Player/Sprites/Up/sprite_0.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Player/Sprites/Up/sprite_1.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Player/Sprites/Up/sprite_2.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Player/Sprites/sprite_CharacterFront0.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Player/Sprites/Left/sprite_0.png" type="Texture" id=6]
+[ext_resource path="res://Resources/Player/Sprites/Left/sprite_1.png" type="Texture" id=7]
+[ext_resource path="res://Resources/Player/Sprites/Left/sprite_2.png" type="Texture" id=8]
+[ext_resource path="res://Resources/Player/Sprites/Right/sprite_0.png" type="Texture" id=9]
+[ext_resource path="res://Resources/Player/Sprites/Right/sprite_1.png" type="Texture" id=10]
+[ext_resource path="res://Resources/Player/Sprites/Right/sprite_2.png" type="Texture" id=11]
+[ext_resource path="res://Resources/Player/Sprites/Front/sprite_0.png" type="Texture" id=12]
+[ext_resource path="res://Resources/Player/Sprites/Front/sprite_1.png" type="Texture" id=13]
+[ext_resource path="res://Resources/Player/Sprites/Front/sprite_2.png" type="Texture" id=14]
+[ext_resource path="res://Resources/Player/PlayerMenu.gd" type="Script" id=15]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
 "loop": true,
 "name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "Left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "Right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "Down",
 "speed": 5.0
 } ]
 
@@ -35,7 +67,7 @@ _sections_unfolded = [ "Material" ]
 moveSpeed = 250
 velocitySpeed = 1
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
+[node name="Sprite" type="AnimatedSprite" parent="." index="0"]
 
 frames = SubResource( 1 )
 animation = "idle"
@@ -58,7 +90,7 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 3 )
+script = ExtResource( 15 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
