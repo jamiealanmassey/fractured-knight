@@ -1,4 +1,4 @@
 <dialogue>
-  <link>Peter: Atmospheric scans reveal this planet has breathable air. No helmet needed.</link>
-  <link>Peter: Sir, I have detected the appearance of machinery, further scans reveal no signs of life found on this planet.</link>
+  <line>PL2010: Atmospheric scans reveal this planet has breathable air. No helmet needed.</line>
+  <line>PL2010: Sir, I have detected the appearance of machinery, further scans reveal no signs of life found on this planet.</line>
 </dialogue>
