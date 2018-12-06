@@ -277,8 +277,33 @@ position = Vector2( 271.707, 194.02 )
 scale = Vector2( 10.9317, 10.9956 )
 shape = SubResource( 3 )
 
+[node name="DialogueInfo2" type="Node2D" parent="." index="36"]
+
+editor/display_folded = true
+script = ExtResource( 11 )
+dialogueFile = "res://Resources/DialogueSystem/Dialogues/OutsideShip.dialogue"
+
+[node name="Area2D" type="Area2D" parent="DialogueInfo2" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueInfo2/Area2D" index="0"]
+
+position = Vector2( 1321.4, 514.381 )
+scale = Vector2( 10.9317, 10.9956 )
+shape = SubResource( 3 )
+
 [connection signal="area_entered" from="Ship/Area2D" to="Ship/Area2D" method="_on_Area2D_area_entered"]
 
 [connection signal="area_entered" from="DialogueInfo1/Area2D" to="DialogueInfo1/Area2D" method="_on_Area2D_area_entered"]
+
+[connection signal="area_entered" from="DialogueInfo2/Area2D" to="DialogueInfo2/Area2D" method="_on_Area2D_area_entered"]
 
 
