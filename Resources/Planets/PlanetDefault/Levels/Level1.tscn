@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Resources/Planets/PlanetDefault/Levels/Tileset/default_env.tres" type="TileSet" id=1]
 [ext_resource path="res://Resources/Player/Player.tscn" type="PackedScene" id=2]
@@ -7,14 +7,28 @@
 [ext_resource path="res://Resources/Planets/PlanetDefault/Textures/VolcanoSprite.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Resources/Planets/PlanetDefault/Textures/Spaceship.png" type="Texture" id=6]
 [ext_resource path="res://Resources/Planets/PlanetDefault/Levels/Scripts/ship.gd" type="Script" id=7]
-[ext_resource path="res://Resources/Planets/PlanetDefault/Levels/NextLevel.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Resources/Planets/PlanetDefault/Levels/MinigameTrigger.gd" type="Script" id=8]
+[ext_resource path="res://Resources/Planets/PlanetDefault/Levels/NextLevel.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Resources/UI/UI.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Resources/DialogueSystem/DialogueContext.gd" type="Script" id=11]
+[ext_resource path="res://Resources/Planets/PlanetDefault/Levels/Area2D.gd" type="Script" id=12]
 
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
 radius = 49.7892
 
-[node name="Node" type="Node"]
+[sub_resource type="CircleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 10.0
+
+[sub_resource type="CircleShape2D" id=3]
+
+custom_solver_bias = 0.0
+radius = 10.0
+
+[node name="Node" type="Node" index="0"]
 
 [node name="TileMap" type="TileMap" parent="." index="0"]
 
@@ -39,81 +53,93 @@ tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 
 
 [node name="Player" parent="TileMap" index="0" instance=ExtResource( 2 )]
 
-position = Vector2( 187.14, 96 )
+position = Vector2( 271.212, 188.274 )
 scale = Vector2( 1, 1.125 )
 
 [node name="FireDecoration" parent="." index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 418.25, 993.255 )
+frame = 0
 
 [node name="FireDecoration3" parent="." index="2" instance=ExtResource( 3 )]
 
 position = Vector2( 607.941, 992.849 )
+frame = 0
 
 [node name="FireDecoration4" parent="." index="3" instance=ExtResource( 3 )]
 
 position = Vector2( 1249.48, 606.302 )
+frame = 0
 
 [node name="FireDecoration9" parent="." index="4" instance=ExtResource( 3 )]
 
 position = Vector2( 2145.58, 672.979 )
-frame = 2
+frame = 0
 
 [node name="FireDecoration8" parent="." index="5" instance=ExtResource( 3 )]
 
 position = Vector2( 2146.01, 406.093 )
+frame = 0
 
 [node name="FireDecoration7" parent="." index="6" instance=ExtResource( 3 )]
 
 position = Vector2( 2146.52, 162.084 )
-frame = 2
+frame = 0
 
 [node name="FireDecoration2" parent="." index="7" instance=ExtResource( 3 )]
 
 position = Vector2( 1249.47, 418.991 )
-frame = 2
+frame = 0
 
 [node name="FireDecoration5" parent="." index="8" instance=ExtResource( 3 )]
 
 position = Vector2( 1883.41, 1310.29 )
+frame = 0
 
 [node name="FireDecoration6" parent="." index="9" instance=ExtResource( 3 )]
 
 position = Vector2( 1706.68, 1311.83 )
+frame = 0
 
 [node name="FireDecoration10" parent="." index="10" instance=ExtResource( 3 )]
 
 position = Vector2( 802.897, 1759.36 )
+frame = 0
 
 [node name="FireDecoration11" parent="." index="11" instance=ExtResource( 3 )]
 
 position = Vector2( 986.919, 1761.54 )
+frame = 0
 
 [node name="FireDecoration12" parent="." index="12" instance=ExtResource( 3 )]
 
 position = Vector2( 1256.96, 2139.38 )
+frame = 0
 
 [node name="FireDecoration13" parent="." index="13" instance=ExtResource( 3 )]
 
 position = Vector2( 1252.61, 2335.38 )
+frame = 0
 
 [node name="FireDecoration14" parent="." index="14" instance=ExtResource( 3 )]
 
 position = Vector2( 2403.59, 1951.81 )
-frame = 2
+frame = 0
 
 [node name="FireDecoration15" parent="." index="15" instance=ExtResource( 3 )]
 
 position = Vector2( 2402.73, 2145.68 )
+frame = 0
 
 [node name="FireDecoration16" parent="." index="16" instance=ExtResource( 3 )]
 
 position = Vector2( 2665.82, 1309.93 )
+frame = 0
 
 [node name="FireDecoration17" parent="." index="17" instance=ExtResource( 3 )]
 
 position = Vector2( 2852.93, 1312.19 )
-frame = 0
+frame = 1
 
 [node name="Solder" type="Sprite" parent="." index="18"]
 
@@ -123,77 +149,66 @@ texture = ExtResource( 4 )
 [node name="AnimatedSprite2" parent="." index="19" instance=ExtResource( 5 )]
 
 position = Vector2( 260, 470 )
-frame = 6
-
+frame = 0
 
 [node name="AnimatedSprite3" parent="." index="20" instance=ExtResource( 5 )]
 
-position = Vector2( 3280, 340 )s
+position = Vector2( 3280, 340 )
 frame = 6
-
 
 [node name="AnimatedSprite4" parent="." index="21" instance=ExtResource( 5 )]
 
 position = Vector2( 2950, 560 )
-frame = 6
+frame = 0
 
 [node name="AnimatedSprite5" parent="." index="22" instance=ExtResource( 5 )]
 
 position = Vector2( 1020, 230 )
-frame = 6
+frame = 0
 
 [node name="AnimatedSprite6" parent="." index="23" instance=ExtResource( 5 )]
 
 position = Vector2( 880, 860 )
-frame = 6
-
-
+frame = 0
 
 [node name="AnimatedSprite7" parent="." index="24" instance=ExtResource( 5 )]
 
 position = Vector2( 100, 1760 )
-frame = 6
-
+frame = 0
 
 [node name="AnimatedSprite8" parent="." index="25" instance=ExtResource( 5 )]
 
 position = Vector2( 1020, 1400 )
-frame = 6
-
+frame = 0
 
 [node name="AnimatedSprite10" parent="." index="26" instance=ExtResource( 5 )]
 
 position = Vector2( 1470, 1720 )
 
-frame = 4
-
 [node name="AnimatedSprite11" parent="." index="27" instance=ExtResource( 5 )]
 
 position = Vector2( 2360, 1450 )
-frame = 4
 
 [node name="AnimatedSprite12" parent="." index="28" instance=ExtResource( 5 )]
 
 position = Vector2( 1400, 2570 )
-frame = 4
 
 [node name="AnimatedSprite13" parent="." index="29" instance=ExtResource( 5 )]
 
 position = Vector2( 3280, 1700 )
-frame = 4
 
 [node name="AnimatedSprite9" parent="." index="30" instance=ExtResource( 5 )]
 
 position = Vector2( 480, 1890 )
-frame = 4
 
 [node name="AnimatedSprite15" parent="." index="31" instance=ExtResource( 5 )]
 
 position = Vector2( 100, 1890 )
-frame = 6
+frame = 0
 
 [node name="Ship" type="Sprite" parent="." index="32"]
 
+editor/display_folded = true
 position = Vector2( 310, 2020 )
 texture = ExtResource( 6 )
 script = ExtResource( 7 )
@@ -201,6 +216,7 @@ world = "res://Resources/Minigames/Welding/Welding.tscn"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Ship" index="0"]
 
+editor/display_folded = true
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -213,9 +229,56 @@ bounce = 0.0
 
 shape = SubResource( 1 )
 
-[node name="Area2D" parent="." index="33" instance=ExtResource( 8 )]
+[node name="Area2D" type="Area2D" parent="Ship" index="1"]
+
+editor/display_folded = true
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ship/Area2D" index="0"]
+
+position = Vector2( -1.62039, 0.421997 )
+scale = Vector2( 7.25391, 7.64539 )
+shape = SubResource( 2 )
+
+[node name="Teleporter" parent="." index="33" instance=ExtResource( 9 )]
 
 position = Vector2( 3280.17, 2320.87 )
 world = "res://Resources/Planets/PlanetDefault/Levels/Level2.tscn"
+
+[node name="UI" parent="." index="34" instance=ExtResource( 10 )]
+
+[node name="DialogueInfo1" type="Node2D" parent="." index="35"]
+
+editor/display_folded = true
+script = ExtResource( 11 )
+dialogueFile = "res://Resources/DialogueSystem/Dialogues/IntroDialogue.dialogue"
+
+[node name="Area2D" type="Area2D" parent="DialogueInfo1" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueInfo1/Area2D" index="0"]
+
+position = Vector2( 271.707, 194.02 )
+scale = Vector2( 10.9317, 10.9956 )
+shape = SubResource( 3 )
+
+[connection signal="area_entered" from="Ship/Area2D" to="Ship/Area2D" method="_on_Area2D_area_entered"]
+
+[connection signal="area_entered" from="DialogueInfo1/Area2D" to="DialogueInfo1/Area2D" method="_on_Area2D_area_entered"]
 
 

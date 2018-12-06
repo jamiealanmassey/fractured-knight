@@ -81,16 +81,16 @@ func set_button_visibility(index, flag):
 		$Panel/VBoxContainer/Buttons/Button4.visible = flag
 
 func _on_Button1_pressed():
-	emit_signal("option_1_chosen")
+	emit_signal("option_1_chosen", self)
 
 
 func _on_Button2_pressed():
-	emit_signal("option_2_chosen")
+	emit_signal("option_2_chosen", self)
 
 
 func _on_Button3_pressed():
-	emit_signal("option_3_chosen")
+	emit_signal("option_3_chosen", self)
 
 
 func _on_Button4_pressed():
-	emit_signal("option_4_chosen")
+	emit_signal("option_4_chosen", self)

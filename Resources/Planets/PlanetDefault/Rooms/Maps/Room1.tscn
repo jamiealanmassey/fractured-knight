@@ -8,6 +8,9 @@
 [ext_resource path="res://Resources/DialogueSystem/DialogueTest.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Resources/Combat/Combat.tscn" type="PackedScene" id=7]
 
+
+
+
 [node name="Room1" type="Node" index="0"]
 
 [node name="Player" parent="." index="0" instance=ExtResource( 1 )]
