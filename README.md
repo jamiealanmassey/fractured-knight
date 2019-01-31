@@ -1,15 +1,11 @@
-![Fractured Knight Logo](game-logo.jpg)
+![Fractured Knight Logo](fractured-knight-game/game-logo.jpg)
 # Introduction
 Fractured Knight is a medieval-space themed adventure game that incorporates text-based interaction and has
 a combat system that takes heavy influence from Pokémon!
 
 ## Features
-* Text-Based Interaction System
+* Text-Based Dialogue System
 * Text-Based Combat System
-* Dynamic Storyline Progression w/ Multiple Endings
-* Inventory System
-* Journal System
-* Many Planets to Explore!
 
 ## Technology
 Our technology stack can be separated into two divisions: technologies which are utilised to develop the game itself and those that are used to produce our Development Blog.
