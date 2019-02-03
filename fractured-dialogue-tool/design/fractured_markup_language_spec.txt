@@ -11,8 +11,9 @@ FRACTURED MARKUP LANGUAGE (FML) FEATURES
 
 FML TOKENS/COMMANDS
 -{ write[label]                      }- outputs a line of text to a valid context (this could be a console or UI) 
--{ branch[action1, action2, action3] }- indicates branching with a list of labels and should be followed by the appropriate number of branches
--{ locate[label]                     }- moves the dialogue context to the line with the corresponding label; the reserved label 'end' will close the context immediately
+-{ branch[action1, action2, action3] }- indicates branching with a list of actions and should be followed by the appropriate number of branches
+-{ point[label]                      }- identifies a location/node that can be directed to at any point of execution in the context
+-{ locate                            }- moves the dialogue context to the line with the corresponding point label; the reserved label 'end' will close the context immediately
 -{ trigger[message]                  }- emits a message from the dialogue context to any component that is listening with the specified message
 -{ set[symbol]                       }- stores the symbol in memory to be used like a trigger, this is saved/loaded in the gamestate and should be persistent
 -{ unset[symbol]                     }- removes the symbol from memory, this is saved/loaded in the gamestate and should be persistent
@@ -20,24 +21,26 @@ FML TOKENS/COMMANDS
 -{ #                                 }- denotes a comment, the rest of the line after this token is discarded
 
 A SIMPLE FML DIALOGUE EXMAPLE
-write[location0] Hello there fellow adventurer!
-write[location1] Beware for these paths are treacherous!
+write Hello there fellow adventurer!
+write Beware for these paths are treacherous!
 
 A BRANCHING FML DIALOGUE EXAMPLE
-write[introduction0] Good day traveler.
-write[introduction1] You must watch yourself in these parts.
+write Good day traveler.
+write You must watch yourself in these parts.
 branch[I heed your advice, You don't scare me!]
-    write[heed0] Good! You would be wise to do so.
-    write[heed1] Go forth and tread carefully.
+    point[heeded]
+    write Good! You would be wise to do so.
+    write Go forth and tread carefully.
     trigger[unlock_door] # Feeding this back into Godot could allow us to unlock a door and resume progression
 
-    write[scare0] It is foolish of you to ignore my warning! # Spaces indicate separation of branches
-    write[scare1] Turn back now, you are not prepared for this journey.
+    point[scare]
+    write It is foolish of you to ignore my warning! # Spaces indicate separation of branches
+    write Turn back now, you are not prepared for this journey.
     trigger[block_door] # Feeding this back into Godot could allow us to lock a door and pause progression
 
 evaluate[block_door]
-    write[door0] You hear a click and a sinking feeling floods you
-    locate[end] # Close the dialogue early
+    write You hear a click and a sinking feeling floods you
+    locate end # Close the dialogue early
 
-write[farewell0] Farewell traveller, until next time!
-write[farewell1] Oh, and one last piece of advice, it's dangerous to go alone.
+write Farewell traveller, until next time!
+write Oh, and one last piece of advice, it's dangerous to go alone.
