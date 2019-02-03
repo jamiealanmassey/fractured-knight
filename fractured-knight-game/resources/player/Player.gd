@@ -1,4 +1,4 @@
-# Filename: Player.gd
+# Filename: player.gd
 # Brief: Allows the player to control and interact with the player and holds
 #        valuable information about the player state
 # Author: Jamie Massey
