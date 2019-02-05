@@ -6,15 +6,24 @@ extends Node
 
 enum NodeType {
 	Write,
-	Branch
+	Branch,
+	Locate,
+	Error,
+	Point,
+	Trigger,
+	Set,
+	Unset,
+	Evaluate
 }
 
 var children = []
 var metadata = []
 var tabs = 0
 var type = NodeType.Write
+var content = ''
 
-func _init(type, children, metadata):
+func _init(type, children, metadata, content):
 	self.children = children
 	self.metadata = metadata
 	self.type = type
+	self.content = content
