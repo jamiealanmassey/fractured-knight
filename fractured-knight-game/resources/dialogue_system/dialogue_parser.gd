@@ -6,9 +6,10 @@ extends Node
 
 var DialogueNode = load('res://resources/dialogue_system/dialogue_node.gd')
 
-var stack = []  ## The stack tracks how deeply nested we currently are into a branch/evaluation
-var result = [] ## Stores a collection of string from each line of a file
-var root = null ## First generated node linking to the rest of the tree
+var stack = []        ## The stack tracks how deeply nested we currently are into a branch/evaluation
+var result = []       ## Stores a collection of string from each line of a file
+var result_nodes = [] ## Stores a linear collection of generated nodes (in order of file by line)
+var root = null       ## First generated node linking to the rest of the tree
 
 ## Uses the passed file to try and parse its data into an array of strings which can then be used
 ## to create a DialogueTree used in a DialogueContext
@@ -28,7 +29,15 @@ func parse(filename):
 func construct_tree():
 	var current = null
 	for line in result:
+		if line.length() == 0 || line[0] == '#':
+			continue
+		
+		var comment_occurance = line.find('#')
+		if comment_occurance != -1:
+			line = line.substr(0, comment_occurance)
+		
 		var node = construct_node(line)
+		result_nodes.append(node)
 		if current == null:
 			current = node
 			root = current
@@ -43,24 +52,31 @@ func construct_node(line):
 	var tabs = count_num_tabs(line)
 	line = line.strip_edges()
 	
-	var first_token_index = line.find(' ')
+	var metadata_left_index = line.find('[')
+	var metadata_right_index = line.find(']')
+	var first_token_index = line.find(' ', max(0, metadata_right_index))
 	if first_token_index == -1:
 		first_token_index = line.length()
 	
 	var first_token = line.substr(0, first_token_index)
-	var metadata_left_index = first_token.find('[')
-	var metadata_right_index = first_token.find(']')
-	
 	if metadata_left_index != -1 && metadata_right_index != -1:
 		var metadata = first_token.substr(metadata_left_index +1, metadata_right_index - metadata_left_index -1)
 		var metadata_refined = metadata.split(',')
-		node.metadata = metadata_refined
+		node.metadata = strip_metadata(metadata_refined)
 		first_token = first_token.substr(0, metadata_left_index)
+		first_token_index = metadata_right_index
 	
 	node.type = string_to_node_type(first_token)
 	node.content = line.substr(first_token_index + 1, line.length() - first_token_index - 1)
 	node.tabs = tabs
 	return node
+
+## Helper method that iterates through metadata and strips whitespaces from edges
+func strip_metadata(metadata_list):
+	for i in range(0, metadata_list.size()):
+		metadata_list[i] = metadata_list[i].strip_edges()
+		
+	return metadata_list
 
 ## Helper method that takes the current line and counts how many tabs are before
 ## the line to be parsed then returns that number as an integer

@@ -5,10 +5,10 @@
 extends Node
 
 enum NodeType {
+	Error,
 	Write,
 	Branch,
 	Locate,
-	Error,
 	Point,
 	Trigger,
 	Set,
