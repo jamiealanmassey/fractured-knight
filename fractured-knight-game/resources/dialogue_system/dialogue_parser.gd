@@ -6,10 +6,12 @@ extends Node
 
 var DialogueNode = load('res://resources/dialogue_system/dialogue_node.gd')
 
-var stack = []
-var result = []
-var root = null
+var stack = []  ## The stack tracks how deeply nested we currently are into a branch/evaluation
+var result = [] ## Stores a collection of string from each line of a file
+var root = null ## First generated node linking to the rest of the tree
 
+## Uses the passed file to try and parse its data into an array of strings which can then be used
+## to create a DialogueTree used in a DialogueContext
 func parse(filename):
 	var file = File.new()
 	file.open(filename, file.READ)
@@ -20,9 +22,48 @@ func parse(filename):
 		
 	file.close()
 	construct_tree()
+
+## Creates a tree from each line given in the Markup Language file by going from line-to-line
+## and determining what each node does
+func construct_tree():
+	var current = null
+	for line in result:
+		var node = construct_node(line)
+		if current == null:
+			current = node
+			root = current
+		else:
+			current.children.append(node)
+			current = node
+
+## Helper method that constructs and returns a single generated node based on the passed line
+## to be parsed
+func construct_node(line):
+	var node = DialogueNode.new(DialogueNode.NodeType.Error, [], [], '')
+	var tabs = count_num_tabs(line)
+	line = line.strip_edges()
 	
+	var first_token_index = line.find(' ')
+	if first_token_index == -1:
+		first_token_index = line.length()
+	
+	var first_token = line.substr(0, first_token_index)
+	var metadata_left_index = first_token.find('[')
+	var metadata_right_index = first_token.find(']')
+	
+	if metadata_left_index != -1 && metadata_right_index != -1:
+		var metadata = first_token.substr(metadata_left_index +1, metadata_right_index - metadata_left_index -1)
+		var metadata_refined = metadata.split(',')
+		node.metadata = metadata_refined
+		first_token = first_token.substr(0, metadata_left_index)
+	
+	node.type = string_to_node_type(first_token)
+	node.content = line.substr(first_token_index + 1, line.length() - first_token_index - 1)
+	node.tabs = tabs
+	return node
 
-
+## Helper method that takes the current line and counts how many tabs are before
+## the line to be parsed then returns that number as an integer
 func count_num_tabs(line):
 	var count = 0
 	for i in line:
@@ -30,43 +71,10 @@ func count_num_tabs(line):
 			count += 1
 			
 	return count
-	
 
-
-func construct_tree():
-	var current = null
-	for line in result:
-		var node = DialogueNode.new(DialogueNode.NodeType.Error, [], [], '')
-		var tabs = count_num_tabs(line)
-		line = line.strip_edges()
-		var first_token_index = line.find(' ')
-		if first_token_index == -1:
-			first_token_index = line.length()
-		
-		var first_token = line.substr(0, first_token_index)
-		var content = line.substr(first_token_index + 1, line.length() - first_token_index - 1)
-		
-		var metadata_left_index = first_token.find('[')
-		var metadata_right_index = first_token.find(']')
-		if metadata_left_index != -1 && metadata_right_index != -1:
-			var metadata = first_token.substr(metadata_left_index +1, metadata_right_index - metadata_left_index -1)
-			var metadata_refined = metadata.split(',')
-			node.metadata = metadata_refined
-			first_token = first_token.substr(0, metadata_left_index)
-		
-		var first_token_type = string_to_node_type(first_token)
-		node.type = first_token_type
-		node.content = content
-		node.tabs = tabs
-	
-		if current == null:
-			current = node
-			root = current
-		else:
-			current.children.append(node)
-			current = node
-	
-
+## Helper method that takes the found token represented as a string and convert the token
+## to an Enum object corresponding to the one stored in DialogueNode.NodeType
+## -> see dialogue_node.gd
 func string_to_node_type(token):
 	token = token.to_lower()
 	if token == 'write':
