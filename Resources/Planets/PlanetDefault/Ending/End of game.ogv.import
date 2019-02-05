@@ -1,0 +1,14 @@
+[remap]
+
+importer="Theora"
+type="VideoStreamTheora"
+path="res://.import/End of game.ogv-a7f10a8134c9d274150ad37f31fe6e43.ogvstr"
+
+[deps]
+
+source_file="res://Resources/Planets/PlanetDefault/Ending/End of game.ogv"
+dest_files=[ "res://.import/End of game.ogv-a7f10a8134c9d274150ad37f31fe6e43.ogvstr" ]
+
+[params]
+
+loop=true
