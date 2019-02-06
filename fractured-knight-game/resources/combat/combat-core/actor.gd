@@ -20,7 +20,7 @@ func get_all_moves():
 	return moves
 		
 
-func _init(health):
+func init(health):
 	weapons = []
 	stats = {}
 	base_moves = []
@@ -29,3 +29,9 @@ func _init(health):
 func get_stat(stat_name):
 	var stat_value = stats.get(stat_name, 0)
 	return stat_value
+	
+func set_stat(stat_name, value):
+	stats[stat_name] = value
+	
+func add_move(move):
+	base_moves.append(move)

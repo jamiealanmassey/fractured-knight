@@ -1,5 +1,16 @@
 extends Node
+#emitted when combat is complete
 signal combat_finished
+#emitted when initalised to signal that the UI needs to start in its initial state
+signal UI_get_ready
+#Emitted when the move choices need to be known, passes the moves as an array
+signal show_fighting_options
+#emitted when menu needs to show the starting menu choices, e.g. fight, flee, item etc.
+signal show_menu_options
+#emitted when no buttons need to be pressed
+signal output_only
+#emitted when the text passed as an argument needs to be displayed 
+signal display_text
 
 #Current state the combat system is in. 0= main menu, 1= waiting for move input
 var state
@@ -16,7 +27,7 @@ func _ready():
 
 #prepares combat to start
 func start_combat(player, enemy):
-	$UI.get_ready()
+	emit_signal("UI_get_ready")
 	state = 0
 	self.player_moves = player.get_all_moves()
 	self.player = player
@@ -27,18 +38,17 @@ func start_combat(player, enemy):
 func on_button_pressed(button_id):
 	if(state == 0): #Waiting for main combat menu button press
 		if(button_id == 0): #Fight was chosen
-			$UI.change_to_fighting()
-			$UI.sets_buttons(moves)
+			emit_signal("show_fighting_options", moves)
 			state = 1
 	elif(state == 1): #waiting for move selection
 		#gets the move chosen
 		var move_chosen = player_moves[button_id]
-		$UI.change_to_output_only()
+		emit_signal("output_only")
 		
 		#Resolves player's attack
 		resolve_player_attack(move_chosen)
 		if(enemy.health <= 0): #if enemy is dead
-			$UI.set_text("Enemy defeated")
+			emit_signal("display_text", "Enemy defeated")
 			emit_signal("combat_finished", player, enemy, "Player won")
 			pass
 		#enemy is alive
@@ -46,13 +56,14 @@ func on_button_pressed(button_id):
 		#Resolves player's attack
 		resolve_enemy_attack()
 		if(player.health <= 0): #if player is dead
-			$UI.set_text("Player defeated")
+			emit_signal("display_text", "Player defeated")
 			emit_signal("combat_finished", player, enemy, "Enemy won")
 			pass
 		
 		#returns to initial state
 		state = 0
-		$UI.change_to_start_menu()
+		emit_signal("show_menu_options")
+
 
 #resolves a player's attack
 func resolve_player_attack(move_chosen):
@@ -62,9 +73,9 @@ func resolve_player_attack(move_chosen):
 	var chance = randi() % 100 +1
 	if(chance < to_hit):
 		enemy.health - damage
-		$UI.show_text("You hit the enemy for" + damage)
+		emit_signal("display_text", "You hit the enemy for" + damage)
 	else:
-		$UI.show_text("You missed")
+		emit_signal("display_text", "You missed")
 		
 
 #resolves an enemy's attack
@@ -75,9 +86,9 @@ func resolve_enemy_attack():
 	var chance = randi() % 100+1
 	if(chance < to_hit ):
 		player.health - damage
-		$UI.show_text ("Player got hit for"+damage)
+		emit_signal("display_text", "Player got hit for " + damage)
 	else:
-		$UI.show_text("Enemy missed")
+		emit_signal("display_text", "Enemy missed")
 		
 func calculate_to_hit(move):
 	return move.accuracy + move.weapon.get_attribute("accuracy")
