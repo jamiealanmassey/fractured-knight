@@ -1,7 +1,7 @@
 extends Node
-var name
-var damage
+var move_name
 var accuracy
+var damage
 var weapon
 
 func _ready():
@@ -9,10 +9,10 @@ func _ready():
 	# Initialization here
 	pass
 
-func init(name, damage, accuracy, weapon):
-	self.name = name
-	self.damage = damage
+func init(move_name, accuracy, damage, weapon = null):
+	self.move_name = move_name
 	self.accuracy = accuracy
+	self.damage = damage
 	self.weapon = weapon
 
 #func _process(delta):

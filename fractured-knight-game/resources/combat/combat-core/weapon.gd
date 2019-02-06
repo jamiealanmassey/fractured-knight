@@ -16,9 +16,7 @@ func get_attribute(attribute_name):
 	return attribute_value
 	
 	
-#constructs and adds a new move
-func add_move(move_name, accuracy, damage):
-	var new_move = load("res://resources/combat/combat-core/move.gd")
-	new_move.init(move_name, accuracy, damage, self)
-	moves.append(new_move)
+#adds a new move to this weapon
+func add_move(move):
+	moves.append(move)
 	

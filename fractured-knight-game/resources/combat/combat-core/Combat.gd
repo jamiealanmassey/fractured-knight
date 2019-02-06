@@ -38,7 +38,7 @@ func start_combat(player, enemy):
 func on_button_pressed(button_id):
 	if(state == 0): #Waiting for main combat menu button press
 		if(button_id == 0): #Fight was chosen
-			emit_signal("show_fighting_options", moves)
+			emit_signal("show_fighting_options", player_moves)
 			state = 1
 	elif(state == 1): #waiting for move selection
 		#gets the move chosen
@@ -67,7 +67,7 @@ func on_button_pressed(button_id):
 
 #resolves a player's attack
 func resolve_player_attack(move_chosen):
-	var chosen_move = moves[move_chosen]
+	var chosen_move = player_moves[move_chosen]
 	var to_hit = calculate_to_hit(chosen_move) + player.stats["accuracy"]
 	var damage = calculate_damage(chosen_move) + player.stats["damage"]
 	var chance = randi() % 100 +1
@@ -80,7 +80,7 @@ func resolve_player_attack(move_chosen):
 
 #resolves an enemy's attack
 func resolve_enemy_attack():
-	var enemy_move = enemy.moves[randi() % moves.size]
+	var enemy_move = enemy.get_all_moves()[randi() % enemy.get_all_moves().size]
 	var to_hit = calculate_to_hit(enemy_move) + enemy.stats["accuracy"]
 	var damage = calculate_damage(enemy_move) + enemy.stats["damage"]
 	var chance = randi() % 100+1
