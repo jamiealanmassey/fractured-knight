@@ -1,3 +1,2 @@
 write Hello there fellow adventurer!
 write Beware for these paths are treacherous!
-branch[option1,option2]

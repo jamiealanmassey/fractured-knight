@@ -6,7 +6,10 @@ extends Node
 
 var DialogueNode = load('res://resources/dialogue_system/dialogue_node.gd')
 
-var stack = []        ## The stack tracks how deeply nested we currently are into a branch/evaluation
+const node_type_map = {}
+
+var state_stack = []  ## The stack tracks how deeply nested we currently are into a branch/evaluation
+var state_list = []   ## The list keeps track of end nodes at the same depth
 var result = []       ## Stores a collection of string from each line of a file
 var result_nodes = [] ## Stores a linear collection of generated nodes (in order of file by line)
 var root = null       ## First generated node linking to the rest of the tree
@@ -27,9 +30,17 @@ func parse(filename):
 ## Creates a tree from each line given in the Markup Language file by going from line-to-line
 ## and determining what each node does
 func construct_tree():
-	var current = null
+	var last_node = null
+	var tab_depth = 0
 	for line in result:
-		if line.length() == 0 || line[0] == '#':
+		if line.length() > 0 && line[0] == '#':
+			continue
+		
+		if line.length() == 0 && state_stack.size() > 0:
+			state_list.append(last_node)
+			last_node = state_stack.front()
+			continue
+		elif line.length() == 0:
 			continue
 		
 		var comment_occurance = line.find('#')
@@ -37,13 +48,34 @@ func construct_tree():
 			line = line.substr(0, comment_occurance)
 		
 		var node = construct_node(line)
-		result_nodes.append(node)
-		if current == null:
-			current = node
-			root = current
+		if node.tabs > tab_depth:
+			tab_depth = node.tabs
+			state_stack.push_front(last_node)
+			last_node.children.append(node)
+			last_node = node
+		elif state_stack.size() > 0 && node.tabs == tab_depth:
+			last_node.children.append(node)
+			last_node = node
+		elif state_stack.size() > 0 && node.tabs < tab_depth:
+			tab_depth = node.tabs
+			last_node = node
+			
+			var stack_node = state_stack.pop_front()
+			if stack_node.type == DialogueNode.NodeType.Evaluate:
+				stack_node.children.append(node)
+			
+			for index in range(0, state_list.size()):
+				state_list[index].children.append(node)
+			
+			state_list.clear()
+		elif last_node == null:
+			last_node = node
+			root = node
 		else:
-			current.children.append(node)
-			current = node
+			last_node.children.append(node)
+			last_node = node
+			
+		result_nodes.append(node)
 
 ## Helper method that constructs and returns a single generated node based on the passed line
 ## to be parsed
@@ -75,18 +107,24 @@ func construct_node(line):
 func strip_metadata(metadata_list):
 	for i in range(0, metadata_list.size()):
 		metadata_list[i] = metadata_list[i].strip_edges()
-		
+	
 	return metadata_list
 
 ## Helper method that takes the current line and counts how many tabs are before
 ## the line to be parsed then returns that number as an integer
 func count_num_tabs(line):
 	var count = 0
-	for i in line:
-		if i == '\t':
+	var num_tabs = 0
+	for character in line:
+		if character == ' ':
 			count += 1
-			
-	return count
+			if count == 3:
+				count = 0
+				num_tabs += 1
+		else:
+			break
+		
+	return num_tabs
 
 ## Helper method that takes the found token represented as a string and convert the token
 ## to an Enum object corresponding to the one stored in DialogueNode.NodeType
