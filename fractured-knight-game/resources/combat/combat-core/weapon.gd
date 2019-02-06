@@ -12,10 +12,12 @@ func init(attributes):
 	attributes_buffs = attributes
 
 func get_attribute(attribute_name):
-	var attribute_value = attributes_buffs.get(attribute_name, 0)
-	return attribute_value
+	if (attributes_buffs.has(attribute_name)):
+		return attributes_buffs[attribute_name]
+	else: 
+		return 0
 	
-	
+
 #adds a new move to this weapon
 func add_move(move):
 	moves.append(move)
