@@ -1,9 +1,10 @@
 extends Node
 signal combat_finished
+
 #Current state the combat system is in. 0= main menu, 1= waiting for move input
 var state
 #The moves the player can do
-var moves
+var player_moves
 var player
 var enemy
 
@@ -12,16 +13,12 @@ func _ready():
 	# Initialization here
 	pass
 
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
 
 #prepares combat to start
 func start_combat(player, enemy):
 	$UI.get_ready()
 	state = 0
-	self.moves = player.get_moves()
+	self.player_moves = player.get_all_moves()
 	self.player = player
 	self.enemy = enemy
 	randomize()
@@ -59,12 +56,13 @@ func on_button_pressed(button_id):
 
 #resolves a player's attack
 func resolve_player_attack(move_chosen):
-	var to_hit = moves[move_chosen].accuracy+moves[move_chosen].weapon.attributes_buffs["accuracy"]+player.stats["accuracy"]
-	var damage = moves[move_chosen].damage+moves[move_chosen].weapon.attributes_buffs["damage"]+player.stats["damage"]
+	var chosen_move = moves[move_chosen]
+	var to_hit = calculate_to_hit(chosen_move) + player.stats["accuracy"]
+	var damage = calculate_damage(chosen_move) + player.stats["damage"]
 	var chance = randi() % 100 +1
 	if(chance < to_hit):
 		enemy.health - damage
-		$UI.show_text("You hit the enemy for"+damage)
+		$UI.show_text("You hit the enemy for" + damage)
 	else:
 		$UI.show_text("You missed")
 		
@@ -72,11 +70,17 @@ func resolve_player_attack(move_chosen):
 #resolves an enemy's attack
 func resolve_enemy_attack():
 	var enemy_move = enemy.moves[randi() % moves.size]
-	var to_hit = enemy_move.accuracy+enemy_move.weapon.attributes_buffs["accuracy"]+enemy.stats["accuracy"]
-	var damage = enemy_move.damage+enemy_move.weapon.attributes_buffs["damage"]+player.stats["damage"]
+	var to_hit = calculate_to_hit(enemy_move) + enemy.stats["accuracy"]
+	var damage = calculate_damage(enemy_move) + enemy.stats["damage"]
 	var chance = randi() % 100+1
 	if(chance < to_hit ):
 		player.health - damage
 		$UI.show_text ("Player got hit for"+damage)
 	else:
 		$UI.show_text("Enemy missed")
+		
+func calculate_to_hit(move):
+	return move.accuracy + move.weapon.get_attribute("accuracy")
+	
+func calculate_damage(move):
+	return move.damage + move.weapon.get_attribute("damage")

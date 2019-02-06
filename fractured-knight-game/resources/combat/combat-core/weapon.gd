@@ -7,7 +7,10 @@ func _ready():
 	# Initialization here
 	pass
 
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
+func _init(moves, attributes):
+	self.moves = moves
+	attributes_buffs = attributes
+
+func get_attribute(attribute_name):
+	var attribute_value = attributes_buffs.get(attribute_name, 0)
+	return attribute_value

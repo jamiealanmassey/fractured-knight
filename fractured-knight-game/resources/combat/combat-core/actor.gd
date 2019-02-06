@@ -11,7 +11,21 @@ func _ready():
 	# Initialization here
 	pass
 
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
+
+func get_all_moves():
+	var moves = []
+	for weapon in weapons:
+		moves.append(weapon.moves)
+	moves.append(base_moves)
+	return moves
+		
+
+func _init(health):
+	weapons = []
+	stats = {}
+	base_moves = []
+	self.health = health
+	
+func get_stat(stat_name):
+	var stat_value = stats.get(stat_name, 0)
+	return stat_value
