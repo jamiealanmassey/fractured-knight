@@ -6,7 +6,16 @@ extends Node
 
 var DialogueNode = load('res://resources/dialogue_system/dialogue_node.gd')
 
-const node_type_map = {}
+var node_type_map = {
+	'write'    : DialogueNode.NodeType.Write,
+	'branch'   : DialogueNode.NodeType.Branch,
+	'locate'   : DialogueNode.NodeType.Locate,
+	'point'    : DialogueNode.NodeType.Point,
+	'trigger'  : DialogueNode.NodeType.Trigger,
+	'set'      : DialogueNode.NodeType.Set,
+	'unset'    : DialogueNode.NodeType.Unset,
+	'evaluate' : DialogueNode.NodeType.Evaluate
+}
 
 var state_stack = []  ## The stack tracks how deeply nested we currently are into a branch/evaluation
 var state_list = []   ## The list keeps track of end nodes at the same depth
@@ -131,22 +140,7 @@ func count_num_tabs(line):
 ## -> see dialogue_node.gd
 func string_to_node_type(token):
 	token = token.to_lower()
-	if token == 'write':
-		return DialogueNode.NodeType.Write
-	elif token == 'branch':
-		return DialogueNode.NodeType.Branch
-	elif token == 'locate':
-		return DialogueNode.NodeType.Locate
-	elif token == 'point':
-		return DialogueNode.NodeType.Point
-	elif token == 'trigger':
-		return DialogueNode.NodeType.Trigger
-	elif token == 'set':
-		return DialogueNode.NodeType.Set
-	elif token == 'unset':
-		return DialogueNode.NodeType.Unset
-	elif token == 'evaluate':
-		return DialogueNode.NodeType.Evaluate
+	if node_type_map.has(token):
+		return node_type_map[token]
 	else:
 		return DialogueNode.NodeType.Error
-	
