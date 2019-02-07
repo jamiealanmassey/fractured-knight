@@ -26,14 +26,16 @@ func _ready():
 
 
 #prepares combat to start
-func start_combat(player, enemy, randomise = false):
+func start_combat(player, enemy, seeded = null):
 	emit_signal("UI_get_ready")
 	state = 0
 	self.player_moves = player.get_all_moves()
 	self.player = player
 	self.enemy = enemy
-	if randomise:
+	if seeded == null:
 		randomize()
+	else:
+		seed(seeded)
 	
 #Whenever a button on the UI is pressed, this method resolves
 func on_button_pressed(button_id):
@@ -68,24 +70,25 @@ func on_button_pressed(button_id):
 
 #resolves a player's attack
 func resolve_player_attack(move_chosen):
-	var chosen_move = player_moves[move_chosen]
-	var resulting_damage = get_resulting_damage(chosen_move, player, enemy)
+	var resulting_damage = get_resulting_damage(move_chosen, player, enemy)
+	print("player deal: " + str(resulting_damage))
 	if(resulting_damage != null):
 		#TODO: add logic if damage can ever be less than 0
-		enemy.health - damage
-		emit_signal("display_text", "You hit the enemy for" + damage)
+		enemy.health = enemy.health - resulting_damage
+		emit_signal("display_text", "You hit the enemy for " + str(resulting_damage))
 	else:
 		emit_signal("display_text", "You missed")
 		
 
 #resolves an enemy's attack
 func resolve_enemy_attack():
-	var enemy_move = enemy.get_all_moves()[randi() % enemy.get_all_moves().size]
+	var enemy_move = enemy.get_all_moves()[randi() % enemy.get_all_moves().size()]
 	var resulting_damage = get_resulting_damage(enemy_move, enemy, player)
+	print("enemy dealt :" + str(resulting_damage))
 	if(resulting_damage != null):
 		#TODO: add logic if damage can ever be less than 0
-		player.health - damage
-		emit_signal("display_text", "Player got hit for " + damage)
+		player.health = player.health - resulting_damage
+		emit_signal("display_text", "Player got hit for " + str(resulting_damage))
 	else:
 		emit_signal("display_text", "Enemy missed")
 		
@@ -93,8 +96,8 @@ func resolve_enemy_attack():
 		
 #gets the resulting damage. 0 represents a hit for no damage, null represents a miss
 func get_resulting_damage(move, attacker, target):
-	var to_hit = calculate_to_hit(move) + attacker.stats["accuracy"]
-	var damage = calculate_damage(move) + attacker.stats["damage"]
+	var to_hit = calculate_to_hit(move) + attacker.get_stat("accuracy")
+	var damage = calculate_damage(move) + attacker.get_stat("damage")
 	var chance = randi() % 100
 	if(chance < to_hit):
 		return damage

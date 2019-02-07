@@ -21,7 +21,7 @@ func test_move_init_with_weapon():
 	var acc = 50
 	var dmg = 6
 	
-	move.init(move_name, acc, dmg)
+	move.init(move_name, acc, dmg, weapon)
 	assert_eq(move.move_name, "Slash", "Name should be Slash")
 	assert_eq(move.get_accuracy(), 50, "Accuracy should be 50")
 	assert_eq(move.get_damage(), 6, "Damage should be 6")
