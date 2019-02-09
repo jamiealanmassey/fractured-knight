@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://resources/combat/combat-UI/images/DialougeBox.png" type="Texture" id=1]
 [ext_resource path="res://resources/combat/combat-UI/UIBox.gd" type="Script" id=2]
 [ext_resource path="res://resources/combat/combat-UI/images/Arrow.png" type="Texture" id=3]
+[ext_resource path="res://resources/combat/combat-UI/CombatButton.tscn" type="PackedScene" id=4]
 
 [node name="UIBox" type="NinePatchRect" index="0"]
 
@@ -30,8 +31,44 @@ _sections_unfolded = [ "Patch Margin" ]
 
 [node name="Arrow" type="Sprite" parent="." index="0"]
 
-position = Vector2( 59.8258, 74.3448 )
-scale = Vector2( 6.45671, 4.91498 )
+position = Vector2( 1019, 254 )
+scale = Vector2( 6.45671, 4.95749 )
 texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Move1" parent="." index="1" instance=ExtResource( 4 )]
+
+[node name="Move2" parent="." index="2" instance=ExtResource( 4 )]
+
+margin_top = 202.0
+margin_bottom = 300.0
+
+[node name="Move3" parent="." index="3" instance=ExtResource( 4 )]
+
+margin_left = 961.0
+margin_top = 202.0
+margin_right = 1726.0
+margin_bottom = 300.0
+
+[node name="Move4" parent="." index="4" instance=ExtResource( 4 )]
+
+margin_left = 961.0
+margin_right = 1726.0
+
+[connection signal="mouse_entered" from="Move1" to="." method="_on_Move1_mouse_entered"]
+
+[connection signal="pressed" from="Move1" to="." method="_on_Move1_pressed"]
+
+[connection signal="mouse_entered" from="Move2" to="." method="_on_Move2_mouse_entered"]
+
+[connection signal="pressed" from="Move2" to="." method="_on_Move2_pressed"]
+
+[connection signal="mouse_entered" from="Move3" to="." method="_on_Move3_mouse_entered"]
+
+[connection signal="pressed" from="Move3" to="." method="_on_Move3_pressed"]
+
+[connection signal="mouse_entered" from="Move4" to="." method="_on_Move4_mouse_entered"]
+
+[connection signal="pressed" from="Move4" to="." method="_on_Move4_pressed"]
 
 
