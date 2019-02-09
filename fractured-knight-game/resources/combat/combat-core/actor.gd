@@ -30,13 +30,13 @@ func get_all_moves():
 
 
 func get_stat(stat_name):
-	if (stats.has(stat_name)):
-		return stats[stat_name]
+	if (stats.has(stat_name.to_lower())):
+		return stats[stat_name.to_lower()]
 	else: 
 		return 0
 	
 func set_stat(stat_name, value):
-	stats[stat_name] = value
+	stats[stat_name.to_lower()] = value
 	
 func add_move(move):
 	base_moves.append(move)

@@ -96,8 +96,8 @@ func resolve_enemy_attack():
 		
 #gets the resulting damage. 0 represents a hit for no damage, null represents a miss
 func get_resulting_damage(move, attacker, target):
-	var to_hit = calculate_to_hit(move) + attacker.get_stat("accuracy")
-	var damage = calculate_damage(move) + attacker.get_stat("damage")
+	var to_hit = move.get_accuracy() + attacker.get_stat("accuracy")
+	var damage = move.get_damage() + attacker.get_stat("damage")
 	var chance = randi() % 100
 	if(chance < to_hit):
 		return damage
@@ -105,19 +105,6 @@ func get_resulting_damage(move, attacker, target):
 		return null
 		
 	
-	
-		
-func calculate_to_hit(move):
-	if (move.weapon != null):
-		return move.accuracy + move.weapon.get_attribute("accuracy")
-	else:
-		return move.accuracy
-	
-func calculate_damage(move):
-	if (move.weapon != null):
-		return move.damage + move.weapon.get_attribute("damage")
-	else:
-		return move.damage
 	
 	
 	

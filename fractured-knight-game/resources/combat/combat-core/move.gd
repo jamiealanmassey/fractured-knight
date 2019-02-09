@@ -21,9 +21,13 @@ func init(move_name, accuracy, damage, weapon = null):
 #	pass
 
 func get_damage():
+	if (weapon != null):
+		return damage + weapon.get_attribute('damage')
 	return damage
 	
 func get_accuracy():
+	if weapon != null:
+		return accuracy + weapon.get_attribute('accuracy')
 	return accuracy
 
 

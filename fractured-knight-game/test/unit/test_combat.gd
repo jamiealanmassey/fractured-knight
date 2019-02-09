@@ -15,7 +15,7 @@ func before_each():
 	player = load("res://resources/combat/combat-core/actor.tscn").instance()
 	player.init(50)
 	enemy = load("res://resources/combat/combat-core/actor.tscn").instance()
-	enemy.init(10)
+	enemy.init(20)
 	
 	move_scene = load("res://resources/combat/combat-core/move.tscn")
 	weapon_scene = load("res://resources/combat/combat-core/weapon.tscn")
@@ -52,16 +52,6 @@ func before_each():
 	weapon_scene = load("res://resources/combat/combat-core/weapon.tscn")
 	
 
-
-
-func test_calculate_accuracy():
-	assert_eq(combat.calculate_to_hit(move), 60, "Accuracy should be 60, slash accuracy")
-	assert_eq(combat.calculate_to_hit(move2), 70, "Accuracy should be 70, stab accuracy + sword accuracy")
-
-
-func test_calculate_damage():
-	assert_eq(combat.calculate_damage(move), 8, "Damage should be 8, slash damage")
-	assert_eq(combat.calculate_damage(move2), 12, "Damage should be 12, stab damage + sword damage")
 	
 
 func test_change_to_combat():
@@ -88,30 +78,68 @@ func test_resolve_attack_signals():
 	
 func test_attacks():
 	#first attack
-	combat.on_button_pressed(0) 
-	combat.on_button_pressed(0) 
 	
-	#second attack
-	combat.on_button_pressed(0) 
-	combat.on_button_pressed(1) 
+	var combat_finished_signal_emitted = false
+	var move_choice = 0
 	
-	#third attack
-	combat.on_button_pressed(0) 
-	combat.on_button_pressed(1) 
+
+	var expected_signal_count = {'combat_finished' : 0, 'show_fighting_options' : 0, 'show_menu_options' : 0, 'output_only' : 0, 'display_text' : 0}
+	watch_signals(combat)
+	var round_count = 0
 	
-	#fourth attack
-	combat.on_button_pressed(0) 
-	combat.on_button_pressed(1) 
-	
-	#fifth attack
-	combat.on_button_pressed(0) 
-	combat.on_button_pressed(0) 
-	
-	
-	
-	
-	
-	
+	while !combat_finished_signal_emitted:
+		#Go into fight mode
+		combat.on_button_pressed(0) 
+		expected_signal_count.show_fighting_options += 1
+		#number of times fighting options moveed into should be 1 more than before
+		assert_signal_emit_count(combat, "show_fighting_options", expected_signal_count.show_fighting_options)
+		
+		#record previous round's health for future checks
+		var player_health = combat.player.health
+		var enemy_health = combat.enemy.health
+		
+		#choose an attack
+		combat.on_button_pressed(move_choice) 
+		#Shoud emit output signal excatly once
+		expected_signal_count.output_only += 1
+		
+		#checkes player attack message
+		if player_health != combat.player.health:
+			assert_signal_emitted_with_parameters(combat, "display_text", ["You hit the enemy for " + str(enemy_health - combat.enemy.health)], expected_signal_count.display_text)
+		else:
+			assert_signal_emitted_with_parameters(combat, "display_text", ["You missed"], expected_signal_count.display_text)
+		expected_signal_count.display_text += 1
+		
+		#checkes for enemy death message
+		if combat.enemy.health <= 0:
+			assert_signal_emitted_with_parameters(combat, "display_text", ["Enemy defeated"], expected_signal_count.display_text)
+			assert_signal_emitted_with_parameters(combat, "combat_finished", [player, enemy, "Player won"])
+			expected_signal_count.display_text += 1
+			combat_finished_signal_emitted = true
+		
+		#checkes enemy attack message
+		if enemy_health != combat.enemy.health:
+			assert_signal_emitted_with_parameters(combat, "display_text", ["Player got hit for " + str(player_health - combat.player.health)], expected_signal_count.display_text)
+			expected_signal_count.display_text += 1
+		elif combat.enemy_health != 0:
+			assert_signal_emitted_with_parameters(combat, "display_text", ["Enemy missed"], expected_signal_count.display_text)
+			expected_signal_count.display_text += 1
+		
+		
+		#checks for player death message
+		if combat.player.health <= 0:
+			assert_signal_emitted_with_parameters(combat, "display_text", ["Player defeated"], expected_signal_count.display_text)
+			assert_signal_emitted_with_parameters(combat, "combat_finished", [player, enemy, "Enemy won"])
+			expected_signal_count.display_text += 1
+			combat_finished_signal_emitted = true
+		
+		expected_signal_count.show_menu_options += 1
+		
+		assert_signal_emit_count(combat, "show_menu_options", expected_signal_count.show_menu_options)
+		assert_signal_emit_count(combat, "display_text", expected_signal_count.display_text)
+		move_choice = (move_choice + 1) % 2
+		
+	assert_signal_emit_count(combat, "combat_finished", 1, "Combat finished signal should only fire exactly once")
 	
 	
 	
