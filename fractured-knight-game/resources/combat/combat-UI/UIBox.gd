@@ -4,22 +4,30 @@
 #Date: 07/02/19
 extends NinePatchRect
 
+var xPos = 0.0
+var yPos = 0.0
+
+var buttonResource = preload('res://resources/combat/combat-UI/CombatButton.tscn')
+var button = buttonResource.instance()
+var test = ["1","2","3","4"]
+
 ## uses arrow keys to move around
 func _ready():
-	$Move1.grab_focus()
+	readArrray(test)
+	#$Move1.grab_focus()
 
 ## reads array to place elemnt from array into box
 ## @param array = array of elemts that needs to be read and places into boxes
 func readArrray(array):
 	for i in range(0, array.size()):
-		if(i == 0):
-			$Move1.set_text(array[i])
-		elif(i == 1):
-			$Move2.set_text(array[i])
-		elif(i == 2):
-			$Move3.set_text(array[i])
-		elif(i == 3):
-			$Move4.set_text(array[i])
+		button.position = Vector2((xPos), (yPos + 90))
+		createBox()
+
+func createBox():
+	self.add_child(button)
+
+func getWidth():
+	self.get_size()
 
 ## Set the postion of the cusor to the arrow so it always 
 ##   points at the box where the mouse curor is
