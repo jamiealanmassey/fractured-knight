@@ -1,0 +1,21 @@
+write Good day traveler.
+write You must watch yourself in these parts.
+branch[I heed your advice, You don't scare me!]
+    point[heeded]
+    write Good! You would be wise to do so.
+    write Go forth and tread carefully.
+    unset[door_blocked]
+    trigger[unlock_door] # Feeding this back into Godot could allow us to unlock a door and resume progression
+
+    point[scare]
+    write It is foolish of you to ignore my warning! # Spaces indicate separation of branches
+    write Turn back now, you are not prepared for this journey.
+    set[door_blocked]
+    trigger[block_door] # Feeding this back into Godot could allow us to lock a door and pause progression
+
+evaluate[door_blocked]
+    write You hear a click and a sinking feeling floods you
+    locate end # Close the dialogue early
+
+write Farewell traveller, until next time!
+write Oh, and one last piece of advice, it's dangerous to go alone.

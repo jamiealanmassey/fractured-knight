@@ -7,25 +7,42 @@ extends NinePatchRect
 var xPos = 0.0
 var yPos = 0.0
 
-var buttonResource = preload('res://resources/combat/combat-UI/CombatButton.tscn')
-var button = buttonResource.instance()
-var test = ["1","2","3","4"]
+#var buttonResource = preload('res://resources/combat/combat-UI/CombatButton.tscn')
+#var buttonScene = buttonResource.instance()
+#var buttons = buttonScene.get_children()
+var test = ["a","b","c","d"]
 
 ## uses arrow keys to move around
 func _ready():
+	#createBox(test)
 	readArrray(test)
 	#$Move1.grab_focus()
+	
 
+func _process(delta):
+	find_pressed()
 ## reads array to place elemnt from array into box
 ## @param array = array of elemts that needs to be read and places into boxes
 func readArrray(array):
+	for item in array:
+		var button = Button.new()
+		button.text = item
+		button.rect_position = Vector2((xPos), (yPos + 90))
+		createBox(button)
+
+func createBox(button):
+	$BtnContainer.add_child(button)
+
+func find_pressed():
+	var all_Buttons = $BtnContainer.get_children()
+	for item in all_Buttons:
+		if(item.pressed):
+			print(get_index(item.text, test))
+
+func get_index(name, array):
 	for i in range(0, array.size()):
-		button.position = Vector2((xPos), (yPos + 90))
-		createBox()
-
-func createBox():
-	self.add_child(button)
-
+		if(array[i] == name):
+			return i
 func getWidth():
 	self.get_size()
 
