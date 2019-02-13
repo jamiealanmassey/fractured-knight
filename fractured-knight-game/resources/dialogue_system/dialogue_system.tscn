@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://resources/dialogue_system/dialogue_context.gd" type="Script" id=1]
+[ext_resource path="res://resources/dialogue_system/dialogue_parser.gd" type="Script" id=2]
+
+[node name="Context" type="Node" index="0"]
+
+script = ExtResource( 1 )
+test_file = null
+
+[node name="Parser" type="Node" parent="." index="0"]
+
+script = ExtResource( 2 )
+
+
