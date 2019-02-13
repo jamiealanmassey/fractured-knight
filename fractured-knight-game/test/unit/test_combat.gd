@@ -140,7 +140,13 @@ func test_attacks():
 		move_choice = (move_choice + 1) % 2
 		
 	assert_signal_emit_count(combat, "combat_finished", 1, "Combat finished signal should only fire exactly once")
+
+func _test_ui_buttons():
+	var combat_new = load("res://resources/combat/combat-core/Combat.tscn").instance()
 	
+	while true:
+		combat_new.start_combat(player, enemy)
+		pass
 	
 	
 	

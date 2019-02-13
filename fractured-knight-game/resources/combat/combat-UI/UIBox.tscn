@@ -4,7 +4,7 @@
 [ext_resource path="res://resources/combat/combat-UI/UIBox.gd" type="Script" id=2]
 [ext_resource path="res://resources/combat/combat-UI/images/Arrow.png" type="Texture" id=3]
 
-[node name="UIBox" type="NinePatchRect" index="0"]
+[node name="UIBox" type="NinePatchRect"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -34,10 +34,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 36.0
-margin_top = 131.0
-margin_right = 231.0
-margin_bottom = 184.0
+margin_left = 75.0
+margin_top = 31.0
+margin_right = 387.0
+margin_bottom = 294.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -52,27 +52,5 @@ position = Vector2( 40, 53 )
 scale = Vector2( 3.55709, 2.81968 )
 texture = ExtResource( 3 )
 _sections_unfolded = [ "Transform" ]
-
-[node name="btn" type="Button" parent="." index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 12.0
-margin_bottom = 20.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-flat = false
-align = 1
 
 

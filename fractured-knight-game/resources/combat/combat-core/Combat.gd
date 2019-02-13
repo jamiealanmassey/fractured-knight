@@ -22,6 +22,44 @@ var enemy
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
+	# test code here 
+	var player = load("res://resources/combat/combat-core/actor.tscn").instance()
+	player.init(50)
+	var enemy = load("res://resources/combat/combat-core/actor.tscn").instance()
+	enemy.init(20)
+	
+	var move_scene = load("res://resources/combat/combat-core/move.tscn")
+	var weapon_scene = load("res://resources/combat/combat-core/weapon.tscn")
+	
+	var move = move_scene.instance()
+	var move2 = move_scene.instance()
+	var sword = weapon_scene.instance()
+	
+	move.init("punch", 60, 8)
+	
+	player.add_move(move)
+	
+	sword = weapon_scene.instance()
+	sword.init({"accuracy" : 20, "damage" : 5})
+	
+	move2 = move_scene.instance()
+	move2.init("stab", 50, 7, sword)
+	
+	sword.add_move(move2)
+	
+	player.add_weapon(sword)
+	enemy.add_move(move)
+	enemy.add_weapon(sword)
+	
+	player.set_stat("damage", 3)
+	player.set_stat("accuracy", 10)
+	
+	enemy.set_stat("damage", 1)
+	enemy.set_stat("accuracy", 5)
+	
+	#starts combat with given seed
+	start_combat(player, enemy, 800.5)
+	
 	pass
 
 
@@ -41,6 +79,9 @@ func start_combat(player, enemy, seeded = null):
 func on_button_pressed(button_id):
 	if(state == 0): #Waiting for main combat menu button press
 		if(button_id == 0): #Fight was chosen
+			var move_names = []
+			for move in player_moves:
+				move_names.append(move.name)
 			emit_signal("show_fighting_options", player_moves)
 			state = 1
 	elif(state == 1): #waiting for move selection
@@ -104,12 +145,8 @@ func get_resulting_damage(move, attacker, target):
 	else:
 		return null
 		
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
+func _on_UIBox_btnPressed(button_id):
+	on_button_pressed(button_id)
+
+
