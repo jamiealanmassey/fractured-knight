@@ -10,16 +10,11 @@ var xPos = 0.0
 var yPos = 0.0
 var array
 
-#var buttonResource = preload('res://resources/combat/combat-UI/CombatButton.tscn')
-#var buttonScene = buttonResource.instance()
-#var buttons = buttonScene.get_children()
-
 ## uses arrow keys to move around
 func _ready():
 	#createBox(test)
 	pass
 	#$Move1.grab_focus()
-	
 
 func _process(delta):
 	find_pressed()
@@ -41,9 +36,9 @@ func find_pressed():
 	var all_Buttons = $BtnContainer.get_children()
 	for item in all_Buttons:
 		if(item.pressed):
-			
 			emit_signal("btnPressed", (get_index(item.text, array)))
-			#print(get_index(item.text, test))
+			for children in all_Buttons:
+				$BtnContainer.remove_child(children)
 
 func get_index(name, array):
 	for i in range(0, array.size()):
