@@ -4,6 +4,8 @@
 #Date: 07/02/19
 extends NinePatchRect
 
+signal btnPressed
+
 var xPos = 0.0
 var yPos = 0.0
 
@@ -33,11 +35,12 @@ func readArrray(array):
 func createBox(button):
 	$BtnContainer.add_child(button)
 
-func find_pressed():
+func find_pressed(array):
 	var all_Buttons = $BtnContainer.get_children()
 	for item in all_Buttons:
 		if(item.pressed):
-			print(get_index(item.text, test))
+			emit_signal("btnPressed", (get_index(item.text, array)))
+			#print(get_index(item.text, test))
 
 func get_index(name, array):
 	for i in range(0, array.size()):
