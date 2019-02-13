@@ -30,6 +30,8 @@ func reset():
 	result = []
 	result_nodes = []
 	root = null
+	result_full['root'] = null
+	result_full['pointers'] = {}
 
 ## Uses the passed file to try and parse its data into an array of strings which can then be used
 ## to create a DialogueTree used in a DialogueContext
@@ -45,7 +47,6 @@ func parse(filename):
 	file.close()
 	construct_tree()
 	result_full['root'] = root
-	result_full['pointers'] = null
 
 ## Creates a tree from each line given in the Markup Language file by going from line-to-line
 ## and determining what each node does
@@ -68,6 +69,9 @@ func construct_tree():
 			line = line.substr(0, comment_occurance)
 		
 		var node = construct_node(line)
+		if node.type == DialogueNode.NodeType.Point:
+			result_full['pointers'][node.metadata[0]] = node
+		
 		if node.tabs > tab_depth:
 			tab_depth = node.tabs
 			state_stack.push_front(last_node)

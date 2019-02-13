@@ -21,15 +21,25 @@ signal on_context_finish  ## Called when the end of the current dialogue graph i
 signal on_context_trigger ## Called when a trigger has been executed in the script
 
 func _init():
-	self.add_dialogue_file('test', test_file)
+	if test_file != null:
+		self.add_dialogue_file('test', test_file)
 
 func _process(delta):
-	evaluate_current_node()
+	if processing:
+		evaluate_current_node()
 
 ## Parses the given dialogue file and adds it to the context for use in the Dialogue System
 func add_dialogue_file(dialogue_name, file_name):
 	$Parser.parse(file_name)
 	dialogues[dialogue_name] = $Parser.result_full
+
+func start_dialogue(dialogue_name):
+	if dialogues.has(dialogue_name):
+		current_dialogue = dialogues[dialogue_name]
+		current_node = current_dialogue['root']
+		processing = true
+	else:
+		error = 'Starting Dialogue Error: no dialogue stored with that name'
 
 ## Helper function
 func evaluate_current_node():
@@ -44,7 +54,9 @@ func evaluate_current_node():
 			emit_signal('on_context_process', current_node.type, current_node.content, current_node.metadata)
 		DialogueNode.NodeType.Locate:
 			var location = current_node.content.stip_edges()
-			if current_dialogue['pointers'].has(location):
+			if location == 'end':
+				self.conclude_dialogue()
+			elif current_dialogue['pointers'].has(location):
 				current_node = current_dialogue['pointers'][location]
 				emit_signal('on_context_process', current_node.type, current_node.content, current_node.metadata)
 			else:
@@ -63,7 +75,7 @@ func evaluate_current_node():
 			current_node = current_node.children[0]
 		DialogueNode.NodeType.Unset:
 			if current_node.metadata.size() > 0:
-				symbols[current_node.metadata[0]] = true
+				symbols[current_node.metadata[0]] = false
 			else:
 				error = 'Context Unsetting Error: no symbol given to unset node'
 				
@@ -85,9 +97,18 @@ func evaluate_current_node():
 			error = 'Context Unknown Error'
 	
 	if current_node == null || current_node.children.size() == 0:
-		processing = false
-		current_node = null
-		current_dialogue = null
-		emit_signal('on_context_finish')
+		self.conclude_dialogue()
 		return
+	
+func conclude_dialogue():
+	processing = false
+	current_node = null
+	current_dialogue = null
+	emit_signal('on_context_finish')
+	
+func evaluate_symbol(symbol_name):
+	if !symbols.has(symbol_name):
+		return false
+	
+	return symbols[symbol_name]
 	
