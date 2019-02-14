@@ -33,17 +33,17 @@ func add_dialogue_file(dialogue_name, file_name):
 	$Parser.parse(file_name)
 	dialogues[dialogue_name] = $Parser.result_full
 
-func start_dialogue(dialogue_name):
+func start_dialogue(dialogue_name, process = true):
 	if dialogues.has(dialogue_name):
 		current_dialogue = dialogues[dialogue_name]
 		current_node = current_dialogue['root']
-		processing = true
+		processing = process
 	else:
 		error = 'Starting Dialogue Error: no dialogue stored with that name'
 
 ## Helper function
 func evaluate_current_node():
-	if current_node == null || !processing:
+	if current_node == null: #|| !processing:
 		return
 	
 	match current_node.type:
@@ -100,12 +100,20 @@ func evaluate_current_node():
 		self.conclude_dialogue()
 		return
 	
+
+func pick_branch(branch_choice):
+	if current_node.type == DialogueNode.NodeType.Branch:
+		current_node = current_node.children[branch_choice]
+	else:
+		error = 'Branch Choice Error: current node is not a Branch Node'
+
 func conclude_dialogue():
 	processing = false
 	current_node = null
 	current_dialogue = null
 	emit_signal('on_context_finish')
 	
+
 func evaluate_symbol(symbol_name):
 	if !symbols.has(symbol_name):
 		return false

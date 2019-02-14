@@ -8,11 +8,11 @@ class TestDialogueContext:
 	var DialogueNode = load('res://resources/dialogue_system/dialogue_node.gd')
 	var system = null
 	
-	func before_all():
+	func before_each():
 		system = DialogueSystem.instance()
+		system.add_dialogue_file('test', 'res://test/dialogue/complex.fml')
 		
 	func test_context_loads():
-		system.add_dialogue_file('test', 'res://test/dialogue/complex.fml')
 		assert_true(system.dialogues.has('test'))
 		assert_ne(system.dialogues['test']['root'], null)
 		assert_gt(system.dialogues['test']['pointers'].size(), 0)
@@ -22,4 +22,13 @@ class TestDialogueContext:
 		assert_true(system.processing)
 		assert_eq(system.current_dialogue, system.dialogues['test'])
 		assert_eq(system.current_node, system.dialogues['test']['root'])
+		while system.current_node != null:
+			if system.current_node.type == DialogueNode.NodeType.Branch:
+				system.pick_branch(1)
+			
+			system.evaluate_current_node()
+		
+		assert_eq(system.error, null)
+		#assert_signal_emitted(system, 'on_context_change')
+		#assert_signal_emit_count(system, 'on_context_change', 5)
 	
