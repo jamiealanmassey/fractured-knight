@@ -1,5 +1,5 @@
 # Filename: dialogue_node.gd
-# Brief: Defines a Node in the Dialogue Tree to be interpreted by the Dialogue Context
+# Brief: Defines a Node in the Dialogue Tree/Graph to be interpreted by the Dialogue Context
 # Author: Jamie Massey
 # Created: 03/02/2019
 extends Node
