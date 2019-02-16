@@ -26,7 +26,7 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 script = ExtResource( 2 )
-_sections_unfolded = [ "Patch Margin", "Rect" ]
+_sections_unfolded = [ "Patch Margin" ]
 
 [node name="BtnContainer" type="VBoxContainer" parent="." index="0"]
 
@@ -37,7 +37,7 @@ anchor_bottom = 0.0
 margin_left = 75.0
 margin_top = 31.0
 margin_right = 387.0
-margin_bottom = 294.0
+margin_bottom = 983.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1

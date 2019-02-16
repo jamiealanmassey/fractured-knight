@@ -27,10 +27,7 @@ func read_array(array):
 		button.show()
 		button.text = item
 		button.rect_position = Vector2((xPos), (yPos + 90))
-		createBox(button)
-
-func createBox(button):
-	$BtnContainer.add_child(button)
+		$BtnContainer.add_child(button)
 
 func find_pressed():
 	var all_Buttons = $BtnContainer.get_children()
