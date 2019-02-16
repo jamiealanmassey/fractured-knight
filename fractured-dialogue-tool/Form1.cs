@@ -48,6 +48,29 @@ namespace fractured_dialogue_tool
             WindowState = FormWindowState.Minimized;
         }
 
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+                Close();
+        }
+
+        private void btnMaximiseClick(object sender, EventArgs e)
+        {
+            WindowState = WindowState == FormWindowState.Maximized ? 
+                                         FormWindowState.Normal :
+                                         maximise();
+        }
+
+        private FormWindowState maximise()
+        {
+            this.FormBorderStyle = FormBorderStyle.Sizable;
+            this.WindowState = FormWindowState.Maximized;
+            this.MaximumSize = this.Size;
+            this.FormBorderStyle = FormBorderStyle.None;
+            //this.Location = new Point(0, 0);
+            return FormWindowState.Maximized;
+        }
+
         private void btnCloseClick(object sender, EventArgs e)
         {
             Close();
@@ -62,15 +85,27 @@ namespace fractured_dialogue_tool
         private void titlebar_MouseUp(object sender, MouseEventArgs e)
         {
             isDragging = false;
+            if (WindowState != FormWindowState.Maximized && Cursor.Position.Y < 1)
+                maximise();
         }
 
         private void titlebar_MouseMove(object sender, MouseEventArgs e)
         {
             if (isDragging)
             {
-                Location = new Point(Cursor.Position.X - relative.X, Cursor.Position.Y - relative.Y);
-                /*var cursor = PointToClient(Cursor.Position);
-                Location = cursor;*/
+                if (WindowState == FormWindowState.Maximized && Cursor.Position.Y > 2)
+                {
+                    //var oldSize = this.Size;
+                    WindowState = FormWindowState.Normal;
+                    Location = new Point(Cursor.Position.X - relative.X, Cursor.Position.Y - relative.Y);
+                    /*var diff = oldSize - this.Size;
+                    Location = new Point(Location.X + diff.Width, Location.Y);*/
+                }
+                else
+                {
+                    //Location = this.PointToClient(Cursor.Position);
+                    Location = new Point(Cursor.Position.X - relative.X, Cursor.Position.Y - relative.Y);
+                }
             }
         }
 

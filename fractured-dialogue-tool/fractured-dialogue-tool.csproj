@@ -86,5 +86,11 @@
   <ItemGroup>
     <None Include="icons8-minimize-window-48.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="fml-ico.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons8-maximize-window-48.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
