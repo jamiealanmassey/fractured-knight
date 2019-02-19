@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://resources/levels/Lake/Tilemap/autoLake.tres" type="TileSet" id=1]
+
+[node name="TileMap" type="TileMap" index="0"]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( -131072, 0, 262157, -131071, 0, 262157, -131070, 0, 262157, -131069, 0, 262157, -131068, 0, 262157, -65536, 0, 262157, -65532, 0, 262157, -65531, 0, 262157, 0, 0, 262157, 1, 0, 262157, 4, 0, 262157, 6, 0, 262157, 7, 0, 262157, 65536, 0, 262157, 65537, 0, 262157, 65541, 0, 262157, 65542, 0, 262157, 65543, 0, 262157, 65544, 0, 262157, 131072, 0, 262157, 131073, 0, 262157, 131074, 0, 262157, 131078, 0, 262157, 131080, 0, 262157, 196609, 0, 262157, 196610, 0, 262157, 196614, 0, 262157, 196615, 0, 262157, 196616, 0, 262157, 262146, 0, 262157, 262147, 0, 262157, 262148, 0, 262157, 262149, 0, 262157, 262150, 0, 262157, 262152, 0, 262157, 327685, 0, 262157, 327686, 0, 262157, 327687, 0, 262157, 327688, 0, 262157 )
+_sections_unfolded = [ "Cell", "Pause" ]
+
+
