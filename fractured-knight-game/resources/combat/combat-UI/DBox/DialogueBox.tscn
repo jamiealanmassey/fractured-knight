@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://resources/combat/combat-UI/DBox/DialogueBox.gd" type="Script" id=1]
-[ext_resource path="res://resources/combat/combat-UI/DBox/DialougeBox.gd" type="Script" id=2]
+[ext_resource path="res://resources/combat/combat-UI/DBox/RichTextLabel.gd" type="Script" id=2]
 
-[node name="DialogueBox" type="Node2D" index="0"]
+[node name="DialogueBox" type="Node2D"]
 
 position = Vector2( 534.912, 529.13 )
 script = ExtResource( 1 )
@@ -44,5 +44,12 @@ _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "custom_col
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Timer" type="Timer" parent="." index="1"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
 
 
