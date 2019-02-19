@@ -3,6 +3,7 @@ extends Control
 signal get_ready
 signal btnPressed
 signal display_text
+signal finished_displaying_text
 
 # class member variables go here, for example:
 # var a = 2
@@ -41,4 +42,13 @@ func _on_UIBox_btnPressed(button_pressed):
 
 func _on_Combat_display_text(text):
 	emit_signal("display_text", text)
+	# need to wait for text to be displayed
+	yield($DialogueBox, "finished_displaying_text")
+	emit_signal("finished_displaying_text")
+	pass # replace with function body
+	
+
+
+func _on_Combat_combat_finished():
+	#Use this function to hide buttons etc. Wrap up combat
 	pass # replace with function body

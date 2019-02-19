@@ -11,6 +11,8 @@ script = ExtResource( 1 )
 
 [connection signal="UI_get_ready" from="." to="combatInterface" method="_on_Combat_UI_get_ready"]
 
+[connection signal="combat_finished" from="." to="combatInterface" method="_on_Combat_combat_finished"]
+
 [connection signal="display_text" from="." to="combatInterface" method="_on_Combat_display_text"]
 
 [connection signal="show_fighting_options" from="." to="combatInterface" method="_on_Combat_show_fighting_options"]

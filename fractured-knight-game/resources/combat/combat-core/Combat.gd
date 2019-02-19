@@ -79,6 +79,8 @@ func start_combat(player, enemy, seeded = null):
 	
 #Whenever a button on the UI is pressed, this method resolves
 func on_button_pressed(button_id):
+	if !combat_in_progress: #combat complete, do nothing
+		return
 	if(state == 0): #Waiting for main combat menu button press
 		if(button_id == 0): #Fight was chosen
 			var move_names = []
@@ -87,9 +89,10 @@ func on_button_pressed(button_id):
 			emit_signal("show_fighting_options", player_moves)
 			state = 1
 		if(button_id == 1): #flee was chosen
-			#TODO: add fleeing feature
 			attempt_to_flee()
+			yield($combatInterface, "finished_displaying_text")
 			resolve_enemy_attack()
+			yield($combatInterface, "finished_displaying_text")
 			check_player_is_dead()
 			emit_signal("show_menu_options")
 			state = 0
@@ -101,14 +104,24 @@ func on_button_pressed(button_id):
 		
 		#Resolves player's attack
 		resolve_player_attack(move_chosen)
-		check_enemy_is_dead()
-		
+		yield($combatInterface, "finished_displaying_text")
+		var enemy_is_dead = check_enemy_is_dead()
 		#enemy is alive
 		
-		#Resolves player's attack
-		resolve_enemy_attack()
-		check_player_is_dead()
+		#Resolves enemy's attack
+		if enemy_is_dead:
+			yield($combatInterface, "finished_displaying_text")
+			finish_combat()
+		else:
+			resolve_enemy_attack()
+			yield($combatInterface, "finished_displaying_text")
 		
+			var player_is_dead = check_player_is_dead()
+			
+			if player_is_dead:
+				yield($combatInterface, "finished_displaying_text")
+				finish_combat()
+				
 		#returns to initial state
 		state = 0
 		emit_signal("show_menu_options")
@@ -122,6 +135,7 @@ func resolve_player_attack(move_chosen):
 		#TODO: add logic if damage can ever be less than 0
 		enemy.health = enemy.health - resulting_damage
 		emit_signal("display_text", "You hit the enemy for " + str(resulting_damage))
+		
 	else:
 		emit_signal("display_text", "You missed")
 		
@@ -169,14 +183,17 @@ func check_enemy_is_dead():
 		emit_signal("display_text", "Enemy defeated")
 		emit_signal("combat_finished", player, enemy, "Player won")
 		finish_combat()
-		pass
+		return true
+	return false
 
 func check_player_is_dead():
 	if(player.health <= 0): #if player is dead
 		emit_signal("display_text", "Player defeated")
 		emit_signal("combat_finished", player, enemy, "Enemy won")
 		finish_combat()
-		pass
+		return true
+	return false
+		
 
 
 func finish_combat():
@@ -184,4 +201,9 @@ func finish_combat():
 	combat_in_progress = false
 	pass
 	
+#func display_text(text):
+#	emit_signal("display_text", text)
+#	print("finished here")
+#	yield($combatInterface, "finished_displaying_text")
+#	print("Second part")
 

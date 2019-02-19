@@ -1,8 +1,6 @@
 extends Node2D
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+signal finished_displaying_text
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
@@ -17,4 +15,6 @@ func _ready():
 
 func _on_combatInterface_display_text(text):
 	$RichTextLabel.set_string(text)
+	yield($RichTextLabel, "finished_displaying_text")
+	emit_signal("finished_displaying_text")
 	pass # replace with function body
