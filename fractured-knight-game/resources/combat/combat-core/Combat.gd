@@ -18,6 +18,7 @@ var state
 var player_moves
 var player
 var enemy
+var combat_in_progress = false
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
@@ -66,6 +67,7 @@ func _ready():
 #prepares combat to start
 func start_combat(player, enemy, seeded = null):
 	emit_signal("UI_get_ready")
+	combat_in_progress = true
 	state = 0
 	self.player_moves = player.get_all_moves()
 	self.player = player
@@ -84,6 +86,9 @@ func on_button_pressed(button_id):
 				move_names.append(move.name)
 			emit_signal("show_fighting_options", player_moves)
 			state = 1
+		if(button_id == 1): #flee was chosen
+			#TODO: add fleeing feature
+			pass
 	elif(state == 1): #waiting for move selection
 		#gets the move chosen
 		var move_chosen = player_moves[button_id]
@@ -94,6 +99,7 @@ func on_button_pressed(button_id):
 		if(enemy.health <= 0): #if enemy is dead
 			emit_signal("display_text", "Enemy defeated")
 			emit_signal("combat_finished", player, enemy, "Player won")
+			combat_in_progress = false
 			pass
 		#enemy is alive
 		
@@ -102,6 +108,7 @@ func on_button_pressed(button_id):
 		if(player.health <= 0): #if player is dead
 			emit_signal("display_text", "Player defeated")
 			emit_signal("combat_finished", player, enemy, "Enemy won")
+			combat_in_progress = false
 			pass
 		
 		#returns to initial state

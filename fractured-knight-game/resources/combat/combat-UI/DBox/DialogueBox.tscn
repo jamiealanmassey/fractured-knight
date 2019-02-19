@@ -1,10 +1,12 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://resources/combat/combat-UI/DBox/DialougeBox.gd" type="Script" id=1]
+[ext_resource path="res://resources/combat/combat-UI/DBox/DialogueBox.gd" type="Script" id=1]
+[ext_resource path="res://resources/combat/combat-UI/DBox/DialougeBox.gd" type="Script" id=2]
 
 [node name="DialogueBox" type="Node2D" index="0"]
 
 position = Vector2( 534.912, 529.13 )
+script = ExtResource( 1 )
 _sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." index="0"]
@@ -37,7 +39,7 @@ scroll_active = true
 scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "custom_colors" ]
 __meta__ = {
 "_edit_lock_": true
