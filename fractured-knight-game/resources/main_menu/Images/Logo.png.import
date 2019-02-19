@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BackgroundWallaper.jpg-a48941e7b493c90166204ea0bec7472e.stex"
+path="res://.import/Logo.png-f96f6f7dec4eacab3357f70a816bd5e6.stex"
 
 [deps]
 
-source_file="res://resources/main_menu/BackgroundWallaper.jpg"
-dest_files=[ "res://.import/BackgroundWallaper.jpg-a48941e7b493c90166204ea0bec7472e.stex" ]
+source_file="res://resources/main_menu/Images/Logo.png"
+dest_files=[ "res://.import/Logo.png-f96f6f7dec4eacab3357f70a816bd5e6.stex" ]
 
 [params]
 
