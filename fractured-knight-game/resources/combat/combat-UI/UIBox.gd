@@ -52,7 +52,7 @@ func _on_Combat_show_fighting_options(moves):
 
 
 func _on_Combat_show_menu_options():
-	var menu_options = ["fight"]
+	var menu_options = ["fight", "flee"]
 	read_array(menu_options)
 	pass # replace with function body
 

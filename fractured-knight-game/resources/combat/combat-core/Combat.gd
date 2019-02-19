@@ -88,6 +88,11 @@ func on_button_pressed(button_id):
 			state = 1
 		if(button_id == 1): #flee was chosen
 			#TODO: add fleeing feature
+			attempt_to_flee()
+			resolve_enemy_attack()
+			check_player_is_dead()
+			emit_signal("show_menu_options")
+			state = 0
 			pass
 	elif(state == 1): #waiting for move selection
 		#gets the move chosen
@@ -96,20 +101,13 @@ func on_button_pressed(button_id):
 		
 		#Resolves player's attack
 		resolve_player_attack(move_chosen)
-		if(enemy.health <= 0): #if enemy is dead
-			emit_signal("display_text", "Enemy defeated")
-			emit_signal("combat_finished", player, enemy, "Player won")
-			combat_in_progress = false
-			pass
+		check_enemy_is_dead()
+		
 		#enemy is alive
 		
 		#Resolves player's attack
 		resolve_enemy_attack()
-		if(player.health <= 0): #if player is dead
-			emit_signal("display_text", "Player defeated")
-			emit_signal("combat_finished", player, enemy, "Enemy won")
-			combat_in_progress = false
-			pass
+		check_player_is_dead()
 		
 		#returns to initial state
 		state = 0
@@ -156,4 +154,34 @@ func get_resulting_damage(move, attacker, target):
 func _on_UIBox_btnPressed(button_id):
 	on_button_pressed(button_id)
 
+func attempt_to_flee():
+	emit_signal("display_text", "attempting to flee")
+	if (randi() % 2):
+		emit_signal("display_text", "You successfully flee!")
+		emit_signal("combat_finished", player, enemy, "Player fled")
+		finish_combat()
+	else:
+		emit_signal("display_text", "You didn't manage to flee!")
+	
+	
+func check_enemy_is_dead():
+	if(enemy.health <= 0): #if enemy is dead
+		emit_signal("display_text", "Enemy defeated")
+		emit_signal("combat_finished", player, enemy, "Player won")
+		finish_combat()
+		pass
+
+func check_player_is_dead():
+	if(player.health <= 0): #if player is dead
+		emit_signal("display_text", "Player defeated")
+		emit_signal("combat_finished", player, enemy, "Enemy won")
+		finish_combat()
+		pass
+
+
+func finish_combat():
+	state = 0
+	combat_in_progress = false
+	pass
+	
 
