@@ -6,4 +6,4 @@ GODOT_URL=https://downloads.tuxfamily.org/godotengine/${GODOT_VERSION}/${GODOT_Z
 curl ${GODOT_URL} --output ${GODOT_ZIP}
 unzip ${GODOT_ZIP}
 chmod +x ${GODOT_BIN}
-./${GODOT_BIN} -d -s --path fractured-knight-game/project fractured-knight-game/addons/gut/gut_cmdln.gd -gdir=res://test -ginclude_subdirs -gexit
+./${GODOT_BIN} -d -s --path ./fractured-knight-game/project ./fractured-knight-game/addons/gut/gut_cmdln.gd -gdir=res://test -ginclude_subdirs -gexit
