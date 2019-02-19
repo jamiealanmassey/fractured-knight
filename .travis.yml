@@ -1,2 +1,2 @@
 language: minimal
-script: ./run_tests.sh
+script: ./fractured-knight-game/run_tests.sh
