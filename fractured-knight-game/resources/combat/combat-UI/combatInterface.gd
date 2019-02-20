@@ -51,4 +51,6 @@ func _on_Combat_display_text(text):
 
 func _on_Combat_combat_finished():
 	#Use this function to hide buttons etc. Wrap up combat
+	print("combat finished signal recieved")
+	$UIBox.hide()
 	pass # replace with function body

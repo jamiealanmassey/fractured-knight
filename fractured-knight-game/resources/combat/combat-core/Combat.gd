@@ -21,11 +21,9 @@ var enemy
 var combat_in_progress = false
 
 func _ready():
-	# Called when the node is added to the scene for the first time.
-	# Initialization here
 	# test code here 
 	var player = load("res://resources/combat/combat-core/actor.tscn").instance()
-	player.init(50)
+	player.init(100)
 	var enemy = load("res://resources/combat/combat-core/actor.tscn").instance()
 	enemy.init(20)
 	
@@ -124,7 +122,8 @@ func on_button_pressed(button_id):
 				
 		#returns to initial state
 		state = 0
-		emit_signal("show_menu_options")
+		if combat_in_progress:
+			emit_signal("show_menu_options")
 
 
 #resolves a player's attack
