@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://resources/levels/MerlinsTomb/TileMap/tileset_dungeon.png" type="Texture" id=1]
+
+[node name="Dungon" type="Node" index="0"]
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+position = Vector2( 104, 65 )
+texture = ExtResource( 1 )
+centered = false
+region_rect = Rect2( 96, 64, 32, 32 )
+
+

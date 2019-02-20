@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://resources/levels/MerlinsTomb/TileMap/Tileset.tres" type="TileSet" id=1]
+
+[node name="Node" type="Node" index="0"]
+
+[node name="TileMap" type="TileMap" parent="." index="0"]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 0, 0, 262144, 1, 0, 262145, 2, 0, 262145, 3, 0, 262145, 4, 0, 262145, 5, 0, 262145, 6, 0, 262145, 7, 0, 262145, 8, 0, 262146, 65536, 0, 393216, 65537, 0, 458753, 65538, 0, 327681, 65539, 0, 327681, 65540, 0, 327681, 65541, 0, 327681, 65542, 0, 327681, 65543, 0, 327681, 65544, 0, 327682, 131073, 0, 327680, 131074, 0, 327681, 131075, 0, 327681, 131076, 0, 327681, 131077, 0, 327681, 131078, 0, 327681, 131079, 0, 327681, 131080, 0, 327682, 196609, 0, 393216, 196610, 0, 393217, 196611, 0, 458753, 196612, 0, 327681, 196613, 0, 327681, 196614, 0, 327681, 196615, 0, 327681, 196616, 0, 327682, 262147, 0, 393216, 262148, 0, 393217, 262149, 0, 393217, 262150, 0, 393217, 262151, 0, 393217, 262152, 0, 393218 )
+_sections_unfolded = [ "Cell" ]
+
+
