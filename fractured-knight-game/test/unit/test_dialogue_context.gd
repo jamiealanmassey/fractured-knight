@@ -29,6 +29,7 @@ class TestDialogueContext:
 			system.evaluate_current_node()
 		
 		assert_eq(system.error, null)
+		assert_true(false)
 		#assert_signal_emitted(system, 'on_context_change')
 		#assert_signal_emit_count(system, 'on_context_change', 5)
 	
