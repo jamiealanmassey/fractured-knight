@@ -5,5 +5,5 @@ GODOT_URL=https://downloads.tuxfamily.org/godotengine/${GODOT_VERSION}/${GODOT_Z
 
 curl ${GODOT_URL} --output ${GODOT_ZIP}
 unzip ${GODOT_ZIP}
-chmod 777 ${GODOT_BIN}
-./${GODOT_BIN} -d -s --path ./project addons/gut/gut_cmdln.gd -gdir=res://test -ginclude_subdirs -gexit
+chmod +x ${GODOT_BIN}
+./${GODOT_BIN} -s --path ./project addons/gut/gut_cmdln.gd -gdir=res://test -ginclude_subdirs -gexit
