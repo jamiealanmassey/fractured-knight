@@ -4,7 +4,7 @@
 [ext_resource path="res://resources/dialogue_system/dialogue_controller.gd" type="Script" id=2]
 [ext_resource path="res://resources/dialogue_system/dialogue_parser.gd" type="Script" id=3]
 
-[node name="DialogueUI" type="Container" index="0"]
+[node name="DialogueUI" type="Container"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -40,13 +40,11 @@ script = ExtResource( 3 )
 
 [node name="DialogueText" type="RichTextLabel" parent="DialogueController" index="1"]
 
-anchor_left = 0.5
+anchor_left = 0.0
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -960.0
-margin_top = -250.0
-margin_right = 960.0
+margin_top = -221.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
 mouse_filter = 0
@@ -54,12 +52,12 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 bbcode_enabled = true
-bbcode_text = "This is the UI"
+bbcode_text = ""
 visible_characters = -1
 percent_visible = 1.0
 meta_underlined = true
 tab_size = 4
-text = "This is the UI"
+text = ""
 scroll_active = true
 scroll_following = false
 selection_enabled = false
