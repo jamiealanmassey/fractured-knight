@@ -31,11 +31,12 @@ class TestScript:
 	func get_new():
 		var Script = load(path)
 		var inst = null
-		if(class_name != null):
-			inst = Script.get(class_name).new()
-		else:
-			inst = Script.new()
-		return inst
+		if Script != null:
+			if(class_name != null):
+				inst = Script.get(class_name).new()
+			else:
+				inst = Script.new()
+			return inst
 
 	func get_full_name():
 		var to_return = path
@@ -87,6 +88,9 @@ func _parse_script(script):
 func _parse_inner_class_tests(script):
 	var inst = script.get_new()
 
+	if inst == null:
+		print('WARNING Ignoring ' + script.class_name + ' because it does not extend test.gd')
+		return false
 	if(!inst is load('res://addons/gut/test.gd')):
 		print('WARNING Ignoring ' + script.class_name + ' because it does not extend test.gd')
 		return false
