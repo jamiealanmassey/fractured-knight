@@ -40,8 +40,8 @@ func _process(delta):
 
 ## Parses the given dialogue file and adds it to the context for use in the Dialogue System
 func add_dialogue_file(dialogue_name, file_name):
-	$DialogueController/Parser.parse(file_name)
-	dialogues[dialogue_name] = $DialogueController/Parser.result_full
+	$Parser.parse(file_name)
+	dialogues[dialogue_name] = $Parser.result_full
 
 ## Initiates the Dialogue Context with a new dialogue that has been stored
 func start_dialogue(dialogue_name, process = true):
