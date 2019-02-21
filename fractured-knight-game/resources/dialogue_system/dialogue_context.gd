@@ -6,7 +6,8 @@ extends Node
 
 var DialogueNode = load('res://resources/dialogue_system/dialogue_node.gd')
 
-export (String, FILE, '*.fml') var test_file # Pass a file for testing
+export (Array, String) var dialogue_file_names
+export (Array, String) var dialogue_file_locations
 
 var current_node = null     ## Current node active in the context from the currently active dialogue
 var current_dialogue = null ## Current object of the active dialogue
@@ -22,12 +23,14 @@ signal on_context_finish  ## Called when the end of the current dialogue graph i
 signal on_context_trigger ## Called when a trigger has been executed in the script
 
 func _init():
-	if test_file != null:
-		self.add_dialogue_file('test', test_file)
+	for index in dialogue_file_names.size():
+			$Context.add_dialogue_file(dialogue_file_names[index], dialogue_file_locations[index])
 
 func _process(delta):
-	if processing:
-		evaluate_current_node()
+	if (processing &&
+	   (current_node.type != DialogueNode.NodeType.Write || 
+	   (current_node.type == DialogueNode.NodeType.Write && Input.is_action_pressed('ui_accept')))):
+			evaluate_current_node()
 
 ## Parses the given dialogue file and adds it to the context for use in the Dialogue System
 func add_dialogue_file(dialogue_name, file_name):

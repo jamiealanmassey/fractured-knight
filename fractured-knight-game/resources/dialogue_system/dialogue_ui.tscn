@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://resources/dialogue_system/dialogue_context.gd" type="Script" id=1]
-[ext_resource path="res://resources/dialogue_system/dialogue_parser.gd" type="Script" id=2]
+[ext_resource path="res://resources/dialogue_system/dialogue_controller.gd" type="Script" id=2]
+[ext_resource path="res://resources/dialogue_system/dialogue_parser.gd" type="Script" id=3]
 
-[node name="ContextUI" type="Container" index="0"]
+[node name="DialogueUI" type="Container" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -16,9 +17,28 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 script = ExtResource( 1 )
-test_file = null
+dialogue_file_names = null
+dialogue_file_locations = null
 
-[node name="DialogueText" type="RichTextLabel" parent="." index="0"]
+[node name="DialogueController" type="Container" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 2 )
+
+[node name="Parser" type="Node2D" parent="DialogueController" index="0"]
+
+script = ExtResource( 3 )
+
+[node name="DialogueText" type="RichTextLabel" parent="DialogueController" index="1"]
 
 anchor_left = 0.5
 anchor_top = 1.0
@@ -46,8 +66,10 @@ selection_enabled = false
 override_selected_font_color = false
 _sections_unfolded = [ "BBCode", "Visibility", "custom_fonts" ]
 
-[node name="Parser" type="Node2D" parent="." index="1"]
+[connection signal="on_context_begin" from="." to="DialogueController" method="_react_context_begin"]
 
-script = ExtResource( 2 )
+[connection signal="on_context_finish" from="." to="DialogueController" method="_react_context_finished"]
+
+[connection signal="on_context_process" from="." to="DialogueController" method="_react_context_process"]
 
 

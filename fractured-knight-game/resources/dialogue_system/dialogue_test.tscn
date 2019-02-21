@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://resources/dialogue_system/dialogue_ui.tscn" type="PackedScene" id=1]
+
+[node name="DialogueUI" index="0" instance=ExtResource( 1 )]
+
+
