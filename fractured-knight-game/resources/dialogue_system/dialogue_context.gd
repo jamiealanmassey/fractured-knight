@@ -15,6 +15,7 @@ var dialogues = {}          ## Maps name of dialogues to their trees and roots
 var symbols = {}            ## List of symbols that exist in this context
 var processing = false      ## State of the context (a flag to show if we are currently processing a dialogue)
 var wait_branch = false     ## State indicating that the context is waiting for a branch selection
+var wait_write = false      ## State indicating that the context is waiting for the player to progress write node
 var error = null            ## State of the context as an error (if one exists we cannot progress)
 var input_timer = null      ## Timer that stopped constant stream of input
 
@@ -29,14 +30,15 @@ func _ready():
 	input_timer.autostart = false
 	input_timer.one_shot = true
 	self.add_child(input_timer)
-	for index in dialogue_file_names.size():
+	for index in dialogue_file_names.size(): 
 			self.add_dialogue_file(dialogue_file_names[index], dialogue_file_locations[index])
 
 func _process(delta):
-	if (processing && input_timer.get_time_left() <= 0 &&
-	   (current_node.type != DialogueNode.NodeType.Write || 
-	   (current_node.type == DialogueNode.NodeType.Write && Input.is_action_pressed('ui_accept')))):
-			evaluate_current_node()
+	#if (processing && input_timer.get_time_left() <= 0 &&
+	#   (current_node.type != DialogueNode.NodeType.Write || 
+	#   (current_node.type == DialogueNode.NodeType.Write && Input.is_action_pressed('ui_accept')))):
+	if processing && input_timer.get_time_left() <= 0:
+		evaluate_current_node()
 
 ## Parses the given dialogue file and adds it to the context for use in the Dialogue System
 func add_dialogue_file(dialogue_name, file_name):
@@ -60,9 +62,13 @@ func evaluate_current_node():
 	
 	match current_node.type:
 		DialogueNode.NodeType.Write:
-			emit_signal('on_context_process', current_node)
-			current_node = current_node.children[0]
-			input_timer.start()
+			if !wait_write:
+				emit_signal('on_context_process', current_node)
+				wait_write = true
+			elif wait_write && Input.is_action_pressed('ui_accept'):
+				current_node = current_node.children[0]
+				input_timer.start()
+				wait_write = false
 		DialogueNode.NodeType.Branch:
 			emit_signal('on_context_process', current_node)
 			wait_branch = true
@@ -78,7 +84,7 @@ func evaluate_current_node():
 		DialogueNode.NodeType.Point:
 			current_node = current_node.children[0]
 		DialogueNode.NodeType.Trigger:
-			emit_signal('on_context_trigger', current_node.metadata[0])
+			emit_signal('on_context_trigger', current_node)
 			current_node = current_node.children[0]
 		DialogueNode.NodeType.Set:
 			if current_node.metadata.size() > 0:

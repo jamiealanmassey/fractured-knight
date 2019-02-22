@@ -8,6 +8,7 @@ script/source = "extends Node
 
 func _ready():
 	$DialogueUI.start_dialogue('complex')
+
 "
 
 [node name="DialogueTest" type="Node" index="0"]
