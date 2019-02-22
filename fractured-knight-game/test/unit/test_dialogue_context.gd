@@ -19,6 +19,7 @@ class TestDialogueContext:
 	
 	func test_context_starts():
 		system.start_dialogue('test')
+		system.test_mode = true
 		assert_true(system.processing)
 		assert_eq(system.current_dialogue, system.dialogues['test'])
 		assert_eq(system.current_node, system.dialogues['test']['root'])

@@ -6,7 +6,8 @@ extends Node
 
 var DialogueNode = load('res://resources/dialogue_system/dialogue_node.gd')
 
-export (String, FILE, '*.fml') var test_file # Pass a file for testing
+export (Array, String) var dialogue_file_names = []
+export (Array, String) var dialogue_file_locations = []
 
 var current_node = null     ## Current node active in the context from the currently active dialogue
 var current_dialogue = null ## Current object of the active dialogue
@@ -14,7 +15,10 @@ var dialogues = {}          ## Maps name of dialogues to their trees and roots
 var symbols = {}            ## List of symbols that exist in this context
 var processing = false      ## State of the context (a flag to show if we are currently processing a dialogue)
 var wait_branch = false     ## State indicating that the context is waiting for a branch selection
+var wait_write = false      ## State indicating that the context is waiting for the player to progress write node
 var error = null            ## State of the context as an error (if one exists we cannot progress)
+var input_timer = null      ## Timer that stopped constant stream of input
+var test_mode = false       ## Special flag for testing
 
 signal on_context_begin   ## Called when the context has begun or has been reset
 signal on_context_process ## Called each time the context progresses its state through the graph to a new node
@@ -22,11 +26,24 @@ signal on_context_finish  ## Called when the end of the current dialogue graph i
 signal on_context_trigger ## Called when a trigger has been executed in the script
 
 func _init():
-	if test_file != null:
-		self.add_dialogue_file('test', test_file)
+	input_timer = Timer.new()
+	input_timer.set_wait_time(0.2)
+	input_timer.autostart = false
+	input_timer.one_shot = true
+	self.add_child(input_timer)
+	pass
+
+func _ready():
+	#input_timer = Timer.new()
+	#input_timer.set_wait_time(0.2)
+	#input_timer.autostart = false
+	#input_timer.one_shot = true
+	#self.add_child(input_timer)
+	for index in dialogue_file_names.size(): 
+		self.add_dialogue_file(dialogue_file_names[index], dialogue_file_locations[index])
 
 func _process(delta):
-	if processing:
+	if processing && input_timer.get_time_left() <= 0:
 		evaluate_current_node()
 
 ## Parses the given dialogue file and adds it to the context for use in the Dialogue System
@@ -51,24 +68,30 @@ func evaluate_current_node():
 	
 	match current_node.type:
 		DialogueNode.NodeType.Write:
-			emit_signal('on_context_process', current_node.type, current_node.content, current_node.metadata)
-			current_node = current_node.children[0]
+			if !wait_write:
+				emit_signal('on_context_process', current_node)
+				wait_write = true
+			elif (test_mode && wait_write) || (wait_write && Input.is_action_pressed('ui_accept')):
+			#elif wait_write && Input.is_action_pressed('ui_accept'):
+				current_node = current_node.children[0]
+				input_timer.start()
+				wait_write = false
 		DialogueNode.NodeType.Branch:
-			emit_signal('on_context_process', current_node.type, current_node.content, current_node.metadata)
+			emit_signal('on_context_process', current_node)
 			wait_branch = true
 		DialogueNode.NodeType.Locate:
-			var location = current_node.content.stip_edges()
+			var location = current_node.content.strip_edges()
 			if location == 'end':
 				self.conclude_dialogue()
 			elif current_dialogue['pointers'].has(location):
 				current_node = current_dialogue['pointers'][location]
-				emit_signal('on_context_process', current_node.type, current_node.content, current_node.metadata)
+				emit_signal('on_context_process', current_node)
 			else:
 				error = 'Context Location Error: could not locate node ' + location + ' in dialogue'
 		DialogueNode.NodeType.Point:
 			current_node = current_node.children[0]
 		DialogueNode.NodeType.Trigger:
-			emit_signal('on_context_trigger', current_node.metadata[0])
+			emit_signal('on_context_trigger', current_node)
 			current_node = current_node.children[0]
 		DialogueNode.NodeType.Set:
 			if current_node.metadata.size() > 0:
@@ -91,10 +114,10 @@ func evaluate_current_node():
 			if current_node.children.size() < 2:
 				error = 'Context Evaluate Error: evaluate node must have two children'
 			
-			if symbols.has(current_node.metadata[0]):
-				current_node = current_node.children[1]
-			else:
+			if symbols.has(current_node.metadata[0]) && symbols[current_node.metadata[0]]:
 				current_node = current_node.children[0]
+			else:
+				current_node = current_node.children[1]
 		DialogueNode.NodeType.Error:
 			error = 'Context Node Error'
 		_:
