@@ -6,8 +6,9 @@ extends Container
 
 var DialogueNode = load('res://resources/dialogue_system/dialogue_node.gd')
 
-var buttons = [] ## Stored button objects
-var context = null 
+var buttons = []   ## Stored button objects
+var context = null ## Reference to the parent context of the controller
+
 
 func _ready():
 	context = get_parent()
@@ -54,4 +55,4 @@ func expand_button_count(metadata):
 		buttons[i].set_anchor_and_margin(MARGIN_LEFT, 1, -150)
 		buttons[i].rect_size = Vector2(130, 25)
 		buttons[i].set_text(metadata[i])
-		#buttons[i].hide()
+		buttons[i].show()

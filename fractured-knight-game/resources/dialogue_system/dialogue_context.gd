@@ -34,9 +34,6 @@ func _ready():
 			self.add_dialogue_file(dialogue_file_names[index], dialogue_file_locations[index])
 
 func _process(delta):
-	#if (processing && input_timer.get_time_left() <= 0 &&
-	#   (current_node.type != DialogueNode.NodeType.Write || 
-	#   (current_node.type == DialogueNode.NodeType.Write && Input.is_action_pressed('ui_accept')))):
 	if processing && input_timer.get_time_left() <= 0:
 		evaluate_current_node()
 
@@ -73,7 +70,7 @@ func evaluate_current_node():
 			emit_signal('on_context_process', current_node)
 			wait_branch = true
 		DialogueNode.NodeType.Locate:
-			var location = current_node.content.stip_edges()
+			var location = current_node.content.strip_edges()
 			if location == 'end':
 				self.conclude_dialogue()
 			elif current_dialogue['pointers'].has(location):
@@ -107,10 +104,10 @@ func evaluate_current_node():
 			if current_node.children.size() < 2:
 				error = 'Context Evaluate Error: evaluate node must have two children'
 			
-			if symbols.has(current_node.metadata[0]):
-				current_node = current_node.children[1]
-			else:
+			if symbols.has(current_node.metadata[0]) && symbols[current_node.metadata[0]]:
 				current_node = current_node.children[0]
+			else:
+				current_node = current_node.children[1]
 		DialogueNode.NodeType.Error:
 			error = 'Context Node Error'
 		_:

@@ -1,5 +1,6 @@
 write Good day traveler.
 write You must watch yourself in these parts.
+point[start]
 branch[I heed your advice, You don't scare me!]
     point[heeded]
     write Good! You would be wise to do so.
@@ -15,7 +16,7 @@ branch[I heed your advice, You don't scare me!]
 
 evaluate[door_blocked]
     write You hear a click and a sinking feeling floods you
-    locate end # Close the dialogue early
+    locate start # Close the dialogue early
 
 write Farewell traveller, until next time!
 write Oh, and one last piece of advice, it's dangerous to go alone.
