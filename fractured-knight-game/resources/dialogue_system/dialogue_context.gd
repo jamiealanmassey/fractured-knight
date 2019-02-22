@@ -6,8 +6,8 @@ extends Node
 
 var DialogueNode = load('res://resources/dialogue_system/dialogue_node.gd')
 
-export (Array, String) var dialogue_file_names
-export (Array, String) var dialogue_file_locations
+export (Array, String) var dialogue_file_names = []
+export (Array, String) var dialogue_file_locations = []
 
 var current_node = null     ## Current node active in the context from the currently active dialogue
 var current_dialogue = null ## Current object of the active dialogue
@@ -18,20 +18,29 @@ var wait_branch = false     ## State indicating that the context is waiting for 
 var wait_write = false      ## State indicating that the context is waiting for the player to progress write node
 var error = null            ## State of the context as an error (if one exists we cannot progress)
 var input_timer = null      ## Timer that stopped constant stream of input
+var test_mode = false       ## Special flag for testing
 
 signal on_context_begin   ## Called when the context has begun or has been reset
 signal on_context_process ## Called each time the context progresses its state through the graph to a new node
 signal on_context_finish  ## Called when the end of the current dialogue graph is reached
 signal on_context_trigger ## Called when a trigger has been executed in the script
 
-func _ready():
+func _init():
 	input_timer = Timer.new()
 	input_timer.set_wait_time(0.2)
 	input_timer.autostart = false
 	input_timer.one_shot = true
 	self.add_child(input_timer)
+	pass
+
+func _ready():
+	#input_timer = Timer.new()
+	#input_timer.set_wait_time(0.2)
+	#input_timer.autostart = false
+	#input_timer.one_shot = true
+	#self.add_child(input_timer)
 	for index in dialogue_file_names.size(): 
-			self.add_dialogue_file(dialogue_file_names[index], dialogue_file_locations[index])
+		self.add_dialogue_file(dialogue_file_names[index], dialogue_file_locations[index])
 
 func _process(delta):
 	if processing && input_timer.get_time_left() <= 0:
@@ -62,7 +71,8 @@ func evaluate_current_node():
 			if !wait_write:
 				emit_signal('on_context_process', current_node)
 				wait_write = true
-			elif wait_write && Input.is_action_pressed('ui_accept'):
+			elif (test_mode && wait_write) || (wait_write && Input.is_action_pressed('ui_accept')):
+			#elif wait_write && Input.is_action_pressed('ui_accept'):
 				current_node = current_node.children[0]
 				input_timer.start()
 				wait_write = false
