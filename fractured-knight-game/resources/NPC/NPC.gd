@@ -1,6 +1,10 @@
 extends Node2D
 
-export (string) dialogue_file
+# The combat actor for the NPC. Needs to be set on creation
+var combat_actor
+# Dialogue name for use by the dialogue system
+var dialogue_name
+
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
