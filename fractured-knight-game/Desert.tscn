@@ -1,30 +1,25 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://resources/levels/Desert/Tilemap/Tiles/arabtown-tile.png" type="Texture" id=1]
-[ext_resource path="res://resources/levels/Desert/Tilemap/Tiles/building1.png" type="Texture" id=2]
 
 [node name="Node" type="Node" index="0"]
 
 [node name="tile1" type="Sprite" parent="." index="0"]
 
-position = Vector2( 1548.21, 163.021 )
+position = Vector2( 18934.8, 13744.8 )
 texture = ExtResource( 1 )
-region_enabled = true
 region_rect = Rect2( 0, 0, 32, 32 )
-_sections_unfolded = [ "Region" ]
 
 [node name="tile2" type="Sprite" parent="." index="1"]
 
-position = Vector2( 2602.52, 587.161 )
+position = Vector2( 18934.8, 13744.8 )
 texture = ExtResource( 1 )
-region_enabled = true
 region_rect = Rect2( 32, 0, 32, 32 )
-_sections_unfolded = [ "Region" ]
 
 [node name="tile3" type="Sprite" parent="." index="2"]
 
-position = Vector2( 1190.5, 587.695 )
-texture = ExtResource( 2 )
-region_rect = Rect2( 0, 0, 160, 192 )
+position = Vector2( 18934.8, 13744.8 )
+texture = ExtResource( 1 )
+region_rect = Rect2( 32, 0, 32, 32 )
 
 
