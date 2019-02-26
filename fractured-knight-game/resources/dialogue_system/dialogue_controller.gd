@@ -6,20 +6,40 @@ extends Container
 
 var DialogueNode = load('res://resources/dialogue_system/dialogue_node.gd')
 
-var buttons = []   ## Stored button objects
-var context = null ## Reference to the parent context of the controller
+export (float) var unpack_factor = 1
 
+var buttons = []                  ## Stored button objects
+var context = null                ## Reference to the parent context of the controller
+var controller_begin_tween = null ## Stores Tweener to slide whole dialogue controller in
+var controller_end_tween = null   ## Stores Tweener to fade dialogue controller out when finished
+var buttons_unpack_tween = null   ## 
+var buttons_pack_tween = null     ## 
 
 func _ready():
 	context = get_parent()
+	buttons_unpack_tween = Tween.new()
+	buttons_pack_tween = Tween.new()
+	buttons_pack_tween.connect('tween_completed', self, '_buttons_pack_tween_finished')
+	controller_begin_tween = Tween.new()
+	controller_end_tween = Tween.new()
+	controller_end_tween.connect('tween_completed', self, '_controller_end_tween_finished')
+	self.add_child(buttons_unpack_tween)
+	self.add_child(buttons_pack_tween)
+	self.add_child(controller_begin_tween)
+	self.add_child(controller_end_tween)
 	print(context)
 
 func _react_context_begin():
+	self.rect_global_position.y = 240
 	self.show()
+	controller_begin_tween.interpolate_property(self, 'rect_global_position', Vector2(0, 240), Vector2(0, 0), 0.25, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	controller_begin_tween.interpolate_property(self, 'modulate:a', 0, 1, 0.35, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	controller_begin_tween.start()
 	print('Controller has reacted to context begin')
 
 func _react_context_finished():
-	self.hide()
+	controller_end_tween.interpolate_property(self, 'modulate:a', 1, 0, 0.5, Tween.TRANS_SINE, Tween.EASE_OUT)
+	controller_end_tween.start()
 	print('Controller has reacted to context finished')
 
 func _react_context_process(node):
@@ -27,13 +47,46 @@ func _react_context_process(node):
 		$DialogueText.set_text(node.content)
 	elif node.type == DialogueNode.NodeType.Branch:
 		expand_button_count(node.metadata)
+		unpack_buttons()
 	
 	print('Controller has reacted to context process')
+
+func _controller_end_tween_finished(obj, key):
+	self.hide()
+	print('tween end finished')
+
+func _buttons_pack_tween_finished(obj, key):
+	for button in buttons:
+		button.disabled = true
+		button.modulate.a = 1
+		#button.rect_rotation = 0
+		button.hide()
 
 func _on_choice_pressed(button):
 	var index = buttons.find(button)
 	context.pick_branch(index)
-	hide_all_buttons()
+	#hide_all_buttons()
+	pack_buttons()
+
+func unpack_buttons():
+	var viewport_x = get_viewport().size.x
+	for button in range(buttons.size()):
+		var calc_before_x = viewport_x + (buttons[button].rect_size.x + 10)
+		var calc_after_x = viewport_x - (buttons[button].rect_size.x + 10)
+		buttons_unpack_tween.interpolate_property(buttons[button], 'rect_global_position:x', calc_before_x, calc_after_x, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN, 0.05 * button)
+		buttons[button].show()
+		buttons[button].disabled = false
+	
+	buttons_unpack_tween.start()
+
+func pack_buttons():
+	var viewport_y = get_viewport().size.y
+	for button in buttons:
+		#buttons_pack_tween.interpolate_property(button, 'rect_rotation', 0, 90, 0.25,  Tween.TRANS_LINEAR, Tween.EASE_OUT)
+		buttons_pack_tween.interpolate_property(button, 'rect_global_position:y', button.rect_global_position.y, viewport_y + button.rect_size.y, 0.5, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+		buttons_pack_tween.interpolate_property(button, 'modulate:a', 1, 0, 0.25, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+		
+	buttons_pack_tween.start()
 
 func hide_all_buttons():
 	for i in range(buttons.size()):
@@ -45,14 +98,16 @@ func expand_button_count(metadata):
 		var button = Button.new()
 		button.rect_min_size = Vector2(120, 25)
 		button.connect("pressed", self, "_on_choice_pressed", [button])
+		button.add_font_override("font", load('res://resources/fonts/dynamic_font_btn.tres'))
 		buttons.append(button)
 		self.add_child(button)
 		
-	for i in range(buttons.size()):
+	for i in range(buttons.size()):		
 		buttons[i].set_anchor_and_margin(MARGIN_BOTTOM, 1, 0)
 		buttons[i].set_anchor_and_margin(MARGIN_RIGHT, 1, 0)
-		buttons[i].set_anchor_and_margin(MARGIN_TOP, 1, -(50 + (38 * i)))
-		buttons[i].set_anchor_and_margin(MARGIN_LEFT, 1, -150)
-		buttons[i].rect_size = Vector2(130, 25)
+		buttons[i].set_anchor_and_margin(MARGIN_TOP, 1, -(100 + (38 * i)))
+		buttons[i].set_anchor_and_margin(MARGIN_LEFT, 1, 0)
+		buttons[i].rect_min_size = Vector2(150, 25)
 		buttons[i].set_text(metadata[i])
-		buttons[i].show()
+		buttons[i].rect_size = Vector2(150, 25)
+		buttons[i].disabled = true

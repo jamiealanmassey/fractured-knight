@@ -31,7 +31,6 @@ func _init():
 	input_timer.autostart = false
 	input_timer.one_shot = true
 	self.add_child(input_timer)
-	pass
 
 func _ready():
 	#input_timer = Timer.new()

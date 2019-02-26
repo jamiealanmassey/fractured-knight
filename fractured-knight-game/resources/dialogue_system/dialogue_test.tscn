@@ -8,6 +8,10 @@ script/source = "extends Node
 
 func _ready():
 	$DialogueUI.start_dialogue('complex')
+
+func _process(delta):
+	if Input.is_action_pressed('ui_page_down') && !$DialogueUI.processing:
+		$DialogueUI.start_dialogue('complex')
 "
 
 [node name="DialogueTest" type="Node" index="0"]
