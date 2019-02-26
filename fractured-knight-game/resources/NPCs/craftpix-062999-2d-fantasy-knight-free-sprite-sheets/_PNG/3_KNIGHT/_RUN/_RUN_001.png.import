@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/game-logo.jpg-01fd7da0d37e2025c10ae15828523ddf.stex"
+path="res://.import/_RUN_001.png-7d7a3b55547bde36677b5aafd18a8b5a.stex"
 
 [deps]
 
-source_file="res://game-logo.jpg"
-dest_files=[ "res://.import/game-logo.jpg-01fd7da0d37e2025c10ae15828523ddf.stex" ]
+source_file="res://resources/NPCs/craftpix-062999-2d-fantasy-knight-free-sprite-sheets/_PNG/3_KNIGHT/_RUN/_RUN_001.png"
+dest_files=[ "res://.import/_RUN_001.png-7d7a3b55547bde36677b5aafd18a8b5a.stex" ]
 
 [params]
 
