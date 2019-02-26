@@ -12,8 +12,10 @@ var buttons = []                  ## Stored button objects
 var context = null                ## Reference to the parent context of the controller
 var controller_begin_tween = null ## Stores Tweener to slide whole dialogue controller in
 var controller_end_tween = null   ## Stores Tweener to fade dialogue controller out when finished
-var buttons_unpack_tween = null   ## 
-var buttons_pack_tween = null     ## 
+var buttons_unpack_tween = null   ## Stores Tweener to slide buttons onto screen
+var buttons_pack_tween = null     ## Stores Tweener to drop buttons off of screen
+var text_timer = null             ## Timer to track intervals to add text
+var text_target = ''              ## Stores the target string and prints out to it (if non-empty)
 
 func _ready():
 	context = get_parent()
@@ -23,10 +25,15 @@ func _ready():
 	controller_begin_tween = Tween.new()
 	controller_end_tween = Tween.new()
 	controller_end_tween.connect('tween_completed', self, '_controller_end_tween_finished')
+	text_timer = Timer.new()
+	text_timer.autostart = true
+	text_timer.wait_time = 0.075
+	text_timer.connect('timeout', self, '_text_timer_tick')
 	self.add_child(buttons_unpack_tween)
 	self.add_child(buttons_pack_tween)
 	self.add_child(controller_begin_tween)
 	self.add_child(controller_end_tween)
+	self.add_child(text_timer)
 	print(context)
 
 func _react_context_begin():
@@ -44,12 +51,17 @@ func _react_context_finished():
 
 func _react_context_process(node):
 	if node.type == DialogueNode.NodeType.Write:
-		$DialogueText.set_text(node.content)
+		$DialogueText.text = ''
+		text_target = node.content
 	elif node.type == DialogueNode.NodeType.Branch:
 		expand_button_count(node.metadata)
 		unpack_buttons()
 	
 	print('Controller has reacted to context process')
+
+func _text_timer_tick():
+	if (text_target != '' && $DialogueText.text.length() < text_target.length()):
+		$DialogueText.text = $DialogueText.text + text_target[$DialogueText.text.length()]
 
 func _controller_end_tween_finished(obj, key):
 	self.hide()
@@ -111,3 +123,5 @@ func expand_button_count(metadata):
 		buttons[i].set_text(metadata[i])
 		buttons[i].rect_size = Vector2(150, 25)
 		buttons[i].disabled = true
+		
+	
