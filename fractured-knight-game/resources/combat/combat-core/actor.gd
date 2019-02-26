@@ -1,8 +1,8 @@
 extends Node
-var weapons
-var stats
-var base_moves
-var health
+export (Array) var weapons
+export var stats = {'accuracy' : 0, 'damage' : 0}
+export (Array) var base_moves 
+export (int) var health
 var armour
 
 

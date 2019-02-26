@@ -1,8 +1,8 @@
 extends Node
-var move_name
-var accuracy
-var damage
-var weapon
+export (String) var move_name
+export (int) var accuracy
+export (int) var damage
+export (Resource) var weapon
 
 func _ready():
 	# Called when the node is added to the scene for the first time.

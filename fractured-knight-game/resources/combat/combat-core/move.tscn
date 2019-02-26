@@ -1,9 +1,24 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://resources/combat/combat-core/move.gd" type="Script" id=1]
+[ext_resource path="res://resources/combat/combat-core/weapon.gd" type="Script" id=2]
+
+[sub_resource type="Resource" id=1]
+
+script = ExtResource( 2 )
+_sections_unfolded = [ "Resource" ]
+moves = null
+attributes_buffs = {
+"accuracy": 0,
+"damage": 0
+}
 
 [node name="move" type="Node" index="0"]
 
 script = ExtResource( 1 )
+move_name = null
+accuracy = 0
+damage = null
+weapon = SubResource( 1 )
 
 
