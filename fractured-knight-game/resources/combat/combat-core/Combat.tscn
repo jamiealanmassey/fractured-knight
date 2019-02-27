@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://resources/combat/combat-core/Combat.gd" type="Script" id=1]
+[ext_resource path="res://resources/combat/combat-core/combat.gd" type="Script" id=1]
 [ext_resource path="res://resources/combat/combat-UI/combatInterface.tscn" type="PackedScene" id=2]
 
-[node name="Combat" type="Node"]
+[node name="Combat" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -17,6 +17,6 @@ script = ExtResource( 1 )
 
 [connection signal="display_text" from="." to="combatInterface" method="_on_Combat_display_text"]
 
-[connection signal="btnPressed" from="combatInterface" to="." method="_on_UIBox_btnPressed"]
+[connection signal="btnPressed" from="combatInterface" to="." method="on_button_pressed"]
 
 

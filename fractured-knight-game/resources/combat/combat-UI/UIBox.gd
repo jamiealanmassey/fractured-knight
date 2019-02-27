@@ -37,24 +37,12 @@ func find_pressed():
 			for children in all_Buttons:
 				$BtnContainer.remove_child(children)
 
+
 func get_index(name, array):
 	for i in range(0, array.size()):
 		if(array[i] == name):
 			return i
 
-	
-func _on_Combat_show_fighting_options(moves):
-	var move_names = []
-	for move in moves:
-		move_names.append(move.move_name)
-	read_array(move_names)
-	pass # replace with function body
-
-
-func _on_Combat_show_menu_options():
-	var menu_options = ["fight", "flee"]
-	read_array(menu_options)
-	pass # replace with function body
 
 # Takes an array of strings and displays them in buttons
 func display_options(options):
@@ -64,5 +52,4 @@ func display_options(options):
 
 func _on_Combat_UI_get_ready():
 	show()
-	_on_Combat_show_menu_options()
 	pass # replace with function body
