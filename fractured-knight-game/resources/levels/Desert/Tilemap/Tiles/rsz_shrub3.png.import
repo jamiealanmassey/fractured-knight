@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/wateranimate2.png-43ba06fb84e35c28230ab5425335a3ab.stex"
+path="res://.import/rsz_shrub3.png-ed393dd4ece7964706daba5eab0bf80e.stex"
 
 [deps]
 
-source_file="res://resources/levels/GrassLand/wateranimate2.png"
-dest_files=[ "res://.import/wateranimate2.png-43ba06fb84e35c28230ab5425335a3ab.stex" ]
+source_file="res://resources/levels/Desert/Tilemap/Tiles/rsz_shrub3.png"
+dest_files=[ "res://.import/rsz_shrub3.png-ed393dd4ece7964706daba5eab0bf80e.stex" ]
 
 [params]
 
