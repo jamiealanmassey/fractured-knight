@@ -18,33 +18,35 @@ func before_each():
 	enemy.init(20)
 	
 	move_scene = load("res://resources/combat/combat-core/move.gd")
-	weapon_scene = load("res://resources/combat/combat-core/weapon.gd")
+	#weapon_scene = load("res://resources/combat/combat-core/weapon.gd")
 	
 	move = move_scene.new()
 	move2 = move_scene.new()
-	sword = weapon_scene.new()
+	#sword = weapon_scene.new()
 	
 	move.init("punch", 60, 8)
 	
 	player.add_move(move)
 	
-	sword = weapon_scene.new()
-	sword.init({"accuracy" : 20, "damage" : 5})
+	#sword = weapon_scene.new()
+	#sword.init({"accuracy" : 20, "damage" : 5})
 	
-	move2 = move_scene.new()
-	move2.init("stab", 50, 7, sword)
+	#move2 = move_scene.new()
+	#move2.init("stab", 50, 7, sword)
 	
-	sword.add_move(move2)
+	#sword.add_move(move2)
 	
-	player.add_weapon(sword)
+	#player.add_weapon(sword)
 	enemy.add_move(move)
-	enemy.add_weapon(sword)
+	#enemy.add_weapon(sword)
 	
 	player.set_stat("damage", 3)
 	player.set_stat("accuracy", 10)
 	
 	enemy.set_stat("damage", 1)
 	enemy.set_stat("accuracy", 5)
+	
+	add_child(combat)
 	
 	#starts combat with given seed
 	combat.start_combat(player, enemy, 800.5)
@@ -104,7 +106,7 @@ func test_attacks():
 		expected_signal_count.output_only += 1
 		
 		#checkes player attack message
-		if player_health != combat.player.health:
+		if enemy_health != combat.enemy.health:
 			assert_signal_emitted_with_parameters(combat, "display_text", ["You hit the enemy for " + str(enemy_health - combat.enemy.health)], expected_signal_count.display_text)
 		else:
 			assert_signal_emitted_with_parameters(combat, "display_text", ["You missed"], expected_signal_count.display_text)
@@ -118,10 +120,10 @@ func test_attacks():
 			combat_finished_signal_emitted = true
 		
 		#checkes enemy attack message
-		if enemy_health != combat.enemy.health:
-			assert_signal_emitted_with_parameters(combat, "display_text", ["Player got hit for " + str(player_health - combat.player.health)], expected_signal_count.display_text)
+		if player_health != combat.player.health:
+			assert_signal_emitted_with_parameters(combat, "display_text", ["Player got hit for " + str(player_health - combat.player.health)], expected_signal_count.display_text - 1)
 			expected_signal_count.display_text += 1
-		elif combat.enemy_health != 0:
+		elif combat.player.health != 0:
 			assert_signal_emitted_with_parameters(combat, "display_text", ["Enemy missed"], expected_signal_count.display_text)
 			expected_signal_count.display_text += 1
 		
@@ -137,7 +139,7 @@ func test_attacks():
 		
 		assert_signal_emit_count(combat, "show_menu_options", expected_signal_count.show_menu_options)
 		assert_signal_emit_count(combat, "display_text", expected_signal_count.display_text)
-		move_choice = (move_choice + 1) % 2
+		#move_choice = (move_choice + 1) % 2
 		
 	assert_signal_emit_count(combat, "combat_finished", 1, "Combat finished signal should only fire exactly once")
 

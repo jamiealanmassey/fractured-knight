@@ -6,11 +6,10 @@
 [resource]
 
 script = ExtResource( 2 )
-weapons = [  ]
 stats = {
 "accuracy": 10,
 "damage": 2
 }
-base_moves = [ ExtResource( 1 ) ]
+moves = [ ExtResource( 1 ) ]
 health = 40
 

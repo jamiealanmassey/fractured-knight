@@ -6,6 +6,8 @@
 
 script = ExtResource( 1 )
 move_name = "Punch"
-accuracy = 50
-damage = 6
+attributes = {
+"accuracy": 50,
+"damage": 5
+}
 

@@ -1,7 +1,6 @@
 extends Resource
-export (Array) var weapons
 export var stats = {'accuracy' : 0, 'damage' : 0}
-export (Array) var base_moves 
+export (Array) var moves 
 export (int) var health
 var armour
 
@@ -12,22 +11,12 @@ func _ready():
 	pass
 
 func init(health):
-	weapons = []
 	stats = {}
-	base_moves = []
+	moves = []
 	self.health = health
 
 func get_all_moves():
-	var moves = []
-	for weapon in weapons:
-		for move in weapon.moves:
-			moves.append(move)
-	
-	for move in base_moves:
-		moves.append(move)
 	return moves
-		
-
 
 func get_stat(stat_name):
 	if (stats.has(stat_name.to_lower())):
@@ -39,7 +28,5 @@ func set_stat(stat_name, value):
 	stats[stat_name.to_lower()] = value
 	
 func add_move(move):
-	base_moves.append(move)
+	moves.append(move)
 	
-func add_weapon(weapon):
-	weapons.append(weapon)
