@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://resources/combat/combat_test/move_punch.tres" type="Resource" id=1]
+[ext_resource path="res://resources/combat/combat-core/actor.gd" type="Script" id=2]
+
+[resource]
+
+script = ExtResource( 2 )
+weapons = [  ]
+stats = {
+"accuracy": 10,
+"damage": 2
+}
+base_moves = [ ExtResource( 1 ) ]
+health = 40
+

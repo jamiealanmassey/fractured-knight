@@ -12,26 +12,26 @@ var move2
 
 func before_each():
 	combat = load("res://resources/combat/combat-core/Combat.tscn").instance()
-	player = load("res://resources/combat/combat-core/actor.tscn").instance()
+	player = load("res://resources/combat/combat-core/actor.gd").new()
 	player.init(50)
-	enemy = load("res://resources/combat/combat-core/actor.tscn").instance()
+	enemy = load("res://resources/combat/combat-core/actor.gd").new()
 	enemy.init(20)
 	
-	move_scene = load("res://resources/combat/combat-core/move.tscn")
-	weapon_scene = load("res://resources/combat/combat-core/weapon.tscn")
+	move_scene = load("res://resources/combat/combat-core/move.gd")
+	weapon_scene = load("res://resources/combat/combat-core/weapon.gd")
 	
-	move = move_scene.instance()
-	move2 = move_scene.instance()
-	sword = weapon_scene.instance()
+	move = move_scene.new()
+	move2 = move_scene.new()
+	sword = weapon_scene.new()
 	
 	move.init("punch", 60, 8)
 	
 	player.add_move(move)
 	
-	sword = weapon_scene.instance()
+	sword = weapon_scene.new()
 	sword.init({"accuracy" : 20, "damage" : 5})
 	
-	move2 = move_scene.instance()
+	move2 = move_scene.new()
 	move2.init("stab", 50, 7, sword)
 	
 	sword.add_move(move2)
@@ -48,8 +48,8 @@ func before_each():
 	
 	#starts combat with given seed
 	combat.start_combat(player, enemy, 800.5)
-	move_scene = load("res://resources/combat/combat-core/move.tscn")
-	weapon_scene = load("res://resources/combat/combat-core/weapon.tscn")
+	move_scene = load("res://resources/combat/combat-core/move.gd")
+	weapon_scene = load("res://resources/combat/combat-core/weapon.gd")
 	
 
 	

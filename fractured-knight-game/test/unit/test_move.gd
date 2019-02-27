@@ -2,7 +2,7 @@ extends "res://addons/gut/test.gd"
 
 
 func test_move_init():
-	var move = load("res://resources/combat/combat-core/move.tscn").instance()
+	var move = load("res://resources/combat/combat-core/move.gd").new()
 	var move_name = "Slash"
 	var acc = 50
 	var dmg = 6
@@ -14,8 +14,8 @@ func test_move_init():
 	
 
 func test_move_init_with_weapon():
-	var move = load("res://resources/combat/combat-core/move.tscn").instance()
-	var weapon = load("res://resources/combat/combat-core/weapon.tscn").instance()
+	var move = load("res://resources/combat/combat-core/move.gd").new()
+	var weapon = load("res://resources/combat/combat-core/weapon.gd").new()
 	var move_name = "Slash"
 	var acc = 50
 	var dmg = 6

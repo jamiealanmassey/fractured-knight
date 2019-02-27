@@ -58,8 +58,9 @@ func on_button_pressed(button_id):
 			resolve_enemy_attack()
 			yield($combatInterface, "finished_displaying_text")
 			check_player_is_dead()
-			emit_signal("show_menu_options")
-			state = 0
+			if combat_in_progress:
+				emit_signal("show_menu_options")
+				state = 0
 			pass
 	elif(state == 1): #waiting for move selection
 		#gets the move chosen
