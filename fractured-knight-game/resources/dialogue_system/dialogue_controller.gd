@@ -6,10 +6,9 @@ extends Container
 
 var DialogueNode = load('res://resources/dialogue_system/dialogue_node.gd')
 
-export (float) var letters_per_sec = 0.05 ## How many letters to display per x seconds
-export (int) var button_offset = 35       ## Pixel spacing of all buttons from bottom of screen
-export (int) var button_spacing = 35      ## Pixel spacing between each button choice
-
+var letters_per_sec = 0.05 ## How many letters to display per x seconds
+var button_offset = 35       ## Pixel spacing of all buttons from bottom of screen
+var button_spacing = 35      ## Pixel spacing between each button choice
 var buttons = []                  ## Stored button objects
 var context = null                ## Reference to the parent context of the controller
 var controller_begin_tween = null ## Stores Tweener to slide whole dialogue controller in
@@ -17,7 +16,9 @@ var controller_end_tween = null   ## Stores Tweener to fade dialogue controller 
 var buttons_unpack_tween = null   ## Stores Tweener to slide buttons onto screen
 var buttons_pack_tween = null     ## Stores Tweener to drop buttons off of screen
 var text_timer = null             ## Timer to track intervals to add text
-var text_target = ''              ## Stores the target string and prints out to it (if non-empty)
+var text_target = ''              ## Stores the target string and prints out to it (if non-empty) 
+var readout_sound_files = []      ## Array of sounds that can be played
+var readout_sounds = []           ## Array of AudioPlayerStream objects
 
 func _ready():
 	context = get_parent()
@@ -31,13 +32,20 @@ func _ready():
 	text_timer.autostart = true
 	text_timer.wait_time = letters_per_sec
 	text_timer.connect('timeout', self, '_text_timer_tick')
+	readout_sound_files.append('res://resources/sfx/dialogue/beep.wav')
 	self.add_child(buttons_unpack_tween)
 	self.add_child(buttons_pack_tween)
 	self.add_child(controller_begin_tween)
 	self.add_child(controller_end_tween)
 	self.add_child(text_timer)
 	get_tree().get_root().connect('size_changed', self, '_on_resize')
-	print(context)
+	
+	for i in range(readout_sound_files.size()):
+		readout_sounds.append(AudioStreamPlayer.new())
+		readout_sounds[i].stream = load(readout_sound_files[i])
+		readout_sounds[i].stream.loop_mode = AudioStreamSample.LOOP_DISABLED
+		self.add_child(readout_sounds[i])
+	    
 
 ## Signal that is emitted when context starts new dialogue
 func _react_context_begin():
@@ -48,13 +56,14 @@ func _react_context_begin():
 	controller_begin_tween.interpolate_property(self, 'rect_global_position:y', calc_before_y, calc_after_y, 0.25, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	controller_begin_tween.interpolate_property(self, 'modulate:a', 0, 1, 0.35, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	controller_begin_tween.start()
-	print('Controller has reacted to context begin')
+	
 
 ## Signal that is emitted when context finishes its current dialogue
 func _react_context_finished():
 	controller_end_tween.interpolate_property(self, 'modulate:a', 1, 0, 0.5, Tween.TRANS_SINE, Tween.EASE_OUT)
 	controller_end_tween.start()
-	print('Controller has reacted to context finished')
+	$DialogueText.text = text_target
+	
 
 ## Signal that is emitted when context is modified
 func _react_context_process(node):
@@ -66,7 +75,6 @@ func _react_context_process(node):
 		expand_button_count(node.metadata)
 		unpack_buttons()
 	
-	print('Controller has reacted to context process')
 
 ## Signal that comes from Godot itself allowing us to deal with the size of the viewport
 ## changing. Here we re-position buttons and the UI itself depending on context state.
@@ -83,16 +91,19 @@ func _on_resize():
 		for i in range(buttons.size()):
 			buttons[i].rect_global_position.x = size.x
 			buttons[i].rect_global_position.y = size.y - (button_offset + (button_spacing * i))
+	
 
 ## Signal for interval timer to progress text reader
 func _text_timer_tick():
 	if (text_target != '' && $DialogueText.text.length() < text_target.length()):
 		$DialogueText.text = $DialogueText.text + text_target[$DialogueText.text.length()]
+		readout_sounds[randi() % readout_sounds.size()].play()
+	
 
 ## Signal called when the controller is finished
 func _controller_end_tween_finished(obj, key):
 	self.hide()
-	print('tween end finished')
+	
 
 ## Signal called when choice has been selected and tweening is finished,
 ## here we reset all the button variables
@@ -123,6 +134,7 @@ func unpack_buttons():
 		buttons[button].disabled = false
 	
 	buttons_unpack_tween.start()
+	
 
 ## Helper function that packs the buttons away from the screen
 func pack_buttons():
@@ -132,6 +144,7 @@ func pack_buttons():
 		buttons_pack_tween.interpolate_property(button, 'modulate:a', 1, 0, 0.25, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 		
 	buttons_pack_tween.start()
+	
 
 ## Helper function that creates any new required buttons and sets up old buttons with the correct
 ## metadata and positioning
