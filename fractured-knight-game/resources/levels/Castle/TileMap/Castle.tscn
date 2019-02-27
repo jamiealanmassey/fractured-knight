@@ -1,17 +1,249 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://resources/levels/Castle/TileMap/Images/Castle2.png" type="Texture" id=1]
+
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 21.3291
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 14.0536, 13.5573 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 14.1061, 12.9928 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32.6116, 32.4813 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 46.707, 51.9026 )
+
+[sub_resource type="RectangleShape2D" id=6]
+
+custom_solver_bias = 0.0
+extents = Vector2( 50.5681, 48.7489 )
+
+[sub_resource type="RectangleShape2D" id=7]
+
+custom_solver_bias = 0.0
+extents = Vector2( 47.2194, 47.9743 )
+
+[sub_resource type="RectangleShape2D" id=8]
+
+custom_solver_bias = 0.0
+extents = Vector2( 46.0579, 49.1094 )
+
+[sub_resource type="RectangleShape2D" id=9]
+
+custom_solver_bias = 0.0
+extents = Vector2( 31.2421, 34.1608 )
+
+[sub_resource type="RectangleShape2D" id=10]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16.5275, 17.2809 )
+
+[sub_resource type="CircleShape2D" id=11]
+
+custom_solver_bias = 0.0
+radius = 65.9487
+
+[sub_resource type="RectangleShape2D" id=12]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32.6218, 31.7936 )
+
+[sub_resource type="RectangleShape2D" id=13]
+
+custom_solver_bias = 0.0
+extents = Vector2( 20.0617, 16.8612 )
+
+[sub_resource type="RectangleShape2D" id=14]
+
+custom_solver_bias = 0.0
+extents = Vector2( 14.7454, 42.2095 )
+
+[sub_resource type="RectangleShape2D" id=15]
+
+custom_solver_bias = 0.0
+extents = Vector2( 14.7722, 33.5219 )
+
+[sub_resource type="RectangleShape2D" id=16]
+
+custom_solver_bias = 0.0
+extents = Vector2( 17.3674, 17.0719 )
+
+[sub_resource type="RectangleShape2D" id=17]
+
+custom_solver_bias = 0.0
+extents = Vector2( 17.3211, 17.2523 )
+
+[sub_resource type="RectangleShape2D" id=18]
+
+custom_solver_bias = 0.0
+extents = Vector2( 14.3989, 44.8351 )
+
+[sub_resource type="RectangleShape2D" id=19]
+
+custom_solver_bias = 0.0
+extents = Vector2( 15.5807, 35.3806 )
+
+[sub_resource type="RectangleShape2D" id=20]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 34.7327 )
+
+[sub_resource type="RectangleShape2D" id=21]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32.5189, 55.3362 )
+
+[sub_resource type="RectangleShape2D" id=22]
+
+custom_solver_bias = 0.0
+extents = Vector2( 36.288, 34.3437 )
+
+[sub_resource type="RectangleShape2D" id=23]
+
+custom_solver_bias = 0.0
+extents = Vector2( 17.0585, 16.4941 )
+
+[sub_resource type="CircleShape2D" id=24]
+
+custom_solver_bias = 0.0
+radius = 18.6862
+
+[sub_resource type="RectangleShape2D" id=25]
+
+custom_solver_bias = 0.0
+extents = Vector2( 15.8712, 17.9648 )
+
+[sub_resource type="RectangleShape2D" id=26]
+
+custom_solver_bias = 0.0
+extents = Vector2( 15.083, 35.36 )
+
+[sub_resource type="CircleShape2D" id=27]
+
+custom_solver_bias = 0.0
+radius = 11.9651
+
+[sub_resource type="RectangleShape2D" id=28]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16.342, 41.495 )
+
+[sub_resource type="RectangleShape2D" id=29]
+
+custom_solver_bias = 0.0
+extents = Vector2( 13.8293, 25.3804 )
+
+[sub_resource type="RectangleShape2D" id=30]
+
+custom_solver_bias = 0.0
+extents = Vector2( 14.064, 24.8208 )
+
+[sub_resource type="RectangleShape2D" id=31]
+
+custom_solver_bias = 0.0
+extents = Vector2( 15.3597, 29.9107 )
+
+[sub_resource type="CircleShape2D" id=32]
+
+custom_solver_bias = 0.0
+radius = 25.9513
+
+[sub_resource type="RectangleShape2D" id=33]
+
+custom_solver_bias = 0.0
+extents = Vector2( 51.2468, 44.9358 )
+
+[sub_resource type="RectangleShape2D" id=34]
+
+custom_solver_bias = 0.0
+extents = Vector2( 58.6537, 45.6611 )
+
+[sub_resource type="RectangleShape2D" id=35]
+
+custom_solver_bias = 0.0
+extents = Vector2( 47.8545, 35.1668 )
+
+[sub_resource type="RectangleShape2D" id=36]
+
+custom_solver_bias = 0.0
+extents = Vector2( 35.8002, 31.9071 )
+
+[sub_resource type="RectangleShape2D" id=37]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 52.147 )
+
+[sub_resource type="RectangleShape2D" id=38]
+
+custom_solver_bias = 0.0
+extents = Vector2( 35.1802, 28.5813 )
+
+[sub_resource type="RectangleShape2D" id=39]
+
+custom_solver_bias = 0.0
+extents = Vector2( 17.749, 49.002 )
+
+[sub_resource type="CircleShape2D" id=40]
+
+custom_solver_bias = 0.0
+radius = 55.4327
+
+[sub_resource type="RectangleShape2D" id=41]
+
+custom_solver_bias = 0.0
+extents = Vector2( 31.5013, 28.9781 )
+
+[sub_resource type="RectangleShape2D" id=42]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32.8269, 65.5655 )
+
+[sub_resource type="RectangleShape2D" id=43]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32.9993, 31.9507 )
 
 [node name="Castle" type="Node" index="0"]
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
-position = Vector2( 695, 105 )
+position = Vector2( 524.953, 413.805 )
 texture = ExtResource( 1 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 352, 320, 32, 32 )
 _sections_unfolded = [ "Region" ]
+
+[node name="Area2D" type="Area2D" parent="Sprite" index="0"]
+
+position = Vector2( 29.3223, 24.4352 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Area2D" index="0"]
+
+position = Vector2( -14.1202, -5.97833 )
+scale = Vector2( 1, 1.33909 )
+shape = SubResource( 1 )
 
 [node name="Sprite46" type="Sprite" parent="." index="1"]
 
@@ -22,6 +254,21 @@ region_enabled = true
 region_rect = Rect2( 192, 288, 32, 32 )
 _sections_unfolded = [ "Region" ]
 
+[node name="Area2D" type="Area2D" parent="Sprite46" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite46/Area2D" index="0"]
+
+position = Vector2( 15.9722, 16.1975 )
+shape = SubResource( 2 )
+
 [node name="Sprite47" type="Sprite" parent="." index="2"]
 
 position = Vector2( 740, 186 )
@@ -30,6 +277,21 @@ centered = false
 region_enabled = true
 region_rect = Rect2( 192, 288, 32, 32 )
 _sections_unfolded = [ "Region" ]
+
+[node name="Area2D" type="Area2D" parent="Sprite47" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite47/Area2D" index="0"]
+
+position = Vector2( 15.4588, 15.9344 )
+shape = SubResource( 3 )
 
 [node name="Sprite7" type="Sprite" parent="." index="3"]
 
@@ -40,6 +302,22 @@ region_enabled = true
 region_rect = Rect2( 352, 256, 64, 64 )
 _sections_unfolded = [ "Region" ]
 
+[node name="Area2D" type="Area2D" parent="Sprite7" index="0"]
+
+position = Vector2( -1.7962, -1.7962 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite7/Area2D" index="0"]
+
+position = Vector2( 31.1553, 32.3444 )
+shape = SubResource( 4 )
+
 [node name="Sprite6" type="Sprite" parent="." index="4"]
 
 position = Vector2( 856, 7 )
@@ -49,14 +327,44 @@ region_enabled = true
 region_rect = Rect2( 320, 0, 96, 96 )
 _sections_unfolded = [ "Region" ]
 
+[node name="Area2D" type="Area2D" parent="Sprite6" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite6/Area2D" index="0"]
+
+position = Vector2( 48.4297, 51.0834 )
+shape = SubResource( 5 )
+
 [node name="Sprite4" type="Sprite" parent="." index="5"]
 
-position = Vector2( 791, 198 )
+position = Vector2( 822.243, 225.447 )
 texture = ExtResource( 1 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 192, 320, 96, 96 )
 _sections_unfolded = [ "Region" ]
+
+[node name="Area2D" type="Area2D" parent="Sprite4" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite4/Area2D" index="0"]
+
+position = Vector2( 46.8345, 47.7384 )
+shape = SubResource( 6 )
 
 [node name="Sprite5" type="Sprite" parent="." index="6"]
 
@@ -67,14 +375,44 @@ region_enabled = true
 region_rect = Rect2( 192, 320, 96, 96 )
 _sections_unfolded = [ "Region" ]
 
+[node name="Area2D" type="Area2D" parent="Sprite5" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite5/Area2D" index="0"]
+
+position = Vector2( 47.3022, 48.7621 )
+shape = SubResource( 7 )
+
 [node name="Sprite2" type="Sprite" parent="." index="7"]
 
-position = Vector2( 426, -71 )
+position = Vector2( 341.657, -121.334 )
 texture = ExtResource( 1 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 416, 0, 96, 96 )
 _sections_unfolded = [ "Region" ]
+
+[node name="Area2D" type="Area2D" parent="Sprite2" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2/Area2D" index="0"]
+
+position = Vector2( 46.0281, 50.818 )
+shape = SubResource( 8 )
 
 [node name="Sprite3" type="Sprite" parent="." index="8"]
 
@@ -85,6 +423,21 @@ region_enabled = true
 region_rect = Rect2( 448, 448, 64, 64 )
 _sections_unfolded = [ "Region" ]
 
+[node name="Area2D" type="Area2D" parent="Sprite3" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite3/Area2D" index="0"]
+
+position = Vector2( 28.7394, 35.3255 )
+shape = SubResource( 9 )
+
 [node name="Sprite11" type="Sprite" parent="." index="9"]
 
 position = Vector2( 911, -51 )
@@ -94,14 +447,44 @@ region_enabled = true
 region_rect = Rect2( 32, 384, 32, 32 )
 _sections_unfolded = [ "Region" ]
 
+[node name="Area2D" type="Area2D" parent="Sprite11" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite11/Area2D" index="0"]
+
+position = Vector2( 16.1722, 16.6479 )
+shape = SubResource( 10 )
+
 [node name="Sprite12" type="Sprite" parent="." index="10"]
 
-position = Vector2( 532, 36 )
+position = Vector2( 439.859, 111.707 )
 texture = ExtResource( 1 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 416, 96, 96 )
 _sections_unfolded = [ "Region" ]
+
+[node name="Area2D" type="Area2D" parent="Sprite12" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite12/Area2D" index="0"]
+
+position = Vector2( 47.2359, 47.883 )
+shape = SubResource( 11 )
 
 [node name="Sprite13" type="Sprite" parent="." index="11"]
 
@@ -112,14 +495,45 @@ region_enabled = true
 region_rect = Rect2( 288, 384, 64, 64 )
 _sections_unfolded = [ "Region" ]
 
+[node name="Area2D" type="Area2D" parent="Sprite13" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite13/Area2D" index="0"]
+
+position = Vector2( 33.971, 32.3534 )
+shape = SubResource( 12 )
+
 [node name="Sprite18" type="Sprite" parent="." index="12"]
 
-position = Vector2( 750, -1 )
+position = Vector2( 722.712, 113.433 )
 texture = ExtResource( 1 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 128, 384, 32, 32 )
 _sections_unfolded = [ "Region" ]
+
+[node name="Area2D" type="Area2D" parent="Sprite18" index="0"]
+
+position = Vector2( 11.4432, 10.563 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite18/Area2D" index="0"]
+
+position = Vector2( 6.16174, 4.40125 )
+shape = SubResource( 13 )
 
 [node name="Sprite20" type="Sprite" parent="." index="13"]
 
@@ -130,106 +544,269 @@ region_enabled = true
 region_rect = Rect2( 352, 416, 32, 96 )
 _sections_unfolded = [ "Region" ]
 
+[node name="Area2D" type="Area2D" parent="Sprite20" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite20/Area2D" index="0"]
+
+position = Vector2( 15.0594, 51.8484 )
+shape = SubResource( 14 )
+
 [node name="Sprite21" type="Sprite" parent="." index="14"]
 
-position = Vector2( 962, 2 )
+position = Vector2( 162, 112 )
 texture = ExtResource( 1 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 320, 448, 32, 64 )
 _sections_unfolded = [ "Region" ]
 
+[node name="Area2D" type="Area2D" parent="Sprite21" index="0"]
+
+position = Vector2( -825, 179 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite21/Area2D" index="0"]
+
+position = Vector2( 840.437, -145.68 )
+shape = SubResource( 15 )
+
 [node name="Sprite22" type="Sprite" parent="." index="15"]
 
-position = Vector2( 1016, 37 )
+position = Vector2( 825.701, 440.926 )
 texture = ExtResource( 1 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 96, 256, 32, 32 )
 _sections_unfolded = [ "Region" ]
 
+[node name="Area2D" type="Area2D" parent="Sprite22" index="0"]
+
+position = Vector2( 17.1883, 14.7328 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite22/Area2D" index="0"]
+
+shape = SubResource( 16 )
+
 [node name="Sprite23" type="Sprite" parent="." index="16"]
 
-position = Vector2( 1067, 126 )
+position = Vector2( 985.005, 466.166 )
 texture = ExtResource( 1 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 128, 256, 32, 32 )
 _sections_unfolded = [ "Region" ]
 
+[node name="Area2D" type="Area2D" parent="Sprite23" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite23/Area2D" index="0"]
+
+position = Vector2( 16.1766, 16.5002 )
+shape = SubResource( 17 )
+
 [node name="Sprite24" type="Sprite" parent="." index="17"]
 
-position = Vector2( 892, 113 )
+position = Vector2( 711.523, 480.093 )
 texture = ExtResource( 1 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 448, 352, 32, 96 )
 _sections_unfolded = [ "Region" ]
 
+[node name="Area2D" type="Area2D" parent="Sprite24" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite24/Area2D" index="0"]
+
+position = Vector2( 15.3619, 59.0894 )
+shape = SubResource( 18 )
+
 [node name="Sprite25" type="Sprite" parent="." index="18"]
 
-position = Vector2( 753, -58 )
+position = Vector2( 89.9376, 418.002 )
 texture = ExtResource( 1 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 224, 234, 32, 64 )
 _sections_unfolded = [ "Region" ]
 
+[node name="Area2D" type="Area2D" parent="Sprite25" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite25/Area2D" index="0"]
+
+position = Vector2( 15.1921, 33.7274 )
+shape = SubResource( 19 )
+
 [node name="Sprite30" type="Sprite" parent="." index="19"]
 
-position = Vector2( 938, 268 )
+position = Vector2( 1165.61, 589.936 )
 texture = ExtResource( 1 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 256, 234, 32, 64 )
 _sections_unfolded = [ "Region" ]
 
+[node name="Area2D" type="Area2D" parent="Sprite30" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite30/Area2D" index="0"]
+
+position = Vector2( 16.3842, 29.6824 )
+shape = SubResource( 20 )
+
 [node name="Sprite31" type="Sprite" parent="." index="20"]
 
-position = Vector2( 956, -64 )
+position = Vector2( 742.743, 764.421 )
 texture = ExtResource( 1 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 448, 298, 64, 64 )
 _sections_unfolded = [ "Region" ]
 
+[node name="Area2D" type="Area2D" parent="Sprite31" index="0"]
+
+position = Vector2( -451.12, 723.843 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite31/Area2D" index="0"]
+
+position = Vector2( 482.18, -686.88 )
+scale = Vector2( 1, 0.461579 )
+shape = SubResource( 21 )
+
 [node name="Sprite32" type="Sprite" parent="." index="21"]
 
-position = Vector2( 1183, 27 )
+position = Vector2( 1416.76, 656.518 )
 texture = ExtResource( 1 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 416, 224, 96, 64 )
 _sections_unfolded = [ "Region" ]
 
+[node name="Area2D" type="Area2D" parent="Sprite32" index="0"]
+
+position = Vector2( 49.2131, 22.556 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite32/Area2D" index="0"]
+
+position = Vector2( -2.44348, 11.4031 )
+shape = SubResource( 22 )
+
 [node name="Sprite34" type="Sprite" parent="." index="22"]
 
-position = Vector2( 1148, 136 )
+position = Vector2( 797.357, 531.755 )
 texture = ExtResource( 1 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 32, 256, 32, 32 )
 _sections_unfolded = [ "Region" ]
 
+[node name="Area2D" type="Area2D" parent="Sprite34" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite34/Area2D" index="0"]
+
+position = Vector2( 13.6439, 15.9281 )
+scale = Vector2( 1, 0.829652 )
+shape = SubResource( 23 )
+
 [node name="Sprite35" type="Sprite" parent="." index="23"]
 
-position = Vector2( 1240, 190 )
+position = Vector2( 437.06, 707.888 )
+scale = Vector2( 1, 1.27537 )
 texture = ExtResource( 1 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 256, 32, 32 )
 _sections_unfolded = [ "Region" ]
 
-[node name="Sprite36" type="Sprite" parent="." index="24"]
+[node name="Area2D" type="Area2D" parent="Sprite35" index="0"]
 
-position = Vector2( 1169, 181 )
-texture = ExtResource( 1 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 0, 256, 32, 32 )
-_sections_unfolded = [ "Region" ]
+position = Vector2( 13.1722, 15.4923 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="Sprite37" type="Sprite" parent="." index="25"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite35/Area2D" index="0"]
+
+position = Vector2( -1.95068, 2.29431 )
+shape = SubResource( 24 )
+
+[node name="Sprite37" type="Sprite" parent="." index="24"]
 
 position = Vector2( 1203, 129 )
 texture = ExtResource( 1 )
@@ -238,7 +815,22 @@ region_enabled = true
 region_rect = Rect2( 0, 192, 32, 32 )
 _sections_unfolded = [ "Region" ]
 
-[node name="Sprite39" type="Sprite" parent="." index="26"]
+[node name="Area2D" type="Area2D" parent="Sprite37" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite37/Area2D" index="0"]
+
+position = Vector2( 17.3634, 13.771 )
+shape = SubResource( 25 )
+
+[node name="Sprite39" type="Sprite" parent="." index="25"]
 
 position = Vector2( 1293, 147 )
 texture = ExtResource( 1 )
@@ -247,7 +839,22 @@ region_enabled = true
 region_rect = Rect2( 160, 192, 32, 64 )
 _sections_unfolded = [ "Region" ]
 
-[node name="Sprite40" type="Sprite" parent="." index="27"]
+[node name="Area2D" type="Area2D" parent="Sprite39" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite39/Area2D" index="0"]
+
+position = Vector2( 15.5671, 37.1217 )
+shape = SubResource( 26 )
+
+[node name="Sprite40" type="Sprite" parent="." index="26"]
 
 position = Vector2( 1266, 245 )
 texture = ExtResource( 1 )
@@ -256,7 +863,22 @@ region_enabled = true
 region_rect = Rect2( 128, 192, 32, 32 )
 _sections_unfolded = [ "Region" ]
 
-[node name="Sprite41" type="Sprite" parent="." index="28"]
+[node name="Area2D" type="Area2D" parent="Sprite40" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite40/Area2D" index="0"]
+
+position = Vector2( 15.2162, 16.2692 )
+shape = SubResource( 27 )
+
+[node name="Sprite41" type="Sprite" parent="." index="27"]
 
 position = Vector2( 1352, 198 )
 texture = ExtResource( 1 )
@@ -265,7 +887,22 @@ region_enabled = true
 region_rect = Rect2( 64, 256, 32, 96 )
 _sections_unfolded = [ "Region" ]
 
-[node name="Sprite43" type="Sprite" parent="." index="29"]
+[node name="Area2D" type="Area2D" parent="Sprite41" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite41/Area2D" index="0"]
+
+position = Vector2( 18.0439, 51.2059 )
+shape = SubResource( 28 )
+
+[node name="Sprite43" type="Sprite" parent="." index="28"]
 
 position = Vector2( 1355, 118 )
 texture = ExtResource( 1 )
@@ -274,16 +911,22 @@ region_enabled = true
 region_rect = Rect2( 320, 256, 32, 64 )
 _sections_unfolded = [ "Region" ]
 
-[node name="Sprite45" type="Sprite" parent="." index="30"]
+[node name="Area2D" type="Area2D" parent="Sprite43" index="0"]
 
-position = Vector2( 1412, 153 )
-texture = ExtResource( 1 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 320, 256, 32, 64 )
-_sections_unfolded = [ "Region" ]
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="Sprite44" type="Sprite" parent="." index="31"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite43/Area2D" index="0"]
+
+position = Vector2( 14.6304, 27.7975 )
+shape = SubResource( 29 )
+
+[node name="Sprite44" type="Sprite" parent="." index="29"]
 
 position = Vector2( 1409, 214 )
 texture = ExtResource( 1 )
@@ -292,7 +935,22 @@ region_enabled = true
 region_rect = Rect2( 288, 256, 32, 64 )
 _sections_unfolded = [ "Region" ]
 
-[node name="Sprite42" type="Sprite" parent="." index="32"]
+[node name="Area2D" type="Area2D" parent="Sprite44" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite44/Area2D" index="0"]
+
+position = Vector2( 12.6796, 28.2851 )
+shape = SubResource( 30 )
+
+[node name="Sprite42" type="Sprite" parent="." index="30"]
 
 position = Vector2( 1396, 282 )
 texture = ExtResource( 1 )
@@ -301,7 +959,22 @@ region_enabled = true
 region_rect = Rect2( 64, 192, 32, 64 )
 _sections_unfolded = [ "Region" ]
 
-[node name="Sprite38" type="Sprite" parent="." index="33"]
+[node name="Area2D" type="Area2D" parent="Sprite42" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite42/Area2D" index="0"]
+
+position = Vector2( 16.5809, 32.6742 )
+shape = SubResource( 31 )
+
+[node name="Sprite38" type="Sprite" parent="." index="31"]
 
 position = Vector2( 1183, 248 )
 texture = ExtResource( 1 )
@@ -310,7 +983,22 @@ region_enabled = true
 region_rect = Rect2( 0, 224, 32, 32 )
 _sections_unfolded = [ "Region" ]
 
-[node name="Sprite33" type="Sprite" parent="." index="34"]
+[node name="Area2D" type="Area2D" parent="Sprite38" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite38/Area2D" index="0"]
+
+position = Vector2( 13.3322, 15.4188 )
+shape = SubResource( 32 )
+
+[node name="Sprite33" type="Sprite" parent="." index="32"]
 
 position = Vector2( 1325, 27 )
 texture = ExtResource( 1 )
@@ -319,7 +1007,22 @@ region_enabled = true
 region_rect = Rect2( 416, 106, 96, 96 )
 _sections_unfolded = [ "Region" ]
 
-[node name="Sprite29" type="Sprite" parent="." index="35"]
+[node name="Area2D" type="Area2D" parent="Sprite33" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite33/Area2D" index="0"]
+
+position = Vector2( 49.6848, 39.9108 )
+shape = SubResource( 33 )
+
+[node name="Sprite29" type="Sprite" parent="." index="33"]
 
 position = Vector2( 1026, -13 )
 texture = ExtResource( 1 )
@@ -328,7 +1031,22 @@ region_enabled = true
 region_rect = Rect2( 192, 0, 128, 96 )
 _sections_unfolded = [ "Region" ]
 
-[node name="Sprite28" type="Sprite" parent="." index="36"]
+[node name="Area2D" type="Area2D" parent="Sprite29" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite29/Area2D" index="0"]
+
+position = Vector2( 66.7894, 50.4994 )
+shape = SubResource( 34 )
+
+[node name="Sprite28" type="Sprite" parent="." index="34"]
 
 position = Vector2( 1064, 184 )
 texture = ExtResource( 1 )
@@ -337,7 +1055,22 @@ region_enabled = true
 region_rect = Rect2( 96, 0, 96, 64 )
 _sections_unfolded = [ "Region" ]
 
-[node name="Sprite27" type="Sprite" parent="." index="37"]
+[node name="Area2D" type="Area2D" parent="Sprite28" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite28/Area2D" index="0"]
+
+position = Vector2( 49.6849, 32.5802 )
+shape = SubResource( 35 )
+
+[node name="Sprite27" type="Sprite" parent="." index="35"]
 
 position = Vector2( 950, 157 )
 texture = ExtResource( 1 )
@@ -346,7 +1079,22 @@ region_enabled = true
 region_rect = Rect2( 32, 0, 64, 64 )
 _sections_unfolded = [ "Region" ]
 
-[node name="Sprite26" type="Sprite" parent="." index="38"]
+[node name="Area2D" type="Area2D" parent="Sprite27" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite27/Area2D" index="0"]
+
+position = Vector2( 31.0829, 38.6428 )
+shape = SubResource( 36 )
+
+[node name="Sprite26" type="Sprite" parent="." index="36"]
 
 position = Vector2( 854, 112 )
 texture = ExtResource( 1 )
@@ -355,7 +1103,22 @@ region_enabled = true
 region_rect = Rect2( 480, 352, 32, 96 )
 _sections_unfolded = [ "Region" ]
 
-[node name="Sprite19" type="Sprite" parent="." index="39"]
+[node name="Area2D" type="Area2D" parent="Sprite26" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite26/Area2D" index="0"]
+
+position = Vector2( 20.3571, 51.4914 )
+shape = SubResource( 37 )
+
+[node name="Sprite19" type="Sprite" parent="." index="37"]
 
 position = Vector2( 959, 78 )
 texture = ExtResource( 1 )
@@ -364,16 +1127,22 @@ region_enabled = true
 region_rect = Rect2( 224, 448, 64, 64 )
 _sections_unfolded = [ "Region" ]
 
-[node name="Sprite14" type="Sprite" parent="." index="40"]
+[node name="Area2D" type="Area2D" parent="Sprite19" index="0"]
 
-position = Vector2( 1059, 245 )
-texture = ExtResource( 1 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 192, 416, 32, 96 )
-_sections_unfolded = [ "Region" ]
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="Sprite17" type="Sprite" parent="." index="41"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite19/Area2D" index="0"]
+
+position = Vector2( 31.7606, 36.5074 )
+shape = SubResource( 38 )
+
+[node name="Sprite17" type="Sprite" parent="." index="38"]
 
 position = Vector2( 693, -86 )
 texture = ExtResource( 1 )
@@ -382,7 +1151,7 @@ region_enabled = true
 region_rect = Rect2( 192, 416, 32, 96 )
 _sections_unfolded = [ "Region" ]
 
-[node name="Sprite16" type="Sprite" parent="." index="42"]
+[node name="Sprite16" type="Sprite" parent="." index="39"]
 
 position = Vector2( 996, 231 )
 texture = ExtResource( 1 )
@@ -391,7 +1160,22 @@ region_enabled = true
 region_rect = Rect2( 192, 416, 32, 96 )
 _sections_unfolded = [ "Region" ]
 
-[node name="Sprite15" type="Sprite" parent="." index="43"]
+[node name="Area2D" type="Area2D" parent="Sprite16" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite16/Area2D" index="0"]
+
+position = Vector2( 15.1179, 47.3044 )
+shape = SubResource( 39 )
+
+[node name="Sprite15" type="Sprite" parent="." index="40"]
 
 position = Vector2( 569, -83 )
 texture = ExtResource( 1 )
@@ -400,7 +1184,22 @@ region_enabled = true
 region_rect = Rect2( 96, 416, 96, 96 )
 _sections_unfolded = [ "Region" ]
 
-[node name="Sprite10" type="Sprite" parent="." index="44"]
+[node name="Area2D" type="Area2D" parent="Sprite15" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite15/Area2D" index="0"]
+
+position = Vector2( 46.0484, 44.191 )
+shape = SubResource( 40 )
+
+[node name="Sprite10" type="Sprite" parent="." index="41"]
 
 position = Vector2( 439, 25 )
 texture = ExtResource( 1 )
@@ -409,7 +1208,22 @@ region_enabled = true
 region_rect = Rect2( 0, 288, 64, 64 )
 _sections_unfolded = [ "Region" ]
 
-[node name="Sprite9" type="Sprite" parent="." index="45"]
+[node name="Area2D" type="Area2D" parent="Sprite10" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite10/Area2D" index="0"]
+
+position = Vector2( 33.2276, 31.0698 )
+shape = SubResource( 41 )
+
+[node name="Sprite9" type="Sprite" parent="." index="42"]
 
 position = Vector2( 614, 25 )
 texture = ExtResource( 1 )
@@ -418,7 +1232,22 @@ region_enabled = true
 region_rect = Rect2( 384, 320, 64, 128 )
 _sections_unfolded = [ "Region" ]
 
-[node name="Sprite8" type="Sprite" parent="." index="46"]
+[node name="Area2D" type="Area2D" parent="Sprite9" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite9/Area2D" index="0"]
+
+position = Vector2( 31.1344, 67.0585 )
+shape = SubResource( 42 )
+
+[node name="Sprite8" type="Sprite" parent="." index="43"]
 
 position = Vector2( 627, 174 )
 texture = ExtResource( 1 )
@@ -426,5 +1255,20 @@ centered = false
 region_enabled = true
 region_rect = Rect2( 288, 320, 64, 64 )
 _sections_unfolded = [ "Region" ]
+
+[node name="Area2D" type="Area2D" parent="Sprite8" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite8/Area2D" index="0"]
+
+position = Vector2( 31.733, 32.3318 )
+shape = SubResource( 43 )
 
 
