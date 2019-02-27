@@ -21,43 +21,7 @@ var enemy
 var combat_in_progress = false
 
 func _ready():
-	# test code here 
-	var player = load("res://resources/combat/combat-core/actor.tscn").instance()
-	player.init(100)
-	var enemy = load("res://resources/combat/combat-core/actor.tscn").instance()
-	enemy.init(20)
 	
-	var move_scene = load("res://resources/combat/combat-core/move.tscn")
-	var weapon_scene = load("res://resources/combat/combat-core/weapon.tscn")
-	
-	var move = move_scene.instance()
-	var move2 = move_scene.instance()
-	var sword = weapon_scene.instance()
-	
-	move.init("punch", 60, 8)
-	
-	player.add_move(move)
-	
-	sword = weapon_scene.instance()
-	sword.init({"accuracy" : 20, "damage" : 5})
-	
-	move2 = move_scene.instance()
-	move2.init("stab", 50, 7, sword)
-	
-	sword.add_move(move2)
-	
-	player.add_weapon(sword)
-	enemy.add_move(move)
-	enemy.add_weapon(sword)
-	
-	player.set_stat("damage", 3)
-	player.set_stat("accuracy", 10)
-	
-	enemy.set_stat("damage", 1)
-	enemy.set_stat("accuracy", 5)
-	
-	#starts combat with given seed
-	start_combat(player, enemy, 800.5)
 	
 	pass
 
@@ -83,11 +47,13 @@ func on_button_pressed(button_id):
 		if(button_id == 0): #Fight was chosen
 			var move_names = []
 			for move in player_moves:
-				move_names.append(move.name)
+				move_names.append(move.move_name)
 			emit_signal("show_fighting_options", player_moves)
 			state = 1
 		if(button_id == 1): #flee was chosen
 			attempt_to_flee()
+			# Two lines are output, two yields
+			yield($combatInterface, "finished_displaying_text")
 			yield($combatInterface, "finished_displaying_text")
 			resolve_enemy_attack()
 			yield($combatInterface, "finished_displaying_text")
@@ -169,6 +135,7 @@ func _on_UIBox_btnPressed(button_id):
 
 func attempt_to_flee():
 	emit_signal("display_text", "attempting to flee")
+	yield($combatInterface, "finished_displaying_text")
 	if (randi() % 2):
 		emit_signal("display_text", "You successfully flee!")
 		emit_signal("combat_finished", player, enemy, "Player fled")

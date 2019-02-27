@@ -1,4 +1,5 @@
-extends Node
+extends Resource
+
 export (Array) var moves
 export var attributes_buffs = {'accuracy' : 0, 'damage' : 0}
 

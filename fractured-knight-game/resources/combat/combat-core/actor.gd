@@ -1,4 +1,4 @@
-extends Node
+extends Resource
 export (Array) var weapons
 export var stats = {'accuracy' : 0, 'damage' : 0}
 export (Array) var base_moves 

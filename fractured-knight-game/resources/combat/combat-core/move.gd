@@ -1,4 +1,4 @@
-extends Node
+extends Resource
 export (String) var move_name
 export (int) var accuracy
 export (int) var damage
