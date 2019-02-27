@@ -3,7 +3,7 @@
 [ext_resource path="res://resources/combat/combat-UI/DBox/DialogueBox.gd" type="Script" id=1]
 [ext_resource path="res://resources/combat/combat-UI/DBox/RichTextLabel.gd" type="Script" id=2]
 
-[node name="DialogueBox" type="Node2D"]
+[node name="DialogueBox" type="Node2D" index="0"]
 
 position = Vector2( 534.912, 529.13 )
 script = ExtResource( 1 )

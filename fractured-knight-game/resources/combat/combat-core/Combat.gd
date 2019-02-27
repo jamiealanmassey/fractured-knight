@@ -11,6 +11,9 @@ signal show_menu_options
 signal output_only
 #emitted when the text passed as an argument needs to be displayed 
 signal display_text
+# emitted when options need to be displayed in buttons
+signal display_options
+
 
 #Current state the combat system is in. 0= main menu, 1= waiting for move input
 var state
@@ -48,7 +51,7 @@ func on_button_pressed(button_id):
 			var move_names = []
 			for move in player_moves:
 				move_names.append(move.move_name)
-			emit_signal("show_fighting_options", player_moves)
+			show_move_options()
 			state = 1
 		if(button_id == 1): #flee was chosen
 			attempt_to_flee()
@@ -59,7 +62,7 @@ func on_button_pressed(button_id):
 			yield($combatInterface, "finished_displaying_text")
 			check_player_is_dead()
 			if combat_in_progress:
-				emit_signal("show_menu_options")
+				show_menu_options()
 				state = 0
 			pass
 	elif(state == 1): #waiting for move selection
@@ -90,7 +93,7 @@ func on_button_pressed(button_id):
 		#returns to initial state
 		state = 0
 		if combat_in_progress:
-			emit_signal("show_menu_options")
+			show_menu_options()
 
 
 #resolves a player's attack
@@ -162,6 +165,16 @@ func check_player_is_dead():
 	return false
 		
 
+func show_menu_options():
+	var menu_options = ["fight", "flee"]
+	emit_signal("display_options", menu_options)
+	
+func show_move_options():
+	var move_names = []
+	for move in player_moves:
+		move_names.append(move.move_name)
+	emit_signal("display_options", move_names)
+	
 
 func finish_combat():
 	state = 0

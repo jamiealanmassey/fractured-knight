@@ -7,7 +7,7 @@ onready var timer = get_node("../Timer")
 
 func _ready():
 	print(timer)
-	timer.set_wait_time(.1) # time between letters
+	timer.set_wait_time(.05) # time between letters
 
 func set_string( string ):
 	for letter in string:

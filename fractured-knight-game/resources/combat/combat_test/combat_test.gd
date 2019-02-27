@@ -26,7 +26,7 @@ func _ready():
 	sword.init({"accuracy" : 20, "damage" : 5})
 	
 	move2 = move_scene.new()
-	move2.init("stab", 50, 7, sword)
+	move2.init("stab", 50, 7)
 	
 	sword.add_move(move2)
 	

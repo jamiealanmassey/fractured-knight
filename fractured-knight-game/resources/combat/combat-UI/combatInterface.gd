@@ -25,15 +25,6 @@ func _on_Combat_UI_get_ready():
 	pass # replace with function body
 
 
-func _on_Combat_show_fighting_options(moves):
-	$UIBox._on_Combat_show_fighting_options(moves)
-	pass # replace with function body
-
-
-func _on_Combat_show_menu_options():
-	$UIBox._on_Combat_show_menu_options()
-	pass # replace with function body
-
 
 func _on_UIBox_btnPressed(button_pressed):
 	emit_signal("btnPressed", button_pressed)
@@ -54,3 +45,7 @@ func _on_Combat_combat_finished():
 	print("combat finished signal recieved")
 	$UIBox.hide()
 	pass # replace with function body
+
+
+func _on_Combat_display_options(options):
+	$UIBox.display_options(options)

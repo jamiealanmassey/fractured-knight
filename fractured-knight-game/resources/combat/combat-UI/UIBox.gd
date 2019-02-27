@@ -56,6 +56,11 @@ func _on_Combat_show_menu_options():
 	read_array(menu_options)
 	pass # replace with function body
 
+# Takes an array of strings and displays them in buttons
+func display_options(options):
+	read_array(options)
+	pass
+
 
 func _on_Combat_UI_get_ready():
 	show()
