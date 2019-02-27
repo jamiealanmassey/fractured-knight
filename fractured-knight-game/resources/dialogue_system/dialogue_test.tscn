@@ -14,7 +14,7 @@ func _process(delta):
 		$DialogueUI.start_dialogue('complex')
 "
 
-[node name="DialogueTest" type="Node"]
+[node name="DialogueTest" type="Node" index="0"]
 
 script = SubResource( 1 )
 

@@ -19,6 +19,8 @@ var text_timer = null             ## Timer to track intervals to add text
 var text_target = ''              ## Stores the target string and prints out to it (if non-empty) 
 var readout_sound_files = []      ## Array of sounds that can be played
 var readout_sounds = []           ## Array of AudioPlayerStream objects
+var readout_sounds_buffer = []    ## Buffering array that stops sound popping on dialogue
+var readout_sounds_switch = true  ## Buffering switch that flicks between source and buffer sound
 
 func _ready():
 	context = get_parent()
@@ -44,7 +46,11 @@ func _ready():
 		readout_sounds.append(AudioStreamPlayer.new())
 		readout_sounds[i].stream = load(readout_sound_files[i])
 		readout_sounds[i].stream.loop_mode = AudioStreamSample.LOOP_DISABLED
+		readout_sounds_buffer.append(AudioStreamPlayer.new())
+		readout_sounds_buffer[i].stream = load(readout_sound_files[i])
+		readout_sounds_buffer[i].stream.loop_mode = AudioStreamSample.LOOP_DISABLED
 		self.add_child(readout_sounds[i])
+		self.add_child(readout_sounds_buffer[i])
 	    
 
 ## Signal that is emitted when context starts new dialogue
@@ -97,7 +103,13 @@ func _on_resize():
 func _text_timer_tick():
 	if (text_target != '' && $DialogueText.text.length() < text_target.length()):
 		$DialogueText.text = $DialogueText.text + text_target[$DialogueText.text.length()]
-		readout_sounds[randi() % readout_sounds.size()].play()
+		var sound = randi() % readout_sounds.size()
+		if readout_sounds_switch:
+			readout_sounds[sound].play()
+			readout_sounds_switch = false
+		else:
+			readout_sounds_buffer[sound].play()
+			readout_sounds_switch = true
 	
 
 ## Signal called when the controller is finished
