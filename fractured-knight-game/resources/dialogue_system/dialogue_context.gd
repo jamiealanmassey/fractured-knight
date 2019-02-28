@@ -31,14 +31,8 @@ func _init():
 	input_timer.autostart = false
 	input_timer.one_shot = true
 	self.add_child(input_timer)
-	pass
 
 func _ready():
-	#input_timer = Timer.new()
-	#input_timer.set_wait_time(0.2)
-	#input_timer.autostart = false
-	#input_timer.one_shot = true
-	#self.add_child(input_timer)
 	for index in dialogue_file_names.size(): 
 		self.add_dialogue_file(dialogue_file_names[index], dialogue_file_locations[index])
 

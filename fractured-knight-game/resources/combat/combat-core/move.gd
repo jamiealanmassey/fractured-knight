@@ -1,19 +1,17 @@
-extends Node
-var move_name
-var accuracy
-var damage
-var weapon
+extends Resource
+export (String) var move_name
+export var attributes = {'accuracy' : 50, 'damage' : 5}
+export (Resource) var weapon
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
 	pass
 
-func init(move_name, accuracy, damage, weapon = null):
+func init(move_name, accuracy, damage):
 	self.move_name = move_name
-	self.accuracy = accuracy
-	self.damage = damage
-	self.weapon = weapon
+	self.attributes.accuracy = accuracy
+	self.attributes.damage = damage
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
@@ -21,13 +19,9 @@ func init(move_name, accuracy, damage, weapon = null):
 #	pass
 
 func get_damage():
-	if (weapon != null):
-		return damage + weapon.get_attribute('damage')
-	return damage
+	return attributes.damage
 	
 func get_accuracy():
-	if weapon != null:
-		return accuracy + weapon.get_attribute('accuracy')
-	return accuracy
+	return attributes.accuracy
 
 

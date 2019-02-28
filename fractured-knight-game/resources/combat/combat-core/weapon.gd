@@ -1,6 +1,7 @@
-extends Node
-var moves
-var attributes_buffs
+extends Resource
+
+export (Array) var moves
+export var attributes_buffs = {'accuracy' : 0, 'damage' : 0}
 
 func _ready():
 	# Called when the node is added to the scene for the first time.

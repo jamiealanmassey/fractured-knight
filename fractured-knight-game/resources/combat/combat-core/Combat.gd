@@ -3,70 +3,36 @@ extends Node
 signal combat_finished
 #emitted when initalised to signal that the UI needs to start in its initial state
 signal UI_get_ready
-#Emitted when the move choices need to be known, passes the moves as an array
-signal show_fighting_options
-#emitted when menu needs to show the starting menu choices, e.g. fight, flee, item etc.
-signal show_menu_options
-#emitted when no buttons need to be pressed
-signal output_only
 #emitted when the text passed as an argument needs to be displayed 
 signal display_text
+# emitted when options need to be displayed in buttons
+signal display_options
+# emitted when the player's health changes
+signal player_health_update
+# emitted when the enemy's health changes
+signal enemy_health_update
 
+enum states {MAIN_MENU, MOVE_SELECTION}
+enum main_menu_choices {FIGHT, FLEE}
 #Current state the combat system is in. 0= main menu, 1= waiting for move input
 var state
 #The moves the player can do
 var player_moves
+# player and enemy actors
 var player
 var enemy
 var combat_in_progress = false
 
 func _ready():
-	# test code here 
-	var player = load("res://resources/combat/combat-core/actor.tscn").instance()
-	player.init(100)
-	var enemy = load("res://resources/combat/combat-core/actor.tscn").instance()
-	enemy.init(20)
-	
-	var move_scene = load("res://resources/combat/combat-core/move.tscn")
-	var weapon_scene = load("res://resources/combat/combat-core/weapon.tscn")
-	
-	var move = move_scene.instance()
-	var move2 = move_scene.instance()
-	var sword = weapon_scene.instance()
-	
-	move.init("punch", 60, 8)
-	
-	player.add_move(move)
-	
-	sword = weapon_scene.instance()
-	sword.init({"accuracy" : 20, "damage" : 5})
-	
-	move2 = move_scene.instance()
-	move2.init("stab", 50, 7, sword)
-	
-	sword.add_move(move2)
-	
-	player.add_weapon(sword)
-	enemy.add_move(move)
-	enemy.add_weapon(sword)
-	
-	player.set_stat("damage", 3)
-	player.set_stat("accuracy", 10)
-	
-	enemy.set_stat("damage", 1)
-	enemy.set_stat("accuracy", 5)
-	
-	#starts combat with given seed
-	start_combat(player, enemy, 800.5)
-	
 	pass
 
 
 #prepares combat to start
 func start_combat(player, enemy, seeded = null):
 	emit_signal("UI_get_ready")
+	show_menu_options()
 	combat_in_progress = true
-	state = 0
+	state = states.MAIN_MENU
 	self.player_moves = player.get_all_moves()
 	self.player = player
 	self.enemy = enemy
@@ -79,51 +45,64 @@ func start_combat(player, enemy, seeded = null):
 func on_button_pressed(button_id):
 	if !combat_in_progress: #combat complete, do nothing
 		return
-	if(state == 0): #Waiting for main combat menu button press
-		if(button_id == 0): #Fight was chosen
-			var move_names = []
-			for move in player_moves:
-				move_names.append(move.name)
-			emit_signal("show_fighting_options", player_moves)
-			state = 1
-		if(button_id == 1): #flee was chosen
-			attempt_to_flee()
-			yield($combatInterface, "finished_displaying_text")
-			resolve_enemy_attack()
-			yield($combatInterface, "finished_displaying_text")
-			check_player_is_dead()
-			emit_signal("show_menu_options")
-			state = 0
-			pass
-	elif(state == 1): #waiting for move selection
-		#gets the move chosen
-		var move_chosen = player_moves[button_id]
-		emit_signal("output_only")
 		
-		#Resolves player's attack
-		resolve_player_attack(move_chosen)
-		yield($combatInterface, "finished_displaying_text")
-		var enemy_is_dead = check_enemy_is_dead()
-		#enemy is alive
+	match state: # switches based on current state of the system
+		states.MAIN_MENU: 
+			match button_id: #switches to either fight or flee
+				main_menu_choices.FIGHT:
+					var move_names = []
+					for move in player_moves:
+						move_names.append(move.move_name)
+					show_move_options()
+					state = states.MOVE_SELECTION
+					
+					
+				main_menu_choices.FLEE: #flee was chosen
+				# Attempt to flee and wait for text output x2
+					attempt_to_flee()
+					yield($combatInterface, "finished_displaying_text")
+					yield($combatInterface, "finished_displaying_text")
+					
+					#Player didn't manage to flee, enemy attacks
+					if combat_in_progress:
+						resolve_enemy_attack()
+						yield($combatInterface, "finished_displaying_text")
+					
+					#Check player is alive and whether to continue
+					check_player_is_dead()
+					if combat_in_progress:
+						show_menu_options()
+						state = states.MAIN_MENU
 		
-		#Resolves enemy's attack
-		if enemy_is_dead:
-			yield($combatInterface, "finished_displaying_text")
-			finish_combat()
-		else:
-			resolve_enemy_attack()
-			yield($combatInterface, "finished_displaying_text")
-		
-			var player_is_dead = check_player_is_dead()
+		states.MOVE_SELECTION: # switches to player having chosen a move
+			#gets the move chosen
+			var move_chosen = player_moves[button_id]
+			emit_signal("output_only")
 			
-			if player_is_dead:
+			#Resolves player's attack
+			resolve_player_attack(move_chosen)
+			yield($combatInterface, "finished_displaying_text")
+			var enemy_is_dead = check_enemy_is_dead()
+			
+			if enemy_is_dead: #Enemy dead, wait for enemy defeated text then finish
 				yield($combatInterface, "finished_displaying_text")
 				finish_combat()
-				
-		#returns to initial state
-		state = 0
-		if combat_in_progress:
-			emit_signal("show_menu_options")
+			else: #Resolves enemy's attack
+				resolve_enemy_attack()
+				yield($combatInterface, "finished_displaying_text")
+			
+				# check for player death
+				var player_is_dead = check_player_is_dead()
+				if player_is_dead:
+					yield($combatInterface, "finished_displaying_text")
+					finish_combat()
+					
+			#returns to initial state
+			state = states.MAIN_MENU
+			if combat_in_progress:
+				show_menu_options()
+				pass
+
 
 
 #resolves a player's attack
@@ -133,6 +112,7 @@ func resolve_player_attack(move_chosen):
 	if(resulting_damage != null):
 		#TODO: add logic if damage can ever be less than 0
 		enemy.health = enemy.health - resulting_damage
+		emit_signal("enemy_health_update", enemy.health)
 		emit_signal("display_text", "You hit the enemy for " + str(resulting_damage))
 		
 	else:
@@ -147,6 +127,7 @@ func resolve_enemy_attack():
 	if(resulting_damage != null):
 		#TODO: add logic if damage can ever be less than 0
 		player.health = player.health - resulting_damage
+		emit_signal("player_health_update", player.health)
 		emit_signal("display_text", "Player got hit for " + str(resulting_damage))
 	else:
 		emit_signal("display_text", "Enemy missed")
@@ -163,12 +144,11 @@ func get_resulting_damage(move, attacker, target):
 	else:
 		return null
 		
-		
-func _on_UIBox_btnPressed(button_id):
-	on_button_pressed(button_id)
+
 
 func attempt_to_flee():
 	emit_signal("display_text", "attempting to flee")
+	yield($combatInterface, "finished_displaying_text")
 	if (randi() % 2):
 		emit_signal("display_text", "You successfully flee!")
 		emit_signal("combat_finished", player, enemy, "Player fled")
@@ -194,15 +174,28 @@ func check_player_is_dead():
 	return false
 		
 
+# Tells UI to show initial menu options
+func show_menu_options():
+	var menu_options = []
+	for option in main_menu_choices.keys():
+		option = option.to_lower()
+		option = option.capitalize()
+		menu_options.append(option)
+	emit_signal("display_options", menu_options)
+	
+# Tells UI to show player's moves
+func show_move_options():
+	var move_names = []
+	for move in player_moves:
+		move_names.append(move.move_name)
+	emit_signal("display_options", move_names)
+	
 
+#Finishes combat
 func finish_combat():
-	state = 0
+	state = states.MAIN_MENU
 	combat_in_progress = false
 	pass
 	
-#func display_text(text):
-#	emit_signal("display_text", text)
-#	print("finished here")
-#	yield($combatInterface, "finished_displaying_text")
-#	print("Second part")
+	
 
