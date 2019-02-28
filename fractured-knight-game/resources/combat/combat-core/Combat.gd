@@ -18,6 +18,7 @@ enum main_menu_choices {FIGHT, FLEE}
 var state
 #The moves the player can do
 var player_moves
+# player and enemy actors
 var player
 var enemy
 var combat_in_progress = false
