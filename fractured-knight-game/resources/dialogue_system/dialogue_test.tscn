@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://resources/dialogue_system/dialogue_ui.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/player/player.tscn" type="PackedScene" id=2]
 
 [sub_resource type="GDScript" id=1]
 
@@ -8,10 +9,15 @@ script/source = "extends Node
 
 func _ready():
 	$DialogueUI.start_dialogue('complex')
+	$Player.lock_movement = true
 
 func _process(delta):
 	if Input.is_action_pressed('ui_page_down') && !$DialogueUI.processing:
 		$DialogueUI.start_dialogue('complex')
+		$Player.lock_movement = true
+
+func _on_DialogueUI_on_context_finish():
+	$Player.lock_movement = false
 "
 
 [node name="DialogueTest" type="Node" index="0"]
@@ -22,5 +28,11 @@ script = SubResource( 1 )
 
 dialogue_file_names = [ "complex" ]
 dialogue_file_locations = [ "res://test/dialogue/complex.fml" ]
+
+[node name="Player" parent="." index="1" instance=ExtResource( 2 )]
+
+position = Vector2( 976.328, 451.901 )
+
+[connection signal="on_context_finish" from="DialogueUI" to="." method="_on_DialogueUI_on_context_finish"]
 
 

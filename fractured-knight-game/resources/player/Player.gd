@@ -11,6 +11,7 @@ export(float) var velocitySpeed = 1
 
 var velocity = Vector2()
 var keyStates = []
+var lock_movement = false
 
 signal player_moved
 
@@ -51,6 +52,9 @@ func calulate_input():
 	for key_index in range(keyStates.size()):
 		update_input(keyStates[key_index])
 	
+	if lock_movement:
+		return
+	
 	keyStates.sort_custom(KeyStateSorter, "sort")
 	var moving = false
 	for key in keyStates:
@@ -58,25 +62,25 @@ func calulate_input():
 			match key.name:
 				"left":
 					velocity.x -= velocitySpeed * moveSpeed
-					$Sprite.play("Left")
+					#$Sprite.play("Left")
 					moving = true
 				"right":
 					velocity.x += velocitySpeed * moveSpeed
-					$Sprite.play("Right")
+					#$Sprite.play("Right")
 					moving = true
 				"up":
 					velocity.y -= velocitySpeed * moveSpeed
-					$Sprite.play("up")
+					#$Sprite.play("up")
 					moving = true
 				"down":
 					velocity.y += velocitySpeed * moveSpeed
-					$Sprite.play("Down")
+					#$Sprite.play("Down")
 					moving = true
 			emit_signal("player_moved")
 			break
 		
 	if (!moving):
-		$Sprite.frame = 0
+		pass#$Sprite.frame = 0
 
 func _ready():
 	keyStates = [
