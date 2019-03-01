@@ -1,13 +1,17 @@
 extends Node2D
 
-export (string) dialogue_file
+
+# The combat actor for the NPC. Needs to be set on creation
+export (Resource) var combat_actor
+# Dialogue name for use by the dialogue system
+export (String) var dialogue_name
+# Animted sprite frames for animated sprite node 
+export (SpriteFrames) var frames
+export (int) var collision_size = 10
+
 
 func _ready():
-	# Called when the node is added to the scene for the first time.
-	# Initialization here
+	$AnimatedSprite.frames = self.frames
+	$CollisionDetection/CollisionShape2D.shape.radius = collision_size
 	pass
 
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
