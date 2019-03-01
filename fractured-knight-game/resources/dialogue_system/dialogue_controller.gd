@@ -21,6 +21,14 @@ var readout_sound_files = []      ## Array of sounds that can be played
 var readout_sounds = []           ## Array of AudioPlayerStream objects
 var readout_sounds_buffer = []    ## Buffering array that stops sound popping on dialogue
 var readout_sounds_switch = true  ## Buffering switch that flicks between source and buffer sound
+var input_timer = null            ## Timer that stopped constant stream of input
+
+func _init():
+	input_timer = Timer.new()
+	input_timer.set_wait_time(0.2)
+	input_timer.autostart = false
+	input_timer.one_shot = true
+	self.add_child(input_timer)
 
 func _ready():
 	context = get_parent()
@@ -52,6 +60,14 @@ func _ready():
 		self.add_child(readout_sounds[i])
 		self.add_child(readout_sounds_buffer[i])
 	    
+
+func _input(event):
+	if Input.is_action_pressed('ui_accept') && input_timer.get_time_left() <= 0:
+		input_timer.start()
+		if $DialogueText.text.length() < text_target.length():
+			$DialogueText.text = text_target
+		else:
+			context.finish_writing()
 
 ## Signal that is emitted when context starts new dialogue
 func _react_context_begin():

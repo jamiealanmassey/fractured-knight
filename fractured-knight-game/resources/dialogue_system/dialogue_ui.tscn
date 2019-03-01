@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://resources/dialogue_system/dialogue_context.gd" type="Script" id=1]
 [ext_resource path="res://resources/dialogue_system/dialogue_controller.gd" type="Script" id=2]
@@ -12,16 +12,6 @@ use_mipmaps = true
 use_filter = false
 font_data = ExtResource( 3 )
 _sections_unfolded = [ "Font", "Settings" ]
-
-[sub_resource type="AudioStreamSample" id=2]
-
-format = 0
-loop_mode = 0
-loop_begin = 0
-loop_end = 0
-mix_rate = 44100
-stereo = false
-data = PoolByteArray(  )
 
 [node name="DialogueUI" type="Container"]
 
@@ -102,15 +92,6 @@ scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
 _sections_unfolded = [ "BBCode", "Margin", "Rect", "Visibility", "custom_fonts" ]
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DialogueController" index="2"]
-
-stream = SubResource( 2 )
-volume_db = 0.0
-pitch_scale = 1.0
-autoplay = false
-mix_target = 0
-bus = "Master"
 
 [node name="Parser" type="Node2D" parent="." index="1"]
 

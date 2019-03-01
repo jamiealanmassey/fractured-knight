@@ -4,40 +4,38 @@
 # Created: 13/02/2019
 extends Node
 
+enum WriteState {
+	WriteNone,
+	WriteProcess,
+	WriteContinue
+}
+
 var DialogueNode = load('res://resources/dialogue_system/dialogue_node.gd')
 
 export (Array, String) var dialogue_file_names = []
 export (Array, String) var dialogue_file_locations = []
 
-var current_node = null     ## Current node active in the context from the currently active dialogue
-var current_dialogue = null ## Current object of the active dialogue
-var dialogues = {}          ## Maps name of dialogues to their trees and roots
-var symbols = {}            ## List of symbols that exist in this context
-var processing = false      ## State of the context (a flag to show if we are currently processing a dialogue)
-var wait_branch = false     ## State indicating that the context is waiting for a branch selection
-var wait_write = false      ## State indicating that the context is waiting for the player to progress write node
-var error = null            ## State of the context as an error (if one exists we cannot progress)
-var input_timer = null      ## Timer that stopped constant stream of input
-var test_mode = false       ## Special flag for testing
+var current_node = null                ## Current node active in the context from the currently active dialogue
+var current_dialogue = null            ## Current object of the active dialogue
+var dialogues = {}                     ## Maps name of dialogues to their trees and roots
+var symbols = {}                       ## List of symbols that exist in this context
+var processing = false                 ## State of the context (a flag to show if we are currently processing a dialogue)
+var wait_branch = false                ## State indicating that the context is waiting for a branch selection
+var write_state = WriteState.WriteNone ## State indicating that the context is waiting for the player to progress write node
+var error = null                       ## State of the context as an error (if one exists we cannot progress)
+var test_mode = false                  ## Special flag for testing
 
 signal on_context_begin   ## Called when the context has begun or has been reset
 signal on_context_process ## Called each time the context progresses its state through the graph to a new node
 signal on_context_finish  ## Called when the end of the current dialogue graph is reached
 signal on_context_trigger ## Called when a trigger has been executed in the script
 
-func _init():
-	input_timer = Timer.new()
-	input_timer.set_wait_time(0.2)
-	input_timer.autostart = false
-	input_timer.one_shot = true
-	self.add_child(input_timer)
-
 func _ready():
 	for index in dialogue_file_names.size(): 
 		self.add_dialogue_file(dialogue_file_names[index], dialogue_file_locations[index])
 
 func _process(delta):
-	if processing && input_timer.get_time_left() <= 0:
+	if processing:
 		evaluate_current_node()
 
 ## Parses the given dialogue file and adds it to the context for use in the Dialogue System
@@ -62,14 +60,12 @@ func evaluate_current_node():
 	
 	match current_node.type:
 		DialogueNode.NodeType.Write:
-			if !wait_write:
+			if write_state == WriteState.WriteNone:
+				write_state = WriteState.WriteProcess
 				emit_signal('on_context_process', current_node)
-				wait_write = true
-			elif (test_mode && wait_write) || (wait_write && Input.is_action_pressed('ui_accept')):
-			#elif wait_write && Input.is_action_pressed('ui_accept'):
+			elif write_state == WriteState.WriteContinue:
+				write_state = WriteState.WriteNone
 				current_node = current_node.children[0]
-				input_timer.start()
-				wait_write = false
 		DialogueNode.NodeType.Branch:
 			emit_signal('on_context_process', current_node)
 			wait_branch = true
@@ -121,6 +117,11 @@ func evaluate_current_node():
 		self.conclude_dialogue()
 		return
 	
+
+func finish_writing():
+	write_state = WriteState.WriteContinue
+	
+
 ## Selects the branch by index (int) and sets the current node to the selected branch
 ## -> note: must figure out the index outside of this method
 func pick_branch(branch_choice):
