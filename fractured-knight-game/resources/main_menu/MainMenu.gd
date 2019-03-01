@@ -13,7 +13,7 @@ func _on_BtnLoadGame_pressed():
 	pass
 
 ## opns the options window
-func _on_BtnOption_pressed():
+func _on_BtnOptions_pressed():
 	## opens the options window/pop-up
 	print("options")
 	pass
@@ -24,7 +24,7 @@ func _on_BtnHelp_pressed():
 	pass # replace with function body
 
 ##Opens the about us pop-up
-func _on_BtnAboutpressed():
+func _on_BtnAbout_pressed():
 	print("About")
 	$AboutUs.show()
 	pass # replace with function body

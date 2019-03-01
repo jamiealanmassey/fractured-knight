@@ -376,17 +376,17 @@ flat = true
 align = 1
 _sections_unfolded = [ "custom_colors" ]
 
-[connection signal="pressed" from="VBoxContainer/BtnStart" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="VBoxContainer/BtnStart" to="." method="_on_BtnStart_pressed"]
 
-[connection signal="pressed" from="VBoxContainer/BtnLoadGame" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="VBoxContainer/BtnLoadGame" to="." method="_on_BtnLoadGame_pressed"]
 
-[connection signal="pressed" from="VBoxContainer/BtnOptions" to="." method="_on_Button3_pressed"]
+[connection signal="pressed" from="VBoxContainer/BtnOptions" to="." method="_on_BtnOptions_pressed"]
 
-[connection signal="pressed" from="VBoxContainer/BtnHelp" to="." method="_on_Button4_pressed"]
+[connection signal="pressed" from="VBoxContainer/BtnHelp" to="." method="_on_BtnHelp_pressed"]
 
-[connection signal="pressed" from="VBoxContainer/BtnAbout" to="." method="_on_Button5_pressed"]
+[connection signal="pressed" from="VBoxContainer/BtnAbout" to="." method="_on_BtnAbout_pressed"]
 
-[connection signal="pressed" from="VBoxContainer/BtnQuit" to="." method="_on_Button6_pressed"]
+[connection signal="pressed" from="VBoxContainer/BtnQuit" to="." method="_on_BtnQuit_pressed"]
 
 [connection signal="pressed" from="AboutUs/Button" to="AboutUs" method="_on_Button_pressed"]
 
