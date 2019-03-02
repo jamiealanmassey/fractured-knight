@@ -10,7 +10,8 @@ export(float) var moveSpeed = 250
 export(float) var velocitySpeed = 1
 
 var velocity = Vector2()
-var keyStates = []
+var key_states = []
+var lock_movement = false
 
 signal player_moved
 
@@ -26,7 +27,7 @@ class KeyState:
 	
 	var state = false
 	var stamp = 0
-	var name = ""
+	var name = ''
 
 ## Custom sorting class for KeyState objects (sorts by timestamp)
 class KeyStateSorter:
@@ -44,46 +45,53 @@ func update_input(key_state):
 	else:
 		key_state.state = false
 
+func sort_input():
+	key_states.sort_custom(KeyStateSorter, 'sort')
+
 ## Helper function to calculate the input for this frame of
 ## the game by updating all key states
 func calulate_input():
 	velocity = Vector2()
-	for key_index in range(keyStates.size()):
-		update_input(keyStates[key_index])
+	for key_index in range(key_states.size()):
+		update_input(key_states[key_index])
 	
-	keyStates.sort_custom(KeyStateSorter, "sort")
+	if lock_movement:
+		return
+	
+	key_states.sort_custom(KeyStateSorter, 'sort')
 	var moving = false
-	for key in keyStates:
+	for key in key_states:
 		if (key.state):
 			match key.name:
-				"left":
+				'left':
 					velocity.x -= velocitySpeed * moveSpeed
-					$Sprite.play("Left")
+					#$Sprite.play('Left')
 					moving = true
-				"right":
+				'right':
 					velocity.x += velocitySpeed * moveSpeed
-					$Sprite.play("Right")
+					#$Sprite.play('Right')
 					moving = true
-				"up":
+				'up':
 					velocity.y -= velocitySpeed * moveSpeed
-					$Sprite.play("up")
+					#$Sprite.play('Up')
 					moving = true
-				"down":
+				'down':
 					velocity.y += velocitySpeed * moveSpeed
-					$Sprite.play("Down")
+					#$Sprite.play('Down')
 					moving = true
-			emit_signal("player_moved")
+			emit_signal('player_moved')
 			break
 		
 	if (!moving):
-		$Sprite.frame = 0
+		pass#$Sprite.frame = 0
+
 
 func _ready():
-	keyStates = [
-	KeyState.new("left"), 
-	KeyState.new("right"), 
-	KeyState.new("up"), 
-	KeyState.new("down")]
+	key_states = [
+	KeyState.new('left'), 
+	KeyState.new('right'), 
+	KeyState.new('up'), 
+	KeyState.new('down')]
 
 func _process(delta):
 	calulate_input()
