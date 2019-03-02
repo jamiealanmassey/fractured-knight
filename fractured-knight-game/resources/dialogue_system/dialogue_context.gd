@@ -146,3 +146,26 @@ func evaluate_symbol(symbol_name):
 	
 	return symbols[symbol_name]
 	
+
+## Helper function that can be called by the manager to save the state of the symbols
+## that exist in this context
+func save_symbols():
+	var symbol_file = File.new()
+	symbol_file.open('user://symbols.save', File.WRITE)
+	symbol_file.store_line(to_json(symbols))
+	symbol_file.close()
+	
+
+## Helper function to load any stored symbols between room loading
+func load_symbols():
+	var symbol_file = File.new()
+	var symbol_json = null
+	if not symbol_file.file_exists('user://symbols.save'):
+		return 0
+	
+	symbol_file.open('user://symbols.save', File.READ)
+	symbol_json = parse_json(symbol_file.get_line())
+	symbols = symbol_json
+	symbol_file.close()
+	return symbol_json
+	
