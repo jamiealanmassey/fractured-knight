@@ -8,6 +8,7 @@ extends KinematicBody2D
 
 export(float) var moveSpeed = 250
 export(float) var velocitySpeed = 1
+export (Resource) var combat_actor
 
 var velocity = Vector2()
 var key_states = []
