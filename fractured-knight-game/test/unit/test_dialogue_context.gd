@@ -40,9 +40,20 @@ class TestDialogueContext:
 		system.symbols['found_sword'] = true
 		system.symbols['interact_with_knight'] = true
 		system.save_symbols()
+		system.symbols.clear()
 		persistence_obj = system.load_symbols()
+		
+		# Test results data structure
 		assert_true(persistence_obj.has('found_sword'), 'no entry with name found_sword in symbols dict')
 		assert_true(persistence_obj.has('interact_with_knight'), 'no entry with name interact_with_knight in symbols dict')
 		assert_eq(persistence_obj['found_sword'], true, 'found_sword entry is not true and should be')
 		assert_eq(persistence_obj['interact_with_knight'], true, 'found_sword entry is not true and should be')
 		assert_eq(persistence_obj.size(), 2, 'more than two entries was unexpected')
+		
+		# Test internal data structure
+		assert_true(system.symbols.has('found_sword'), 'no entry with name found_sword in symbols dict')
+		assert_true(system.symbols.has('interact_with_knight'), 'no entry with name interact_with_knight in symbols dict')
+		assert_eq(system.symbols['found_sword'], true, 'found_sword entry is not true and should be')
+		assert_eq(system.symbols['interact_with_knight'], true, 'found_sword entry is not true and should be')
+		assert_eq(system.symbols.size(), 2, 'more than two entries was unexpected')
+	
