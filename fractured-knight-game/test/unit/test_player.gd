@@ -44,9 +44,8 @@ class TestDialogueParser:
 		assert_eq(player.key_states[3].name, 'up', 'fourth element should now be up')
 		
 	func test_loading_NPC():
-		var test_player = load("res://test/unit/player_example.tscn").instance()
-		add_child(test_player)
-		var actor = test_player.combat_actor
+		player.combat_actor = load("res://test/unit/example_actor.tres")
+		var actor = player.combat_actor
 		assert_ne(actor, null, "Actor should not be null")
 		var health = actor.health
 		var moves = actor.get_all_moves()
