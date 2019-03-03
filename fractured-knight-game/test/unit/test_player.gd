@@ -42,5 +42,23 @@ class TestDialogueParser:
 		assert_eq(player.key_states[1].name, 'down', 'second element should now be down')
 		assert_eq(player.key_states[2].name, 'left', 'third element should now be left')
 		assert_eq(player.key_states[3].name, 'up', 'fourth element should now be up')
+		
+	func test_loading_player():
+		player.combat_actor = load("res://test/unit/example_actor.tres")
+		var actor = player.combat_actor
+		assert_ne(actor, null, "Actor should not be null")
+		var health = actor.health
+		var moves = actor.get_all_moves()
+		var accuracy = actor.get_stat('accuracy')
+		var damage = actor.get_stat('damage')
+		
+		assert_eq(health, 50, "Health should be 50")
+		assert_eq(accuracy, 10, "Accuracy should be 10")
+		assert_eq(damage, 2, "Damage should be 2")
+		
+		assert_eq(moves[0].move_name, "punch", "Move name should be punch")
+		
+		
+		pass
 	
 
