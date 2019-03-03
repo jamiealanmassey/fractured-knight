@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rsz_sand.png-006af1c69f27fdc6ead8a0544c924449.stex"
+path="res://.import/outdor.png-6afd83dc22a77345741acfd02ec04c2c.stex"
 
 [deps]
 
-source_file="res://resources/levels/Desert/Tilemap/Tiles/rsz_sand.png"
-dest_files=[ "res://.import/rsz_sand.png-006af1c69f27fdc6ead8a0544c924449.stex" ]
+source_file="res://resources/levels/Forest/outdor.png"
+dest_files=[ "res://.import/outdor.png-6afd83dc22a77345741acfd02ec04c2c.stex" ]
 
 [params]
 

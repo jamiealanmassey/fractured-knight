@@ -78,4 +78,5 @@
 7/occluder_offset = Vector2( 16, 16 )
 7/navigation_offset = Vector2( 16, 16 )
 7/shapes = [  ]
+_sections_unfolded = [ "0" ]
 

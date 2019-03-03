@@ -21,19 +21,19 @@ extents = Vector2( 15.7128, 15.9382 )
 
 [node name="Sprite8" type="Sprite" parent="." index="0"]
 
-position = Vector2( -387.903, -119 )
+position = Vector2( -390.347, -119 )
 scale = Vector2( 0.430556, 0.430556 )
 texture = ExtResource( 1 )
 
 [node name="Sprite9" type="Sprite" parent="." index="1"]
 
-position = Vector2( -353.655, -119.336 )
+position = Vector2( -356.099, -119.336 )
 scale = Vector2( 0.430556, 0.430556 )
 texture = ExtResource( 2 )
 
 [node name="Sprite10" type="Sprite" parent="." index="2"]
 
-position = Vector2( -321.533, -120.119 )
+position = Vector2( -323.977, -120.119 )
 scale = Vector2( 0.430556, 0.430556 )
 texture = ExtResource( 3 )
 
@@ -53,19 +53,19 @@ shape = SubResource( 1 )
 
 [node name="Sprite11" type="Sprite" parent="." index="3"]
 
-position = Vector2( -285.226, -120.343 )
+position = Vector2( -287.67, -120.343 )
 scale = Vector2( 0.430556, 0.430556 )
 texture = ExtResource( 4 )
 
 [node name="Sprite12" type="Sprite" parent="." index="4"]
 
-position = Vector2( -308.102, -84.3041 )
+position = Vector2( -310.546, -84.3041 )
 scale = Vector2( 0.430556, 0.430556 )
 texture = ExtResource( 5 )
 
 [node name="Sprite13" type="Sprite" parent="." index="5"]
 
-position = Vector2( -350.968, -84.3041 )
+position = Vector2( -353.411, -84.3041 )
 scale = Vector2( 0.430556, 0.430556 )
 texture = ExtResource( 6 )
 
