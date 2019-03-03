@@ -43,7 +43,7 @@ class TestDialogueParser:
 		assert_eq(player.key_states[2].name, 'left', 'third element should now be left')
 		assert_eq(player.key_states[3].name, 'up', 'fourth element should now be up')
 		
-	func test_loading_NPC():
+	func test_loading_player():
 		player.combat_actor = load("res://test/unit/example_actor.tres")
 		var actor = player.combat_actor
 		assert_ne(actor, null, "Actor should not be null")
