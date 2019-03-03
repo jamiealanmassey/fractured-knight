@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/game-logo.jpg-01fd7da0d37e2025c10ae15828523ddf.stex"
+path="res://.import/tree6.png-05e00607fab3db366af8c390f630d8b5.stex"
 
 [deps]
 
-source_file="res://game-logo.jpg"
-dest_files=[ "res://.import/game-logo.jpg-01fd7da0d37e2025c10ae15828523ddf.stex" ]
+source_file="res://resources/levels/Forest/TileMap/Images/tree6.png"
+dest_files=[ "res://.import/tree6.png-05e00607fab3db366af8c390f630d8b5.stex" ]
 
 [params]
 

@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://resources/levels/Forest/TileMap/Images/Grass Texture 1.jpg" type="Texture" id=1]
+[ext_resource path="res://resources/levels/Forest/TileMap/Images/grass.png" type="Texture" id=2]
+
+[node name="Node" type="Node" index="0"]
+
+[node name="Sprite16" type="Sprite" parent="." index="0"]
+
+position = Vector2( 118.593, -170.552 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+_sections_unfolded = [ "Region" ]
+
+[node name="Sprite17" type="Sprite" parent="." index="1"]
+
+position = Vector2( 190.693, -114.776 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+_sections_unfolded = [ "Region" ]
+
+[node name="Sprite5" type="Sprite" parent="." index="2"]
+
+position = Vector2( 138.758, -118.353 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 64, 608, 32, 32 )
+_sections_unfolded = [ "Region" ]
+
+
