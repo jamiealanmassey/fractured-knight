@@ -80,7 +80,7 @@ func calulate_input():
 					velocity.y += velocitySpeed * moveSpeed
 					#$Sprite.play('Down')
 					moving = true
-			emit_signal('player_moved')
+			emit_signal('player_moved', self.position)
 			break
 		
 	if (!moving):

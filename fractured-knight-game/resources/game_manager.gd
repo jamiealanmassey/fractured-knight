@@ -1,6 +1,7 @@
 extends Node
 
 var current_scene = null
+var current_camera = null
 
 func _ready():
 	var root = get_tree().get_root()
