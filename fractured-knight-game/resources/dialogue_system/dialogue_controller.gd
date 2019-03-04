@@ -48,6 +48,7 @@ func _ready():
 	self.add_child(controller_begin_tween)
 	self.add_child(controller_end_tween)
 	self.add_child(text_timer)
+	self.rect_position.y = get_viewport().size.y
 	get_tree().get_root().connect('size_changed', self, '_on_resize')
 	
 	for i in range(readout_sound_files.size()):

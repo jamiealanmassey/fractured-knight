@@ -31,8 +31,9 @@ signal on_context_finish  ## Called when the end of the current dialogue graph i
 signal on_context_trigger ## Called when a trigger has been executed in the script
 
 func _ready():
-	for index in dialogue_file_names.size(): 
-		self.add_dialogue_file(dialogue_file_names[index], dialogue_file_locations[index])
+	if dialogue_file_names != null:
+		for index in dialogue_file_names.size(): 
+			self.add_dialogue_file(dialogue_file_names[index], dialogue_file_locations[index])
 
 func _process(delta):
 	if processing:
