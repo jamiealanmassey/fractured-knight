@@ -14,6 +14,10 @@ config/name="fractured-knight"
 run/main_scene="res://resources/main_menu/MainMenu.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+game_manager="*res://resources/game_manager.gd"
+
 [display]
 
 window/size/width=1920
@@ -52,7 +56,3 @@ up=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","de
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":12,"pressure":0.0,"pressed":false,"script":null)
 , Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":1,"axis_value":-1.0,"script":null)
  ]
-
-[rendering]
-
-environment/default_environment="res://default_env.tres"

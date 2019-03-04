@@ -6,9 +6,9 @@
 [ext_resource path="res://resources/levels/GrassLand/Grassland.tres" type="TileSet" id=4]
 [ext_resource path="res://resources/levels/Lake/Tilemap/AutoTile.tres" type="TileSet" id=5]
 [ext_resource path="res://resources/levels/MerlinsTomb/TileMap/Tileset.tres" type="TileSet" id=6]
-[ext_resource path="res://resources/levels/WorldMap/UltimateTileSet/GreenGrassAuto.tres" type="TileSet" id=7]
-[ext_resource path="res://resources/levels/WorldMap/UltimateTileSet/Autotile.tres" type="TileSet" id=8]
-[ext_resource path="res://resources/levels/WorldMap/UltimateTileSet/PathAuto.tres" type="TileSet" id=9]
+[ext_resource path="res://resources/levels/world_map/world_tileset/GreenGrassAuto.tres" type="TileSet" id=7]
+[ext_resource path="res://resources/levels/world_map/world_tileset/Autotile.tres" type="TileSet" id=8]
+[ext_resource path="res://resources/levels/world_map/world_tileset/PathAuto.tres" type="TileSet" id=9]
 [ext_resource path="res://resources/levels/Forest/ForestTreesSet.tres" type="TileSet" id=10]
 
 [node name="MasterWorldPlane" type="Node2D" index="0"]
