@@ -49,6 +49,7 @@ func _ready():
 	self.add_child(controller_end_tween)
 	self.add_child(text_timer)
 	self.rect_position.y = get_viewport().size.y
+	self.rect_size.x = get_viewport().size.x
 	self.grab_focus()
 	get_tree().get_root().connect('size_changed', self, '_on_resize')
 	
@@ -73,11 +74,9 @@ func _input(event):
 
 ## Signal that is emitted when context starts new dialogue
 func _react_context_begin():
-	self.rect_global_position.y = 240
+	self.rect_position.y = 0
 	self.show()
-	var calc_before_y = 0
-	var calc_after_y = -230
-	controller_begin_tween.interpolate_property(self, 'rect_position:y', calc_before_y, calc_after_y, 0.25, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	controller_begin_tween.interpolate_property(self, 'rect_position:y', 0, -230, 0.25, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	controller_begin_tween.interpolate_property(self, 'modulate:a', 0, 1, 0.35, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	controller_begin_tween.start()
 	
@@ -105,12 +104,10 @@ func _react_context_process(node):
 func _on_resize():
 	if context && context.processing:
 		self.rect_position.y = -230
-		
 		if context.wait_branch:
 			for i in range(buttons.size()):
 				buttons[i].rect_position.x = self.rect_size.x - (buttons[i].rect_size.x + 10)
 				buttons[i].rect_position.y = self.rect_size.y - (button_offset + (button_spacing * i))
-				#buttons[i].rect_global_position.y = size.y - (button_offset + (button_spacing * i))
 	else:
 		self.rect_position.y = 0
 		for i in range(buttons.size()):
@@ -157,10 +154,9 @@ func _on_choice_pressed(button):
 ## tweening, and then kickstarting the tweener
 func unpack_buttons():
 	var size = get_viewport().size
-	var camera_pos = calculate_camera_pos()
 	for button in range(buttons.size()):
-		var calc_before_x = self.rect_size.x #viewport_x + (buttons[button].rect_size.x + 10)
-		var calc_after_x = self.rect_size.x - (buttons[button].rect_size.x + 10)#viewport_x - (buttons[button].rect_size.x + 10)
+		var calc_before_x = self.rect_size.x
+		var calc_after_x = self.rect_size.x - (buttons[button].rect_size.x + 10)
 		buttons_unpack_tween.interpolate_property(buttons[button], 'rect_position:x', calc_before_x, calc_after_x, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN, 0.05 * button)
 		buttons[button].show()
 		buttons[button].disabled = false
@@ -192,19 +188,9 @@ func expand_button_count(metadata):
 		self.add_child(button)
 		
 	for i in range(buttons.size()):
-		var size = get_viewport().size
-		#buttons[i].rect_global_position = Vector2(size.x, size.y - (button_offset + (button_spacing * i)))
 		buttons[i].rect_position = Vector2(self.rect_size.x, self.rect_size.y - (button_offset + (button_spacing * i)))
 		buttons[i].rect_min_size = Vector2(150, 25)
 		buttons[i].set_text(metadata[i])
 		buttons[i].rect_size = Vector2(150, 25)
 		buttons[i].disabled = true
-	
-func calculate_camera_pos():
-	var camera = get_node('/root/game_manager').current_camera
-	var camera_pos = Vector2(0, 0)
-	if (camera != null):
-		return camera.get_camera_position()
-	
-	return Vector2(0, 0)
 	
