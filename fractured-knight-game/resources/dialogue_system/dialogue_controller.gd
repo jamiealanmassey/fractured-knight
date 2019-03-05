@@ -48,6 +48,8 @@ func _ready():
 	self.add_child(controller_begin_tween)
 	self.add_child(controller_end_tween)
 	self.add_child(text_timer)
+	self.rect_position.y = get_viewport().size.y
+	self.grab_focus()
 	get_tree().get_root().connect('size_changed', self, '_on_resize')
 	
 	for i in range(readout_sound_files.size()):
@@ -59,7 +61,7 @@ func _ready():
 		readout_sounds_buffer[i].stream.loop_mode = AudioStreamSample.LOOP_DISABLED
 		self.add_child(readout_sounds[i])
 		self.add_child(readout_sounds_buffer[i])
-	    
+	
 
 func _input(event):
 	if Input.is_action_pressed('ui_accept') && input_timer.get_time_left() <= 0:
@@ -73,9 +75,9 @@ func _input(event):
 func _react_context_begin():
 	self.rect_global_position.y = 240
 	self.show()
-	var calc_before_y = get_viewport().size.y + rect_size.y
-	var calc_after_y = get_viewport().size.y - rect_size.y
-	controller_begin_tween.interpolate_property(self, 'rect_global_position:y', calc_before_y, calc_after_y, 0.25, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	var calc_before_y = 0
+	var calc_after_y = -230
+	controller_begin_tween.interpolate_property(self, 'rect_position:y', calc_before_y, calc_after_y, 0.25, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	controller_begin_tween.interpolate_property(self, 'modulate:a', 0, 1, 0.35, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	controller_begin_tween.start()
 	
@@ -101,18 +103,20 @@ func _react_context_process(node):
 ## Signal that comes from Godot itself allowing us to deal with the size of the viewport
 ## changing. Here we re-position buttons and the UI itself depending on context state.
 func _on_resize():
-	var size = get_viewport().size
 	if context && context.processing:
-		self.rect_global_position.y = size.y - self.rect_size.y
+		self.rect_position.y = -230
 		
 		if context.wait_branch:
 			for i in range(buttons.size()):
-				buttons[i].rect_global_position.y = size.y - (button_offset + (button_spacing * i))
+				buttons[i].rect_position.x = self.rect_size.x - (buttons[i].rect_size.x + 10)
+				buttons[i].rect_position.y = self.rect_size.y - (button_offset + (button_spacing * i))
+				#buttons[i].rect_global_position.y = size.y - (button_offset + (button_spacing * i))
 	else:
-		self.rect_global_position.y = size.y + self.rect_size.y
+		self.rect_position.y = 0
 		for i in range(buttons.size()):
-			buttons[i].rect_global_position.x = size.x
-			buttons[i].rect_global_position.y = size.y - (button_offset + (button_spacing * i))
+			buttons[i].rect_position.x = self.rect_size.x
+			buttons[i].rect_position.y = self.rect_size.y - (button_offset + (button_spacing * i))
+		
 	
 
 ## Signal for interval timer to progress text reader
@@ -136,9 +140,8 @@ func _controller_end_tween_finished(obj, key):
 ## Signal called when choice has been selected and tweening is finished,
 ## here we reset all the button variables
 func _buttons_pack_tween_finished(obj, key):
-	var size = get_viewport().size
 	for i in range(buttons.size()):
-		buttons[i].rect_global_position = Vector2(size.x, size.y - (button_offset + (button_spacing * i)))
+		buttons[i].rect_position = Vector2(self.rect_size.x, self.rect_size.y - (button_offset + (button_spacing * i)))
 		buttons[i].disabled = true
 		buttons[i].modulate.a = 1
 		buttons[i].hide()
@@ -153,11 +156,12 @@ func _on_choice_pressed(button):
 ## Helper function that unpacks the buttons on the screen, setting up all the buttons for
 ## tweening, and then kickstarting the tweener
 func unpack_buttons():
-	var viewport_x = get_viewport().size.x
+	var size = get_viewport().size
+	var camera_pos = calculate_camera_pos()
 	for button in range(buttons.size()):
-		var calc_before_x = viewport_x + (buttons[button].rect_size.x + 10)
-		var calc_after_x = viewport_x - (buttons[button].rect_size.x + 10)
-		buttons_unpack_tween.interpolate_property(buttons[button], 'rect_global_position:x', calc_before_x, calc_after_x, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN, 0.05 * button)
+		var calc_before_x = self.rect_size.x #viewport_x + (buttons[button].rect_size.x + 10)
+		var calc_after_x = self.rect_size.x - (buttons[button].rect_size.x + 10)#viewport_x - (buttons[button].rect_size.x + 10)
+		buttons_unpack_tween.interpolate_property(buttons[button], 'rect_position:x', calc_before_x, calc_after_x, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN, 0.05 * button)
 		buttons[button].show()
 		buttons[button].disabled = false
 	
@@ -168,7 +172,7 @@ func unpack_buttons():
 func pack_buttons():
 	var viewport_y = get_viewport().size.y
 	for button in buttons:
-		buttons_pack_tween.interpolate_property(button, 'rect_global_position:y', button.rect_global_position.y, viewport_y + button.rect_size.y, 0.5, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+		buttons_pack_tween.interpolate_property(button, 'rect_position:y', button.rect_position.y, self.rect_size.y + button.rect_size.y, 0.5, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 		buttons_pack_tween.interpolate_property(button, 'modulate:a', 1, 0, 0.25, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 		
 	buttons_pack_tween.start()
@@ -183,14 +187,24 @@ func expand_button_count(metadata):
 		button.rect_min_size = Vector2(150, 25)
 		button.connect("pressed", self, "_on_choice_pressed", [button])
 		button.add_font_override("font", load('res://resources/fonts/dynamic_font_btn.tres'))
+		button.flat = true
 		buttons.append(button)
 		self.add_child(button)
 		
 	for i in range(buttons.size()):
 		var size = get_viewport().size
-		buttons[i].rect_global_position = Vector2(size.x, size.y - (button_offset + (button_spacing * i)))
+		#buttons[i].rect_global_position = Vector2(size.x, size.y - (button_offset + (button_spacing * i)))
+		buttons[i].rect_position = Vector2(self.rect_size.x, self.rect_size.y - (button_offset + (button_spacing * i)))
 		buttons[i].rect_min_size = Vector2(150, 25)
 		buttons[i].set_text(metadata[i])
 		buttons[i].rect_size = Vector2(150, 25)
 		buttons[i].disabled = true
+	
+func calculate_camera_pos():
+	var camera = get_node('/root/game_manager').current_camera
+	var camera_pos = Vector2(0, 0)
+	if (camera != null):
+		return camera.get_camera_position()
+	
+	return Vector2(0, 0)
 	

@@ -1,6 +1,8 @@
 [gd_resource type="TileSet" load_steps=2 format=2]
 
-[ext_resource path="res://resources/levels/WorldMap/UltimateTileSet/32x32_map_tile v3.1 [MARGINLESS].png" type="Texture" id=1]
+[ext_resource path="res://resources/levels/world_map/world_tileset/32x32_map_tile v3.1 [MARGINLESS].png" type="Texture" id=1]
+
+
 
 [resource]
 

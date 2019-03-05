@@ -31,12 +31,19 @@ signal on_context_finish  ## Called when the end of the current dialogue graph i
 signal on_context_trigger ## Called when a trigger has been executed in the script
 
 func _ready():
-	for index in dialogue_file_names.size(): 
-		self.add_dialogue_file(dialogue_file_names[index], dialogue_file_locations[index])
+	if dialogue_file_names != null:
+		for index in dialogue_file_names.size(): 
+			self.add_dialogue_file(dialogue_file_names[index], dialogue_file_locations[index])
 
 func _process(delta):
 	if processing:
 		evaluate_current_node()
+	
+	var camera = get_node('/root/game_manager').current_camera
+	if (camera != null):
+		var cam_pos = camera.get_camera_position()
+		var size = get_viewport().size
+		self.rect_position = Vector2(cam_pos.x - (size.x / 2), cam_pos.y + (size.y / 2))
 
 ## Parses the given dialogue file and adds it to the context for use in the Dialogue System
 func add_dialogue_file(dialogue_name, file_name):
@@ -169,3 +176,6 @@ func load_symbols():
 	symbol_file.close()
 	return symbol_json
 	
+
+func _on_Player_player_moved(position):
+	self.rect_position = position
