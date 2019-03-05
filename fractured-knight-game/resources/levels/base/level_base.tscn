@@ -16,9 +16,4 @@ script = ExtResource( 1 )
 
 _sections_unfolded = [ "Pause", "Transform" ]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="World" index="2"]
-
-environment = null
-_sections_unfolded = [ "Pause" ]
-
 

@@ -96,7 +96,6 @@ func _ready():
 
 func _process(delta):
 	calulate_input()
-	print('player pos is ' + str(self.position))
 
 func _physics_process(delta):
 	move_and_slide(velocity)
