@@ -8,10 +8,17 @@
 
 script = ExtResource( 1 )
 
-[node name="DialogueUI" parent="." index="0" instance=ExtResource( 2 )]
+[node name="World" type="Node2D" parent="." index="0"]
 
-[node name="Player" parent="." index="1" instance=ExtResource( 3 )]
+[node name="DialogueUI" parent="World" index="0" instance=ExtResource( 2 )]
 
-_sections_unfolded = [ "Transform" ]
+[node name="Player" parent="World" index="1" instance=ExtResource( 3 )]
+
+_sections_unfolded = [ "Pause", "Transform" ]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World" index="2"]
+
+environment = null
+_sections_unfolded = [ "Pause" ]
 
 

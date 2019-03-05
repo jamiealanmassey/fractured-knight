@@ -44,6 +44,7 @@ func _process(delta):
 		var cam_pos = camera.get_camera_position()
 		var size = get_viewport().size
 		self.rect_position = Vector2(cam_pos.x - (size.x / 2), cam_pos.y + (size.y / 2))
+		print('dialogue ui pos is ' + str(self.rect_position))
 
 ## Parses the given dialogue file and adds it to the context for use in the Dialogue System
 func add_dialogue_file(dialogue_name, file_name):

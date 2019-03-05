@@ -2,6 +2,8 @@ extends Node
 
 var current_scene = null
 var current_camera = null
+var current_player_data = null
+var current_enemy_data = null
 
 func _ready():
 	var root = get_tree().get_root()
@@ -19,7 +21,7 @@ func _deferred_switch_scene(path):
 	get_tree().set_current_scene(current_scene)
 
 func _save_dialogue_symbols():
-	var dialogue = get_node('/root/LevelManager/DialogueUI')
+	var dialogue = get_node('/root/LevelManager/World/DialogueUI')
 	if (dialogue != null):
 		dialogue.save_symbols()
 		print(dialogue.symbols)
