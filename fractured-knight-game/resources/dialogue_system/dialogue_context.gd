@@ -176,6 +176,3 @@ func load_symbols():
 	symbol_file.close()
 	return symbol_json
 	
-
-func _on_Player_player_moved(position):
-	self.rect_position = position

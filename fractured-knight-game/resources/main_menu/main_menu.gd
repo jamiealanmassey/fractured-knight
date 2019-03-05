@@ -8,39 +8,31 @@ signal game_help
 
 ## Signal is sent to start the game
 func _on_BtnStart_pressed():
-	## Start game
+	var directory = Directory.new()
+	if directory.file_exists('user://symbols.save'):
+		directory.remove('user://symbols.save')
+	
 	emit_signal("game_start")
-	print("play")
-	pass 
+	get_node('/root/game_manager').switch_scene('res://resources/levels/world_map/world_tilemap/master_world_plane.tscn')
+	
 
-##  Signal is sent to load a game version
+## signal is sent to load a game version
 func _on_BtnLoadGame_pressed():
-	## Load game
 	emit_signal("game_load")
-	print("load game")
-	pass
 
-## opns the options window
+## opens the options window
 func _on_BtnOptions_pressed():
-	## opens the options window/pop-up
 	emit_signal("game_option")
-	print("options")
-	pass
 
-## Opens the help pop-up
+## opens the help pop-up
 func _on_BtnHelp_pressed():
 	emit_signal("game_help")
-	print("help")
 	pass # replace with function body
 
-##Opens the about us pop-up
+## opens the about us pop-up
 func _on_BtnAbout_pressed():
-	print("About")
 	$AboutUs.show()
-	pass # replace with function body
 
-## closes the game.
+## closes the game
 func _on_BtnQuit_pressed():
-	print("Quit")
 	get_tree().quit()
-	pass # replace with function body
