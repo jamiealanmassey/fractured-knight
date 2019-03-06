@@ -9,7 +9,7 @@
 script = ExtResource( 2 )
 stats = {
 "accuracy": 10,
-"damage": 2
+"damage": 10
 }
 moves = [ ExtResource( 1 ) ]
 health = 100

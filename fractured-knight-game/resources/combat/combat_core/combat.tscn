@@ -1,12 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://resources/combat/combat_core/combat.gd" type="Script" id=1]
 [ext_resource path="res://resources/combat/combat_ui/combat_interface.tscn" type="PackedScene" id=2]
-
-
-
-
-
+[ext_resource path="res://resources/combat/combat_ui/combat_sprite/combat_sprite.tscn" type="PackedScene" id=3]
+[ext_resource path="res://resources/combat/combat_ui/health_bar/health_bar.tscn" type="PackedScene" id=4]
 
 [node name="Combat" type="Control" index="0"]
 
@@ -24,6 +21,27 @@ script = ExtResource( 1 )
 
 [node name="combatInterface" parent="." index="0" instance=ExtResource( 2 )]
 
+[node name="player" parent="." index="1" instance=ExtResource( 3 )]
+
+position = Vector2( 720, 360 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="enemy" parent="." index="2" instance=ExtResource( 3 )]
+
+position = Vector2( 1200, 360 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="player_health_bar" parent="." index="3" instance=ExtResource( 4 )]
+
+position = Vector2( 720, 290 )
+_sections_unfolded = [ "Transform" ]
+max_health = 100
+
+[node name="enemy_health_bar" parent="." index="4" instance=ExtResource( 4 )]
+
+position = Vector2( 1200, 290 )
+_sections_unfolded = [ "Transform" ]
+
 [connection signal="UI_get_ready" from="." to="combatInterface" method="_on_Combat_UI_get_ready"]
 
 [connection signal="combat_finished" from="." to="combatInterface" method="_on_Combat_combat_finished"]
@@ -31,6 +49,10 @@ script = ExtResource( 1 )
 [connection signal="display_options" from="." to="combatInterface" method="_on_Combat_display_options"]
 
 [connection signal="display_text" from="." to="combatInterface" method="_on_Combat_display_text"]
+
+[connection signal="enemy_health_update" from="." to="enemy_health_bar" method="update_health"]
+
+[connection signal="player_health_update" from="." to="player_health_bar" method="update_health"]
 
 [connection signal="btnPressed" from="combatInterface" to="." method="on_button_pressed"]
 
