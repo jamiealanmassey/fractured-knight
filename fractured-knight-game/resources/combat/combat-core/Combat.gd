@@ -36,6 +36,7 @@ func start_combat(player, enemy, seeded = null):
 	self.player_moves = player.get_all_moves()
 	self.player = player
 	self.enemy = enemy
+	$enemy_health_bar.max_health = enemy.health
 	if seeded == null:
 		randomize()
 	else:
