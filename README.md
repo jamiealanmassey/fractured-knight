@@ -1,4 +1,4 @@
-![Fractured Knight Logo](fractured-knight-game/game-logo.jpg)
+![Fractured Knight Logo](fractured-knight-game/resources/game-logo.jpg)
 # Introduction
 Fractured Knight is a medieval-space themed adventure game that incorporates text-based interaction and has
 a combat system that takes heavy influence from Pokémon!

@@ -1,2 +1,0 @@
-Anything that relates to the Player should be stored here.
-This includes scenes of related objects, the player itself and any scripts + sprites.

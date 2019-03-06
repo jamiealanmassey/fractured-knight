@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://test/unit/example_move.tres" type="Resource" id=1]
+[ext_resource path="res://resources/combat/combat-core/actor.gd" type="Script" id=2]
+
+[resource]
+
+script = ExtResource( 2 )
+_sections_unfolded = [ "Resource" ]
+stats = {
+"accuracy": 10,
+"damage": 2
+}
+moves = [ ExtResource( 1 ) ]
+health = 50
+

@@ -1,8 +1,17 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://resources/dialogue_system/dialogue_context.gd" type="Script" id=1]
 [ext_resource path="res://resources/dialogue_system/dialogue_controller.gd" type="Script" id=2]
-[ext_resource path="res://resources/dialogue_system/dialogue_parser.gd" type="Script" id=3]
+[ext_resource path="res://resources/fonts/Montserrat-ExtraBold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://resources/dialogue_system/dialogue_parser.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+
+size = 21
+use_mipmaps = true
+use_filter = false
+font_data = ExtResource( 3 )
+_sections_unfolded = [ "Font", "Settings" ]
 
 [node name="DialogueUI" type="Container"]
 
@@ -10,6 +19,7 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_bottom = -850.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -17,6 +27,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 script = ExtResource( 1 )
+_sections_unfolded = [ "Rect" ]
 dialogue_file_names = null
 dialogue_file_locations = null
 
@@ -24,8 +35,10 @@ dialogue_file_locations = null
 
 anchor_left = 0.0
 anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1920.0
+margin_bottom = 230.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -33,20 +46,44 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 script = ExtResource( 2 )
+_sections_unfolded = [ "Rect" ]
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="DialogueText" type="RichTextLabel" parent="DialogueController" index="0"]
+[node name="ColorRect" type="ColorRect" parent="DialogueController" index="0"]
 
 anchor_left = 0.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -221.0
+margin_top = -230.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.0898438, 0.0842285, 0.0842285, 0.54902 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="DialogueText" type="RichTextLabel" parent="DialogueController" index="1"]
+
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = -220.0
+margin_right = -292.0
+margin_bottom = -1.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 bbcode_text = ""
 visible_characters = -1
@@ -54,15 +91,15 @@ percent_visible = 1.0
 meta_underlined = true
 tab_size = 4
 text = ""
-scroll_active = true
+scroll_active = false
 scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
-_sections_unfolded = [ "BBCode", "Visibility", "custom_fonts" ]
+_sections_unfolded = [ "BBCode", "Margin", "Rect", "Visibility", "custom_fonts" ]
 
 [node name="Parser" type="Node2D" parent="." index="1"]
 
-script = ExtResource( 3 )
+script = ExtResource( 4 )
 
 [connection signal="on_context_begin" from="." to="DialogueController" method="_react_context_begin"]
 

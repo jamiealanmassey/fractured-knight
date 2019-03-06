@@ -1,7 +1,6 @@
 extends Resource
 export (String) var move_name
 export var attributes = {'accuracy' : 50, 'damage' : 5}
-export (Resource) var weapon
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
