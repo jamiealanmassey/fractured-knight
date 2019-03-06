@@ -14,7 +14,7 @@ func _ready():
 		dialogue.load_symbols()
 
 func initiate_combat(enemy):
-	var combat_scene = load('res://resources/combat/combat-core/Combat.tscn')
+	var combat_scene = load('res://resources/combat/combat_core/combat.tscn')
 	var camera_pos = get_node('/root/game_manager').current_camera.get_camera_position()
 	var view_size = get_viewport().size
 	current_enemy = enemy

@@ -1,8 +1,9 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://resources/combat/combat-UI/images/DialougeBox.png" type="Texture" id=1]
-[ext_resource path="res://resources/combat/combat-UI/UIBox.gd" type="Script" id=2]
-[ext_resource path="res://resources/combat/combat-UI/images/Arrow.png" type="Texture" id=3]
+[ext_resource path="res://resources/combat/combat_ui/images/DialougeBox.png" type="Texture" id=1]
+[ext_resource path="res://resources/combat/combat_ui/UIBox.gd" type="Script" id=2]
+[ext_resource path="res://resources/combat/combat_ui/images/Arrow.png" type="Texture" id=3]
+
 
 [node name="UIBox" type="NinePatchRect"]
 
