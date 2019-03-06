@@ -2,16 +2,27 @@ extends Node
 
 var current_combat = null
 var current_enemy = null
+var pause_menu = null
 var precache_player_combat_data = null
 
 func _ready():
 	var dialogue = get_node('World/DialogueUI')
 	var player = get_node('World/Player')
+	pause_menu = get_node('PauseMenu')
 	if (player != null && precache_player_combat_data != null):
 		player.combat_actor = precache_player_combat_data
 	
 	if (dialogue != null):
 		dialogue.load_symbols()
+
+func _process(delta):
+	if (pause_menu != null && !pause_menu.active && pause_menu.is_ready() && Input.is_action_pressed('ui_cancel')):
+		pause_menu.visible = true
+		pause_menu.active = true
+		pause_menu.pause_mode = Node.PAUSE_MODE_PROCESS
+		pause_menu.kickstart()
+		get_tree().paused = true
+	
 
 func initiate_combat(enemy):
 	var combat_scene = load('res://resources/combat/combat_core/combat.tscn')
@@ -38,5 +49,12 @@ func _on_combat_finished(player, enemy, message):
 	current_combat = null
 	current_enemy = null
 	get_node('World').visible = true
+	get_tree().paused = false
+	
+
+func _on_PauseMenu_resume_game():
+	pause_menu.pause_mode = Node.PAUSE_MODE_INHERIT
+	pause_menu.active = false
+	pause_menu.visible = false
 	get_tree().paused = false
 	
