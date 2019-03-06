@@ -24,6 +24,11 @@ func _process(delta):
 		get_tree().paused = true
 	
 
+func start_dialogue(name):
+	get_node('World/DialogueUI').start_dialogue(name)
+	get_node('World/Player').lock_movement = true
+	
+
 func initiate_combat(enemy):
 	var combat_scene = load('res://resources/combat/combat_core/combat.tscn')
 	var camera_pos = get_node('/root/game_manager').current_camera.get_camera_position()
@@ -57,4 +62,8 @@ func _on_PauseMenu_resume_game():
 	pause_menu.active = false
 	pause_menu.visible = false
 	get_tree().paused = false
+	
+
+func _on_DialogueUI_on_context_finish():
+	get_node('World/Player').lock_movement = false
 	

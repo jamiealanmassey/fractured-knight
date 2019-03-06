@@ -13,13 +13,14 @@ radius = 10.0
 custom_solver_bias = 0.0
 radius = 150.0
 
-[node name="NPC" type="Node2D"]
+[node name="NPC" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 combat_actor = null
 dialogue_name = null
 frames = null
 collision_size = 10
+npc_type = 0
 interaction_radius = 150
 interaction_offset = 80
 
