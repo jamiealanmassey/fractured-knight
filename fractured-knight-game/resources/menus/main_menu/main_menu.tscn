@@ -1,0 +1,392 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://resources/menus/main_menu/main_menu.gd" type="Script" id=1]
+[ext_resource path="res://resources/menus/main_menu/Images/BackgroundWallaper.jpg" type="Texture" id=2]
+[ext_resource path="res://resources/menus/main_menu/Images/Logo.png" type="Texture" id=3]
+[ext_resource path="res://resources/menus/main_menu/PlayfairDisplay-Bold.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://resources/menus/main_menu/about.gd" type="Script" id=5]
+[ext_resource path="res://resources/menus/main_menu/Images/White_box_28x52.png" type="Texture" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+
+size = 50
+use_mipmaps = false
+use_filter = false
+extra_spacing_top = 10
+extra_spacing_bottom = 10
+font_data = ExtResource( 4 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=2]
+
+size = 25
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 4 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=3]
+
+size = 30
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 4 )
+
+[node name="MainMenu" type="Control"]
+
+modulate = Color( 0.961182, 0.96875, 0.965912, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 1 )
+_sections_unfolded = [ "Visibility" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+texture = ExtResource( 2 )
+centered = false
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sprite2" type="Sprite" parent="." index="1"]
+
+modulate = Color( 0.0156863, 0.772549, 0.27451, 1 )
+self_modulate = Color( 0.984375, 0.976685, 0.976685, 1 )
+position = Vector2( 1418.71, 157.634 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Material", "Visibility" ]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." index="2"]
+
+modulate = Color( 0.0181274, 0.773438, 0.277765, 1 )
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+margin_left = 75.0
+margin_top = -1000.0
+margin_right = 570.0
+margin_bottom = -114.0
+grow_vertical = 0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/separation = 20
+alignment = 1
+_sections_unfolded = [ "Material", "Visibility", "custom_constants" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BtnStart" type="Button" parent="VBoxContainer" index="0"]
+
+light_mask = 31775
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 111.0
+margin_right = 495.0
+margin_bottom = 205.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_disabled = Color( 0.960938, 0.923401, 0.923401, 1 )
+custom_colors/font_color = Color( 0.972656, 0.94986, 0.94986, 1 )
+custom_colors/font_color_hover = Color( 0.949219, 0.897308, 0.897308, 1 )
+custom_colors/font_color_pressed = Color( 0.972656, 0.930862, 0.930862, 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "New Game"
+flat = true
+align = 1
+_sections_unfolded = [ "Visibility", "custom_colors", "custom_constants" ]
+
+[node name="BtnLoadGame" type="Button" parent="VBoxContainer" index="1"]
+
+light_mask = 31775
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 225.0
+margin_right = 495.0
+margin_bottom = 319.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_disabled = Color( 0.960938, 0.923401, 0.923401, 1 )
+custom_colors/font_color = Color( 0.972656, 0.94986, 0.94986, 1 )
+custom_colors/font_color_hover = Color( 0.949219, 0.897308, 0.897308, 1 )
+custom_colors/font_color_pressed = Color( 0.972656, 0.930862, 0.930862, 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Load Game"
+flat = true
+align = 1
+_sections_unfolded = [ "Visibility", "custom_colors", "custom_constants" ]
+
+[node name="BtnOptions" type="Button" parent="VBoxContainer" index="2"]
+
+light_mask = 31775
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 339.0
+margin_right = 495.0
+margin_bottom = 433.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_disabled = Color( 0.960938, 0.923401, 0.923401, 1 )
+custom_colors/font_color = Color( 0.972656, 0.94986, 0.94986, 1 )
+custom_colors/font_color_hover = Color( 0.949219, 0.897308, 0.897308, 1 )
+custom_colors/font_color_pressed = Color( 0.972656, 0.930862, 0.930862, 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Options"
+flat = true
+align = 1
+_sections_unfolded = [ "Visibility", "custom_colors", "custom_constants" ]
+
+[node name="BtnHelp" type="Button" parent="VBoxContainer" index="3"]
+
+light_mask = 31775
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 453.0
+margin_right = 495.0
+margin_bottom = 547.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_disabled = Color( 0.960938, 0.923401, 0.923401, 1 )
+custom_colors/font_color = Color( 0.972656, 0.94986, 0.94986, 1 )
+custom_colors/font_color_hover = Color( 0.949219, 0.897308, 0.897308, 1 )
+custom_colors/font_color_pressed = Color( 0.972656, 0.930862, 0.930862, 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Help"
+flat = true
+align = 1
+_sections_unfolded = [ "Visibility", "custom_colors", "custom_constants" ]
+
+[node name="BtnAbout" type="Button" parent="VBoxContainer" index="4"]
+
+light_mask = 31775
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 567.0
+margin_right = 495.0
+margin_bottom = 661.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_disabled = Color( 0.960938, 0.923401, 0.923401, 1 )
+custom_colors/font_color = Color( 0.972656, 0.94986, 0.94986, 1 )
+custom_colors/font_color_hover = Color( 0.949219, 0.897308, 0.897308, 1 )
+custom_colors/font_color_pressed = Color( 0.972656, 0.930862, 0.930862, 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "About"
+flat = true
+align = 1
+_sections_unfolded = [ "Visibility", "custom_colors", "custom_constants" ]
+
+[node name="BtnQuit" type="Button" parent="VBoxContainer" index="5"]
+
+light_mask = 31775
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 681.0
+margin_right = 495.0
+margin_bottom = 775.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_disabled = Color( 0.960938, 0.923401, 0.923401, 1 )
+custom_colors/font_color = Color( 0.972656, 0.94986, 0.94986, 1 )
+custom_colors/font_color_hover = Color( 0.949219, 0.897308, 0.897308, 1 )
+custom_colors/font_color_pressed = Color( 0.972656, 0.930862, 0.930862, 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Quit"
+flat = true
+align = 1
+_sections_unfolded = [ "Visibility", "custom_colors", "custom_constants" ]
+
+[node name="AboutUs" type="PopupMenu" parent="." index="3"]
+
+visible = false
+modulate = Color( 0.941406, 0.90831, 0.90831, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 708.0
+margin_top = 172.0
+margin_right = 1274.0
+margin_bottom = 793.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+popup_exclusive = false
+items = [  ]
+hide_on_state_item_selection = false
+script = ExtResource( 5 )
+_sections_unfolded = [ "Visibility" ]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Background" type="Sprite" parent="AboutUs" index="0"]
+
+modulate = Color( 0.153107, 0.675781, 0.504279, 1 )
+position = Vector2( 0, 7.78125 )
+scale = Vector2( 0.705532, 0.409453 )
+texture = ExtResource( 6 )
+centered = false
+_sections_unfolded = [ "Region", "Transform", "Visibility" ]
+
+[node name="RichTextLabel" type="Label" parent="AboutUs" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 33.0
+margin_top = 35.0
+margin_right = 508.0
+margin_bottom = 413.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Fractured Knight is a medieval-space themed adventure game that incorporates text-based interaction and has a combat system that takes heavy influence from Pokémon!"
+align = 1
+valign = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Grow Direction", "custom_fonts" ]
+
+[node name="Button" type="Button" parent="AboutUs" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 144.0
+margin_top = 524.0
+margin_right = 408.0
+margin_bottom = 582.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color_disabled = Color( 0.636719, 0.104462, 0.104462, 1 )
+custom_colors/font_color = Color( 0.308664, 0.0254059, 0.722656, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Close"
+flat = true
+align = 1
+_sections_unfolded = [ "custom_colors" ]
+
+[connection signal="pressed" from="VBoxContainer/BtnStart" to="." method="_on_BtnStart_pressed"]
+
+[connection signal="pressed" from="VBoxContainer/BtnLoadGame" to="." method="_on_BtnLoadGame_pressed"]
+
+[connection signal="pressed" from="VBoxContainer/BtnOptions" to="." method="_on_BtnOptions_pressed"]
+
+[connection signal="pressed" from="VBoxContainer/BtnHelp" to="." method="_on_BtnHelp_pressed"]
+
+[connection signal="pressed" from="VBoxContainer/BtnAbout" to="." method="_on_BtnAbout_pressed"]
+
+[connection signal="pressed" from="VBoxContainer/BtnQuit" to="." method="_on_BtnQuit_pressed"]
+
+[connection signal="pressed" from="AboutUs/Button" to="AboutUs" method="_on_Button_pressed"]
+
+
