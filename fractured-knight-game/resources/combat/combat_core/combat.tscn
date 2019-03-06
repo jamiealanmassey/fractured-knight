@@ -35,6 +35,7 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 
 position = Vector2( 720, 290 )
 _sections_unfolded = [ "Transform" ]
+max_health = 100
 
 [node name="enemy_health_bar" parent="." index="4" instance=ExtResource( 4 )]
 
