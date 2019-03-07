@@ -1,0 +1,26 @@
+[gd_resource type="TileSet" load_steps=2 format=2]
+
+[ext_resource path="res://resources/levels/world_map/world_tileset/32x32_map_tile v3.1 [MARGINLESS].png" type="Texture" id=1]
+
+
+
+[resource]
+
+0/name = "Sprite"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 736, 928 )
+0/is_autotile = true
+0/autotile/bitmask_mode = 1
+0/autotile/icon_coordinate = Vector2( 4, 6 )
+0/autotile/tile_size = Vector2( 32, 32 )
+0/autotile/spacing = 0
+0/autotile/bitmask_flags = [ Vector2( 4, 6 ), 511, Vector2( 6, 5 ), 432, Vector2( 6, 6 ), 438, Vector2( 6, 7 ), 54, Vector2( 7, 5 ), 504, Vector2( 7, 7 ), 63, Vector2( 8, 5 ), 216, Vector2( 8, 6 ), 219, Vector2( 8, 7 ), 27 ]
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/occluder_offset = Vector2( 368, 464 )
+0/navigation_offset = Vector2( 368, 464 )
+0/shapes = [  ]
+

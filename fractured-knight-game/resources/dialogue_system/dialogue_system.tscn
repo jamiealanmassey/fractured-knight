@@ -6,7 +6,8 @@
 [node name="Context" type="Node"]
 
 script = ExtResource( 1 )
-test_file = "res://test/dialogue/complex.fml"
+dialogue_file_names = null
+dialogue_file_locations = null
 
 [node name="Parser" type="Node" parent="." index="0"]
 

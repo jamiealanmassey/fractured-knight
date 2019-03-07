@@ -11,7 +11,12 @@ config_version=3
 [application]
 
 config/name="fractured-knight"
+run/main_scene="res://resources/menus/main_menu/main_menu.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+game_manager="*res://resources/game_manager.gd"
 
 [display]
 
@@ -21,6 +26,13 @@ window/size/height=1080
 [editor_plugins]
 
 enabled=PoolStringArray( "gut" )
+
+[importer_defaults]
+
+bitmap={
+"create_from": 0,
+"threshold": 0.5
+}
 
 [input]
 
@@ -44,7 +56,3 @@ up=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","de
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":12,"pressure":0.0,"pressed":false,"script":null)
 , Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":1,"axis_value":-1.0,"script":null)
  ]
-
-[rendering]
-
-environment/default_environment="res://default_env.tres"

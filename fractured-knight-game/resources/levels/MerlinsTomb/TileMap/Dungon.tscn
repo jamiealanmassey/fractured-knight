@@ -1,14 +1,252 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://resources/levels/MerlinsTomb/TileMap/tileset_dungeon.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 15.9926, 15.8845 )
 
 [node name="Dungon" type="Node" index="0"]
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
+position = Vector2( 236.202, 70.4337 )
+texture = ExtResource( 1 )
+centered = false
+offset = Vector2( -16.0467, -16.211 )
+region_enabled = true
+region_rect = Rect2( 96, 64, 32, 32 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+
+[node name="Area2D" type="Area2D" parent="Sprite" index="0"]
+
+position = Vector2( -16.0467, -16.211 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Material", "Transform", "Visibility", "Z Index" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Area2D" index="0"]
+
+position = Vector2( 16.1288, 16.0207 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite2" type="Sprite" parent="." index="1"]
+
+position = Vector2( 92.624, 118.886 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 32, 32, 32 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+
+[node name="Area2D" type="Area2D" parent="Sprite2" index="0"]
+
+position = Vector2( 26.6156, 12.1219 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2/Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( 0.523773, -12.2726, 5.31534, -12.2726, 5.33399, 19.7859, 0.486229, 19.7991 )
+
+[node name="Sprite11" type="Sprite" parent="." index="2"]
+
+position = Vector2( 189.559, 74.9135 )
+texture = ExtResource( 1 )
+centered = false
+offset = Vector2( -16.7039, -16.4997 )
+region_enabled = true
+region_rect = Rect2( 32, 0, 32, 32 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+
+[node name="Area2D" type="Area2D" parent="Sprite11" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite11/Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -16.7018, -16.4979, 15.3274, -16.4979, 15.4852, 15.5313, -16.7018, 15.5313 )
+
+[node name="Sprite3" type="Sprite" parent="." index="3"]
+
 position = Vector2( 104, 65 )
 texture = ExtResource( 1 )
 centered = false
-region_rect = Rect2( 96, 64, 32, 32 )
+region_enabled = true
+region_rect = Rect2( 64, 32, 32, 32 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+
+[node name="Area2D" type="Area2D" parent="Sprite3" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite3/Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( 0.222824, -0.115402, 4.95621, -0.115402, 4.95621, 32.2294, -0.250511, 32.2294 )
+
+[node name="Sprite4" type="Sprite" parent="." index="4"]
+
+position = Vector2( 280.963, 51.229 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 96, 0, 32, 32 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+
+[node name="Area2D" type="Area2D" parent="Sprite4" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite4/Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( 0.189819, 0.0626144, 31.8014, 0.0626144, 31.8014, 31.8836, 0.085144, 31.8836 )
+
+[node name="Sprite5" type="Sprite" parent="." index="5"]
+
+position = Vector2( 299.189, 124.874 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 160, 64, 32, 32 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+
+[node name="Area2D" type="Area2D" parent="Sprite5" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite5/Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( 15.5508, 1.10628, 10.7955, 5.16566, 10.5635, 11.3127, 6.62012, 8.76112, 4.88037, 10.0369, 4.88037, 14.6762, 5.92422, 16.7639, 8.93976, 21.1712, 9.98361, 25.2306, 11.1434, 26.7384, 15.5508, 26.9704, 25.9892, 16.9959, 27.8449, 12.3566, 25.7572, 10.9648, 22.9736, 10.8488, 18.6823, 14.6762, 18.5663, 4.9337, 16.1307, 3.07798 )
+
+[node name="Sprite6" type="Sprite" parent="." index="6"]
+
+position = Vector2( 200.397, 130.262 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 192, 32, 32, 32 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+
+[node name="Sprite7" type="Sprite" parent="." index="7"]
+
+position = Vector2( 353.075, 119.485 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 192, 0, 32, 32 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+
+[node name="Sprite8" type="Sprite" parent="." index="8"]
+
+position = Vector2( 357.865, 55.4202 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 224, 0, 32, 32 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+
+[node name="Area2D" type="Area2D" parent="Sprite8" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite8/Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( 20.3004, 4.21843, 15.856, 7.4128, 15.9255, 10.3989, 15.0922, 11.2322, 14.8144, 12.6905, 14.12, 12.9682, 13.9116, 15.5376, 13.2867, 15.9543, 12.5228, 16.7876, 12.0367, 16.0237, 9.05063, 16.0237, 8.98117, 17.6209, 8.07843, 17.9681, 7.87009, 19.357, 6.96735, 19.9125, 6.82843, 21.7875, 5.85623, 21.9264, 5.7868, 25.3291, 8.84229, 25.5374, 8.91174, 26.7179, 16.8977, 26.6485, 16.8282, 25.6069, 24.7447, 25.6069, 24.6753, 24.7735, 26.828, 24.7735, 27.0363, 21.0236, 26.4114, 20.8153, 26.2725, 16.9959, 25.3697, 16.7876, 25.2308, 8.87111, 24.0503, 8.5239, 23.9809, 7.27392, 22.7309, 5.67673, 21.4809, 5.88506 )
+
+[node name="Sprite9" type="Sprite" parent="." index="9"]
+
+position = Vector2( 436.898, 109.905 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 224, 64, 32, 32 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+
+[node name="Area2D" type="Area2D" parent="Sprite9" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite9/Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( 5.73309, 16.7734, 5.83777, 17.9248, 3.01157, 17.5061, 3.01157, 19.3903, 1.75546, 19.4949, 1.65079, 26.6128, 4.05829, 28.4969, 7.82657, 28.8109, 9.08264, 26.8221, 11.1761, 26.9268, 12.6416, 25.8801, 13.2696, 21.7978, 12.2229, 21.7978, 12.0135, 19.3903, 10.8621, 18.4482, 9.81537, 16.9828 )
+
+[node name="Sprite10" type="Sprite" parent="." index="10"]
+
+position = Vector2( 438.694, 58.4139 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 192, 64, 32, 32 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+
+[node name="Area2D" type="Area2D" parent="Sprite10" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite10/Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( 5.9697, 7.19387, 10.2208, 6.91047, 10.3152, 8.04409, 12.9604, 7.76069, 13.0548, 8.42197, 14.7552, 8.42197, 14.8497, 7.66621, 17.5893, 7.57175, 17.7783, 8.6109, 20.8012, 8.89431, 20.8012, 7.66621, 23.9187, 7.66621, 23.9187, 8.42197, 26.2804, 8.6109, 26.2804, 10.8781, 27.0362, 10.6892, 27.2251, 12.862, 28.3587, 12.862, 28.5477, 16.7352, 27.5085, 16.7352, 27.414, 18.0577, 26.7527, 18.0577, 26.8472, 19.1914, 25.7136, 20.0416, 25.5247, 21.0807, 24.3911, 23.348, 22.7851, 23.0646, 20.4234, 22.8756, 19.7621, 21.3641, 18.6285, 21.3641, 16.6446, 23.8203, 15.511, 20.2305, 13.9995, 21.9309, 12.8659, 23.8203, 13.0548, 26.0876, 11.071, 26.2765, 11.2599, 22.7812, 9.37057, 21.0807, 8.70929, 21.3641, 8.61481, 20.4194, 7.4812, 19.1914, 5.49738, 19.2858, 5.11951, 17.5854, 4.64716, 16.2628, 3.70245, 16.2628, 3.89139, 8.98878, 4.74161, 8.6109 )
 
 

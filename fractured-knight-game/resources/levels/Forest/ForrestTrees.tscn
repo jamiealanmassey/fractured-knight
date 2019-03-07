@@ -1,0 +1,146 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://resources/levels/Forest/TileMap/Images/tree-variations.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 28.3638, 28.5417 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 26.5179, 31.7131 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 26.8898, 32.5918 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 37.1698, 47.3989 )
+
+[node name="Node2D" type="Node2D"]
+
+editor/display_folded = true
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+position = Vector2( 78.9017, -209.498 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 64 )
+_sections_unfolded = [ "Region" ]
+
+[node name="Area2D" type="Area2D" parent="Sprite" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Area2D" index="0"]
+
+shape = SubResource( 1 )
+
+[node name="Sprite11" type="Sprite" parent="." index="1"]
+
+position = Vector2( 349.616, -568.636 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 256, 0, 64, 64 )
+_sections_unfolded = [ "Region" ]
+
+[node name="Area2D" type="Area2D" parent="Sprite11" index="0"]
+
+position = Vector2( 0.356384, -0.911011 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite11/Area2D" index="0"]
+
+position = Vector2( 1.88934, 0.755737 )
+shape = SubResource( 2 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Sprite12" type="Sprite" parent="." index="2"]
+
+position = Vector2( 639.376, -378.184 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 320, 0, 64, 64 )
+_sections_unfolded = [ "Region" ]
+
+[node name="Area2D" type="Area2D" parent="Sprite12" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite12/Area2D" index="0"]
+
+position = Vector2( 1.8446, 0 )
+shape = SubResource( 3 )
+
+[node name="Sprite13" type="Sprite" parent="." index="3"]
+
+position = Vector2( 756.368, -287.039 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 64, 64, 64, 96 )
+_sections_unfolded = [ "Region" ]
+
+[node name="Area2D" type="Area2D" parent="Sprite13" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite13/Area2D" index="0"]
+
+position = Vector2( 0, 0.440155 )
+shape = SubResource( 4 )
+
+[node name="Sprite14" type="Sprite" parent="." index="4"]
+
+position = Vector2( 867.918, -232.624 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 160, 128, 128 )
+_sections_unfolded = [ "Region" ]
+
+[node name="Area2D" type="Area2D" parent="Sprite14" index="0"]
+
+position = Vector2( 0.527039, 0 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite14/Area2D" index="0"]
+
+build_mode = 1
+polygon = PoolVector2Array( -28.6486, 41.7223, -26.277, 43.567, -22.3242, 41.9859, -23.9053, 46.2022, -22.5876, 48.5739, -22.5876, 51.2091, -19.9525, 51.9996, -25.7499, 58.3241, -16.5267, 55.9524, -13.3645, 53.8443, -9.93872, 57.0065, -12.0469, 63.331, -7.83057, 62.2769, -3.08716, 51.7361, 5.34546, 59.6417, 8.50769, 59.1147, 12.9875, 59.1147, 18.785, 54.3713, 24.0554, 48.3103, 26.9541, 43.8305, 27.7446, 38.0331, 13.2511, 30.391, 17.7309, 22.2218, 23.7919, 15.8974, 28.2717, 9.30936, 35.3867, 10.0999, 45.4005, 9.04584, 48.0357, 4.82951, 49.3533, -0.177368, 49.3533, -5.18425, 54.8872, -7.81946, 54.0967, -12.5628, 54.0967, -17.0427, 52.2521, -22.0495, 47.2451, -27.847, 41.9747, -33.9079, 32.2245, -47.084, 20.1025, -61.314, 13.2511, -62.8952, 4.29138, -61.314, -5.9859, -63.4222, -10.7292, -63.6857, -16.2632, -62.1046, -24.1688, -61.5775, -27.5945, -57.0977, -35.2366, -53.672, -36.8177, -48.4016, -41.0341, -45.2393, -43.1422, -42.0771, -40.7706, -38.1243, -40.7706, -35.2256, -43.4058, -31.2727, -48.9397, -28.1105, -52.1019, -22.313, -55.0007, -16.7791, -52.1019, -12.2993, -57.3723, -7.29242, -50.2573, -7.29242, -48.4127, -2.28552, -49.4667, 3.77544, -48.1491, 7.46472, -40.2435, 3.51192, -37.3448, 7.2012, -31.5474, 8.5188, -25.2229, 12.9986, -18.8984, 18.5326, -12.3104, 23.803, -14.155, 29.3369, -15.2091, 33.5532, -21.7971, 35.3978 )
+
+

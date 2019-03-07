@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="StreamTexture" id=1]
+
+flags = 4
+load_path = "res://.import/beach_tileset.png-e62a0dc0812e5b3b5ccbe755031c22a9.stex"
+
+[node name="Node2D" type="Node2D" index="0"]
+
+position = Vector2( 1.37616, 0 )
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+texture = SubResource( 1 )
+region_rect = Rect2( 240, 32, 0, 0 )
+
+
