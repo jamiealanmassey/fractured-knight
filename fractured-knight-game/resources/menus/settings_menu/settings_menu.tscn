@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://resources/menus/settings_menu/settings_menu.gd" type="Script" id=1]
 [ext_resource path="res://resources/fonts/dynamic_font_21pt.tres" type="DynamicFont" id=2]
+[ext_resource path="res://resources/menus/settings_menu/images/backbutton.png" type="Texture" id=3]
 
 [node name="SettingsMenu" type="Control" index="0"]
 
@@ -9,8 +10,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 2.0
-margin_right = 2.0
+margin_left = 6.0
+margin_top = 1.0
+margin_right = 6.0
+margin_bottom = 1.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -26,9 +29,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 58.0
-margin_top = 664.0
+margin_top = 612.0
 margin_right = 696.0
-margin_bottom = 753.0
+margin_bottom = 701.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -54,10 +57,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 320.0
-margin_top = 595.0
-margin_right = 441.0
-margin_bottom = 641.0
+margin_left = 321.0
+margin_top = 553.0
+margin_right = 442.0
+margin_bottom = 599.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
 mouse_filter = 0
@@ -78,16 +81,166 @@ selection_enabled = false
 override_selected_font_color = false
 _sections_unfolded = [ "Anchor", "BBCode", "Grow Direction", "Margin", "Material", "Rect", "Size Flags", "Theme", "Visibility", "custom_colors", "custom_fonts", "custom_styles" ]
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="." index="2"]
+[node name="RichTextLabel10" type="RichTextLabel" parent="." index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 887.0
+margin_top = 46.0
+margin_right = 1008.0
+margin_bottom = 92.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = false
+bbcode_text = "Settings"
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 3
+text = "Settings"
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+_sections_unfolded = [ "Anchor", "BBCode", "Grow Direction", "Margin", "Material", "Rect", "Size Flags", "Theme", "Visibility", "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="RichTextLabel9" type="RichTextLabel" parent="." index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 18.0
+margin_top = 980.0
+margin_right = 139.0
+margin_bottom = 1026.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = false
+bbcode_text = "Back"
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 3
+text = "Back"
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+_sections_unfolded = [ "Anchor", "BBCode", "Grow Direction", "Margin", "Material", "Rect", "Size Flags", "Theme", "Visibility", "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="RichTextLabel6" type="RichTextLabel" parent="." index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1215.0
+margin_top = 709.0
+margin_right = 1336.0
+margin_bottom = 755.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = false
+bbcode_text = "VSync"
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 3
+text = "VSync"
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+_sections_unfolded = [ "Anchor", "BBCode", "Grow Direction", "Margin", "Material", "Visibility", "custom_colors" ]
+
+[node name="RichTextLabel7" type="RichTextLabel" parent="." index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1212.0
+margin_top = 798.0
+margin_right = 1333.0
+margin_bottom = 844.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = false
+bbcode_text = "Fullscreen"
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 3
+text = "Fullscreen"
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+_sections_unfolded = [ "Anchor", "BBCode", "Grow Direction", "Margin", "Material", "Visibility", "custom_colors" ]
+
+[node name="RichTextLabel8" type="RichTextLabel" parent="." index="6"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1480.0
+margin_top = 672.0
+margin_right = 1601.0
+margin_bottom = 718.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = false
+bbcode_text = "Resolution"
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 3
+text = "Resolution"
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+_sections_unfolded = [ "Anchor", "BBCode", "Grow Direction", "Margin", "Material", "Visibility", "custom_colors" ]
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="." index="7"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 68.0
-margin_top = 659.0
+margin_top = 607.0
 margin_right = 176.0
-margin_bottom = 693.0
+margin_bottom = 641.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
 mouse_filter = 0
@@ -108,16 +261,76 @@ selection_enabled = false
 override_selected_font_color = false
 _sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Mouse", "Rect", "Theme", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="." index="3"]
+[node name="RichTextLabel5" type="RichTextLabel" parent="." index="8"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 65.0
+margin_top = 864.0
+margin_right = 173.0
+margin_bottom = 898.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = false
+bbcode_text = ""
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = "Music"
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Mouse", "Rect", "Theme", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="." index="9"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 70.0
+margin_top = 784.0
+margin_right = 178.0
+margin_bottom = 818.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = false
+bbcode_text = ""
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = "SFX"
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Mouse", "Rect", "Theme", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="." index="10"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 68.0
-margin_top = 753.0
+margin_top = 701.0
 margin_right = 176.0
-margin_bottom = 787.0
+margin_bottom = 735.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
 mouse_filter = 0
@@ -138,16 +351,16 @@ selection_enabled = false
 override_selected_font_color = false
 _sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Mouse", "Rect", "Theme", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
 
-[node name="HSlider2" type="HSlider" parent="." index="4"]
+[node name="HSlider2" type="HSlider" parent="." index="11"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 61.0
-margin_top = 769.0
+margin_top = 717.0
 margin_right = 694.0
-margin_bottom = 834.0
+margin_bottom = 782.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -166,5 +379,162 @@ editable = true
 tick_count = 0
 ticks_on_borders = false
 focus_mode = 2
+
+[node name="HSlider3" type="HSlider" parent="." index="12"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 64.0
+margin_top = 803.0
+margin_right = 697.0
+margin_bottom = 868.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 0.0
+exp_edit = false
+rounded = false
+editable = true
+tick_count = 0
+ticks_on_borders = false
+focus_mode = 2
+
+[node name="HSlider4" type="HSlider" parent="." index="13"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 58.0
+margin_top = 883.0
+margin_right = 691.0
+margin_bottom = 948.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 0.0
+exp_edit = false
+rounded = false
+editable = true
+tick_count = 0
+ticks_on_borders = false
+focus_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="." index="14"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1240.0
+margin_top = 739.0
+margin_right = 1266.0
+margin_bottom = 774.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = false
+align = 0
+_sections_unfolded = [ "Theme", "custom_fonts", "custom_icons", "custom_styles" ]
+
+[node name="CheckBox2" type="CheckBox" parent="." index="15"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1242.0
+margin_top = 824.0
+margin_right = 1268.0
+margin_bottom = 859.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = false
+align = 0
+_sections_unfolded = [ "Theme", "custom_fonts", "custom_icons", "custom_styles" ]
+
+[node name="ItemList" type="ItemList" parent="." index="16"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1435.0
+margin_top = 712.0
+margin_right = 1652.0
+margin_bottom = 867.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+items = [  ]
+select_mode = 0
+allow_reselect = false
+icon_mode = 1
+fixed_icon_size = Vector2( 0, 0 )
+_sections_unfolded = [ "Material", "Mouse", "Size Flags", "Theme", "Visibility", "custom_colors", "custom_constants", "custom_fonts" ]
+
+[node name="Button" type="Button" parent="." index="17"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 20.0
+margin_top = 1018.0
+margin_right = 64.0
+margin_bottom = 1056.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+icon = ExtResource( 3 )
+flat = false
+align = 1
 
 
