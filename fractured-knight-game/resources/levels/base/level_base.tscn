@@ -11,9 +11,15 @@ script = ExtResource( 1 )
 
 [node name="World" type="Node2D" parent="." index="0"]
 
+_sections_unfolded = [ "Sort", "Z Index" ]
+
 [node name="DialogueUI" parent="World" index="0" instance=ExtResource( 2 )]
 
-[node name="Player" parent="World" index="1" instance=ExtResource( 3 )]
+[node name="Entities" type="YSort" parent="World" index="1"]
+
+sort_enabled = true
+
+[node name="Player" parent="World/Entities" index="0" instance=ExtResource( 3 )]
 
 _sections_unfolded = [ "Collision", "Pause", "Transform" ]
 

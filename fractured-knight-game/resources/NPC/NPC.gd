@@ -16,6 +16,7 @@ export (int) var collision_size = 10
 export (int) var npc_type = 0
 export (float) var interaction_radius = 150
 export (float) var interaction_offset = 80
+export (float) var interaction_anim_speed = 0.25
 
 var interact_icon_tweener = null
 var sprite_scale_x = 0
@@ -48,18 +49,18 @@ func _process(delta):
 func _on_Area2D_body_entered(body):
 	if self.npc_type == self.FRIENDLY && dialogue_name != null:
 		interact_icon_tweener.stop_all()
-		interact_icon_tweener.interpolate_property($InteractionIcon, 'position:y', $InteractionIcon.position.y, sprite_position_y - interaction_offset, 0.5, Tween.TRANS_LINEAR, Tween.EASE_OUT)
-		interact_icon_tweener.interpolate_property($InteractionIcon, 'scale:x', $InteractionIcon.scale.x, sprite_scale_x, 0.5, Tween.TRANS_LINEAR, Tween.EASE_OUT)
-		interact_icon_tweener.interpolate_property($InteractionIcon, 'modulate:a', $InteractionIcon.modulate.a, 1, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
+		interact_icon_tweener.interpolate_property($InteractionIcon, 'position:y', $InteractionIcon.position.y, sprite_position_y - interaction_offset, interaction_anim_speed, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+		interact_icon_tweener.interpolate_property($InteractionIcon, 'scale:x', $InteractionIcon.scale.x, sprite_scale_x, interaction_anim_speed, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+		interact_icon_tweener.interpolate_property($InteractionIcon, 'modulate:a', $InteractionIcon.modulate.a, 1, interaction_anim_speed, Tween.TRANS_LINEAR, Tween.EASE_IN)
 		interact_icon_tweener.start()
 		can_interact = true
 
 func _on_Area2D_body_exited(body):
 	if self.npc_type == self.FRIENDLY && dialogue_name != null:
 		interact_icon_tweener.stop_all()
-		interact_icon_tweener.interpolate_property($InteractionIcon, 'position:y', $InteractionIcon.position.y, sprite_position_y, 0.5, Tween.TRANS_LINEAR, Tween.EASE_OUT)
-		interact_icon_tweener.interpolate_property($InteractionIcon, 'scale:x', $InteractionIcon.scale.x, 0, 0.5, Tween.TRANS_LINEAR, Tween.EASE_OUT)
-		interact_icon_tweener.interpolate_property($InteractionIcon, 'modulate:a', $InteractionIcon.modulate.a, 0, 0.5, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+		interact_icon_tweener.interpolate_property($InteractionIcon, 'position:y', $InteractionIcon.position.y, sprite_position_y, interaction_anim_speed, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+		interact_icon_tweener.interpolate_property($InteractionIcon, 'scale:x', $InteractionIcon.scale.x, 0, interaction_anim_speed, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+		interact_icon_tweener.interpolate_property($InteractionIcon, 'modulate:a', $InteractionIcon.modulate.a, 0, interaction_anim_speed, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 		interact_icon_tweener.start()
 		can_interact = false
 	

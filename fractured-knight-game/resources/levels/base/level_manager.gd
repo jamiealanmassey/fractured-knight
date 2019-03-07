@@ -26,7 +26,7 @@ func _process(delta):
 
 func start_dialogue(name):
 	get_node('World/DialogueUI').start_dialogue(name)
-	get_node('World/Player').lock_movement = true
+	get_node('World/Entities/Player').lock_movement = true
 	
 
 func initiate_combat(enemy):
@@ -36,7 +36,7 @@ func initiate_combat(enemy):
 	current_enemy = enemy
 	current_combat = combat_scene.instance()
 	current_combat.pause_mode = PAUSE_MODE_PROCESS ## force combat scene to carry on processing through pause
-	current_combat.start_combat(get_node('World/Player').combat_actor, current_enemy.combat_actor)
+	current_combat.start_combat(get_node('World/Entities/Player').combat_actor, current_enemy.combat_actor)
 	current_combat.connect('combat_finished', self, '_on_combat_finished')
 	current_combat.rect_position = Vector2(camera_pos.x - (view_size.x / 2), camera_pos.y - (view_size.y / 2))
 	self.add_child(current_combat) ## must use current_combat.free_queue() once combat is over
@@ -65,5 +65,5 @@ func _on_PauseMenu_resume_game():
 	
 
 func _on_DialogueUI_on_context_finish():
-	get_node('World/Player').lock_movement = false
+	get_node('World/Entities/Player').lock_movement = false
 	
