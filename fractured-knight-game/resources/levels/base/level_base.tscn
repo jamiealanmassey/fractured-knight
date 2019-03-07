@@ -11,15 +11,23 @@ script = ExtResource( 1 )
 
 [node name="World" type="Node2D" parent="." index="0"]
 
+_sections_unfolded = [ "Sort", "Z Index" ]
+
 [node name="DialogueUI" parent="World" index="0" instance=ExtResource( 2 )]
 
-[node name="Player" parent="World" index="1" instance=ExtResource( 3 )]
+[node name="Entities" type="YSort" parent="World" index="1"]
 
-_sections_unfolded = [ "Pause", "Transform" ]
+sort_enabled = true
+
+[node name="Player" parent="World/Entities" index="0" instance=ExtResource( 3 )]
+
+_sections_unfolded = [ "Collision", "Pause", "Transform" ]
 
 [node name="PauseMenu" parent="." index="1" instance=ExtResource( 4 )]
 
 visible = false
+
+[connection signal="on_context_finish" from="World/DialogueUI" to="." method="_on_DialogueUI_on_context_finish"]
 
 [connection signal="resume_game" from="PauseMenu" to="." method="_on_PauseMenu_resume_game"]
 
