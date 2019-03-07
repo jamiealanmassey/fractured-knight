@@ -251,8 +251,8 @@ tile_data = PoolIntArray( 131138, 1, 0, 131139, 1, 0, 131140, 1, 0, 196672, 4, 0
 [node name="DialogueUI" parent="World" index="10"]
 
 margin_bottom = -64.0
-dialogue_file_names = [ "complex" ]
-dialogue_file_locations = [ "res://test/dialogue/complex.fml" ]
+dialogue_file_names = [ "complex", "intro" ]
+dialogue_file_locations = [ "res://test/dialogue/complex.fml", "res://resources/dialogue/intro.fml" ]
 
 [node name="Entities" parent="World" index="11"]
 
@@ -262,7 +262,7 @@ _sections_unfolded = [ "Sort", "Z Index" ]
 
 position = Vector2( -400, 400 )
 _sections_unfolded = [ "Transform" ]
-dialogue_name = "complex"
+dialogue_name = "intro"
 
 [node name="CombatTest" type="Button" parent="World" index="12"]
 
