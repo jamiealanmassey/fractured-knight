@@ -13,7 +13,7 @@
 [ext_resource path="res://resources/levels/Forest/ForestTreesSet.tres" type="TileSet" id=11]
 [ext_resource path="res://resources/NPC/NPC.tscn" type="PackedScene" id=12]
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id=1]
 
 script/source = "extends Button
 
@@ -288,6 +288,6 @@ group = null
 text = "Combat Test"
 flat = false
 align = 1
-script = SubResource( 2 )
+script = SubResource( 1 )
 
 
