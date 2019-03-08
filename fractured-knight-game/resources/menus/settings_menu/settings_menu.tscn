@@ -1,11 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://resources/menus/settings_menu/settings_menu.gd" type="Script" id=1]
 [ext_resource path="res://resources/fonts/dynamic_font_21pt.tres" type="DynamicFont" id=2]
 [ext_resource path="res://resources/fonts/dynamic_font_btn.tres" type="DynamicFont" id=3]
-[ext_resource path="res://resources/menus/settings_menu/images/backbutton.png" type="Texture" id=4]
 
-[node name="SettingsMenu" type="Control" index="0"]
+[node name="SettingsMenu" type="Control"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -57,6 +56,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = ExtResource( 2 )
 text = "Settings"
+align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -453,57 +453,5 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-
-[node name="BackLabel" type="RichTextLabel" parent="Container" index="0"]
-
-anchor_left = 0.0
-anchor_top = 1.0
-anchor_right = 0.0
-anchor_bottom = 1.0
-margin_top = -65.0
-margin_right = 73.0
-margin_bottom = -31.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = true
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-custom_fonts/normal_font = ExtResource( 2 )
-bbcode_enabled = false
-bbcode_text = "Back"
-visible_characters = -1
-percent_visible = 1.0
-meta_underlined = true
-tab_size = 3
-text = "Back"
-scroll_active = true
-scroll_following = false
-selection_enabled = false
-override_selected_font_color = false
-_sections_unfolded = [ "Anchor", "BBCode", "Grow Direction", "Margin", "Material", "Rect", "Size Flags", "Theme", "Visibility", "custom_colors", "custom_fonts", "custom_styles" ]
-
-[node name="BackBtn" type="Button" parent="Container" index="1"]
-
-anchor_left = 0.0
-anchor_top = 1.0
-anchor_right = 0.0
-anchor_bottom = 1.0
-margin_top = -38.0
-margin_right = 44.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-icon = ExtResource( 4 )
-flat = true
-align = 1
 
 

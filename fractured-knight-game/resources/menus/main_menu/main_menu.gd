@@ -5,6 +5,11 @@ signal game_load
 signal game_option
 signal game_help
 
+func _process(delta):
+	if !$VBoxContainer.visible && Input.is_key_pressed(KEY_ESCAPE):
+		$VBoxContainer.visible = true
+		$SettingsMenu.visible = false
+	
 
 ## Signal is sent to start the game
 func _on_BtnStart_pressed():
@@ -23,6 +28,8 @@ func _on_BtnLoadGame_pressed():
 ## opens the options window
 func _on_BtnOptions_pressed():
 	emit_signal("game_option")
+	$VBoxContainer.visible = false
+	$SettingsMenu.visible = true
 
 ## opens the help pop-up
 func _on_BtnHelp_pressed():
