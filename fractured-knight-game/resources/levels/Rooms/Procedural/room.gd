@@ -10,5 +10,7 @@ func make_room(pos, size):
 	position = pos
 	size = size
 	var rec = RectangleShape2D.new()
+	rec.custom_solver_bias = 0.5
+	rec.extents = size
 	$CollisionShape2D.shape = rec
 
