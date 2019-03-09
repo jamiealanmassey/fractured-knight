@@ -2,7 +2,7 @@
 
 [ext_resource path="res://resources/levels/MerlinsTomb/TileMap/Hole_autotile.tres" type="TileSet" id=1]
 
-[node name="TileMap" type="TileMap"]
+[node name="TileMap" type="TileMap" index="0"]
 
 position = Vector2( -2.27197, 0 )
 mode = 0

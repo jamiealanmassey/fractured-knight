@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=11 format=2]
+[gd_resource type="TileSet" load_steps=12 format=2]
 
 [ext_resource path="res://resources/levels/MerlinsTomb/TileMap/tileset_dungeon.png" type="Texture" id=1]
 
@@ -46,6 +46,11 @@ points = PoolVector2Array( 3.25, 0.5, 3.25, 28, 31.25, 27.75, 31.75, 0 )
 
 custom_solver_bias = 0.0
 points = PoolVector2Array( 31.5, 0, 31.75, 31.5, 5, 30.5, 6.5, 25.5, 4.25, 15.25, 3.5, 8, 4.75, 0.5 )
+
+[sub_resource type="ConvexPolygonShape2D" id=10]
+
+custom_solver_bias = 0.0
+points = PoolVector2Array( 0, 0.375, 31.625, 0, 32, 31.75, 0, 32 )
 
 [resource]
 
@@ -109,6 +114,11 @@ points = PoolVector2Array( 31.5, 0, 31.75, 31.5, 5, 30.5, 6.5, 25.5, 4.25, 15.25
 "autotile_coord": Vector2( 4, 5 ),
 "one_way": false,
 "shape": SubResource( 9 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 5, 5 ),
+"one_way": false,
+"shape": SubResource( 10 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 _sections_unfolded = [ "0" ]
