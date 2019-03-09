@@ -102,13 +102,18 @@ func find_min_span_tree(array):
 	return path
 
 ## First we have to workout and fill the area of the Entire map
-## We use 
+## We use the merge function built into TileMap to merge the size of the area taken up by the nodes
+## Then we use the full_area_of to get the top left ps and the botton left pos, with this we create a grid a 2D grid using indented for loops
+## The first set of loops set the full map tileset
+## The second set of loops use the rooms stored in the Rooms node to set the tilemap and get the area of each and drawe the tileset accoring to that
+## there are 3 local varibles made : to keep track of the size of each room, position of it in the world, top left position in each room
 func map():
 	Map.clear()
 	var full_area_of_map = Rect2()
 	for i in $Rooms.get_children():
 		print(i.size)
-		var rec = Rect2(i.position, i.get_node("CollisionShape2D").shape.extents*2)
+		var rec = Rect2(i.position - i.size, i.get_node("CollisionShape2D").shape.extents*2)
+		print(i.position)
 		full_area_of_map = full_area_of_map.merge(rec)
 	var top_left_map = Map.world_to_map(full_area_of_map.position)
 	var bottom_right_map = Map.world_to_map(full_area_of_map.end)
@@ -121,4 +126,4 @@ func map():
 		var top_left = (n.position / TILE_SIZE).floor() - r_size
 		for nX in range(2, r_size.x*2-1):
 			for nY in range(2, r_size.y*2-1):
-				Map.set_cell(top_left.x+nX, top_left.y+nY, 0)
+				Map.set_cell(top_left.x+nX, top_left.y+nY, 0) # TODO: Tilemap
