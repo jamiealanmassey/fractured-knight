@@ -9,6 +9,7 @@ func _process(delta):
 	if !$VBoxContainer.visible && Input.is_key_pressed(KEY_ESCAPE):
 		$VBoxContainer.visible = true
 		$SettingsMenu.visible = false
+		$SettingsMenu.save_settings_menu()
 	
 
 ## Signal is sent to start the game
