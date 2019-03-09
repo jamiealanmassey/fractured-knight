@@ -3,6 +3,9 @@ extends Node2D
 ## pre-load room script to accesss that scene and methord
 var Room = preload("res://resources/levels/Rooms/Procedural/room.tscn")
 
+## gets the tilset from the tilemap in the tree
+onready var Map = $TileMap
+
 ## Constants for tile_size (32 x 32)
 const TILE_SIZE = 32
 
@@ -21,6 +24,14 @@ var path
 func _ready():
 	randomize()
 	makes_areas()
+
+## Updates the scene to show the areas being made in real time
+func _process(delta):
+	update()
+
+func _input(event):
+	if(event.is_action_pressed("ui_select")):
+		map()
 
 ## Makes rooms using a for loop to cycle through the amount of rooms we want 
 ## Then the function draws the area that is needed, it randimises the width and height of the area
@@ -59,10 +70,6 @@ func _draw():
 				var cp = path.get_point_position(c)
 				draw_line(Vector2(pp.x, pp.y), Vector2(cp.x, cp.y), Color(50,250,35), 15, true)
 
-## Updates the scene to show the areas being made in real time
-func _process(delta):
-	update()
-
 ## This function finds the minium spanning tree by using Prims Algorithum
 ## creates a new AStar object as this is the way we can find the shortest distnace 
 ## After we loop through the array containing all the points
@@ -93,3 +100,25 @@ func find_min_span_tree(array):
 		path.connect_points(path.get_closest_point(current_pos), neighbour)
 		array.erase(min_pos)
 	return path
+
+## First we have to workout and fill the area of the Entire map
+## We use 
+func map():
+	Map.clear()
+	var full_area_of_map = Rect2()
+	for i in $Rooms.get_children():
+		print(i.size)
+		var rec = Rect2(i.position, i.get_node("CollisionShape2D").shape.extents*2)
+		full_area_of_map = full_area_of_map.merge(rec)
+	var top_left_map = Map.world_to_map(full_area_of_map.position)
+	var bottom_right_map = Map.world_to_map(full_area_of_map.end)
+	for nX in range(top_left_map.x, bottom_right_map.x):
+		for nY in range(top_left_map.y, bottom_right_map.y):
+			Map.set_cell(nX, nY, 1) # TOOD: tilemap
+	for n in $Rooms.get_children():
+		var r_size = (n.size / TILE_SIZE).floor()
+		var pos_room = Map.world_to_map(n.position)
+		var top_left = (n.position / TILE_SIZE).floor() - r_size
+		for nX in range(2, r_size.x*2-1):
+			for nY in range(2, r_size.y*2-1):
+				Map.set_cell(top_left.x+nX, top_left.y+nY, 0)
