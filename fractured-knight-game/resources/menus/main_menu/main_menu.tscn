@@ -32,7 +32,7 @@ use_mipmaps = false
 use_filter = false
 font_data = ExtResource( 4 )
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" index="0"]
 
 modulate = Color( 0.961182, 0.96875, 0.965912, 1 )
 anchor_left = 0.0
@@ -51,7 +51,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite" type="Sprite" parent="." index="0"]
+[node name="Background" type="Sprite" parent="." index="0"]
 
 texture = ExtResource( 2 )
 centered = false
@@ -60,7 +60,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite2" type="Sprite" parent="." index="1"]
+[node name="Logo" type="Sprite" parent="." index="1"]
 
 modulate = Color( 0.0156863, 0.772549, 0.27451, 1 )
 self_modulate = Color( 0.984375, 0.976685, 0.976685, 1 )

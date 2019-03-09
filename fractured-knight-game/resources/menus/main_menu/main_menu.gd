@@ -6,6 +6,9 @@ signal game_option
 signal game_help
 
 
+func _ready():
+	pass
+
 ## Signal is sent to start the game
 func _on_BtnStart_pressed():
 	var directory = Directory.new()
