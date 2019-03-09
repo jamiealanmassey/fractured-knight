@@ -9,10 +9,10 @@ const TILE_SIZE = 32
 ## varibles for number of rooms and bound for sizes
 ## horrosontal spread of rooms/areas and to go through and delete rooms
 ## paths is the where we store the path finding algo
-var num_rooms = 10
+var num_rooms = 100
 var room_min_size = 4
 var room_max_size = 10
-var horr_spread = 300
+var horr_spread = 500
 var delete_rooms = 0.5
 var path 
 
@@ -57,7 +57,7 @@ func _draw():
 			for c in path.get_point_connections(p):
 				var pp = path.get_point_position(p)
 				var cp = path.get_point_position(c)
-				draw_line(Vector2(pp.x, pp.y), Vector2(cp.x, cp.y), Color(1,1,0), 15, true)
+				draw_line(Vector2(pp.x, pp.y), Vector2(cp.x, cp.y), Color(50,250,35), 15, true)
 
 ## Updates the scene to show the areas being made in real time
 func _process(delta):
