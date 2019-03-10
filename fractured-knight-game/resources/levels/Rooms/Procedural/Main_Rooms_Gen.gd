@@ -57,6 +57,9 @@ func make_areas():
 	yield(get_tree(), 'idle_frame')
 	path = find_min_span_tree(pos_rooms)
 	map()
+	play = player.instance()
+	add_child(play)
+	play.position = starting_room.position
 
 ## Draws paths to conect the rooms but draww the lines stright
 ## we check if the path is complete then we draw the line
