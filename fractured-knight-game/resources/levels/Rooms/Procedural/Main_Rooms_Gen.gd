@@ -57,9 +57,7 @@ func make_areas():
 	yield(get_tree(), 'idle_frame')
 	path = find_min_span_tree(pos_rooms)
 	map()
-	play = player.instance()
-	add_child(play)
-	play.position = starting_room.position
+
 
 ## Draws paths to conect the rooms but draww the lines stright
 ## we check if the path is complete then we draw the line
@@ -115,6 +113,7 @@ func map():
 	var full_rect = Rect2()
 	for room in $Rooms.get_children():
 		var r = Rect2(room.position-room.size, room.get_node("CollisionShape2D").shape.extents*2)
+		print(r) # REMOVE
 		full_rect = full_rect.merge(r)
 	var topleft = Map.world_to_map(full_rect.position)
 	var bottomright = Map.world_to_map(full_rect.end)
@@ -129,6 +128,8 @@ func map():
 		for x in range(2, room_size.x * 2 - 1):
 			for y in range(2, room_size.y * 2 - 1):
 				Map.set_cell(top_left.x + x, top_left.y + y, 0)
+				if(x == (randi()%11+1)):
+					Map.set_cell(top_left.x + x, top_left.y + y, 5)
 		var p = path.get_closest_point(Vector3(room.position.x, room.position.y, 0))
 		for cc in path.get_point_connections(p):
 			if(not cc in hall):
@@ -173,3 +174,8 @@ func finding_rooms():
 		if(room.position.x > x_highest_bound):
 			end_room = room
 			x_highest_bound = room.position.x
+
+func player():
+	play = player.instance()
+	add_child(play)
+	play.position = starting_room.position
