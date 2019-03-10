@@ -28,7 +28,18 @@ func on_received_hit(damage):
 	else:
 		# play hit for some damage
 		self.play("hurt")
-		pass
+		$Timer.start()
+		var i = 0
+		$Label.text = str(damage)
+		print($Label.text)
+		while i < 20:
+			
+			$Label.rect_position.y -= 40
+			yield($Timer, "timeout")
+			i += 1
+		
+		$Label.text = ""
+		$Label.rect_position.y += 20 * 40
 	pass
 
 #when this sprite attacks and misses, run this
@@ -39,6 +50,12 @@ func on_attack_miss():
 
 
 func _on_combat_sprite_animation_finished():
-	if self.animation != "idle": 
+	if self.animation == "dying":
+		pass
+	elif self.animation != "idle": 
 		self.play("idle")
 	pass # replace with function body
+	
+func on_death():
+	self.play("dying")
+	pass

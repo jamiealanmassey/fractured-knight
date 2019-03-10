@@ -17,11 +17,16 @@ signal enemy_health_update
 signal player_attack_hit
 # emitted when player attacks and misses
 signal player_attack_miss
+# emitted when player dies
+signal player_died
 
 # emitted when enemy attacks and hits, int arg as damage
 signal enemy_attack_hit
 # emitted when enemy attacks and misses
 signal enemy_attack_miss
+# emitted when enemy dies
+signal enemy_died
+
 
 
 enum states {MAIN_MENU, MOVE_SELECTION}
@@ -136,7 +141,6 @@ func resolve_player_attack(move_chosen):
 		emit_signal("enemy_health_update", enemy.health)
 		emit_signal("player_attack_hit", resulting_damage)
 		emit_signal("display_text", "You hit the enemy for " + str(resulting_damage))
-		
 	else:
 		emit_signal("player_attack_miss")
 		emit_signal("display_text", "You missed")
@@ -185,6 +189,7 @@ func attempt_to_flee():
 func check_enemy_is_dead():
 	if(enemy.health <= 0): #if enemy is dead
 		emit_signal("display_text", "Enemy defeated")
+		emit_signal("enemy_died")
 		emit_signal("combat_finished", player, enemy, "Player won")
 		finish_combat()
 		return true
@@ -193,6 +198,7 @@ func check_enemy_is_dead():
 func check_player_is_dead():
 	if(player.health <= 0): #if player is dead
 		emit_signal("display_text", "Player defeated")
+		emit_signal("player_died")
 		emit_signal("combat_finished", player, enemy, "Enemy won")
 		finish_combat()
 		return true

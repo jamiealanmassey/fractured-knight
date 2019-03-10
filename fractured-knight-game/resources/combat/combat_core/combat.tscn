@@ -42,11 +42,11 @@ max_health = 100
 position = Vector2( 1200, 290 )
 _sections_unfolded = [ "Transform" ]
 
-[connection signal="UI_get_ready" from="." to="player_combat_sprite" method="combat_started"]
+[connection signal="UI_get_ready" from="." to="combatInterface" method="_on_Combat_UI_get_ready"]
 
 [connection signal="UI_get_ready" from="." to="enemy_combat_sprite" method="combat_started"]
 
-[connection signal="UI_get_ready" from="." to="combatInterface" method="_on_Combat_UI_get_ready"]
+[connection signal="UI_get_ready" from="." to="player_combat_sprite" method="combat_started"]
 
 [connection signal="combat_finished" from="." to="combatInterface" method="_on_Combat_combat_finished"]
 
@@ -54,19 +54,23 @@ _sections_unfolded = [ "Transform" ]
 
 [connection signal="display_text" from="." to="combatInterface" method="_on_Combat_display_text"]
 
-[connection signal="enemy_attack_hit" from="." to="player_combat_sprite" method="on_received_hit"]
-
 [connection signal="enemy_attack_hit" from="." to="enemy_combat_sprite" method="on_attack_hit"]
+
+[connection signal="enemy_attack_hit" from="." to="player_combat_sprite" method="on_received_hit"]
 
 [connection signal="enemy_attack_miss" from="." to="enemy_combat_sprite" method="on_attack_miss"]
 
-[connection signal="enemy_health_update" from="." to="enemy_health_bar" method="update_health"]
+[connection signal="enemy_died" from="." to="enemy_combat_sprite" method="on_death"]
 
-[connection signal="player_attack_hit" from="." to="player_combat_sprite" method="on_attack_hit"]
+[connection signal="enemy_health_update" from="." to="enemy_health_bar" method="update_health"]
 
 [connection signal="player_attack_hit" from="." to="enemy_combat_sprite" method="on_received_hit"]
 
+[connection signal="player_attack_hit" from="." to="player_combat_sprite" method="on_attack_hit"]
+
 [connection signal="player_attack_miss" from="." to="player_combat_sprite" method="on_attack_miss"]
+
+[connection signal="player_died" from="." to="player_combat_sprite" method="on_death"]
 
 [connection signal="player_health_update" from="." to="player_health_bar" method="update_health"]
 
