@@ -7,10 +7,22 @@ signal UI_get_ready
 signal display_text
 # emitted when options need to be displayed in buttons
 signal display_options
+
 # emitted when the player's health changes
 signal player_health_update
 # emitted when the enemy's health changes
 signal enemy_health_update
+
+# emitted when player attacks and hits, int arg as damage
+signal player_attack_hit
+# emitted when player attacks and misses
+signal player_attack_miss
+
+# emitted when enemy attacks and hits, int arg as damage
+signal enemy_attack_hit
+# emitted when enemy attacks and misses
+signal enemy_attack_miss
+
 
 enum states {MAIN_MENU, MOVE_SELECTION}
 enum main_menu_choices {FIGHT, FLEE}
@@ -29,18 +41,26 @@ func _ready():
 
 #prepares combat to start
 func start_combat(player, enemy, seeded = null):
-	emit_signal("UI_get_ready")
-	show_menu_options()
+	
+	
 	combat_in_progress = true
 	state = states.MAIN_MENU
-	self.player_moves = player.get_all_moves()
-	self.player = player
-	self.enemy = enemy
-	$enemy_health_bar.max_health = enemy.health
+	self.player = player.combat_actor
+	self.enemy = enemy.combat_actor
+	self.player_moves = self.player.get_all_moves()
+	
+	
+	$enemy_combat_sprite.frames = enemy.frames
+	#$player_combat_sprite.frames = player.frames #TODO: Update to actually get player frames out 
+	
+	$enemy_health_bar.max_health = self.enemy.health
 	if seeded == null:
 		randomize()
 	else:
 		seed(seeded)
+		
+	emit_signal("UI_get_ready")
+	show_menu_options()
 	
 #Whenever a button on the UI is pressed, this method resolves
 func on_button_pressed(button_id):
@@ -114,9 +134,11 @@ func resolve_player_attack(move_chosen):
 		#TODO: add logic if damage can ever be less than 0
 		enemy.health = enemy.health - resulting_damage
 		emit_signal("enemy_health_update", enemy.health)
+		emit_signal("player_attack_hit", resulting_damage)
 		emit_signal("display_text", "You hit the enemy for " + str(resulting_damage))
 		
 	else:
+		emit_signal("player_attack_miss")
 		emit_signal("display_text", "You missed")
 		
 
@@ -129,8 +151,10 @@ func resolve_enemy_attack():
 		#TODO: add logic if damage can ever be less than 0
 		player.health = player.health - resulting_damage
 		emit_signal("player_health_update", player.health)
+		emit_signal("enemy_attack_hit", resulting_damage)
 		emit_signal("display_text", "Player got hit for " + str(resulting_damage))
 	else:
+		emit_signal("enemy_attack_miss")
 		emit_signal("display_text", "Enemy missed")
 		
 		

@@ -1,19 +1,16 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://resources/combat/combat_ui/combat_sprite/example_sprite.png" type="Texture" id=1]
+[ext_resource path="res://resources/combat/combat_test/enemy_animated_sprite.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://resources/combat/combat_ui/combat_sprite/combat_sprite.gd" type="Script" id=2]
 
-[sub_resource type="SpriteFrames" id=1]
+[node name="combat_sprite" type="AnimatedSprite"]
 
-animations = [ {
-"frames": [ ExtResource( 1 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
+scale = Vector2( 0.1, 0.1 )
+frames = ExtResource( 1 )
+animation = "attack"
+script = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
 
-[node name="combat_sprite" type="AnimatedSprite" index="0"]
-
-frames = SubResource( 1 )
-animation = "default"
+[connection signal="animation_finished" from="." to="." method="_on_combat_sprite_animation_finished"]
 
 
