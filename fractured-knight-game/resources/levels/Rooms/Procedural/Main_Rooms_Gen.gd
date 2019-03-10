@@ -9,12 +9,11 @@ onready var Map = $TileMap
 const TILE_SIZE = 32
 
 ## varibles for number of rooms and bound for sizes
-## horrosontal spread of rooms/areas and to go through and delete rooms
-## paths is the where we store the path finding algo
-const TILE_SIZE = 32  
+## Horrosontal spread of rooms/areas and to go through and delete rooms
+## Paths is the where we store the path finding algorithum
 var num_rooms = 50 
-var min_size = 6  
-var max_size = 15  
+var room_min_size = 10  
+var room_max_size = 25  
 var hspread = 400  
 var delete_rooms = 0.5  
 var path 
@@ -40,19 +39,19 @@ func _process(delta):
 func make_areas():
 	for i in range(num_rooms):
 		var pos = Vector2(rand_range(-hspread, hspread), 0)
-		var r = Room.instance()
-		var w = min_size + randi() % (max_size - min_size)
-		var h = min_size + randi() % (max_size - min_size)
-		r.make_room(pos, Vector2(w, h) * TILE_SIZE)
-		$Rooms.add_child(r)
+		var instnace_room = Room.instance()
+		var room_width = room_min_size + randi() % (room_max_size - room_min_size)
+		var room_height = room_min_size + randi() % (room_max_size - room_min_size)
+		instnace_room.make_room(pos, Vector2(room_width, room_height) * TILE_SIZE)
+		$Rooms.add_child(instnace_room)
 	yield(get_tree().create_timer(1.1), 'timeout')
 	var pos_rooms = []
-	for r in $Rooms.get_children():
+	for room in $Rooms.get_children():
 		if randf() < delete_rooms:
-			r.queue_free()
+			room.queue_free()
 		else:
-			r.mode = RigidBody2D.MODE_STATIC
-			pos_rooms.append(Vector3(r.position.x, r.position.y, 0))
+			room.mode = RigidBody2D.MODE_STATIC
+			pos_rooms.append(Vector3(room.position.x, room.position.y, 0))
 	yield(get_tree(), 'idle_frame')
 	path = find_min_span_tree(pos_rooms)
 	map()
