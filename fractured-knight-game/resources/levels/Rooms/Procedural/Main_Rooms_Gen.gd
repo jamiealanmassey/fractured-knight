@@ -55,25 +55,17 @@ func make_areas():
 			pos_rooms.append(Vector3(r.position.x, r.position.y, 0))
 	yield(get_tree(), 'idle_frame')
 	path = find_min_span_tree(pos_rooms)
+	map()
 
-
+## Draws paths to conect the rooms but draww the lines stright
+## we check if the path is complete then we draw the line
 func _draw():
 	if path:
-		for p in path.get_points():
-			for c in path.get_point_connections(p):
-				var pp = path.get_point_position(p)
-				var cp = path.get_point_position(c)
+		for point in path.get_points():
+			for connection in path.get_point_connections(point):
+				var pp = path.get_point_position(point)
+				var cp = path.get_point_position(connection)
 				draw_line(Vector2(pp.x, pp.y), Vector2(cp.x, cp.y), Color(1, 1, 0), 15, true)
-
-
-func _input(event):
-	if event.is_action_pressed('ui_select'):
-		for n in $Rooms.get_children():
-			n.queue_free()
-		path = null
-		make_areas()
-	if event.is_action_pressed('ui_focus_next'):
-		map()
 
 ## This function finds the minium spanning tree by using Prims Algorithum
 ## creates a new AStar object as this is the way we can find the shortest distnace 
