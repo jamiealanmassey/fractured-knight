@@ -170,6 +170,6 @@ func finding_rooms():
 		if(room.position.x < x_lowest_bound):
 			starting_room = room
 			x_lowest_bound = room.position.x
-#		if(room.position.x > x_highest_bound):
-#			end_room = room
-#			x_highest_bound = room.position.x
+		if(room.position.x > x_highest_bound):
+			end_room = room
+			x_highest_bound = room.position.x
