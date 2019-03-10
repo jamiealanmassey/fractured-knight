@@ -1,5 +1,6 @@
 extends Node2D
 ## pre-load room script to accesss that scene and method
+## pre-load player to be able to access it in the scsne
 var Room = preload("res://resources/levels/Rooms/Procedural/room.tscn")
 var player = preload("res://resources/player/player.tscn")
 
@@ -9,14 +10,16 @@ onready var Map = $TileMap
 ## Constants for tile_size (32 x 32)
 const TILE_SIZE = 32
 
-## Variables for number of rooms and bound for sizes
+## Exported variables for number of rooms and bound for sizes
 ## Horizontal spread of rooms/areas and to go through and delete rooms
-## Paths is the where we store the path finding algorithum
-var num_rooms = 50 
-var room_min_size = 10  
-var room_max_size = 25  
-var hspread = 300  
-var delete_rooms = 0.5  
+export(int) var num_rooms = 50 
+export(int) var room_min_size = 10  
+export(int) var room_max_size = 25  
+export(int) var hspread = 300  
+export(float) var delete_rooms = 0.5
+export(Texture) var tilemap
+
+## Varibles for the paths and to keep the rooms and certain parts of the data in
 var path 
 var starting_room = null
 var end_room = null
@@ -25,6 +28,7 @@ var play = null
 ## Initilise the rand func 
 ## calls makes areas
 func _ready():
+	$TileMap.tile_set = tilemap
 	randomize()
 	make_areas()
 

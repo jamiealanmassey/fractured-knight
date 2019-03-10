@@ -1,19 +1,25 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://resources/levels/Rooms/Procedural/Main_Rooms_Gen.gd" type="Script" id=1]
-[ext_resource path="res://resources/levels/MerlinsTomb/tombAccess.tres" type="TileSet" id=2]
+[ext_resource path="res://resources/levels/Desert/DesertTileSetPlane.tres" type="TileSet" id=2]
 
 [node name="mainDungon" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform", "Visibility" ]
+num_rooms = 50
+room_min_size = 10
+room_max_size = 25
+hspread = 300
+delete_rooms = 0.5
+tilemap = ExtResource( 2 )
 
 [node name="Rooms" type="Node" parent="." index="0"]
 
 [node name="TileMap" type="TileMap" parent="." index="1"]
 
 mode = 0
-tile_set = ExtResource( 2 )
+tile_set = null
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
