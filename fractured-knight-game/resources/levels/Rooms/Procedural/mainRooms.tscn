@@ -6,6 +6,7 @@
 [node name="mainDungon" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
+_sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="Rooms" type="Node" parent="." index="0"]
 

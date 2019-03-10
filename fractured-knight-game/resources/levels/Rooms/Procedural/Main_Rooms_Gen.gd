@@ -1,6 +1,7 @@
 extends Node2D
 ## pre-load room script to accesss that scene and methord
 var Room = preload("res://resources/levels/Rooms/Procedural/room.tscn")
+var player = preload("res://resources/player/player.tscn")
 
 ## gets the tilset from the tilemap in the tree
 onready var Map = $TileMap
@@ -14,11 +15,12 @@ const TILE_SIZE = 32
 var num_rooms = 50 
 var room_min_size = 10  
 var room_max_size = 25  
-var hspread = 400  
+var hspread = 300  
 var delete_rooms = 0.5  
 var path 
-var start_room = null
+var starting_room = null
 var end_room = null
+var play = null
 
 ## Initilise the rand func 
 ## calls makes areas
@@ -47,7 +49,7 @@ func make_areas():
 	yield(get_tree().create_timer(1.1), 'timeout')
 	var pos_rooms = []
 	for room in $Rooms.get_children():
-		if randf() < delete_rooms:
+		if(randf() < delete_rooms):
 			room.queue_free()
 		else:
 			room.mode = RigidBody2D.MODE_STATIC
@@ -59,7 +61,7 @@ func make_areas():
 ## Draws paths to conect the rooms but draww the lines stright
 ## we check if the path is complete then we draw the line
 func _draw():
-	if path:
+	if(path):
 		for point in path.get_points():
 			for connection in path.get_point_connections(point):
 				var pp = path.get_point_position(point)
@@ -87,7 +89,7 @@ func find_min_span_tree(array):
 		for p1 in path.get_points():
 			p1 = path.get_point_position(p1)
 			for p2 in array:
-				if p1.distance_to(p2) < min_dis:
+				if(p1.distance_to(p2) < min_dis):
 					min_dis = p1.distance_to(p2)
 					min_pos = p2
 					current_pos = p1
@@ -106,29 +108,29 @@ func find_min_span_tree(array):
 ## After we use the same loop to connect rooms as they are being drawn with the tilemap
 func map():
 	Map.clear()
+	finding_rooms()
 	var full_rect = Rect2()
 	for room in $Rooms.get_children():
-		var r = Rect2(room.position-room.size,
-					room.get_node("CollisionShape2D").shape.extents*2)
+		var r = Rect2(room.position-room.size, room.get_node("CollisionShape2D").shape.extents*2)
 		full_rect = full_rect.merge(r)
 	var topleft = Map.world_to_map(full_rect.position)
 	var bottomright = Map.world_to_map(full_rect.end)
 	for x in range(topleft.x, bottomright.x):
 		for y in range(topleft.y, bottomright.y):
-			Map.set_cell(x, y, 1)	
+			Map.set_cell(x, y, 1)
 	var hall = [] 
 	for room in $Rooms.get_children():
-		var s = (room.size / TILE_SIZE).floor()
-		var pos = Map.world_to_map(room.position)
-		var ul = (room.position / TILE_SIZE).floor() - s
-		for x in range(2, s.x * 2 - 1):
-			for y in range(2, s.y * 2 - 1):
-				Map.set_cell(ul.x + x, ul.y + y, 0)
+		var room_size = (room.size / TILE_SIZE).floor()
+		var room_pos = Map.world_to_map(room.position)
+		var top_left = (room.position / TILE_SIZE).floor() - room_size
+		for x in range(2, room_size.x * 2 - 1):
+			for y in range(2, room_size.y * 2 - 1):
+				Map.set_cell(top_left.x + x, top_left.y + y, 0)
 		var p = path.get_closest_point(Vector3(room.position.x, room.position.y, 0))
-		for conn in path.get_point_connections(p):
-			if not conn in hall:
+		for cc in path.get_point_connections(p):
+			if(not cc in hall):
 				var start = Map.world_to_map(Vector2(path.get_point_position(p).x, path.get_point_position(p).y))
-				var end = Map.world_to_map(Vector2(path.get_point_position(conn).x, path.get_point_position(conn).y))									
+				var end = Map.world_to_map(Vector2(path.get_point_position(cc).x, path.get_point_position(cc).y))
 				draw_path(start, end)
 		hall.append(p)
 
@@ -139,8 +141,10 @@ func map():
 func draw_path(pos1, pos2):
 	var delta_x = sign(pos2.x - pos1.x)
 	var delta_y = sign(pos2.y - pos1.y)
-	if delta_x == 0: delta_x = pow(-1.0, randi() % 2)
-	if delta_y == 0: delta_y = pow(-1.0, randi() % 2)
+	if(delta_x == 0): 
+		delta_x = pow(-1.0, randi() % 2)
+	if(delta_y == 0): 
+		delta_y = pow(-1.0, randi() % 2)
 	var x_to_y = pos1
 	var y_to_x = pos2
 	if (randi() % 2) > 0:
@@ -152,3 +156,17 @@ func draw_path(pos1, pos2):
 	for y in range(pos1.y, pos2.y, delta_y):
 		Map.set_cell(y_to_x.x, y, 0)
 		Map.set_cell(y_to_x.x + delta_x, y, 0)
+
+## This function finds the starting room and ending room from all the rooms store in the node Rooms
+## We set the lower bound and the higest bound of the map on the X plane
+## Then the function searches for the the lowest bounded room and then the highest for start and end points
+func finding_rooms():
+	var x_lowest_bound = INF
+	var x_highest_bound = -INF
+	for room in $Rooms.get_children():
+		if(room.position.x < x_lowest_bound):
+			starting_room = room
+			x_lowest_bound = room.position.x
+#		if(room.position.x > x_highest_bound):
+#			end_room = room
+#			x_highest_bound = room.position.x

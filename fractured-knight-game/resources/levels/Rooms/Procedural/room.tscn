@@ -2,8 +2,9 @@
 
 [ext_resource path="res://resources/levels/Rooms/Procedural/room.gd" type="Script" id=1]
 
-[node name="RigidBody2D" type="RigidBody2D" index="0"]
+[node name="RigidBody2D" type="RigidBody2D"]
 
+show_behind_parent = true
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -23,6 +24,7 @@ linear_damp = -1.0
 angular_velocity = 0.0
 angular_damp = -1.0
 script = ExtResource( 1 )
+_sections_unfolded = [ "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
