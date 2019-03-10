@@ -1,5 +1,5 @@
 extends Node2D
-## pre-load room script to accesss that scene and methord
+## pre-load room script to accesss that scene and method
 var Room = preload("res://resources/levels/Rooms/Procedural/room.tscn")
 var player = preload("res://resources/player/player.tscn")
 
@@ -9,8 +9,8 @@ onready var Map = $TileMap
 ## Constants for tile_size (32 x 32)
 const TILE_SIZE = 32
 
-## varibles for number of rooms and bound for sizes
-## Horrosontal spread of rooms/areas and to go through and delete rooms
+## Variables for number of rooms and bound for sizes
+## Horizontal spread of rooms/areas and to go through and delete rooms
 ## Paths is the where we store the path finding algorithum
 var num_rooms = 50 
 var room_min_size = 10  
@@ -33,19 +33,19 @@ func _process(delta):
 	update()
 
 ## Makes rooms using a for loop to cycle through the amount of rooms we want 
-## Then the function draws the area that is needed, it randimises the width and height of the area
+## Then the function draws the area that is needed, it randomises the width and height of the area
 ## After adds that as a child of the node, Rooms. This is where we will keep the rooms
 ## We yield meaning to stop and create a timer so we can alloe the program to create the rooms and store them
-## Then we randomly delete some rooms (ELSE) we make them static and add the room to the arrat (pos_rooms)
+## Then we randomly delete some rooms (ELSE) we make them static and add the room to the array (pos_rooms)
 ## After we set a timer to wait and then call the function find_min_span_tree with @param being the array
 func make_areas():
 	for i in range(num_rooms):
 		var pos = Vector2(rand_range(-hspread, hspread), 0)
-		var instnace_room = Room.instance()
+		var instance_room = Room.instance()
 		var room_width = room_min_size + randi() % (room_max_size - room_min_size)
 		var room_height = room_min_size + randi() % (room_max_size - room_min_size)
-		instnace_room.make_room(pos, Vector2(room_width, room_height) * TILE_SIZE)
-		$Rooms.add_child(instnace_room)
+		instance_room.make_room(pos, Vector2(room_width, room_height) * TILE_SIZE)
+		$Rooms.add_child(instance_room)
 	yield(get_tree().create_timer(1.1), 'timeout')
 	var pos_rooms = []
 	for room in $Rooms.get_children():
@@ -71,7 +71,7 @@ func _draw():
 				var cp = path.get_point_position(connection)
 				draw_line(Vector2(pp.x, pp.y), Vector2(cp.x, cp.y), Color(0, 225, 0), 15, true)
 
-## This function finds the minium spanning tree by using Prims Algorithum
+## This function finds the minimum spanning tree by using Prims Algorithum
 ## creates a new AStar object as this is the way we can find the shortest distnace 
 ## After we loop through the array containing all the points
 ## This loops allows for 3 new varibles to be created:
@@ -79,8 +79,8 @@ func _draw():
 ## ## min_pos is the mininum position that the nodes is in
 ## ## current_pos is the varibles to keep track of where we are
 ## We loop through the set of points and set each point as out postition
-## After we loop[ through the array of areas to see which is the closes area to each other
-## Follwing the basic principle of prims algorithum
+## After we loop through the array of areas to see which is the closest area to each other
+## Following the basic principle of prims algorithm
 ## @returns the path 
 func find_min_span_tree(array):
 	var path = AStar.new()
@@ -102,11 +102,11 @@ func find_min_span_tree(array):
 		array.erase(min_pos)
 	return path
 
-## First we have to workout and fill the area of the Entire map
+## First we have to workout and fill the area of the entire map
 ## We use the merge function built into TileMap to merge the size of the area taken up by the nodes
-## Then we use the full_area_of to get the top left ps and the botton left pos, with this we create a grid a 2D grid using indented for loops
+## Then we use the full_area_of to get the top left pos and the botton left pos, with this we create a grid a 2D grid using  for loops
 ## The first set of loops set the full map tileset
-## The second set of loops use the rooms stored in the Rooms node to set the tilemap and get the area of each and drawe the tileset accoring to that
+## The second set of loops use the rooms stored in the Rooms node to set the tilemap and get the area of each and draw the tileset accoring to that
 ## there are 3 local varibles made : to keep track of the size of each room, position of it in the world, top left position in each room
 ## After we use the same loop to connect rooms as they are being drawn with the tilemap
 func map():
