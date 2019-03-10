@@ -65,7 +65,7 @@ func _draw():
 			for connection in path.get_point_connections(point):
 				var pp = path.get_point_position(point)
 				var cp = path.get_point_position(connection)
-				draw_line(Vector2(pp.x, pp.y), Vector2(cp.x, cp.y), Color(1, 1, 0), 15, true)
+				draw_line(Vector2(pp.x, pp.y), Vector2(cp.x, cp.y), Color(0, 225, 0), 15, true)
 
 ## This function finds the minium spanning tree by using Prims Algorithum
 ## creates a new AStar object as this is the way we can find the shortest distnace 
