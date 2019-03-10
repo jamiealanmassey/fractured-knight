@@ -107,6 +107,7 @@ func find_min_span_tree(array):
 ## The first set of loops set the full map tileset
 ## The second set of loops use the rooms stored in the Rooms node to set the tilemap and get the area of each and drawe the tileset accoring to that
 ## there are 3 local varibles made : to keep track of the size of each room, position of it in the world, top left position in each room
+## After we use the same loop to connect rooms as they are being drawn with the tilemap
 func map():
 	Map.clear()
 	var full_area_of_map = Rect2()
@@ -120,6 +121,7 @@ func map():
 	for nX in range(top_left_map.x, bottom_right_map.x):
 		for nY in range(top_left_map.y, bottom_right_map.y):
 			Map.set_cell(nX, nY, 1) # TOOD: tilemap
+	var hall = []
 	for n in $Rooms.get_children():
 		var r_size = (n.size / TILE_SIZE).floor()
 		var pos_room = Map.world_to_map(n.position)
@@ -127,3 +129,22 @@ func map():
 		for nX in range(2, r_size.x*2-1):
 			for nY in range(2, r_size.y*2-1):
 				Map.set_cell(top_left.x+nX, top_left.y+nY, 0) # TODO: Tilemap
+		var h_updated_path = path.get_closest_point(Vector3(n.position.x, n.position.y, 0))
+		for cc in path.get_point_connection(h_updated_path):
+			if not conn in hall:
+				var start_point = Map.world_to_map(Vector2(path.get_point_position(h_updated_path).x, path.get_point_position(h_updated_path).y))
+				var end_point = Map.world_to_map(Vector2(path.get_point_position(conn).x, path.get_point_position(conn).y))
+				draw_path(start_point, end_point)
+		hall.append(h_updated_path)
+
+## @param pos1 : the starting position, pos2 : the ending positon
+## Drawing the path between rooms/areas to connect them up
+## We first find the diffrence in the 2 positions we are given 
+func draw_path(pos1, pos2):
+	var delta_x = sign(pos2.x - pos1.x)
+	var delta_y = sign(pos2.y - pos1.y)
+	if(delta_x == 0):
+		delta_x = pow(-1.0, randi() % 2)
+	if(delta_y == 0):
+		delta_y = pow(-1.0, randi() % 2)
+	
