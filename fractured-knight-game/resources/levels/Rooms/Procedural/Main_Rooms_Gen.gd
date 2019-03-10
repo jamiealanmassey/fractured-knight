@@ -21,7 +21,8 @@ var path
 var start_room = null
 var end_room = null
 
-
+## Initilise the rand func 
+## calls makes areas
 func _ready():
 	randomize()
 	make_areas()
@@ -46,15 +47,16 @@ func make_areas():
 		$Rooms.add_child(r)
 	yield(get_tree().create_timer(1.1), 'timeout')
 	var pos_rooms = []
-	for room in $Rooms.get_children():
+	for r in $Rooms.get_children():
 		if randf() < delete_rooms:
-			room.queue_free()
+			r.queue_free()
 		else:
-			room.mode = RigidBody2D.MODE_STATIC
-			pos_rooms.append(Vector3(room.position.x, room.position.y, 0))
+			r.mode = RigidBody2D.MODE_STATIC
+			pos_rooms.append(Vector3(r.position.x, r.position.y, 0))
 	yield(get_tree(), 'idle_frame')
 	path = find_min_span_tree(pos_rooms)
-			
+
+
 func _draw():
 	for room in $Rooms.get_children():
 		draw_rect(Rect2(room.position - room.size, room.size * 2), Color(0, 1, 0), false)
@@ -65,18 +67,27 @@ func _draw():
 				var cp = path.get_point_position(c)
 				draw_line(Vector2(pp.x, pp.y), Vector2(cp.x, cp.y), Color(1, 1, 0), 15, true)
 
-	
+
 func _input(event):
 	if event.is_action_pressed('ui_select'):
 		for n in $Rooms.get_children():
 			n.queue_free()
 		path = null
-		start_room = null
-		end_room = null
 		make_areas()
 	if event.is_action_pressed('ui_focus_next'):
 		map()
 
+## This function finds the minium spanning tree by using Prims Algorithum
+## creates a new AStar object as this is the way we can find the shortest distnace 
+## After we loop through the array containing all the points
+## This loops allows for 3 new varibles to be created:
+## ## min_dis set to infinate but will hold the distances between nodes
+## ## min_pos is the mininum position that the nodes is in
+## ## current_pos is the varibles to keep track of where we are
+## We loop through the set of points and set each point as out postition
+## After we loop[ through the array of areas to see which is the closes area to each other
+## Follwing the basic principle of prims algorithum
+## @returns the path 
 func find_min_span_tree(array):
 	var path = AStar.new()
 	path.add_point(path.get_available_point_id(), array.pop_front())
@@ -139,32 +150,16 @@ func map():
 func draw_path(pos1, pos2):
 	var delta_x = sign(pos2.x - pos1.x)
 	var delta_y = sign(pos2.y - pos1.y)
-	if(delta_x == 0):
-		delta_x = pow(-1.0, randi() % 2)
-	if(delta_y == 0):
-		delta_y = pow(-1.0, randi() % 2)
+	if delta_x == 0: delta_x = pow(-1.0, randi() % 2)
+	if delta_y == 0: delta_y = pow(-1.0, randi() % 2)
 	var x_to_y = pos1
 	var y_to_x = pos2
-	if((randi() %2) > 0):
+	if (randi() % 2) > 0:
 		x_to_y = pos2
 		y_to_x = pos1
-	for pos_x in range(pos1.x, pos2.x, delta_x):
-		Map.set_cell(pos_x, x_to_y.y, 0)
-		Map.set_cell(pos_x, x_to_y.y + delta_y, 0)
-	for pos_y in range(pos1.y, pos2.y, delta_y):
-		Map.set_cell(pos_y, y_to_x.x, 0)
-		Map.set_cell(pos_y, y_to_x.x + delta_x, 0)
-
-func find_start_room():
-	var min_x = INF
-	for room in $Rooms.get_children():
-		if room.position.x < min_x:
-			start_room = room
-			min_x = room.position.x
-
-func find_end_room():
-	var max_x = -INF
-	for room in $Rooms.get_children():
-		if room.position.x > max_x:
-			end_room = room
-			max_x = room.position.x
+	for x in range(pos1.x, pos2.x, delta_x):
+		Map.set_cell(x, x_to_y.y, 0)
+		Map.set_cell(x, x_to_y.y + delta_y, 0)  
+	for y in range(pos1.y, pos2.y, delta_y):
+		Map.set_cell(y_to_x.x, y, 0)
+		Map.set_cell(y_to_x.x + delta_x, y, 0)
