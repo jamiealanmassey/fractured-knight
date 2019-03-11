@@ -1,0 +1,142 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://resources/cut_scene/Sprite/Space.png" type="Texture" id=1]
+[ext_resource path="res://resources/cut_scene/Sprite/rocket(1).png" type="Texture" id=2]
+
+[sub_resource type="GDScript" id=1]
+
+resource_local_to_scene = true
+script/source = "extends Node2D
+
+onready var sprite = get_node(\"Sprite\")
+var Falling_class = load(\"res://resources/cut_scene/Intro/Flash_cutscene.tscn\")
+
+var isOut
+var velocity = Vector2(-8,0)
+
+func _ready():
+	isOut = false
+	set_process(true)
+	pass
+
+func _process(delta):
+	if (isOut == false):
+		move()
+	pass
+
+func move():
+	if (sprite.position.x>600):
+		sprite.fly_in()
+	elif (position.x == -1600) :
+		sprite.fly_out()
+		sprite.shift()
+	else:
+		translate(velocity)
+		sprite.shift()
+	pass
+
+func check_is_out():
+	if position.x <= -2600:
+		isOut = true
+	pass
+"
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="GDScript" id=3]
+
+script/source = "extends Sprite
+
+func _ready():
+	pass
+
+func fly_out():
+	var vector = Vector2(-8,0)
+	translate(vector)
+	if (position.x == -600):
+		get_tree().change_scene(\"res://resources/cut_scene/Intro/Flash_cutscene.tscn\")
+	pass
+
+func fly_in():
+	var vector = Vector2(-8,0)
+	translate(vector)
+	pass
+
+func shift():
+	if Input.is_action_pressed(\"ui_right\") and (position.y <500):
+		position.y -= 5
+	elif Input.is_action_pressed(\"ui_left\") and (position.y >-500):
+		position.y += 5
+	pass"
+
+[sub_resource type="GDScript" id=2]
+
+resource_local_to_scene = true
+script/source = "extends Camera2D
+
+onready var ship = get_node(\"../Spaceship\")
+
+func _ready():
+	set_position(ship.position)
+	set_process(true)
+	pass
+
+func _process(delta):
+	set_position(ship.position)
+	pass
+
+func set_position(pos):
+	position = pos
+	pass"
+_sections_unfolded = [ "Resource" ]
+
+[node name="Node" type="Node"]
+
+[node name="Space" type="Sprite" parent="." index="0"]
+
+rotation = 1.5708
+scale = Vector2( 3, 4 )
+texture = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Spaceship" type="Node2D" parent="." index="1"]
+
+position = Vector2( 1600, 0 )
+script = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="Spaceship" index="0"]
+
+position = Vector2( 1000, 0 )
+rotation = 1.5708
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 2 )
+script = SubResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Camera2D" type="Camera2D" parent="." index="2"]
+
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+script = SubResource( 2 )
+
+
