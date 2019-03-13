@@ -4,7 +4,6 @@
 [ext_resource path="res://resources/combat/combat_ui/UIBox.gd" type="Script" id=2]
 [ext_resource path="res://resources/combat/combat_ui/images/Arrow.png" type="Texture" id=3]
 
-
 [node name="UIBox" type="NinePatchRect"]
 
 anchor_left = 0.0

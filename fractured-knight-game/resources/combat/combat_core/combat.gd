@@ -75,6 +75,7 @@ func on_button_pressed(button_id):
 	match state: # switches based on current state of the system
 		states.MAIN_MENU: 
 			match button_id: #switches to either fight or flee
+				# Fight was chosen
 				main_menu_choices.FIGHT:
 					var move_names = []
 					for move in player_moves:
@@ -82,19 +83,19 @@ func on_button_pressed(button_id):
 					show_move_options()
 					state = states.MOVE_SELECTION
 					
-					
-				main_menu_choices.FLEE: #flee was chosen
+				# Flee was chosen
+				main_menu_choices.FLEE: 
 				# Attempt to flee and wait for text output x2
 					attempt_to_flee()
 					yield($combatInterface, "finished_displaying_text")
 					yield($combatInterface, "finished_displaying_text")
 					
-					#Player didn't manage to flee, enemy attacks
+					# Player didn't manage to flee, enemy attacks
 					if combat_in_progress:
 						resolve_enemy_attack()
 						yield($combatInterface, "finished_displaying_text")
 					
-					#Check player is alive and whether to continue
+					# Check player is alive and whether to continue
 					check_player_is_dead()
 					if combat_in_progress:
 						show_menu_options()
@@ -222,11 +223,14 @@ func show_move_options():
 	emit_signal("display_options", move_names)
 	
 
-#Finishes combat
+# Finishes combat
 func finish_combat():
 	state = states.MAIN_MENU
 	combat_in_progress = false
 	pass
 	
-	
+# Sets the background image's filepath
+func set_background_image(image_filepath):
+	$background_image.texture = image_filepath
+	pass
 

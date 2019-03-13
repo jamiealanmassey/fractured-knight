@@ -42,6 +42,10 @@ max_health = 100
 position = Vector2( 1200, 290 )
 _sections_unfolded = [ "Transform" ]
 
+[node name="background_image" type="Sprite" parent="." index="5"]
+
+scale = Vector2( 1923.71, 1082.22 )
+
 [connection signal="UI_get_ready" from="." to="combatInterface" method="_on_Combat_UI_get_ready"]
 
 [connection signal="UI_get_ready" from="." to="enemy_combat_sprite" method="combat_started"]
