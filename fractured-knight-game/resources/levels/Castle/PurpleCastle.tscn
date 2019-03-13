@@ -1,0 +1,345 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://resources/levels/Castle/PurplePalace_ (1).png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 15.9102, 16.2595 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16.103, 15.9675 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16.417, 16.399 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 15.3198, 16.0482 )
+
+[sub_resource type="RectangleShape2D" id=6]
+
+custom_solver_bias = 0.0
+extents = Vector2( 14.8257, 16.6487 )
+
+[sub_resource type="RectangleShape2D" id=7]
+
+custom_solver_bias = 0.0
+extents = Vector2( 15.8667, 16.1217 )
+
+[sub_resource type="RectangleShape2D" id=8]
+
+custom_solver_bias = 0.0
+extents = Vector2( 15.2988, 16.1217 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="1" type="Sprite" parent="." index="0"]
+
+editor/display_folded = true
+position = Vector2( 5497.42, 1569.45 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 96, 224, 32, 32 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="Area2D" type="Area2D" parent="1" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="1/Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( 0.109375, 31.6943, 4.95068, 31.8368, 4.95068, 12.8982, 12.0703, 9.1958, 17.624, 7.62952, 21.896, 9.33826, 26.0254, 12.4709, 28.3037, 15.6036, 28.3037, 31.9791, 32.0059, 32.1216, 32.1484, 0.224976, 0.109375, 0.224976 )
+
+[node name="2" type="Sprite" parent="." index="1"]
+
+editor/display_folded = true
+position = Vector2( 5381.66, 1646.47 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 96, 96, 32, 32 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="Area2D" type="Area2D" parent="2" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="2/Area2D" index="0"]
+
+position = Vector2( 1, 0 )
+shape = SubResource( 2 )
+
+[node name="3" type="Sprite" parent="." index="2"]
+
+editor/display_folded = true
+position = Vector2( 5435.61, 1648.8 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 128, 96, 32, 32 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="Area2D" type="Area2D" parent="3" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="3/Area2D" index="0"]
+
+shape = SubResource( 3 )
+
+[node name="4" type="Sprite" parent="." index="3"]
+
+editor/display_folded = true
+position = Vector2( 5508.42, 1645.15 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 160, 96, 32, 32 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="Area2D" type="Area2D" parent="4" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="4/Area2D" index="0"]
+
+position = Vector2( -1, 0 )
+shape = SubResource( 4 )
+disabled = true
+
+[node name="5" type="Sprite" parent="." index="4"]
+
+position = Vector2( 5222.78, 1639.87 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 64, 32, 32 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="6" type="Sprite" parent="." index="5"]
+
+position = Vector2( 5269.43, 1640.31 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 32, 64, 32, 32 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="7" type="Sprite" parent="." index="6"]
+
+position = Vector2( 5314.76, 1640.31 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 64, 64, 32, 32 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="8" type="Sprite" parent="." index="7"]
+
+position = Vector2( 5315.2, 1690.04 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 64, 96, 32, 32 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="9" type="Sprite" parent="." index="8"]
+
+position = Vector2( 5268.55, 1688.72 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 64, 96, 32, 32 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="10" type="Sprite" parent="." index="9"]
+
+position = Vector2( 5268.55, 1688.72 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 32, 96, 32, 32 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="11" type="Sprite" parent="." index="10"]
+
+position = Vector2( 5224.54, 1686.52 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 96, 32, 32 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="12" type="Sprite" parent="." index="11"]
+
+position = Vector2( 5223.22, 1593.65 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="13" type="Sprite" parent="." index="12"]
+
+position = Vector2( 5268.99, 1592.77 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 32, 0, 32, 32 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="14" type="Sprite" parent="." index="13"]
+
+position = Vector2( 5312.56, 1592.33 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 64, 0, 32, 32 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="15" type="Sprite" parent="." index="14"]
+
+position = Vector2( 5430.08, 1732.29 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 96, 192, 32, 32 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="16" type="Sprite" parent="." index="15"]
+
+position = Vector2( 5431.84, 1770.14 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 64, 160, 32, 32 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="17" type="Sprite" parent="." index="16"]
+
+position = Vector2( 5431.4, 1811.95 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 64, 192, 32, 32 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="18" type="Sprite" parent="." index="17"]
+
+position = Vector2( 5495.21, 1746.82 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 64, 224, 32, 32 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="Area2D" type="Area2D" parent="18" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="18/Area2D" index="0"]
+
+shape = SubResource( 5 )
+
+[node name="19" type="Sprite" parent="." index="18"]
+
+position = Vector2( 5312.56, 1865.21 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 96, 64, 32, 32 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="Area2D" type="Area2D" parent="19" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="19/Area2D" index="0"]
+
+shape = SubResource( 6 )
+
+[node name="20" type="Sprite" parent="." index="19"]
+
+editor/display_folded = true
+position = Vector2( 5360.54, 1865.21 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 128, 64, 32, 32 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="Area2D" type="Area2D" parent="20" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="20/Area2D" index="0"]
+
+shape = SubResource( 7 )
+
+[node name="21" type="Sprite" parent="." index="20"]
+
+position = Vector2( 5421.71, 1865.21 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 160, 64, 32, 32 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="Area2D" type="Area2D" parent="21" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="21/Area2D" index="0"]
+
+shape = SubResource( 8 )
+
+
