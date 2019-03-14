@@ -3,10 +3,10 @@ extends Node
 
 
 func _ready():
-	var combat = load("res://resources/combat/combat-core/combat.tscn").instance()
+	var combat = load("res://resources/combat/combat_core/combat.tscn").instance()
 	add_child(combat)
 	
-	combat.start_combat($player.actor, $enemy.actor)
+	combat.start_combat($player, $enemy)
 	pass
 
 #func _process(delta):

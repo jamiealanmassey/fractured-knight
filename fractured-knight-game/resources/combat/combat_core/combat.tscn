@@ -5,7 +5,7 @@
 [ext_resource path="res://resources/combat/combat_ui/combat_sprite/combat_sprite.tscn" type="PackedScene" id=3]
 [ext_resource path="res://resources/combat/combat_ui/health_bar/health_bar.tscn" type="PackedScene" id=4]
 
-[node name="Combat" type="Control" index="0"]
+[node name="Combat" type="Control"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -21,14 +21,14 @@ script = ExtResource( 1 )
 
 [node name="combatInterface" parent="." index="0" instance=ExtResource( 2 )]
 
-[node name="player" parent="." index="1" instance=ExtResource( 3 )]
+[node name="player_combat_sprite" parent="." index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 720, 360 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="enemy" parent="." index="2" instance=ExtResource( 3 )]
+[node name="enemy_combat_sprite" parent="." index="2" instance=ExtResource( 3 )]
 
 position = Vector2( 1200, 360 )
+flip_h = true
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="player_health_bar" parent="." index="3" instance=ExtResource( 4 )]
@@ -42,6 +42,14 @@ max_health = 100
 position = Vector2( 1200, 290 )
 _sections_unfolded = [ "Transform" ]
 
+[node name="background_image" type="Sprite" parent="." index="5"]
+
+scale = Vector2( 1923.71, 1082.22 )
+
+[connection signal="UI_get_ready" from="." to="enemy_combat_sprite" method="combat_started"]
+
+[connection signal="UI_get_ready" from="." to="player_combat_sprite" method="combat_started"]
+
 [connection signal="UI_get_ready" from="." to="combatInterface" method="_on_Combat_UI_get_ready"]
 
 [connection signal="combat_finished" from="." to="combatInterface" method="_on_Combat_combat_finished"]
@@ -50,7 +58,23 @@ _sections_unfolded = [ "Transform" ]
 
 [connection signal="display_text" from="." to="combatInterface" method="_on_Combat_display_text"]
 
+[connection signal="enemy_attack_hit" from="." to="enemy_combat_sprite" method="on_attack_hit"]
+
+[connection signal="enemy_attack_hit" from="." to="player_combat_sprite" method="on_received_hit"]
+
+[connection signal="enemy_attack_miss" from="." to="enemy_combat_sprite" method="on_attack_miss"]
+
+[connection signal="enemy_died" from="." to="enemy_combat_sprite" method="on_death"]
+
 [connection signal="enemy_health_update" from="." to="enemy_health_bar" method="update_health"]
+
+[connection signal="player_attack_hit" from="." to="enemy_combat_sprite" method="on_received_hit"]
+
+[connection signal="player_attack_hit" from="." to="player_combat_sprite" method="on_attack_hit"]
+
+[connection signal="player_attack_miss" from="." to="player_combat_sprite" method="on_attack_miss"]
+
+[connection signal="player_died" from="." to="player_combat_sprite" method="on_death"]
 
 [connection signal="player_health_update" from="." to="player_health_bar" method="update_health"]
 
