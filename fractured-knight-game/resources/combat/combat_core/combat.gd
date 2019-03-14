@@ -36,8 +36,8 @@ var state
 #The moves the player can do
 var player_moves
 # player and enemy actors
-var player
-var enemy
+var player = null
+var enemy = null
 var combat_in_progress = false
 
 func _ready():
@@ -46,20 +46,17 @@ func _ready():
 
 #prepares combat to start
 func start_combat(player, enemy, seeded = null):
-	
-	
 	combat_in_progress = true
 	state = states.MAIN_MENU
-	self.player = player.combat_actor
-	self.enemy = enemy.combat_actor
-	self.player_moves = self.player.get_all_moves()
-	
+	self.player = player
+	self.enemy = enemy
+	self.player_moves = self.player.combat_actor.get_all_moves()
 	
 	$enemy_combat_sprite.frames = enemy.frames
 	#$player_combat_sprite.frames = player.frames #TODO: Update to actually get player frames out 
 	
-	$enemy_health_bar.max_health = self.enemy.health
-	$player_health_bar.update_health(self.player.health)
+	$enemy_health_bar.max_health = self.enemy.combat_actor.health
+	$player_health_bar.update_health(self.player.combat_actor.health)
 	if seeded == null:
 		randomize()
 	else:
@@ -135,12 +132,12 @@ func on_button_pressed(button_id):
 
 #resolves a player's attack
 func resolve_player_attack(move_chosen):
-	var resulting_damage = get_resulting_damage(move_chosen, player, enemy)
+	var resulting_damage = get_resulting_damage(move_chosen, player.combat_actor, enemy.combat_actor)
 	print("player deal: " + str(resulting_damage))
 	if(resulting_damage != null):
 		#TODO: add logic if damage can ever be less than 0
-		enemy.health = enemy.health - resulting_damage
-		emit_signal("enemy_health_update", enemy.health)
+		enemy.combat_actor.health = enemy.combat_actor.health - resulting_damage
+		emit_signal("enemy_health_update", enemy.combat_actor.health)
 		emit_signal("player_attack_hit", resulting_damage)
 		emit_signal("display_text", "You hit the enemy for " + str(resulting_damage))
 	else:
@@ -150,13 +147,13 @@ func resolve_player_attack(move_chosen):
 
 #resolves an enemy's attack
 func resolve_enemy_attack():
-	var enemy_move = enemy.get_all_moves()[randi() % enemy.get_all_moves().size()]
-	var resulting_damage = get_resulting_damage(enemy_move, enemy, player)
+	var enemy_move = enemy.combat_actor.get_all_moves()[randi() % enemy.combat_actor.get_all_moves().size()]
+	var resulting_damage = get_resulting_damage(enemy_move, enemy.combat_actor, player.combat_actor)
 	print("enemy dealt :" + str(resulting_damage))
 	if(resulting_damage != null):
 		#TODO: add logic if damage can ever be less than 0
-		player.health = player.health - resulting_damage
-		emit_signal("player_health_update", player.health)
+		player.combat_actor.health = player.combat_actor.health - resulting_damage
+		emit_signal("player_health_update", player.combat_actor.health)
 		emit_signal("enemy_attack_hit", resulting_damage)
 		emit_signal("display_text", "Player got hit for " + str(resulting_damage))
 	else:
@@ -189,7 +186,8 @@ func attempt_to_flee():
 	
 	
 func check_enemy_is_dead():
-	if(enemy.health <= 0): #if enemy is dead
+	print (enemy.combat_actor.health)
+	if (enemy.combat_actor.health <= 0): #if enemy is dead
 		emit_signal("display_text", "Enemy defeated")
 		emit_signal("enemy_died")
 		emit_signal("combat_finished", player, enemy, "Player won")
@@ -198,7 +196,7 @@ func check_enemy_is_dead():
 	return false
 
 func check_player_is_dead():
-	if(player.health <= 0): #if player is dead
+	if(player.combat_actor.health <= 0): #if player is dead
 		emit_signal("display_text", "Player defeated")
 		emit_signal("player_died")
 		emit_signal("combat_finished", player, enemy, "Enemy won")
@@ -228,10 +226,7 @@ func show_move_options():
 func finish_combat():
 	state = states.MAIN_MENU
 	combat_in_progress = false
-	pass
-	
+
 # Sets the background image's filepath
 func set_background_image(image_filepath):
 	$background_image.texture = image_filepath
-	pass
-

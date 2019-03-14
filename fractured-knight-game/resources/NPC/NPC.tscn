@@ -41,7 +41,7 @@ interaction_anim_speed = 0.25
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "default"
-frame = 1
+frame = 2
 playing = true
 _sections_unfolded = [ "Material", "Transform", "Visibility" ]
 

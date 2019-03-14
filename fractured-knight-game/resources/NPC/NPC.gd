@@ -54,6 +54,9 @@ func _on_Area2D_body_entered(body):
 		interact_icon_tweener.interpolate_property($InteractionIcon, 'modulate:a', $InteractionIcon.modulate.a, 1, interaction_anim_speed, Tween.TRANS_LINEAR, Tween.EASE_IN)
 		interact_icon_tweener.start()
 		can_interact = true
+	elif self.npc_type == self.HOSTILE:
+		get_node('/root/LevelManager').initiate_combat(self)
+	
 
 func _on_Area2D_body_exited(body):
 	if self.npc_type == self.FRIENDLY && dialogue_name != null:
