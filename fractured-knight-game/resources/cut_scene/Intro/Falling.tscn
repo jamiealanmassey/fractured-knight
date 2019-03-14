@@ -2,12 +2,12 @@
 
 [ext_resource path="res://resources/cut_scene/Sprite/Space.png" type="Texture" id=1]
 [ext_resource path="res://resources/cut_scene/Sprite/desert.png" type="Texture" id=2]
-[ext_resource path="res://resources/cut_scene/Sprite/r1.png" type="Texture" id=3]
-[ext_resource path="res://resources/cut_scene/Sprite/r2.png" type="Texture" id=4]
-[ext_resource path="res://resources/cut_scene/Sprite/rocket02.png" type="Texture" id=5]
-[ext_resource path="res://resources/cut_scene/Sprite/r3.png" type="Texture" id=6]
-[ext_resource path="res://resources/cut_scene/Sprite/rocket(1).png" type="Texture" id=7]
-[ext_resource path="res://resources/cut_scene/Sprite/rocket04.png" type="Texture" id=8]
+[ext_resource path="res://resources/cut_scene/Sprite/rocket04.png" type="Texture" id=3]
+[ext_resource path="res://resources/cut_scene/Sprite/rocket(1).png" type="Texture" id=4]
+[ext_resource path="res://resources/cut_scene/Sprite/r1.png" type="Texture" id=5]
+[ext_resource path="res://resources/cut_scene/Sprite/r2.png" type="Texture" id=6]
+[ext_resource path="res://resources/cut_scene/Sprite/rocket02.png" type="Texture" id=7]
+[ext_resource path="res://resources/cut_scene/Sprite/r3.png" type="Texture" id=8]
 
 [sub_resource type="GDScript" id=1]
 
@@ -27,7 +27,9 @@ func _process(delta):
 	pass
 
 func move():
-	if (position.y <= 0):
+	if (sprite.position.x <-50):
+		sprite.fly_in()
+	elif (position.y <= 0):
 		translate(velocity)
 	else:
 		sprite.on_hitting_ground()
@@ -38,19 +40,19 @@ _sections_unfolded = [ "Resource" ]
 [sub_resource type="SpriteFrames" id=2]
 
 animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "Hit",
+"name": "Stay",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 7 ) ],
+"frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "Fall",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 8 ) ],
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": true,
-"name": "Stay",
+"name": "Hit",
 "speed": 5.0
 } ]
 _sections_unfolded = [ "Resource" ]
@@ -70,7 +72,11 @@ func on_hitting_ground():
 
 func turn_stay():
 	animation = \"Stay\"
-"
+
+func fly_in():
+	var vector = Vector2(0,10)
+	translate(vector)
+	pass"
 _sections_unfolded = [ "Resource" ]
 
 [sub_resource type="GDScript" id=4]
@@ -81,7 +87,6 @@ script/source = "extends Camera2D
 onready var ship = get_node(\"../Spaceship\")
 
 func _ready():
-	set_position(ship.position)
 	set_process(true)
 	pass
 
@@ -116,13 +121,14 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Spaceship" type="Node2D" parent="." index="1"]
 
-position = Vector2( 0, -4000 )
+position = Vector2( 0, -3998.54 )
 script = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Spaceship" index="0"]
 
-scale = Vector2( 0.3, 0.3 )
+position = Vector2( 0, -1000 )
+scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 2 )
 animation = "Fall"
 playing = true
@@ -131,6 +137,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Camera2D" type="Camera2D" parent="." index="2"]
 
+position = Vector2( 0, -3998.54 )
 anchor_mode = 1
 rotating = false
 current = true

@@ -9,7 +9,6 @@ resource_local_to_scene = true
 script/source = "extends Node2D
 
 onready var sprite = get_node(\"Sprite\")
-var Falling_class = load(\"res://resources/cut_scene/Intro/Flash_cutscene.tscn\")
 
 var isOut
 var velocity = Vector2(-8,0)
@@ -42,9 +41,11 @@ func check_is_out():
 "
 _sections_unfolded = [ "Resource" ]
 
-[sub_resource type="GDScript" id=3]
+[sub_resource type="GDScript" id=2]
 
 script/source = "extends Sprite
+
+var video = load(\"res://resources/cut_scene/Intro/Flash_cutscene.tscn\")
 
 func _ready():
 	pass
@@ -53,7 +54,7 @@ func fly_out():
 	var vector = Vector2(-8,0)
 	translate(vector)
 	if (position.x == -600):
-		get_tree().change_scene(\"res://resources/cut_scene/Intro/Flash_cutscene.tscn\")
+		get_node(\"../..\").add_child(video.instance())
 	pass
 
 func fly_in():
@@ -68,7 +69,7 @@ func shift():
 		position.y += 5
 	pass"
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id=3]
 
 resource_local_to_scene = true
 script/source = "extends Camera2D
@@ -89,7 +90,7 @@ func set_position(pos):
 	pass"
 _sections_unfolded = [ "Resource" ]
 
-[node name="Node" type="Node"]
+[node name="Node" type="Node" index="0"]
 
 [node name="Space" type="Sprite" parent="." index="0"]
 
@@ -110,11 +111,12 @@ position = Vector2( 1000, 0 )
 rotation = 1.5708
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 2 )
-script = SubResource( 3 )
+script = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Camera2D" type="Camera2D" parent="." index="2"]
 
+position = Vector2( 1600, 0 )
 anchor_mode = 1
 rotating = false
 current = true
@@ -137,6 +139,6 @@ drag_margin_bottom = 0.2
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
-script = SubResource( 2 )
+script = SubResource( 3 )
 
 
