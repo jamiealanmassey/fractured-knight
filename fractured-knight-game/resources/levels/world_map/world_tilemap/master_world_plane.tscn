@@ -23,16 +23,14 @@ onready var enemy_combat_actor = load('res://resources/combat/combat_test/actor_
 var enemy = null
 
 func _pressed():
-	if (enemy != null):
-		enemy.queue_free()
-		enemy = null
-	
+	enemy = null
 	enemy = enemy_npc.instance()
 	enemy.combat_actor = enemy_combat_actor
+	enemy.combat_actor.health = 20
 	get_node('/root/LevelManager').initiate_combat(enemy)
 "
 
-[node name="LevelManager" index="0" instance=ExtResource( 1 )]
+[node name="LevelManager" instance=ExtResource( 1 )]
 
 [node name="World" parent="." index="0"]
 

@@ -5,7 +5,7 @@
 [ext_resource path="res://resources/combat/combat_ui/combat_sprite/combat_sprite.tscn" type="PackedScene" id=3]
 [ext_resource path="res://resources/combat/combat_ui/health_bar/health_bar.tscn" type="PackedScene" id=4]
 
-[node name="Combat" type="Control"]
+[node name="Combat" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
