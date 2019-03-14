@@ -37,6 +37,9 @@ func _ready():
 	interact_icon_tweener = Tween.new()
 	self.add_child(interact_icon_tweener)
 	
+	if combat_actor:
+		combat_actor = combat_actor.duplicate(true)
+	
 	if self.npc_type == self.FRIENDLY && dialogue_name == null:
 		print('warning friendly NPC is missing dialogue file')
 	
