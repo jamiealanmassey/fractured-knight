@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://resources/player/player.gd" type="Script" id=1]
 [ext_resource path="res://resources/player/player_actor.tres" type="Resource" id=2]
@@ -25,7 +25,63 @@ radius = 50.0
 
 [sub_resource type="Animation" id=4]
 
-resource_name = "up"
+resource_name = "down"
+length = 1.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 19, 26 ]
+}
+
+[sub_resource type="Animation" id=5]
+
+resource_name = "left"
+length = 1.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 9, 17 ]
+}
+
+[sub_resource type="Animation" id=6]
+
+resource_name = "right"
+length = 1.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 28, 35 ]
+}
+
+[sub_resource type="Animation" id=7]
+
 length = 1.0
 loop = true
 step = 0.1
@@ -110,7 +166,7 @@ scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 3 )
 vframes = 4
 hframes = 9
-frame = 6
+frame = 5
 script = ExtResource( 4 )
 _sections_unfolded = [ "Animation", "Region", "Transform" ]
 
@@ -121,7 +177,10 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/up = SubResource( 4 )
+anims/down = SubResource( 4 )
+anims/left = SubResource( 5 )
+anims/right = SubResource( 6 )
+anims/up = SubResource( 7 )
 blend_times = [  ]
 
 
