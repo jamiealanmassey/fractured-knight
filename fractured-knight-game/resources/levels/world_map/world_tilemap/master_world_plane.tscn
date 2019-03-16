@@ -304,10 +304,12 @@ script = SubResource( 2 )
 
 [node name="SwitcherBlock" parent="World" index="14" instance=ExtResource( 12 )]
 
-position = Vector2( 1446.21, -1779.35 )
+position = Vector2( 1447.81, -742.829 )
 scale = Vector2( 2.33551, 1 )
 room_name = "room"
 
 [connection signal="on_context_finish" from="World/DialogueUI" to="World/DialogueTest" method="_on_DialogueUI_on_context_finish"]
+
+[connection signal="body_entered" from="World/SwitcherBlock" to="." method="_on_SwitcherBlock_body_entered"]
 
 
