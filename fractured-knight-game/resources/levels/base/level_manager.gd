@@ -3,6 +3,8 @@ extends Node
 var current_combat = null
 var pause_menu = null
 
+var scene_id
+
 func _ready():
 	var dialogue = get_node('World/DialogueUI')
 	var player = get_node('World/Player')
@@ -10,7 +12,6 @@ func _ready():
 	
 	if (dialogue != null):
 		dialogue.load_symbols()
-	#connect("room_entered", self, "next_world")
 	
 
 func _process(delta):
@@ -63,16 +64,28 @@ func _on_PauseMenu_resume_game():
 func _on_DialogueUI_on_context_finish():
 	get_node('World/Entities/Player').lock_movement = false
 
-##
-func next_world():
-	var scene_id = $World/SwitcherBlock.room_name
+## Vikrams Stuff 
+## TODO commenting 
+func _on_SwitcherBlock_body_entered(body):
+	scene_id = $World/WorldMapComponents/SwitcherBlock.room_name
 	print(scene_id)
 	var file2Check = File.new()
 	var doFileExists = file2Check.file_exists("res://resources/levels/Rooms/Temp_resource_saver/" + str(scene_id) + ".tscn")
 	if(doFileExists):
 		print("next world exists");
+		get_tree().change_scene("res://resources/levels/Rooms/Temp_resource_saver/" + str(scene_id) + ".tscn")
 	else:
 		print("doesnt exist")
+		new_map()
 
-func _on_SwitcherBlock_body_entered(body):
-	next_world()
+## Loads game state from folder
+func load_game_scene():
+	var packed_scene = load("res://resources/levels/Rooms/Temp_resource_saver/" + str(scene_id) + ".tscn")
+	var my_scene = packed_scene.instance()
+	$World.add_child(my_scene)
+	my_scene.set_owner(self)
+
+func new_map():
+	var mySprite = preload("res://resources/levels/Rooms/Procedural/mainRooms.tscn")
+	mySprite.init(2, 10, 15, scene_id)
+	get_tree().change_scene("res://resources/levels/Rooms/Procedural/mainRooms.tscn")

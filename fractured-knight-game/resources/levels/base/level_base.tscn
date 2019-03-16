@@ -21,7 +21,7 @@ sort_enabled = true
 
 [node name="Player" parent="World/Entities" index="0" instance=ExtResource( 3 )]
 
-_sections_unfolded = [ "Collision", "Pause", "Transform" ]
+_sections_unfolded = [ "Collision", "Pause", "Transform", "collision" ]
 
 [node name="PauseMenu" parent="." index="1" instance=ExtResource( 4 )]
 

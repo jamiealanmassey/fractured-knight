@@ -1,6 +1,6 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://resources/levels/base/level_base.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/levels/base/level_manager.gd" type="Script" id=1]
 [ext_resource path="res://resources/levels/Desert/DesertTileSetPlane.tres" type="TileSet" id=2]
 [ext_resource path="res://resources/levels/Forest/ForestTileSetPlane.tres" type="TileSet" id=3]
 [ext_resource path="res://resources/levels/GrassLand/Grassland.tres" type="TileSet" id=4]
@@ -12,6 +12,14 @@
 [ext_resource path="res://resources/levels/Forest/ForestTreesSet.tres" type="TileSet" id=10]
 [ext_resource path="res://resources/levels/Desert/DesertBuilings.tres" type="TileSet" id=11]
 [ext_resource path="res://resources/levels/level_room_switcher/SwitcherBlock.tscn" type="PackedScene" id=12]
+[ext_resource path="res://resources/levels/level_room_switcher/Level_switcher.gd" type="Script" id=13]
+[ext_resource path="res://resources/dialogue_system/dialogue_ui.tscn" type="PackedScene" id=14]
+[ext_resource path="res://resources/dialogue_system/dialogue_context.gd" type="Script" id=15]
+[ext_resource path="res://resources/player/player.tscn" type="PackedScene" id=16]
+[ext_resource path="res://resources/player/player.gd" type="Script" id=17]
+[ext_resource path="res://resources/player/player_actor.tres" type="Resource" id=18]
+[ext_resource path="res://resources/menus/pause_menu/pause_menu.tscn" type="PackedScene" id=19]
+[ext_resource path="res://resources/menus/pause_menu/pause_menu.gd" type="Script" id=20]
 
 [sub_resource type="GDScript" id=1]
 
@@ -46,13 +54,17 @@ func _pressed():
 	get_node('/root/LevelManager').initiate_combat(enemy)
 "
 
-[node name="LevelManager" index="0" instance=ExtResource( 1 )]
+[node name="LevelManager" type="Node" index="2"]
 
-[node name="World" parent="." index="0"]
+script = ExtResource( 1 )
+
+[node name="World" type="Node2D" parent="." index="0"]
 
 _sections_unfolded = [ "Pause", "Sort", "Transform", "Z Index" ]
 
 [node name="WorldMapComponents" type="Node2D" parent="World" index="0"]
+
+editor/display_folded = true
 
 [node name="Desert" type="TileMap" parent="World/WorldMapComponents" index="0"]
 
@@ -264,21 +276,62 @@ format = 1
 tile_data = PoolIntArray( -5701671, 6, 0, -5701661, 5, 0, -5177289, 6, 0, -4980671, 0, 0, -4259831, 4, 0, -4259826, 4, 0, -4259821, 4, 0, -4259816, 4, 0, -4259811, 4, 0, -4259806, 4, 0, -4194304, 1, 0, -4063260, 1, 0, -4128681, 1, 0, -4063193, 3, 0, -4063155, 6, 0, -3801110, 0, 0, -3866619, 0, 0, -2752430, 1, 0, -2752403, 1, 0, -2686905, 3, 0, -2686861, 3, 0, -2424860, 5, 0, -2424855, 5, 0, -2424841, 3, 0, -2490366, 5, 0, -2490361, 6, 0, -1703892, 0, 0 )
 _sections_unfolded = [ "Cell" ]
 
-[node name="SwitcherBlock" parent="World/WorldMapComponents" index="10" instance=ExtResource( 12 )]
+[node name="SwitcherBlock" type="Area2D" parent="World/WorldMapComponents" index="10" instance=ExtResource( 12 )]
 
 position = Vector2( 1447.81, -742.829 )
 scale = Vector2( 2.33551, 1 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 13 )
+_sections_unfolded = [ "Visibility" ]
+__meta__ = {
+"_edit_group_": true
+}
 room_name = "55"
 
-[node name="DialogueUI" parent="World" index="1"]
+[node name="DialogueUI" type="Container" parent="World" index="1" instance=ExtResource( 14 )]
 
-margin_bottom = -64.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -339.449
+margin_top = 1603.95
+margin_right = -339.449
+margin_bottom = 1539.95
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 15 )
+_sections_unfolded = [ "Rect" ]
 dialogue_file_names = [ "complex" ]
 dialogue_file_locations = [ "res://test/dialogue/complex.fml" ]
 
-[node name="Entities" parent="World" index="2"]
+[node name="Entities" type="YSort" parent="World" index="2"]
 
 editor/display_folded = true
+sort_enabled = true
+
+[node name="Player" type="KinematicBody2D" parent="World/Entities" index="0" instance=ExtResource( 16 )]
+
+position = Vector2( 1454.16, -866.668 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.1
+script = ExtResource( 17 )
+_sections_unfolded = [ "Collision", "Pause", "Transform", "collision" ]
+moveSpeed = 250
+velocitySpeed = 1
+combat_actor = ExtResource( 18 )
 
 [node name="DialogueTest" type="Node" parent="World" index="3"]
 
@@ -310,8 +363,35 @@ flat = false
 align = 1
 script = SubResource( 2 )
 
+[node name="PauseMenu" type="Control" parent="." index="1" instance=ExtResource( 19 )]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 20 )
+
 [connection signal="body_entered" from="World/WorldMapComponents/SwitcherBlock" to="." method="_on_SwitcherBlock_body_entered"]
 
+[connection signal="body_entered" from="World/WorldMapComponents/SwitcherBlock" to="World/WorldMapComponents/SwitcherBlock" method="_on_SwitcherBlock_body_entered"]
+
+[connection signal="on_context_begin" from="World/DialogueUI" to="World/DialogueUI/DialogueController" method="_react_context_begin"]
+
+[connection signal="on_context_finish" from="World/DialogueUI" to="." method="_on_DialogueUI_on_context_finish"]
+
+[connection signal="on_context_finish" from="World/DialogueUI" to="World/DialogueUI/DialogueController" method="_react_context_finished"]
+
 [connection signal="on_context_finish" from="World/DialogueUI" to="World/DialogueTest" method="_on_DialogueUI_on_context_finish"]
+
+[connection signal="on_context_process" from="World/DialogueUI" to="World/DialogueUI/DialogueController" method="_react_context_process"]
+
+[connection signal="resume_game" from="PauseMenu" to="." method="_on_PauseMenu_resume_game"]
 
 
