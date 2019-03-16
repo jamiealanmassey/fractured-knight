@@ -198,10 +198,3 @@ func save_game_scene():
 	var packed_scene = PackedScene.new()
 	packed_scene.pack(get_tree().get_current_scene())
 	ResourceSaver.save("res://resources/levels/Rooms/Temp_resource_saver/"+set_name+".tscn", packed_scene)
-
-## Loads game state from folder
-func load_game_scene():
-	var packed_scene = load("res://resources/levels/Rooms/Temp_resource_saver/room.tscn")
-	var my_scene = packed_scene.instance()
-	add_child(my_scene)
-	my_scene.set_owner(self)

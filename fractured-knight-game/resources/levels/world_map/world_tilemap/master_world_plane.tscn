@@ -306,6 +306,7 @@ script = SubResource( 2 )
 
 position = Vector2( 1446.21, -1779.35 )
 scale = Vector2( 2.33551, 1 )
+room_name = "room"
 
 [connection signal="on_context_finish" from="World/DialogueUI" to="World/DialogueTest" method="_on_DialogueUI_on_context_finish"]
 

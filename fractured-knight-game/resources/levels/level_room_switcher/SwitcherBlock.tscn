@@ -21,7 +21,7 @@ _sections_unfolded = [ "Visibility" ]
 __meta__ = {
 "_edit_group_": true
 }
-worldScene = null
+room_name = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
