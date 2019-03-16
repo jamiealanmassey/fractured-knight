@@ -1,0 +1,16 @@
+write The Detective: Do you yield?! 
+write ... 
+write Percival: Yes... I yield. 
+write ...
+write The Detective: This is not your time to die.
+write The Detective: I need you to take this piece to Merlin’s tomb. 
+write Percival: Merlin’s tomb? Gawain is the only knight who knows where that is. 
+write The Detective: Gawain, I need to find him next. 
+write The Detective: write PL2010 scan for all lifeforms that match the knights.
+write PL2010: Scanning now 
+write The Detective: Percival, when the time comes, 
+write The Detective: I will need you to bring the piece of the round table to Merlin’s tomb. 
+write Percival: Detective, you have proven yourself worthy. I will help you. 
+write PL2010: Sir the scans reveal that a similar life force was found in the Grasslands,
+write PL2010: it may be Gawain, but it is still unconfirmed
+write The Detective: Whoever it is, we need to find them. 
