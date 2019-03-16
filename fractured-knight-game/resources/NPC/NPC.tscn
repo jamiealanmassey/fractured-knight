@@ -30,18 +30,22 @@ script = ExtResource( 1 )
 combat_actor = null
 dialogue_name = null
 frames = null
+npc_type = null
+npc_state = null
 collision_size = 10
-npc_type = 0
+min_idle_time = 0.5
+max_idle_time = 1.0
+idle_chance = 0.5
 interaction_radius = 150
 interaction_offset = 80
 interaction_anim_speed = 0.25
+patrol_path = PoolVector2Array(  )
 
 [node name="InteractionIcon" type="AnimatedSprite" parent="." index="0"]
 
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "default"
-frame = 2
 playing = true
 _sections_unfolded = [ "Material", "Transform", "Visibility" ]
 
@@ -68,6 +72,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionDetection" type="Area2D" parent="." index="3"]
 
+editor/display_folded = true
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0

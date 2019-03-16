@@ -25,6 +25,14 @@ func start_dialogue(name):
 	get_node('World/Entities/Player').lock_movement = true
 	
 
+func is_dialogue_playing():
+	var dialogue = get_node('World/DialogueUI')
+	if (dialogue != null && dialogue.processing):
+		return true
+		
+	return false
+	
+
 func initiate_combat(enemy):
 	var combat_scene = load('res://resources/combat/combat_core/combat.tscn')
 	var camera_pos = get_node('/root/game_manager').current_camera.get_camera_position()
