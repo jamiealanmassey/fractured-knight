@@ -16,7 +16,7 @@ export(int) var num_rooms = 50
 export(int) var room_min_size = 10  
 export(int) var room_max_size = 25  
 export(int) var hspread = 300  
-export(float) var delete_rooms = 0.5
+export(float) var delete_rooms = 0.0
 export(Texture) var tilemap
 
 ## Varibles for the paths and to keep the rooms and certain parts of the data in
@@ -24,6 +24,7 @@ var path
 var starting_room = null
 var end_room = null
 var play = null
+var set_name
 
 ## Initilise the rand func 
 ## calls makes areas
@@ -31,6 +32,12 @@ func _ready():
 	$TileMap.tile_set = tilemap
 	randomize()
 	make_areas()
+
+func init(rooms, x_size, y_size, name):
+	num_rooms = rooms
+	room_min_size = x_size
+	room_max_size = y_size
+	set_name = name
 
 ## Updates the scene to show the areas being made in real time
 func _process(delta):
@@ -190,7 +197,7 @@ func player():
 func save_game_scene():
 	var packed_scene = PackedScene.new()
 	packed_scene.pack(get_tree().get_current_scene())
-	ResourceSaver.save("res://resources/levels/Rooms/Temp_resource_saver/room.tscn", packed_scene)
+	ResourceSaver.save("res://resources/levels/Rooms/Temp_resource_saver/"+set_name+".tscn", packed_scene)
 
 ## Loads game state from folder
 func load_game_scene():

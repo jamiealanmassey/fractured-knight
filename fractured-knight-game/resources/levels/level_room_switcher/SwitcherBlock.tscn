@@ -7,7 +7,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 10, 9.29761 )
 
-[node name="SwitcherBlock" type="Area2D" index="0"]
+[node name="SwitcherBlock" type="Area2D"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -18,10 +18,15 @@ audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
 _sections_unfolded = [ "Visibility" ]
+__meta__ = {
+"_edit_group_": true
+}
 worldScene = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
 shape = SubResource( 1 )
+
+[connection signal="body_entered" from="." to="." method="_on_SwitcherBlock_body_entered"]
 
 

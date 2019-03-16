@@ -3,7 +3,7 @@
 [ext_resource path="res://resources/levels/Rooms/Procedural/Main_Rooms_Gen.gd" type="Script" id=1]
 [ext_resource path="res://resources/levels/MerlinsTomb/tombAccess.tres" type="TileSet" id=2]
 
-[node name="mainDungon" type="Node2D" index="0"]
+[node name="mainDungon" type="Node2D"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform", "Visibility" ]

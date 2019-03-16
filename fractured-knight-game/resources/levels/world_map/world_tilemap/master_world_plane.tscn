@@ -1,7 +1,6 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://resources/levels/base/level_base.tscn" type="PackedScene" id=1]
-
 [ext_resource path="res://resources/levels/Desert/DesertTileSetPlane.tres" type="TileSet" id=2]
 [ext_resource path="res://resources/levels/Forest/ForestTileSetPlane.tres" type="TileSet" id=3]
 [ext_resource path="res://resources/levels/GrassLand/Grassland.tres" type="TileSet" id=4]
@@ -12,6 +11,7 @@
 [ext_resource path="res://resources/levels/world_map/world_tileset/PathAuto.tres" type="TileSet" id=9]
 [ext_resource path="res://resources/levels/Forest/ForestTreesSet.tres" type="TileSet" id=10]
 [ext_resource path="res://resources/levels/Desert/DesertBuilings.tres" type="TileSet" id=11]
+[ext_resource path="res://resources/levels/level_room_switcher/SwitcherBlock.tscn" type="PackedScene" id=12]
 
 [sub_resource type="GDScript" id=1]
 
@@ -45,7 +45,6 @@ func _pressed():
 	enemy.combat_actor = enemy_combat_actor
 	get_node('/root/LevelManager').initiate_combat(enemy)
 "
-
 
 [node name="LevelManager" index="0" instance=ExtResource( 1 )]
 
@@ -266,13 +265,12 @@ _sections_unfolded = [ "Cell" ]
 [node name="DialogueUI" parent="World" index="10"]
 
 margin_bottom = -64.0
-
 dialogue_file_names = [ "complex" ]
 dialogue_file_locations = [ "res://test/dialogue/complex.fml" ]
 
-[node name="Player" parent="World" index="11"]
+[node name="Player" parent="World/Entities" index="0"]
 
-_sections_unfolded = [ "Pause", "Transform", "collision" ]
+_sections_unfolded = [ "Collision", "Pause", "Transform", "collision" ]
 
 [node name="DialogueTest" type="Node" parent="World" index="12"]
 
@@ -304,7 +302,11 @@ flat = false
 align = 1
 script = SubResource( 2 )
 
-[connection signal="on_context_finish" from="World/DialogueUI" to="World/DialogueTest" method="_on_DialogueUI_on_context_finish"]
+[node name="SwitcherBlock" parent="World" index="14" instance=ExtResource( 12 )]
 
+position = Vector2( 1446.21, -1779.35 )
+scale = Vector2( 2.33551, 1 )
+
+[connection signal="on_context_finish" from="World/DialogueUI" to="World/DialogueTest" method="_on_DialogueUI_on_context_finish"]
 
 
