@@ -53,7 +53,7 @@ func start_combat(player, enemy, seeded = null):
 	self.player_moves = self.player.combat_actor.get_all_moves()
 	
 	$enemy_combat_sprite.frames = enemy.frames
-	#$player_combat_sprite.frames = player.frames #TODO: Update to actually get player frames out 
+	#$player_combat_sprite.frames = player.frames 
 	
 	$enemy_health_bar.max_health = self.enemy.combat_actor.health
 	$player_health_bar.update_health(self.player.combat_actor.health)
@@ -230,3 +230,9 @@ func finish_combat():
 # Sets the background image's filepath
 func set_background_image(image_filepath):
 	$background_image.texture = image_filepath
+
+
+
+
+func on_attack_miss():
+	pass # replace with function body
