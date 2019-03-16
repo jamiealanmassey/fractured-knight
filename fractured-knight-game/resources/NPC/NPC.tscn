@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://resources/NPC/NPC.gd" type="Script" id=1]
 [ext_resource path="res://resources/NPC/emote_dots1.png" type="Texture" id=2]
@@ -24,14 +24,25 @@ radius = 10.0
 custom_solver_bias = 0.0
 radius = 150.0
 
-[node name="NPC" type="Node2D"]
+[sub_resource type="RectangleShape2D" id=4]
 
+custom_solver_bias = 0.0
+extents = Vector2( 29.5077, 5.54074 )
+
+[node name="NPC" type="KinematicBody2D"]
+
+input_pickable = false
+collision_layer = 4
+collision_mask = 2
+collision/safe_margin = 0.08
 script = ExtResource( 1 )
+_sections_unfolded = [ "Collision" ]
 combat_actor = null
 dialogue_name = null
 frames = null
 npc_type = null
 npc_state = null
+npc_patrol = null
 collision_size = 10
 min_idle_time = 0.5
 max_idle_time = 1.0
@@ -87,6 +98,7 @@ shape = SubResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="." index="4"]
 
+editor/display_folded = true
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -100,6 +112,12 @@ _sections_unfolded = [ "Audio Bus", "Collision" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
 
 shape = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="5"]
+
+position = Vector2( 0, 34.9137 )
+scale = Vector2( 1, 0.928082 )
+shape = SubResource( 4 )
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 

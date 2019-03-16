@@ -2,6 +2,7 @@ extends Node2D
 
 enum NPCType { Friendly, Hostile }
 enum NPCState { Idle, Patrol, Chase, Return, Talk }
+enum NPCPatrol { Continuous, ForwardBack, BackForward, Once, OnceReverse, Reverse, None }
 
 # The combat actor for the NPC. Needs to be set on creation
 export (Resource) var combat_actor = null
@@ -13,6 +14,7 @@ export (String) var dialogue_name = null
 export (SpriteFrames) var frames
 export (NPCType) var npc_type = NPCType.Friendly
 export (NPCState) var npc_state = NPCState.Patrol
+export (NPCPatrol) var npc_patrol = NPCPatrol.Continuous
 export (int) var collision_size = 10
 export (float) var min_idle_time = 0.5
 export (float) var max_idle_time = 1.0
@@ -32,7 +34,12 @@ var interact_scale_x = 0
 var interact_position_x = 0
 var is_inside = false
 var idle_timer = null
+var current_player = null
 var npc_state_last = NPCState.Patrol
+var patrol_curr_index = 0
+var patrol_velocity = Vector2()
+var patrol_speed = 250
+var patrol_dist_bias = 4
 
 func _ready():
 	interact_scale_x = $InteractionIcon.scale.x
@@ -58,6 +65,7 @@ func _ready():
 	
 
 func _process(delta):
+	patrol_velocity = Vector2()
 	match npc_type:
 		NPCType.Friendly: 
 			self.process_friendly_npc()
@@ -67,6 +75,8 @@ func _process(delta):
 			self.process_friendly_npc()
 		
 	
+func _physics_process(delta):
+	move_and_slide(patrol_velocity)
 
 func process_hostile_npc():
 	pass
@@ -101,7 +111,42 @@ func process_friendly_interaction(level_manager):
 	
 
 func process_patrol():
-	pass # TODO: Follow given path if one exists
+	if (patrol_path.size() == 0):
+		return
+	
+	if (calculate_movement(position, patrol_path[patrol_curr_index])):
+		match self.npc_patrol:
+			NPCPatrol.Continuous:
+				patrol_curr_index = patrol_curr_index + 1
+				patrol_curr_index = 0 if patrol_curr_index == patrol_path.size() else patrol_curr_index
+			NPCPatrol.BackForward:
+				patrol_curr_index = patrol_curr_index - 1
+				npc_patrol = NPCPatrol.ForwardBack if patrol_curr_index == 0 else NPCPatrol.BackForward
+			NPCPatrol.ForwardBack:
+				patrol_curr_index = patrol_curr_index + 1
+				npc_patrol = NPCPatrol.BackForward if patrol_curr_index == patrol_path.size() else NPCPatrol.ForwardBack
+			NPCPatrol.Once:
+				patrol_curr_index = patrol_curr_index + 1
+				npc_patrol = NPCPatrol.None if patrol_curr_index == patrol_path.size() else NPCPatrol.Once
+			NPCPatrol.Reverse:
+				patrol_curr_index = patrol_curr_index - 1
+				npc_patrol = NPCPatrol.None if patrol_curr_index == 0 else NPCPatrol.Reverse
+			NPCPatrol.OnceReverse:
+				patrol_curr_index = patrol_curr_index + 1
+				npc_patrol = NPCPatrol.Reverse if patrol_curr_index == patrol_path.size() else NPCPatrol.OnceReverse
+			
+		
+
+func calculate_movement(position_a, position_b):
+	var dist_x = position_a - position_b
+	var dist_y = position_a - position_b
+	if (abs(dist_x) > patrol_dist_bias):
+		patrol_velocity.x = max(-1, min(1, dist_x)) * patrol_speed
+	
+	if (abs(dist_y) > patrol_dist_bias):
+		patrol_velocity.y = max(-1, min(1, dist_y)) * patrol_speed
+	
+	return (abs(dist_x) <= patrol_dist_bias && abs(dist_y) <= patrol_dist_bias)
 
 func switch_npc_state(new_state):
 	npc_state_last = npc_state
@@ -125,8 +170,9 @@ func is_idling():
 func _on_idle_timeout():
 	self.switch_npc_state(npc_state_last)
 
-func _on_Area2D_body_entered(body):
+func _on_Area2D_body_entered(area):
 	is_inside = false
+	current_player = area.get_parent()
 	match self.npc_type:
 		NPCType.Friendly:
 			interact_icon_tweener.stop_all()
@@ -139,8 +185,9 @@ func _on_Area2D_body_entered(body):
 		
 	
 
-func _on_Area2D_body_exited(body):
+func _on_Area2D_body_exited(area):
 	is_inside = false
+	current_player = null
 	match self.npc_type:
 		NPCType.Friendly:
 			interact_icon_tweener.stop_all()
