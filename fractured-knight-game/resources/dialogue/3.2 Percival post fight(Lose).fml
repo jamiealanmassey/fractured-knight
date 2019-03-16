@@ -1,7 +1,7 @@
 write ...
 write Percival: You fought well, Detective. But not well enough. 
 write ...
-write The Detective: write PL2010ease, I am just trying to fix things, you need to see that. 
+write The Detective: Please, I am just trying to fix things, you need to see that. 
 write Percival: Why risk your life? You went into combat with a knight when you are nothing of the sort. 
 write The Detective: It is what needs to be done, for humanity. 
 write ...
@@ -11,7 +11,7 @@ write The Detective: Thank you, I need you to take the fragment of the table to 
 write Percival: Merlin’s tomb? Gawain is the only one who knows where that is. 
 write The Detective: Gawain, I need to find him next. 
 write ...
-write The Detective: write PL2010 scan for all lifeforms that match the knights.
+write The Detective: PL2010 scan for all lifeforms that match the knights.
 write PL2010: Scanning now 
 write The Detective: Percival, when the time comes,
 write The Detective: I will need you to bring the piece of the round table to Merlin’s tomb.  

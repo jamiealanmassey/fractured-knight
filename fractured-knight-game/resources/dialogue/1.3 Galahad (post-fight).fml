@@ -9,7 +9,8 @@ write The Detective: That’s IT?!
 write The Detective: I accepted your terms, I have bested you in combat, now give me ANSWERS. 
 write ...
 write Galahad: I…
-(Galahad disappears)
+write (Galahad disappears)
+trigger[disappears]
 write The Detective: What was that?? 
 write PL2010: He seems to have disappeared
 write The Detective: I can see that, write PL2010, but how? 

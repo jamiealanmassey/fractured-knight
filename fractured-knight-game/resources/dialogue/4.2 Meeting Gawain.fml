@@ -5,8 +5,7 @@ write The Detective: I am the Detective, I am a companion of Bedivere
 write The Detective: I am here to fix what has been done. 
 write ... 
 write Gawain: Detective, tell me, how do you intend to fix what has been done? 
-write The Detective: I plan to bring the pieces of the round table to Merlin’s tomb 
-write The Detective: In order to combine them together and correct the timeline. 
+write The Detective: I plan to bring the pieces of the round table to Merlin’s tomb in order to combine them together and correct the timeline. 
 write The Detective: I was told you would know where to find the tomb.
 write ...  
 write Gawain: I am aware of the location of the tomb, but that would not fix what has been done. 
@@ -52,8 +51,7 @@ write The Detective: No, but I also cannot allow you to take his life.
 write ... 
 write Gawain: Why not?
 write The Detective: You are all bound to the table, the magic that is coursing through your veins 
-write The Detective: Is the same magic that Merlin used to banish you all, it is the same magic 
-write The Detective: That is in his tomb.
+write The Detective: Is the same magic that Merlin used to banish you all, it is the same magic that is in his tomb.
 write ... 
 write The Detective: Gawain, the only way to put things right is for every knight to be present when the round table is combined 
 write Gawain: He has betrayed the round table; his soul does not deserve redemption. 
@@ -64,7 +62,7 @@ write The Detective: the consequences will be dire.
 write The Detective: If we can't fix what has been done, the two universes will collide. 
 write The Detective: This universe and every aspect of it, will cease to exist, as will yours. 
 write ... 
-write Gawain: I will only agree to your terms, if you allow me to bring lancelot to justice.
+write Gawain: I will only agree to your terms, if you allow me to bring Lancelot to justice.
 write The Detective: What you do to him in your own time is none of my concern, 
 write The Detective: As long as he lives long enough to make it back there. But I need your help. 
 write ... 
@@ -92,7 +90,7 @@ write Gawain: Excalibur was is more powerful than you could comprehend.
 write ... 
 write The Detective: Okay, don’t use it on mortals. Got it! 
 write Gawain: I will meet you at the tomb when you have gathered all the pieces, should you survive. 
-*GAWAIN HANDS OVER EXCALIBUR TO THE DETECTIVE* 
+trigger[excalibur]
 write PL2010: Sir scans reveal two knights at the lake, 
 write PL2010: further scans show that one of the knights is Galahad, 
 write PL2010: the identity of the other knight is still unknown. 

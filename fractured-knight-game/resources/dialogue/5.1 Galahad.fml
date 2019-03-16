@@ -1,16 +1,14 @@
 write The Detective: Lancelot? 
-write Lancelot: Yes, Detective I presume? 
+write Lancelot: Yes, The Detective I presume? 
 write The Detective: You know who I am? 
 write Lancelot: Galahad has informed me, you seem to have a fascination with the knights, detective. 
 write The Detective: It’s more of a duty than a fascination, trust me. 
 write The Detective: The sooner I get rid of you all, the better. 
-write Lancelot: Get rid? And what makes you think that you, a lowly detective
-write Lancelot: Would be able to get rid of noble knights? 
+write Lancelot: Get rid? And what makes you think that you, a lowly detective would be able to get rid of noble knights? 
 write Lancelot: Tell me detective, you know my name but what else do you know about me?
-write The Detective: I know you are a traitor
+write The Detective: I know you are a traitor.
 write The Detective: I know you betrayed Arthur and your brothers because you could not control yourself. 
-write The Detective: I know that you are the reason Merlin banished the knights
-write The Detective: From their land and their time.
+write The Detective: I know that you are the reason Merlin banished the knights From their land and their time.
 write ... 
 write Lancelot: Careful detective, your tone may prove... Fatal. 
 write The Detective: I would rather die an honest man, than live the way you continue to. 

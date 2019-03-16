@@ -8,8 +8,9 @@ write PL2010: We don't have enough to leave this planet's orbit.
 write The Detective: Okay, this planet must have some resources we can use,  
 write The Detective: I'll see what I can find.
 write PL2010: Sir, if we encounter another knight 
-write PL2010: We will  need a sgnificant technological advantage 
-write PL2010: I have prepared a new weapon and armour for you. 
+write PL2010: We will need a sgnificant technological advantage 
+write PL2010: I have prepared a new weapon and armour for you.
+trigger[upgrade_1] 
 write The Detective: A new weapon?  
 write PL2010: Yes, an upgrade on your blade using new materials: 
 write PL2010: A super-hard alloy.

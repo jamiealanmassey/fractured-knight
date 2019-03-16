@@ -25,9 +25,8 @@ write King Arthur: I am here to ensure that his final deed remains intact.
 write The Detective: You’ll kill us all! 
 write The Detective: You are not protecting Earth, you are putting the universe in danger.
 write King Arthur: It is not my place to question what has been done. 
-write King Arthur: Merlin has brought me back from my final resting place 
-write King Arthur: So that I would protect his tomb and continue to serve England, 
-write King Arthur: by protecting it from the knights who would bring destruction upon it. 
+write King Arthur: Merlin has brought me back from my final resting place so that I would protect his tomb and continue to serve England, 
+write King Arthur: By protecting it from the knights who would bring destruction upon it. 
 write The Detective: You are a king, these are your knights. 
 write The Detective: You cannot be so ignorant as to not see what is happening here. 
 write The Detective: Merlin thought he knew what was best, but he did not. 
@@ -40,8 +39,7 @@ write Lancelot: The actions of Merlin have decided a fate for all of humanity.
 write Lancelot: A fate that will cause us to become extinct. 
 write ...
 write King Arthur: I have died once before, I do not fear extinction. 
-write Lancelot: You have been bought back once, when I am done with you, 
-write Lancelot: there will be nothing to bring back. 
+write Lancelot: You have been bought back once, when I am done with you, there will be nothing to bring back. 
 write King Arthur: Your swords cannot harm me. 
 write King Arthur: Merlin’s magic courses through my veins, the power of which is too strong for a simple longsword. 
 write ... 

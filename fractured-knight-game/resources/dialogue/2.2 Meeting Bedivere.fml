@@ -12,12 +12,10 @@ write PL2010: They are human...
 write PL2010: But not completely, there is something different. 
 write The Detective: Different? Different how? 
 write PL2010: The lifeform of the knight is too strong to be human. 
-write PL2010: the specimen in front of you is only showing 
-write PL2010: 35% human traits on the scans. 
+write PL2010: the specimen in front of you is only showing 35% human traits on the scans. 
 write The Detective: And the rest of it? 
 write PL2010: The remainder is unidentifiable. 
-write Bedivere: Detective, your entire existence and the existence of this very universe 
-write Bedivere: Is under threat. 
+write Bedivere: Detective, your entire existence and the existence of this very universe Is under threat. 
 write The Detective: And who are you to tell me that my existence is under threat? 
 write Bedivere: I am Bedivere, Knight of the round table, King Arthur's marshall. 
 write The Detective: Well, I have to hand it to you- 
@@ -28,13 +26,10 @@ write PL2010: Sir Bedivere is a one-handed knight,
 write PL2010: I believe you have insulted him.. 
 write Bedivere: ENOUGH! 
 write Bedivere: Detective I am not concerned with your attempts to be a jester.
-write Bedivere: This information is dire and, unfortunately, 
-write Bedivere: It seems you are the one who needs it most. 
+write Bedivere: This information is dire and, unfortunately, it seems you are the one who needs it most. 
 write Bedivere: The knights of the round table do not belong in this time,
-write Bedivere: through Merlin’s magic
-write Bedivere: we have been transported to an uncertain future; 
-write Bedivere: Banished from our own time. 
-write Bedivere: The clash of times will lead to unfathomable destruction 
+write Bedivere: Through Merlin’s magic we have been transported to an uncertain future; banished from our own time. 
+write Bedivere: The clash of times will lead to unfathomable destruction. 
 write Bedivere: My reality will perish, as will yours. 
 write Bedivere: Detective if we do not intervene; reality will cease to exist. 
 write The Detective: Intervene? You have the wrong guy. 
@@ -46,16 +41,14 @@ write Bedivere: I am not here to tell you what you are, Detective.
 write Bedivere: I am here to tell you what is required of you. 
 write The Detective: You said you were banished. 
 write The Detective: Why would noble knights be banished? 
-write ... 
+write Bedivere: ... 
 write Bedivere: Arthur was a worthy king of great resolve, 
 write Bedivere: He led us well and he trusted the men he had appointed as knights, 
 write Bedivere: This proved to be his greatest downfall. His trust.
 write Bedivere: The knights, my brothers, turned on one another. 
-write Bedivere: If things proceeded, war would have emerge- 
-write Bedivere: A war of horrors, one that would lead to the death 
-write Bedivere: Of countless innocent people.  
-write Bedivere: We had betrayed what it had meant to be knights 
-write Bedivere: Knights of the round table, the highest order. 
+write Bedivere: If things proceeded, war would have emerged- 
+write Bedivere: A war of horrors, one that would lead to the death of countless innocent people.  
+write Bedivere: We had betrayed what it had meant to be knights, Knights of the round table, the highest order. 
 write Bedivere: Alas, Merlin banished us all. 
 write Bedivere: Not just from the round table but from our own time entirely. 
 write Bedivere: He used all his might to banish us to this universe, 
@@ -80,18 +73,13 @@ write The Detective: I don't have anything to do with king Arthur,
 write The Detective: Nor the knight of the round table, 
 write The Detective: Nor Merlin. 
 write ... 
-write Bedivere: Detective, do you believe it to be fate 
-write Bedivere: that brought you to to this planet?  
-write Bedivere: Do you believe it to be chance 
-write Bedivere: that led to your meeting with Galahad? 
-write Bedivere: Is it bad luck that caused your ship to fail
-write Bedivere: At the very moment we entered this time? 
-write Bedivere: What do you you think has caused you to be on this planet, 
-write Bedivere: In this very moment? 
+write Bedivere: Detective, do you believe it to be fate that brought you to to this planet?  
+write Bedivere: Do you believe it to be chance that led to your meeting with Galahad? 
+write Bedivere: Is it bad luck that caused your ship to fail at the very moment we entered this time? 
+write Bedivere: What do you think has caused you to be on this planet in this very moment? 
 write Bedivere: It is not fate, nor chance, nor bad luck. 
 write Bedivere: Every action and event in your life has led to this very moment. 
-write Bedivere: You were chosen by Merlin many millennia ago 
-write Bedivere: to be the one who will put history back on course.
+write Bedivere: You were chosen by Merlin many millennia ago to be the one who will put history back on course.
 write Bedivere: Whether or not you feel as though this is your destiny.
 write Bedivere: That is irrelevant. I am here to tell you that this is your destiny. 
 write Bedivere: I may not know why it is you, but I know that is IS you. 
@@ -111,8 +99,7 @@ write Bedivere: It is not quite so simple, Detective.
 write Bedivere: Merlin has hidden his tomb from my memory and my sight. 
 write Bedivere: I could not find it even if I tried and I have tried. 
 write ...
-write The Detective: So, I'm supposed to save the universe? All because some wizard 
-write The Detective: Decided to bippity boppity boop you to the future? 
+write The Detective: So, I'm supposed to save the universe? All because some wizard decided to bippity boppity boop you to the future? 
 write Bedivere: I... 
 write Bedivere: I do not know what that means, but no 
 write Bedivere: You are supposed to fulfil your destiny to protect this universe from extinction. 
