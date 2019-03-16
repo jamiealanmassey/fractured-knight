@@ -26,6 +26,7 @@ func read_array(array):
 		var button = Button.new()
 		button.show()
 		button.text = item
+		button.add_font_override("font", load("res://resources/fonts/dynamic_font_btn.tres"))
 		button.rect_position = Vector2((xPos), (yPos + 90))
 		$BtnContainer.add_child(button)
 

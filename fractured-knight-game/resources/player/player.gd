@@ -66,25 +66,26 @@ func calulate_input():
 			match key.name:
 				'left':
 					velocity.x -= velocitySpeed * moveSpeed
-					#$Sprite.play('Left')
+					$Sprite.play('left')
 					moving = true
 				'right':
 					velocity.x += velocitySpeed * moveSpeed
-					#$Sprite.play('Right')
+					$Sprite.play('right')
 					moving = true
 				'up':
 					velocity.y -= velocitySpeed * moveSpeed
-					#$Sprite.play('Up')
+					$Sprite.play('up')
 					moving = true
 				'down':
 					velocity.y += velocitySpeed * moveSpeed
-					#$Sprite.play('Down')
+					$Sprite.play('down')
 					moving = true
 			emit_signal('player_moved', self.position)
 			break
 		
 	if (!moving):
-		pass#$Sprite.frame = 0
+		$Sprite.stop_moving()
+		pass
 
 
 func _ready():
