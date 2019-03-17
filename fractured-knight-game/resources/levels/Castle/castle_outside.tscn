@@ -122,4 +122,11 @@ texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 640, 736, 32, 32 )
 
+[node name="7" type="Sprite" parent="." index="6"]
+
+position = Vector2( 1304.72, 782.513 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 640, 736, 32, 32 )
+
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://resources/levels/base/level_base.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resources/levels/Desert/DesertTileSetPlane.tres" type="TileSet" id=2]
@@ -11,7 +11,8 @@
 [ext_resource path="res://resources/levels/world_map/world_tileset/PathAuto.tres" type="TileSet" id=9]
 [ext_resource path="res://resources/levels/Forest/ForestTreesSet.tres" type="TileSet" id=10]
 [ext_resource path="res://resources/levels/Desert/DesertBuilings.tres" type="TileSet" id=11]
-[ext_resource path="res://resources/levels/level_room_switcher/SwitcherBlock.tscn" type="PackedScene" id=12]
+[ext_resource path="res://resources/levels/Castle/castle_outside.tres" type="TileSet" id=12]
+[ext_resource path="res://resources/levels/level_room_switcher/SwitcherBlock.tscn" type="PackedScene" id=13]
 
 [sub_resource type="GDScript" id=1]
 
@@ -267,75 +268,102 @@ format = 1
 tile_data = PoolIntArray( -5701671, 6, 0, -5701661, 5, 0, -5177289, 6, 0, -4980671, 0, 0, -4259831, 4, 0, -4259826, 4, 0, -4259821, 4, 0, -4259816, 4, 0, -4259811, 4, 0, -4259806, 4, 0, -4194304, 1, 0, -4063260, 1, 0, -4128681, 1, 0, -4063193, 3, 0, -4063155, 6, 0, -3801110, 0, 0, -3866619, 0, 0, -2752430, 1, 0, -2752403, 1, 0, -2686905, 3, 0, -2686861, 3, 0, -2424860, 5, 0, -2424855, 5, 0, -2424841, 3, 0, -2490366, 5, 0, -2490361, 6, 0, -2359278, 2, 0, -1703892, 0, 0 )
 _sections_unfolded = [ "Cell" ]
 
-[node name="Links" type="Node2D" parent="World" index="10"]
+[node name="Castle" type="TileMap" parent="World" index="10"]
 
-[node name="toDungon" parent="World/Links" index="0" instance=ExtResource( 12 )]
+mode = 0
+tile_set = ExtResource( 12 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( -6291351, 0, 0, -6291324, 0, 0, -5898132, 1, 0, -5898128, 1, 0, -5898124, 3, 0, -5898123, 2, 0, -5898122, 2, 0, -5898120, 2, 0, -5898119, 2, 0, -5898118, 2, 0, -5898117, 2, 0, -5898116, 2, 0, -5898115, 2, 0, -5898114, 2, 0, -5898113, 2, 0, -5898112, 1, 0, -5832587, 2, 0, -5832586, 2, 0, -5832584, 2, 0, -5832583, 2, 0, -5832582, 2, 0, -5832581, 2, 0, -5832580, 2, 0, -5832579, 2, 0, -5832578, 2, 0, -5832577, 2, 0, -5767051, 2, 0, -5767050, 2, 0, -5767048, 2, 0, -5767047, 2, 0, -5767046, 2, 0, -5767045, 2, 0, -5767044, 2, 0, -5767043, 2, 0, -5767042, 2, 0, -5767041, 2, 0, -5701512, 2, 0, -5701511, 2, 0, -5701510, 2, 0, -5701509, 2, 0, -5701508, 2, 0, -5701507, 2, 0, -5701506, 2, 0, -5701505, 2, 0 )
+_sections_unfolded = [ "Cell" ]
+
+[node name="Links" type="Node2D" parent="World" index="11"]
+
+[node name="toDungon" parent="World/Links" index="0" instance=ExtResource( 13 )]
 
 position = Vector2( 2387.19, 1249.18 )
 scale = Vector2( 0.70754, 1.06752 )
 worldScene = "res://resources/levels/Inside/Tomb.tscn"
 
-[node name="Bulding1" parent="World/Links" index="1" instance=ExtResource( 12 )]
+[node name="toCastleInside" parent="World/Links" index="1" instance=ExtResource( 13 )]
+
+position = Vector2( 3777.88, -2758.72 )
+scale = Vector2( 0.70754, 1.06752 )
+worldScene = "res://resources/levels/Inside/Tomb.tscn"
+
+[node name="Bulding1" parent="World/Links" index="2" instance=ExtResource( 13 )]
 
 position = Vector2( 837.825, -725.85 )
 scale = Vector2( 1, 0.327348 )
 worldScene = "res://resources/levels/Inside/Inside_buildings.tscn"
 
-[node name="Bulding2" parent="World/Links" index="2" instance=ExtResource( 12 )]
+[node name="Bulding2" parent="World/Links" index="3" instance=ExtResource( 13 )]
 
 position = Vector2( 1449.51, -745.303 )
 scale = Vector2( 1, 0.327348 )
 worldScene = "res://resources/levels/Inside/Inside_buildings.tscn"
 
-[node name="Bulding3" parent="World/Links" index="3" instance=ExtResource( 12 )]
+[node name="Bulding3" parent="World/Links" index="4" instance=ExtResource( 13 )]
 
 position = Vector2( -92.4853, -1013.3 )
 scale = Vector2( 1, 0.327348 )
 worldScene = "res://resources/levels/Inside/Inside_buildings.tscn"
 
-[node name="Bulding4" parent="World/Links" index="4" instance=ExtResource( 12 )]
+[node name="Bulding4" parent="World/Links" index="5" instance=ExtResource( 13 )]
 
 position = Vector2( 368.456, -1777.13 )
 scale = Vector2( 1, 0.305006 )
 worldScene = "res://resources/levels/Inside/Inside_buildings.tscn"
 
-[node name="Bulding5" parent="World/Links" index="5" instance=ExtResource( 12 )]
+[node name="Bulding5" parent="World/Links" index="6" instance=ExtResource( 13 )]
 
 position = Vector2( 530.228, -1779.13 )
 scale = Vector2( 1, 0.38089 )
 worldScene = "res://resources/levels/Inside/Inside_buildings.tscn"
 
-[node name="Bulding6" parent="World/Links" index="6" instance=ExtResource( 12 )]
+[node name="Bulding6" parent="World/Links" index="7" instance=ExtResource( 13 )]
 
 position = Vector2( 700.865, -1779.13 )
 scale = Vector2( 1, 0.38089 )
 worldScene = "res://resources/levels/Inside/Inside_buildings.tscn"
 
-[node name="Bulding7" parent="World/Links" index="7" instance=ExtResource( 12 )]
+[node name="Bulding7" parent="World/Links" index="8" instance=ExtResource( 13 )]
 
 position = Vector2( 862.638, -1779.13 )
 scale = Vector2( 1, 0.38089 )
 worldScene = "res://resources/levels/Inside/Inside_buildings.tscn"
 
-[node name="Bulding8" parent="World/Links" index="8" instance=ExtResource( 12 )]
+[node name="Bulding8" parent="World/Links" index="9" instance=ExtResource( 13 )]
 
 position = Vector2( 1015.55, -1781.35 )
 scale = Vector2( 1, 0.38089 )
 worldScene = "res://resources/levels/Inside/Inside_buildings.tscn"
 
-[node name="Bulding9" parent="World/Links" index="9" instance=ExtResource( 12 )]
+[node name="Bulding9" parent="World/Links" index="10" instance=ExtResource( 13 )]
 
 position = Vector2( 1175.1, -1785.78 )
 scale = Vector2( 1, 0.38089 )
 worldScene = "res://resources/levels/Inside/Inside_buildings.tscn"
 
-[node name="Bulding10" parent="World/Links" index="10" instance=ExtResource( 12 )]
+[node name="Bulding10" parent="World/Links" index="11" instance=ExtResource( 13 )]
 
 position = Vector2( 1447.68, -1781.35 )
 scale = Vector2( 1, 0.38089 )
 worldScene = "res://resources/levels/Inside/Inside_buildings.tscn"
 
-[node name="DialogueUI" parent="World" index="11"]
+[node name="DialogueUI" parent="World" index="12"]
 
 margin_left = 15.0
 margin_top = 3.0
@@ -344,7 +372,7 @@ margin_bottom = -61.0
 dialogue_file_names = [ "complex" ]
 dialogue_file_locations = [ "res://test/dialogue/complex.fml" ]
 
-[node name="Entities" parent="World" index="12"]
+[node name="Entities" parent="World" index="13"]
 
 position = Vector2( 72.3522, 45.2202 )
 
@@ -352,11 +380,11 @@ position = Vector2( 72.3522, 45.2202 )
 
 position = Vector2( -30.1467, -24.1177 )
 
-[node name="DialogueTest" type="Node" parent="World" index="13"]
+[node name="DialogueTest" type="Node" parent="World" index="14"]
 
 script = SubResource( 1 )
 
-[node name="CombatTest" type="Button" parent="World" index="14"]
+[node name="CombatTest" type="Button" parent="World" index="15"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -382,7 +410,7 @@ flat = false
 align = 1
 script = SubResource( 2 )
 
-[node name="water" type="StaticBody2D" parent="World" index="15"]
+[node name="water" type="StaticBody2D" parent="World" index="16"]
 
 position = Vector2( 3034.21, 1192.56 )
 input_pickable = false
