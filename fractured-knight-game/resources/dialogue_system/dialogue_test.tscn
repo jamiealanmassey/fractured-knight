@@ -27,7 +27,7 @@ script = SubResource( 1 )
 [node name="DialogueUI" parent="." index="0" instance=ExtResource( 1 )]
 
 dialogue_file_names = [ "complex" ]
-dialogue_file_locations = [ "res://test/dialogue/complex.fml" ]
+dialogue_file_locations = [ "res://resources/dialogue/1.2 Galahad.fml" ]
 
 [node name="Player" parent="." index="1" instance=ExtResource( 2 )]
 

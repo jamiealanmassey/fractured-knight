@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://resources/combat/combat_test/enemy_animated_sprite.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://resources/combat/combat_ui/combat_sprite/combat_sprite.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFontData" id=1]
+
+hinting = 2
+font_path = "res://resources/fonts/Montserrat-ExtraBold.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+
+size = 300
+use_mipmaps = false
+use_filter = false
+font_data = SubResource( 1 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[node name="combat_sprite" type="AnimatedSprite"]
+
+scale = Vector2( 0.1, 0.1 )
+frames = ExtResource( 1 )
+animation = "attack"
+script = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Timer" type="Timer" parent="." index="0"]
+
+process_mode = 1
+wait_time = 0.05
+one_shot = false
+autostart = false
+
+[node name="Label" type="Label" parent="." index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 541.0
+margin_bottom = 477.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 2 )
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Visibility", "custom_colors", "custom_fonts" ]
+
+[connection signal="animation_finished" from="." to="." method="_on_combat_sprite_animation_finished"]
+
+

@@ -1,0 +1,20 @@
+write PL2010: Status report: 
+write PL2010: Ship repairs 65% complete 
+write PL2010: At this rate the ship will be ready to fly in two weeks... 
+write PL2010: However, Sir, we have a serious problem. 
+write PL2010: Our energy supply is insufficient. 
+write The Detective: How far can we get with the energy we have? 
+write PL2010: We don't have enough to leave this planet's orbit. 
+write The Detective: Okay, this planet must have some resources we can use,  
+write The Detective: I'll see what I can find.
+write PL2010: Sir, if we encounter another knight 
+write PL2010: We will need a sgnificant technological advantage 
+write PL2010: I have prepared a new weapon and armour for you.
+trigger[upgrade_1] 
+write The Detective: A new weapon?  
+write PL2010: Yes, an upgrade on your blade using new materials: 
+write PL2010: A super-hard alloy.
+write The Detective: And the armour? 
+write PL2010: Yes, a lightened suit that maintains its strength while 
+write PL2010: Also giving you better movement. 
+write PL2010: Sir, I've detected an energy source in the North-west quadrant.

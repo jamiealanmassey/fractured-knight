@@ -1,8 +1,10 @@
 extends Node
 
-export (Resource) var actor
+export (Resource) var combat_actor
+export (SpriteFrames) var frames
 
 func _ready():
+	
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
 	pass

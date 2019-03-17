@@ -1,0 +1,29 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/ShoulderPad (1).png-3366f19b2ef13c027a95f0e1ac2417f9.stex"
+
+[deps]
+
+source_file="res://resources/NPCs/craftpix-062999-2d-fantasy-knight-free-sprite-sheets/__SCML/5_KNIGHT/_FRONT/ShoulderPad (1).png"
+dest_files=[ "res://.import/ShoulderPad (1).png-3366f19b2ef13c027a95f0e1ac2417f9.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0
