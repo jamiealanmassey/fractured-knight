@@ -7,7 +7,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 63.4906, 48.6793 )
 
-[node name="SwitcherBlock" type="Area2D" index="0"]
+[node name="SwitcherBlock" type="Area2D"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )

@@ -275,11 +275,6 @@ margin_bottom = -64.0
 dialogue_file_names = [ "complex" ]
 dialogue_file_locations = [ "res://test/dialogue/complex.fml" ]
 
-[node name="Entities" parent="World" index="12"]
-
-editor/display_folded = true
-visible = false
-
 [node name="DialogueTest" type="Node" parent="World" index="13"]
 
 script = SubResource( 1 )
