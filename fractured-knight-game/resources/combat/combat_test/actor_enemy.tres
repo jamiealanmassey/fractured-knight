@@ -11,5 +11,5 @@ stats = {
 "damage": 2
 }
 moves = [ ExtResource( 1 ) ]
-health = 20
+health = 40
 
