@@ -75,7 +75,7 @@ func on_hitting_ground():
 
 func turn_stay():
 	animation = \"Stay\"
-	emit_singal(\"finished_animation\")
+	emit_signal(\"finished_animation\")
 
 func fly_in():
 	var vector = Vector2(0,10)
@@ -103,7 +103,7 @@ func set_position(pos):
 	pass"
 _sections_unfolded = [ "Resource" ]
 
-[node name="Node" type="Node" index="0"]
+[node name="Node" type="Node"]
 
 script = ExtResource( 1 )
 
