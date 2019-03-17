@@ -5,25 +5,7 @@
 [ext_resource path="res://resources/player-sprite/Player.png" type="Texture" id=3]
 [ext_resource path="res://resources/player/Sprite.gd" type="Script" id=4]
 
-[sub_resource type="RectangleShape2D" id=1]
-
-custom_solver_bias = 0.0
-extents = Vector2( 32, 6 )
-
-[sub_resource type="GDScript" id=2]
-
-script/source = "extends Camera2D
-
-func _ready():
-	get_node('/root/game_manager').current_camera = self
-"
-
-[sub_resource type="CircleShape2D" id=3]
-
-custom_solver_bias = 0.0
-radius = 50.0
-
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=1]
 
 resource_name = "down"
 length = 1.0
@@ -42,7 +24,7 @@ tracks/0/keys = {
 "values": [ 19, 26 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 
 resource_name = "left"
 length = 1.0
@@ -61,7 +43,7 @@ tracks/0/keys = {
 "values": [ 9, 17 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=3]
 
 resource_name = "right"
 length = 1.0
@@ -80,7 +62,7 @@ tracks/0/keys = {
 "values": [ 28, 35 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=4]
 
 length = 1.0
 loop = true
@@ -98,25 +80,67 @@ tracks/0/keys = {
 "values": [ 1, 8 ]
 }
 
-[node name="Player" type="KinematicBody2D"]
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32, 6 )
+
+[sub_resource type="GDScript" id=6]
+
+script/source = "extends Camera2D
+
+func _ready():
+	get_node('/root/game_manager').current_camera = self
+"
+
+[sub_resource type="CircleShape2D" id=7]
+
+custom_solver_bias = 0.0
+radius = 37.6544
+
+[node name="Player" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
-collision/safe_margin = 0.08
+collision/safe_margin = 0.1
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision" ]
+_sections_unfolded = [ "collision" ]
 moveSpeed = 250
 velocitySpeed = 1
 combat_actor = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+editor/display_folded = true
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 3 )
+vframes = 4
+hframes = 9
+frame = 5
+script = ExtResource( 4 )
+_sections_unfolded = [ "Animation", "Region", "Transform" ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite" index="0"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/down = SubResource( 1 )
+anims/left = SubResource( 2 )
+anims/right = SubResource( 3 )
+anims/up = SubResource( 4 )
+blend_times = [  ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
 position = Vector2( 0, 42 )
-shape = SubResource( 1 )
+shape = SubResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Camera2D" type="Camera2D" parent="." index="1"]
+[node name="Camera2D" type="Camera2D" parent="." index="2"]
 
 anchor_mode = 1
 rotating = false
@@ -140,10 +164,10 @@ drag_margin_bottom = 0.2
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
-script = SubResource( 2 )
+script = SubResource( 6 )
 _sections_unfolded = [ "Pause" ]
 
-[node name="Interactor" type="Area2D" parent="." index="2"]
+[node name="Interactor" type="Area2D" parent="." index="3"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -158,29 +182,7 @@ _sections_unfolded = [ "Audio Bus", "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactor" index="0"]
 
-shape = SubResource( 3 )
-
-[node name="Sprite" type="Sprite" parent="." index="3"]
-
-scale = Vector2( 1.5, 1.5 )
-texture = ExtResource( 3 )
-vframes = 4
-hframes = 9
-frame = 5
-script = ExtResource( 4 )
-_sections_unfolded = [ "Animation", "Region", "Transform" ]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite" index="0"]
-
-root_node = NodePath("..")
-autoplay = ""
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
-anims/down = SubResource( 4 )
-anims/left = SubResource( 5 )
-anims/right = SubResource( 6 )
-anims/up = SubResource( 7 )
-blend_times = [  ]
+position = Vector2( 0, 7.19667 )
+shape = SubResource( 7 )
 
 

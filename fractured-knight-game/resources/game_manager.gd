@@ -26,14 +26,16 @@ func _ready():
 	process_settings(load_settings())
 	
 
-func switch_scene(path):
-	call_deferred('_deferred_switch_scene', path)
+func switch_scene(path, position = null):
+	call_deferred('_deferred_switch_scene', path, position)
 
-func _deferred_switch_scene(path):
+func _deferred_switch_scene(path, position):
 	_save_dialogue_symbols()
 	current_scene.free()
 	var s = ResourceLoader.load(path)
 	current_scene = s.instance()
+	if (position != null):
+		current_scene.set_player_position(position)
 	get_tree().get_root().add_child(current_scene)
 	get_tree().set_current_scene(current_scene)
 

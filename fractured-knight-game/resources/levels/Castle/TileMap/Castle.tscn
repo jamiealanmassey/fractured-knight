@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://resources/levels/Castle/TileMap/Images/Castle2.png" type="Texture" id=1]
 
@@ -165,54 +165,49 @@ radius = 25.9513
 [sub_resource type="RectangleShape2D" id=33]
 
 custom_solver_bias = 0.0
-extents = Vector2( 51.2468, 44.9358 )
+extents = Vector2( 58.6537, 45.6611 )
 
 [sub_resource type="RectangleShape2D" id=34]
 
 custom_solver_bias = 0.0
-extents = Vector2( 58.6537, 45.6611 )
+extents = Vector2( 47.8545, 35.1668 )
 
 [sub_resource type="RectangleShape2D" id=35]
 
 custom_solver_bias = 0.0
-extents = Vector2( 47.8545, 35.1668 )
+extents = Vector2( 35.8002, 31.9071 )
 
 [sub_resource type="RectangleShape2D" id=36]
 
 custom_solver_bias = 0.0
-extents = Vector2( 35.8002, 31.9071 )
+extents = Vector2( 10, 52.147 )
 
 [sub_resource type="RectangleShape2D" id=37]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 52.147 )
+extents = Vector2( 35.1802, 28.5813 )
 
 [sub_resource type="RectangleShape2D" id=38]
 
 custom_solver_bias = 0.0
-extents = Vector2( 35.1802, 28.5813 )
-
-[sub_resource type="RectangleShape2D" id=39]
-
-custom_solver_bias = 0.0
 extents = Vector2( 17.749, 49.002 )
 
-[sub_resource type="CircleShape2D" id=40]
+[sub_resource type="CircleShape2D" id=39]
 
 custom_solver_bias = 0.0
 radius = 55.4327
 
-[sub_resource type="RectangleShape2D" id=41]
+[sub_resource type="RectangleShape2D" id=40]
 
 custom_solver_bias = 0.0
 extents = Vector2( 31.5013, 28.9781 )
 
-[sub_resource type="RectangleShape2D" id=42]
+[sub_resource type="RectangleShape2D" id=41]
 
 custom_solver_bias = 0.0
 extents = Vector2( 32.8269, 65.5655 )
 
-[sub_resource type="RectangleShape2D" id=43]
+[sub_resource type="RectangleShape2D" id=42]
 
 custom_solver_bias = 0.0
 extents = Vector2( 32.9993, 31.9507 )
@@ -1017,10 +1012,10 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite33/Area2D" index="0"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite33/Area2D" index="0"]
 
-position = Vector2( 49.6848, 39.9108 )
-shape = SubResource( 33 )
+build_mode = 0
+polygon = PoolVector2Array( 27.3503, 46.0932, 67.2549, 46.0932, 78.8776, 47.4492, 80.621, 85.2229, 95.9242, 85.0292, 96.0896, -0.671635, -0.266846, -0.379642, 0.0251465, 85.4651, 16.0846, 85.1731, 16.9606, 47.7986 )
 
 [node name="Sprite29" type="Sprite" parent="." index="33"]
 
@@ -1044,7 +1039,7 @@ audio_bus_name = "Master"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite29/Area2D" index="0"]
 
 position = Vector2( 66.7894, 50.4994 )
-shape = SubResource( 34 )
+shape = SubResource( 33 )
 
 [node name="Sprite28" type="Sprite" parent="." index="34"]
 
@@ -1068,7 +1063,7 @@ audio_bus_name = "Master"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite28/Area2D" index="0"]
 
 position = Vector2( 49.6849, 32.5802 )
-shape = SubResource( 35 )
+shape = SubResource( 34 )
 
 [node name="Sprite27" type="Sprite" parent="." index="35"]
 
@@ -1092,7 +1087,7 @@ audio_bus_name = "Master"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite27/Area2D" index="0"]
 
 position = Vector2( 31.0829, 38.6428 )
-shape = SubResource( 36 )
+shape = SubResource( 35 )
 
 [node name="Sprite26" type="Sprite" parent="." index="36"]
 
@@ -1116,7 +1111,7 @@ audio_bus_name = "Master"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite26/Area2D" index="0"]
 
 position = Vector2( 20.3571, 51.4914 )
-shape = SubResource( 37 )
+shape = SubResource( 36 )
 
 [node name="Sprite19" type="Sprite" parent="." index="37"]
 
@@ -1140,7 +1135,7 @@ audio_bus_name = "Master"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite19/Area2D" index="0"]
 
 position = Vector2( 31.7606, 36.5074 )
-shape = SubResource( 38 )
+shape = SubResource( 37 )
 
 [node name="Sprite17" type="Sprite" parent="." index="38"]
 
@@ -1173,7 +1168,7 @@ audio_bus_name = "Master"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite16/Area2D" index="0"]
 
 position = Vector2( 15.1179, 47.3044 )
-shape = SubResource( 39 )
+shape = SubResource( 38 )
 
 [node name="Sprite15" type="Sprite" parent="." index="40"]
 
@@ -1197,7 +1192,7 @@ audio_bus_name = "Master"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite15/Area2D" index="0"]
 
 position = Vector2( 46.0484, 44.191 )
-shape = SubResource( 40 )
+shape = SubResource( 39 )
 
 [node name="Sprite10" type="Sprite" parent="." index="41"]
 
@@ -1221,7 +1216,7 @@ audio_bus_name = "Master"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite10/Area2D" index="0"]
 
 position = Vector2( 33.2276, 31.0698 )
-shape = SubResource( 41 )
+shape = SubResource( 40 )
 
 [node name="Sprite9" type="Sprite" parent="." index="42"]
 
@@ -1245,7 +1240,7 @@ audio_bus_name = "Master"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite9/Area2D" index="0"]
 
 position = Vector2( 31.1344, 67.0585 )
-shape = SubResource( 42 )
+shape = SubResource( 41 )
 
 [node name="Sprite8" type="Sprite" parent="." index="43"]
 
@@ -1269,6 +1264,6 @@ audio_bus_name = "Master"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite8/Area2D" index="0"]
 
 position = Vector2( 31.733, 32.3318 )
-shape = SubResource( 43 )
+shape = SubResource( 42 )
 
 
