@@ -1,0 +1,174 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://resources/cut_scene/Intro/Falling.gd" type="Script" id=1]
+[ext_resource path="res://resources/cut_scene/Sprite/Space.png" type="Texture" id=2]
+[ext_resource path="res://resources/cut_scene/Sprite/desert.png" type="Texture" id=3]
+[ext_resource path="res://resources/cut_scene/Sprite/r1.png" type="Texture" id=4]
+[ext_resource path="res://resources/cut_scene/Sprite/r2.png" type="Texture" id=5]
+[ext_resource path="res://resources/cut_scene/Sprite/rocket02.png" type="Texture" id=6]
+[ext_resource path="res://resources/cut_scene/Sprite/r3.png" type="Texture" id=7]
+[ext_resource path="res://resources/cut_scene/Sprite/rocket(1).png" type="Texture" id=8]
+[ext_resource path="res://resources/cut_scene/Sprite/rocket04.png" type="Texture" id=9]
+
+[sub_resource type="GDScript" id=1]
+
+resource_local_to_scene = true
+script/source = "extends Node2D
+
+onready var sprite = get_node(\"AnimatedSprite\")
+
+var velocity = Vector2(0,15)
+
+func _ready():
+	set_process(true)
+	pass
+
+func _process(delta):
+	move()
+	pass
+
+func move():
+	if (sprite.position.x <-50):
+		sprite.fly_in()
+	elif (position.y <= 0):
+		translate(velocity)
+	else:
+		sprite.on_hitting_ground()
+	pass
+"
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "Hit",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "Fall",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "Stay",
+"speed": 5.0
+} ]
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="GDScript" id=3]
+
+resource_local_to_scene = true
+script/source = "extends AnimatedSprite
+signal finished_animation
+
+
+func _ready():
+	self.animation = \"Fall\"
+
+func on_hitting_ground():
+	if self.animation == \"Fall\":
+		animation = \"Hit\"
+		connect(\"animation_finished\",self, \"turn_stay\")
+
+func turn_stay():
+	animation = \"Stay\"
+	emit_signal(\"finished_animation\")
+
+func fly_in():
+	var vector = Vector2(0,10)
+	translate(vector)
+	pass"
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="GDScript" id=4]
+
+resource_local_to_scene = true
+script/source = "extends Camera2D
+
+onready var ship = get_node(\"../Spaceship\")
+
+func _ready():
+	set_process(true)
+	pass
+
+func _process(delta):
+	set_position(ship.position)
+	pass
+
+func set_position(pos):
+	position = pos
+	pass"
+_sections_unfolded = [ "Resource" ]
+
+[node name="Node" type="Node"]
+
+script = ExtResource( 1 )
+
+[node name="Background" type="Node2D" parent="." index="0"]
+
+position = Vector2( 0, -250 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="space" type="Sprite" parent="Background" index="0"]
+
+position = Vector2( 0, -1169.49 )
+scale = Vector2( 5, 5.47019 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="desert" type="Sprite" parent="Background" index="1"]
+
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Spaceship" type="Node2D" parent="." index="1"]
+
+position = Vector2( 0, -3998.54 )
+z_index = 2
+script = SubResource( 1 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Spaceship" index="0"]
+
+scale = Vector2( 0.2, 0.2 )
+frames = SubResource( 2 )
+animation = "Fall"
+playing = true
+script = SubResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Camera2D" type="Camera2D" parent="." index="2"]
+
+position = Vector2( 0, -3998.54 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1.69, 1.69 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+script = SubResource( 4 )
+_sections_unfolded = [ "Transform" ]
+
+[connection signal="finished_animation" from="Spaceship/AnimatedSprite" to="." method="_on_AnimatedSprite_finished_animation"]
+
+

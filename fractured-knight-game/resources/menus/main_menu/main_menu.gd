@@ -22,7 +22,7 @@ func _on_BtnStart_pressed():
 		directory.remove('user://symbols.save')
 	
 	emit_signal("game_start")
-	get_node('/root/game_manager').switch_scene('res://resources/levels/world_map/world_tilemap/master_world_plane.tscn')
+	get_node('/root/game_manager').switch_scene('res://resources/cut_scene/Intro/Fly_in_space.tscn')
 	
 
 ## signal is sent to load a game version
