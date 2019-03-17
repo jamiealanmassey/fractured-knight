@@ -4,7 +4,7 @@
 [ext_resource path="res://resources/combat/combat_ui/UIBox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://resources/combat/combat_ui/DBox/DialogueBox.tscn" type="PackedScene" id=3]
 
-[node name="combatInterface" type="Control"]
+[node name="combatInterface" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -28,7 +28,7 @@ __meta__ = {
 
 [node name="DialogueBox" parent="." index="1" instance=ExtResource( 3 )]
 
-position = Vector2( 743.485, 656.683 )
+position = Vector2( 740.967, 921.024 )
 
 [connection signal="display_text" from="." to="DialogueBox" method="_on_combatInterface_display_text"]
 
