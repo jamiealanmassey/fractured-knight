@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=8 format=2]
+[gd_resource type="TileSet" load_steps=15 format=2]
 
 [ext_resource path="res://resources/levels/Desert/Tilemap/Tiles/rsz_building1.png" type="Texture" id=1]
 [ext_resource path="res://resources/levels/Desert/Tilemap/Tiles/rsz_building2.png" type="Texture" id=2]
@@ -7,6 +7,41 @@
 [ext_resource path="res://resources/levels/Desert/Tilemap/Tiles/rsz_building5.png" type="Texture" id=5]
 [ext_resource path="res://resources/levels/Desert/Tilemap/Tiles/rsz_hut1.png" type="Texture" id=6]
 [ext_resource path="res://resources/levels/Desert/Tilemap/Tiles/rsz_hut2.png" type="Texture" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 37.3427, 10.4929 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 61.7386, 120.152 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 11.4392, 12.272 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10.7653, 12.3027 )
+
+[sub_resource type="RectangleShape2D" id=6]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10.3503 )
+
+[sub_resource type="RectangleShape2D" id=7]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10.3243, 10.1666 )
 
 [resource]
 
@@ -18,7 +53,12 @@
 0/is_autotile = false
 0/occluder_offset = Vector2( 40, 45.5 )
 0/navigation_offset = Vector2( 40, 45.5 )
-0/shapes = [  ]
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 3.9724, 40, 45.3626 )
+} ]
 1/name = "Sprite2"
 1/texture = ExtResource( 2 )
 1/tex_offset = Vector2( 0, 0 )
@@ -27,7 +67,12 @@
 1/is_autotile = false
 1/occluder_offset = Vector2( 62.5, 121 )
 1/navigation_offset = Vector2( 62.5, 121 )
-1/shapes = [  ]
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 62.5, 121 )
+} ]
 2/name = "Sprite3"
 2/texture = ExtResource( 3 )
 2/tex_offset = Vector2( 0, 0 )
@@ -36,7 +81,12 @@
 2/is_autotile = false
 2/occluder_offset = Vector2( 193, 216 )
 2/navigation_offset = Vector2( 193, 216 )
-2/shapes = [  ]
+2/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 17.0164, 0, 0, 17.289, 191.316, 216.147 )
+} ]
 3/name = "Sprite4"
 3/texture = ExtResource( 4 )
 3/tex_offset = Vector2( 0, 0 )
@@ -45,7 +95,12 @@
 3/is_autotile = false
 3/occluder_offset = Vector2( 145, 104 )
 3/navigation_offset = Vector2( 145, 104 )
-3/shapes = [  ]
+3/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 4 ),
+"shape_transform": Transform2D( 14.3264, 0, 0, 10.0235, 146.388, 105.324 )
+} ]
 4/name = "Sprite5"
 4/texture = ExtResource( 5 )
 4/tex_offset = Vector2( 0, 0 )
@@ -54,7 +109,12 @@
 4/is_autotile = false
 4/occluder_offset = Vector2( 85.5, 153 )
 4/navigation_offset = Vector2( 85.5, 153 )
-4/shapes = [  ]
+4/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 5 ),
+"shape_transform": Transform2D( 7.9887, 0, 0, 12.1652, 84.9291, 153.167 )
+} ]
 5/name = "Sprite6"
 5/texture = ExtResource( 6 )
 5/tex_offset = Vector2( 0, 0 )
@@ -63,7 +123,12 @@
 5/is_autotile = false
 5/occluder_offset = Vector2( 75.5, 93 )
 5/navigation_offset = Vector2( 75.5, 93 )
-5/shapes = [  ]
+5/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 6 ),
+"shape_transform": Transform2D( 7.30369, 0, 0, 8.82669, 76.9441, 94.2614 )
+} ]
 6/name = "Sprite7"
 6/texture = ExtResource( 7 )
 6/tex_offset = Vector2( 0, 0 )
@@ -72,5 +137,10 @@
 6/is_autotile = false
 6/occluder_offset = Vector2( 153.5, 96.5 )
 6/navigation_offset = Vector2( 153.5, 96.5 )
-6/shapes = [  ]
+6/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 7 ),
+"shape_transform": Transform2D( 14.8378, 0, 0, 9.26697, 153.701, 97.4757 )
+} ]
 

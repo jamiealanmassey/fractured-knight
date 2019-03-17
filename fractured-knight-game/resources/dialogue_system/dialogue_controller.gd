@@ -6,9 +6,9 @@ extends Container
 
 var DialogueNode = load('res://resources/dialogue_system/dialogue_node.gd')
 
-var letters_per_sec = 0.05 ## How many letters to display per x seconds
-var button_offset = 35       ## Pixel spacing of all buttons from bottom of screen
-var button_spacing = 35      ## Pixel spacing between each button choice
+var letters_per_sec = 0.05        ## How many letters to display per x seconds
+var button_offset = 35            ## Pixel spacing of all buttons from bottom of screen
+var button_spacing = 35           ## Pixel spacing between each button choice
 var buttons = []                  ## Stored button objects
 var context = null                ## Reference to the parent context of the controller
 var controller_begin_tween = null ## Stores Tweener to slide whole dialogue controller in

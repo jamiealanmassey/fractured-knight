@@ -22,7 +22,7 @@ extents = Vector2( 26.8898, 32.5918 )
 custom_solver_bias = 0.0
 extents = Vector2( 37.1698, 47.3989 )
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" index="0"]
 
 editor/display_folded = true
 

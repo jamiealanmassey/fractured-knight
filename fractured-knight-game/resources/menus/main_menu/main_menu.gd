@@ -12,6 +12,9 @@ func _process(delta):
 		$SettingsMenu.save_settings_menu()
 	
 
+func _ready():
+	pass
+
 ## Signal is sent to start the game
 func _on_BtnStart_pressed():
 	var directory = Directory.new()

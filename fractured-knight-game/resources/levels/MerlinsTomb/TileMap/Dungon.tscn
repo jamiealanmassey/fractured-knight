@@ -11,17 +11,18 @@ extents = Vector2( 15.9926, 15.8845 )
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
-position = Vector2( 236.202, 70.4337 )
+position = Vector2( 221.591, 54.6293 )
 texture = ExtResource( 1 )
 centered = false
-offset = Vector2( -16.0467, -16.211 )
+offset = Vector2( -0.78875, -0.0830212 )
 region_enabled = true
 region_rect = Rect2( 96, 64, 32, 32 )
 _sections_unfolded = [ "Animation", "Offset", "Region" ]
 
 [node name="Area2D" type="Area2D" parent="Sprite" index="0"]
 
-position = Vector2( -16.0467, -16.211 )
+visible = false
+position = Vector2( -0.788742, -0.0830193 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -64,16 +65,17 @@ polygon = PoolVector2Array( 0.523773, -12.2726, 5.31534, -12.2726, 5.33399, 19.7
 
 [node name="Sprite11" type="Sprite" parent="." index="2"]
 
-position = Vector2( 189.559, 74.9135 )
+position = Vector2( 173.061, 58.5116 )
 texture = ExtResource( 1 )
 centered = false
-offset = Vector2( -16.7039, -16.4997 )
+offset = Vector2( -0.206005, -0.0978489 )
 region_enabled = true
 region_rect = Rect2( 32, 0, 32, 32 )
 _sections_unfolded = [ "Animation", "Offset", "Region" ]
 
 [node name="Area2D" type="Area2D" parent="Sprite11" index="0"]
 
+position = Vector2( 16.4979, 16.4019 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -117,7 +119,7 @@ position = Vector2( 280.963, 51.229 )
 texture = ExtResource( 1 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 96, 0, 32, 32 )
+region_rect = Rect2( 96, 160, 32, 32 )
 _sections_unfolded = [ "Animation", "Offset", "Region" ]
 
 [node name="Area2D" type="Area2D" parent="Sprite4" index="0"]
