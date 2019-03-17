@@ -8,6 +8,10 @@
 
 [node name="Tomb" parent="World" index="0" instance=ExtResource( 2 )]
 
+[node name="Player" parent="World/Entities" index="0"]
+
+position = Vector2( -160, -30 )
+
 [node name="SwitcherBlock" parent="World" index="3" instance=ExtResource( 3 )]
 
 position = Vector2( 2189.36, 1329.37 )
