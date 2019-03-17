@@ -66,14 +66,14 @@ func _on_DialogueUI_on_context_finish():
 
 ## Vikrams Stuff 
 ## TODO commenting 
-func _on_SwitcherBlock_body_entered(body):
-	scene_id = $World/SwitcherBlock.room_name
-	print(scene_id)
-	var file2Check = File.new()
-	var doFileExists = file2Check.file_exists("res://resources/levels/Rooms/Temp_resource_saver/" + str(scene_id) + ".tscn")
-	if(doFileExists):
-		print("next world exists");
-		get_tree().change_scene("res://resources/levels/Rooms/Temp_resource_saver/" + str(scene_id) + ".tscn")
-	else:
-		print("doesnt exist")
-		get_tree().change_scene("res://resources/levels/Rooms/Procedural/mainRooms.tscn")
+#func _on_SwitcherBlock_body_entered(body):
+#	scene_id = $World/SwitcherBlock.room_name
+#	print(scene_id)
+#	var file2Check = File.new()
+#	var doFileExists = file2Check.file_exists("res://resources/levels/Rooms/Temp_resource_saver/" + str(scene_id) + ".tscn")
+#	if(doFileExists):
+#		print("next world exists");
+#		get_tree().change_scene("res://resources/levels/Rooms/Temp_resource_saver/" + str(scene_id) + ".tscn")
+#	else:
+#		print("doesnt exist")
+#		get_tree().change_scene("res://resources/levels/Rooms/Procedural/mainRooms.tscn")
