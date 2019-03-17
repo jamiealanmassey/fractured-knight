@@ -28,7 +28,7 @@ __meta__ = {
 
 [node name="DialogueBox" parent="." index="1" instance=ExtResource( 3 )]
 
-position = Vector2( 740.47, 525.544 )
+position = Vector2( 743.485, 656.683 )
 
 [connection signal="display_text" from="." to="DialogueBox" method="_on_combatInterface_display_text"]
 
