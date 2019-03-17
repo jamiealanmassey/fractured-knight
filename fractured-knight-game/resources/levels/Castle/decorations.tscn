@@ -1,0 +1,147 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://resources/levels/Castle/terrain_atlas.png" type="Texture" id=1]
+
+[sub_resource type="CapsuleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 26.7999
+height = 34.2622
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 15.9767, 47.3286 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 29.798, 28.223 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 15.9619, 45.5178 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16.3615, 26.9063 )
+
+[node name="Node2D" type="Node2D" index="0"]
+
+[node name="0" type="Sprite" parent="." index="0"]
+
+position = Vector2( 721.486, 520.565 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 480, 384, 64, 96 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="0" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="0/StaticBody2D" index="0"]
+
+shape = SubResource( 1 )
+
+[node name="1" type="Sprite" parent="." index="1"]
+
+position = Vector2( 875.209, 512.402 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 608, 480, 32, 96 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="1" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="1/StaticBody2D" index="0"]
+
+shape = SubResource( 2 )
+
+[node name="2" type="Sprite" parent="." index="2"]
+
+position = Vector2( 985.399, 513.763 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 576, 384, 64, 64 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="2" index="0"]
+
+position = Vector2( -0.487671, -0.487671 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="2/StaticBody2D" index="0"]
+
+position = Vector2( 0, 4 )
+shape = SubResource( 3 )
+
+[node name="6" type="Sprite" parent="." index="3"]
+
+position = Vector2( 1149.67, 507.065 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 640, 384, 32, 96 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="6" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="6/StaticBody2D" index="0"]
+
+position = Vector2( 0, 2 )
+shape = SubResource( 4 )
+
+[node name="7" type="Sprite" parent="." index="4"]
+
+position = Vector2( 1068.69, 510.376 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 544, 384, 32, 64 )
+_sections_unfolded = [ "Animation", "Offset", "Region" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="7" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="7/StaticBody2D" index="0"]
+
+position = Vector2( 0, 5 )
+shape = SubResource( 5 )
+
+

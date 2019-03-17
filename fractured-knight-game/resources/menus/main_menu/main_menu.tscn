@@ -52,7 +52,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite" type="Sprite" parent="." index="0"]
+[node name="Background" type="Sprite" parent="." index="0"]
 
 texture = ExtResource( 2 )
 centered = false
@@ -61,7 +61,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite2" type="Sprite" parent="." index="1"]
+[node name="Logo" type="Sprite" parent="." index="1"]
 
 modulate = Color( 0.0156863, 0.772549, 0.27451, 1 )
 self_modulate = Color( 0.984375, 0.976685, 0.976685, 1 )

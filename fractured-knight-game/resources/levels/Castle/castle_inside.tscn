@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://resources/levels/Castle/base_out_atlas.png" type="Texture" id=1]
+
+[node name="Node2D" type="Node2D" index="0"]
+
+[node name="0" type="Sprite" parent="." index="0"]
+
+position = Vector2( 921.461, 472.951 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 960, 0, 32, 32 )
+
+[node name="1" type="Sprite" parent="." index="1"]
+
+position = Vector2( 1058.86, 471.591 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 640, 704, 32, 32 )
+
+[node name="2" type="Sprite" parent="." index="2"]
+
+position = Vector2( 1170.41, 472.951 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 768, 704, 32, 32 )
+
+

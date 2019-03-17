@@ -3,6 +3,8 @@ extends Node
 var current_combat = null
 var pause_menu = null
 
+var scene_id
+
 func _ready():
 	var dialogue = get_node('World/DialogueUI')
 	var player = get_node('World/Entities/Player')
@@ -10,6 +12,7 @@ func _ready():
 	
 	if (dialogue != null):
 		dialogue.load_symbols()
+	
 
 func _process(delta):
 	if (pause_menu != null && !pause_menu.active && pause_menu.is_ready() && Input.is_action_pressed('ui_cancel')):
@@ -25,6 +28,10 @@ func start_dialogue(name):
 	get_node('World/Entities/Player').lock_movement = true
 	
 
+
+func set_player_position(position):
+	$World/Entities/Player.position = position
+
 func is_dialogue_playing():
 	var dialogue = get_node('World/DialogueUI')
 	if (dialogue != null && dialogue.processing):
@@ -32,6 +39,7 @@ func is_dialogue_playing():
 		
 	return false
 	
+
 
 func initiate_combat(enemy):
 	var combat_scene = load('res://resources/combat/combat_core/combat.tscn')
@@ -68,4 +76,17 @@ func _on_PauseMenu_resume_game():
 
 func _on_DialogueUI_on_context_finish():
 	get_node('World/Entities/Player').lock_movement = false
-	
+
+## Vikrams Stuff 
+## TODO commenting 
+#func _on_SwitcherBlock_body_entered(body):
+#	scene_id = $World/SwitcherBlock.room_name
+#	print(scene_id)
+#	var file2Check = File.new()
+#	var doFileExists = file2Check.file_exists("res://resources/levels/Rooms/Temp_resource_saver/" + str(scene_id) + ".tscn")
+#	if(doFileExists):
+#		print("next world exists");
+#		get_tree().change_scene("res://resources/levels/Rooms/Temp_resource_saver/" + str(scene_id) + ".tscn")
+#	else:
+#		print("doesnt exist")
+#		get_tree().change_scene("res://resources/levels/Rooms/Procedural/mainRooms.tscn")

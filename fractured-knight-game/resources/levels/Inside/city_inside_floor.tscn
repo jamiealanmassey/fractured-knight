@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://resources/levels/Inside/city_inside.png" type="Texture" id=1]
+
+[node name="Node2D" type="Node2D" index="0"]
+
+_sections_unfolded = [ "Transform" ]
+
+[node name="city_inside" type="Sprite" parent="." index="0"]
+
+position = Vector2( 1542.38, 366.168 )
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 32, 32 )
+_sections_unfolded = [ "Region" ]
+
+
