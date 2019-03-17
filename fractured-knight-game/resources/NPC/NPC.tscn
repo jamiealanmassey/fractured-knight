@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://resources/NPC/NPC.gd" type="Script" id=1]
 [ext_resource path="res://resources/NPC/emote_dots1.png" type="Texture" id=2]
 [ext_resource path="res://resources/NPC/emote_dots2.png" type="Texture" id=3]
 [ext_resource path="res://resources/NPC/emote_dots3.png" type="Texture" id=4]
+[ext_resource path="res://resources/NPC/danger.png" type="Texture" id=5]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -53,11 +54,17 @@ patrol_path = null
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "default"
-frame = 1
+frame = 2
 playing = true
 _sections_unfolded = [ "Material", "Transform", "Visibility" ]
 
-[node name="Polygon2D" type="Polygon2D" parent="." index="1"]
+[node name="ChaseIcon" type="Sprite" parent="." index="1"]
+
+scale = Vector2( 0.08, 0.08 )
+texture = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Polygon2D" type="Polygon2D" parent="." index="2"]
 
 polygon = PoolVector2Array( -30, -40, -30, 40, 30, 40, 30, -40 )
 uv = PoolVector2Array(  )
@@ -73,12 +80,11 @@ invert_enable = false
 invert_border = 100.0
 _sections_unfolded = [ "Transform" ]
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="2"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="3"]
 
 animation = "default"
-_sections_unfolded = [ "Transform" ]
 
-[node name="InteractionArea2D" type="Area2D" parent="." index="3"]
+[node name="InteractionArea2D" type="Area2D" parent="." index="4"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -95,7 +101,7 @@ _sections_unfolded = [ "Audio Bus", "Collision" ]
 
 shape = SubResource( 3 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="5"]
 
 position = Vector2( 0, 34.9137 )
 scale = Vector2( 1, 0.928082 )

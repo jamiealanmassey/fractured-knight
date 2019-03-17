@@ -32,7 +32,7 @@ export (Array, Vector2) var patrol_path
 # Internal variables
 var interact_icon_tweener = null
 var interact_scale_x = 0
-var interact_position_x = 0
+var interact_position_y = 0
 var is_inside = false
 var idle_timer = null
 var current_player = null
@@ -46,11 +46,17 @@ var chase_area = null
 var chase_area_collider = null
 var chase_area_shape = null
 var chase_distance = 0
+var chase_icon_tweener = null
+var chase_icon_scale_x = 0
+var chase_icon_position_y = 0
 
 func _ready():
 	interact_scale_x = $InteractionIcon.scale.x
-	interact_position_x = $InteractionIcon.position.y
+	interact_position_y = $InteractionIcon.position.y
 	interact_icon_tweener = Tween.new()
+	chase_icon_scale_x = $ChaseIcon.scale.x
+	chase_icon_position_y = $ChaseIcon.position.y
+	chase_icon_tweener = Tween.new()
 	$InteractionArea2D/CollisionShape2D.shape.radius = interaction_radius
 	$InteractionIcon.scale.x = 0
 	$InteractionIcon.modulate.a = 0
@@ -61,6 +67,7 @@ func _ready():
 	idle_timer.autostart = false
 	idle_timer.connect('timeout', self, '_on_idle_timeout')
 	self.add_child(interact_icon_tweener)
+	self.add_child(chase_icon_tweener)
 	self.add_child(idle_timer)
 	
 	if (npc_type == NPCType.Hostile):
@@ -214,20 +221,34 @@ func _on_idle_timeout():
 	self.switch_npc_state(npc_state_last)
 
 func _on_chase_body_entered(body):
-	current_player = body
-	patrol_last_location = position if (self.npc_state == NPCState.Patrol || self.npc_state == NPCState.Idle) else patrol_last_location
-	switch_npc_state(NPCState.Chase)
+	match self.npc_type:
+		NPCType.Hostile:
+			current_player = body
+			patrol_last_location = position if (self.npc_state == NPCState.Patrol || self.npc_state == NPCState.Idle) else patrol_last_location
+			switch_npc_state(NPCState.Chase)
+			chase_icon_tweener.stop_all()
+			chase_icon_tweener.interpolate_property($ChaseIcon, 'position:y', $ChaseIcon.position.y, chase_icon_position_y - interaction_offset, interaction_anim_speed, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+			chase_icon_tweener.interpolate_property($ChaseIcon, 'scale:x', $ChaseIcon.scale.x, chase_icon_scale_x, interaction_anim_speed, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+			chase_icon_tweener.interpolate_property($ChaseIcon, 'modulate:a', $ChaseIcon.modulate.a, 1, interaction_anim_speed, Tween.TRANS_LINEAR, Tween.EASE_IN)
+			chase_icon_tweener.start()
 
 func _on_chase_body_exited(body):
-	current_player = null
-	switch_npc_state(NPCState.Return)
+	match self.npc_type:
+		NPCType.Hostile:
+			current_player = null
+			switch_npc_state(NPCState.Return)
+			chase_icon_tweener.stop_all()
+			chase_icon_tweener.interpolate_property($ChaseIcon, 'position:y', $ChaseIcon.position.y, chase_icon_position_y, interaction_anim_speed, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+			chase_icon_tweener.interpolate_property($ChaseIcon, 'scale:x', $ChaseIcon.scale.x, 0, interaction_anim_speed, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+			chase_icon_tweener.interpolate_property($ChaseIcon, 'modulate:a', $ChaseIcon.modulate.a, 0, interaction_anim_speed, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+			chase_icon_tweener.start()
 
 func _on_InteractionArea2D_area_entered(area):
 	is_inside = true
 	match self.npc_type:
 		NPCType.Friendly:
 			interact_icon_tweener.stop_all()
-			interact_icon_tweener.interpolate_property($InteractionIcon, 'position:y', $InteractionIcon.position.y, interact_position_x - interaction_offset, interaction_anim_speed, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+			interact_icon_tweener.interpolate_property($InteractionIcon, 'position:y', $InteractionIcon.position.y, interact_position_y - interaction_offset, interaction_anim_speed, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 			interact_icon_tweener.interpolate_property($InteractionIcon, 'scale:x', $InteractionIcon.scale.x, interact_scale_x, interaction_anim_speed, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 			interact_icon_tweener.interpolate_property($InteractionIcon, 'modulate:a', $InteractionIcon.modulate.a, 1, interaction_anim_speed, Tween.TRANS_LINEAR, Tween.EASE_IN)
 			interact_icon_tweener.start()
@@ -240,9 +261,8 @@ func _on_InteractionArea2D_area_exited(area):
 	match self.npc_type:
 		NPCType.Friendly:
 			interact_icon_tweener.stop_all()
-			interact_icon_tweener.interpolate_property($InteractionIcon, 'position:y', $InteractionIcon.position.y, interact_position_x, interaction_anim_speed, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+			interact_icon_tweener.interpolate_property($InteractionIcon, 'position:y', $InteractionIcon.position.y, interact_position_y, interaction_anim_speed, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 			interact_icon_tweener.interpolate_property($InteractionIcon, 'scale:x', $InteractionIcon.scale.x, 0, interaction_anim_speed, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 			interact_icon_tweener.interpolate_property($InteractionIcon, 'modulate:a', $InteractionIcon.modulate.a, 0, interaction_anim_speed, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 			interact_icon_tweener.start()
-		
 	
