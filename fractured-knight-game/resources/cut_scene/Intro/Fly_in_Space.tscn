@@ -53,7 +53,7 @@ func _ready():
 func fly_out():
 	var vector = Vector2(-8,0)
 	translate(vector)
-	if (position.x == -600):
+	if (position.x <= -500):
 		get_node(\"../..\").add_child(video.instance())
 	pass
 
