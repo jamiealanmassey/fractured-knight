@@ -1,10 +1,11 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://resources/combat/combat_core/combat.gd" type="Script" id=1]
-[ext_resource path="res://resources/combat/combat_ui/combat_interface.tscn" type="PackedScene" id=2]
+[ext_resource path="res://resources/combat/Combat background images/image4.jpg" type="Texture" id=2]
 [ext_resource path="res://resources/player/player_sprite.tscn" type="PackedScene" id=3]
 [ext_resource path="res://resources/combat/combat_ui/combat_sprite/combat_sprite.tscn" type="PackedScene" id=4]
 [ext_resource path="res://resources/combat/combat_ui/health_bar/health_bar.tscn" type="PackedScene" id=5]
+[ext_resource path="res://resources/combat/combat_ui/combat_interface.tscn" type="PackedScene" id=6]
 
 [node name="Combat" type="Control"]
 
@@ -20,34 +21,46 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 script = ExtResource( 1 )
 
-[node name="combatInterface" parent="." index="0" instance=ExtResource( 2 )]
+[node name="player_combat_sprite" parent="." index="0" instance=ExtResource( 3 )]
 
-[node name="player_combat_sprite" parent="." index="1" instance=ExtResource( 3 )]
+position = Vector2( 786.913, 675.137 )
+z_index = 1
+_sections_unfolded = [ "Transform", "Z Index" ]
 
-position = Vector2( 715.987, 354.225 )
+[node name="enemy_combat_sprite" parent="." index="1" instance=ExtResource( 4 )]
 
-[node name="enemy_combat_sprite" parent="." index="2" instance=ExtResource( 4 )]
-
-position = Vector2( 1200, 360 )
+position = Vector2( 1245.33, 672.979 )
+z_index = 1
 flip_h = true
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="player_health_bar" parent="." index="3" instance=ExtResource( 5 )]
 
-position = Vector2( 720, 290 )
-_sections_unfolded = [ "Transform" ]
+position = Vector2( 761.011, 587.869 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 max_health = 100
 
 [node name="enemy_health_bar" parent="." index="4" instance=ExtResource( 5 )]
 
-position = Vector2( 1200, 290 )
-_sections_unfolded = [ "Transform" ]
+position = Vector2( 1275.55, 583.552 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="background_image" type="Sprite" parent="." index="5"]
+[node name="background_image" type="Sprite" parent="." index="4"]
 
-scale = Vector2( 1923.71, 1082.22 )
+position = Vector2( 961.477, 539.961 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="combatInterface" parent="." index="5" instance=ExtResource( 6 )]
+
+_sections_unfolded = [ "Focus", "Grow Direction", "Hint", "Margin", "Mouse", "Rect" ]
 
 [connection signal="UI_get_ready" from="." to="combatInterface" method="_on_Combat_UI_get_ready"]
+
+[connection signal="UI_get_ready" from="." to="player_combat_sprite" method="combat_started"]
 
 [connection signal="UI_get_ready" from="." to="enemy_combat_sprite" method="combat_started"]
 
@@ -70,6 +83,8 @@ scale = Vector2( 1923.71, 1082.22 )
 [connection signal="player_attack_hit" from="." to="player_combat_sprite" method="on_attack_hit"]
 
 [connection signal="player_attack_hit" from="." to="enemy_combat_sprite" method="on_received_hit"]
+
+[connection signal="player_attack_miss" from="." to="player_combat_sprite" method="on_attack_miss"]
 
 [connection signal="player_attack_miss" from="." to="player_combat_sprite" method="on_attack_miss"]
 
