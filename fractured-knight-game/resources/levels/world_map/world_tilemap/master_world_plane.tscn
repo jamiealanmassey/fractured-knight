@@ -301,7 +301,7 @@ worldScene = "res://resources/levels/Inside/Tomb.tscn"
 
 position = Vector2( 3777.88, -2758.72 )
 scale = Vector2( 0.70754, 1.06752 )
-worldScene = "res://resources/levels/Inside/Tomb.tscn"
+worldScene = "res://resources/levels/Inside/CastleInside.tscn"
 
 [node name="Bulding1" parent="World/Links" index="2" instance=ExtResource( 13 )]
 
