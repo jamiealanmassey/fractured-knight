@@ -2,7 +2,7 @@ extends Node2D
 ## pre-load room script to accesss that scene and method
 ## pre-load player to be able to access it in the scsne
 var Room = preload("res://resources/levels/Rooms/Procedural/room.tscn")
-var player = preload("res://resources/player/player.tscn")
+onready var player = preload("res://resources/player/player.tscn")
 
 ## gets the tilset from the tilemap in the tree
 onready var Map = $TileMap
@@ -12,7 +12,7 @@ const TILE_SIZE = 32
 
 ## Exported variables for number of rooms and bound for sizes
 ## Horizontal spread of rooms/areas and to go through and delete rooms
-export(int) var num_rooms = 50 
+export(int) var num_rooms = 10 
 export(int) var room_min_size = 10  
 export(int) var room_max_size = 25  
 export(int) var hspread = 300  
@@ -24,7 +24,6 @@ var path
 var sceneOn = false
 var starting_room = null
 var end_room = null
-var play = null
 var set_name
 
 ## Initilise the rand func 
@@ -70,18 +69,23 @@ func make_areas():
 	yield(get_tree(), 'idle_frame')
 	path = find_min_span_tree(pos_rooms)
 	map()
+	player()
 	save_game_scene()
 
 
 ## Draws paths to conect the rooms but draww the lines stright
 ## we check if the path is complete then we draw the line
 func _draw():
-	if(path):
-		for point in path.get_points():
-			for connection in path.get_point_connections(point):
-				var pp = path.get_point_position(point)
-				var cp = path.get_point_position(connection)
-				draw_line(Vector2(pp.x, pp.y), Vector2(cp.x, cp.y), Color(0, 225, 0), 15, true)
+	for room in $Rooms.get_children():
+		draw_rect(Rect2(room.position - room.size, room.size * 2),
+				 Color(0, 1, 0), false)
+	if path:
+		for p in path.get_points():
+			for c in path.get_point_connections(p):
+				var pp = path.get_point_position(p)
+				var cp = path.get_point_position(c)
+				draw_line(Vector2(pp.x, pp.y), Vector2(cp.x, cp.y),
+						  Color(1, 1, 0), 15, true)
 
 ## This function finds the minimum spanning tree by using Prims Algorithum
 ## creates a new AStar object as this is the way we can find the shortest distnace 
@@ -189,12 +193,13 @@ func finding_rooms():
 		if(room.position.x > x_highest_bound):
 			end_room = room
 			x_highest_bound = room.position.x
-	player()
 
 func player():
-	play = player.instance()
+	var play = player.instance()
 	add_child(play)
-	play.position = starting_room.position - Vector2(125, 0)
+	$Player.get_node("CollisionShape2D").disabled = true
+	$Player.position = starting_room.position
+	
 
 ## Saving scene state using PackedScene
 ## saves game into folder
