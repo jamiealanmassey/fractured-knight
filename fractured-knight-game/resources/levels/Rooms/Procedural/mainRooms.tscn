@@ -1,10 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://resources/levels/Rooms/Procedural/Main_Rooms_Gen.gd" type="Script" id=1]
-[ext_resource path="res://resources/levels/MerlinsTomb/tombAccess.tres" type="TileSet" id=2]
-[ext_resource path="res://resources/levels/base/level_base.tscn" type="PackedScene" id=3]
+[ext_resource path="res://resources/levels/MerlinsTomb/tomb_procedural.tres" type="TileSet" id=2]
 
-[node name="mainDungon" type="Node2D" index="0"]
+[node name="mainDungon" type="Node2D"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform", "Visibility" ]
@@ -37,7 +36,5 @@ occluder_light_mask = 1
 format = 1
 tile_data = PoolIntArray(  )
 _sections_unfolded = [ "Cell" ]
-
-[node name="LevelManager" parent="." index="2" instance=ExtResource( 3 )]
 
 

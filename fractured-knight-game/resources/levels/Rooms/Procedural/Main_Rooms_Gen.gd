@@ -21,6 +21,7 @@ export(Texture) var tilemap
 
 ## Varibles for the paths and to keep the rooms and certain parts of the data in
 var path 
+var sceneOn = false
 var starting_room = null
 var end_room = null
 var play = null
@@ -32,6 +33,7 @@ func _ready():
 	$TileMap.tile_set = tilemap
 	randomize()
 	make_areas()
+	
 
 func init(rooms, x_size, y_size, name):
 	num_rooms = rooms
@@ -141,7 +143,7 @@ func map():
 			for y in range(2, room_size.y * 2 - 1):
 				Map.set_cell(top_left.x + x, top_left.y + y, 0)
 				if(x == (randi()%11+1)):
-					Map.set_cell(top_left.x + x, top_left.y + y, 5)
+					Map.set_cell(top_left.x + x, top_left.y + y, 0)
 		var p = path.get_closest_point(Vector3(room.position.x, room.position.y, 0))
 		for cc in path.get_point_connections(p):
 			if(not cc in hall):
@@ -183,14 +185,16 @@ func finding_rooms():
 		if(room.position.x < x_lowest_bound):
 			starting_room = room
 			x_lowest_bound = room.position.x
+	for room in $Rooms.get_children():
 		if(room.position.x > x_highest_bound):
 			end_room = room
 			x_highest_bound = room.position.x
+	player()
 
 func player():
 	play = player.instance()
 	add_child(play)
-	play.position = starting_room.position
+	play.position = starting_room.position - Vector2(125, 0)
 
 ## Saving scene state using PackedScene
 ## saves game into folder

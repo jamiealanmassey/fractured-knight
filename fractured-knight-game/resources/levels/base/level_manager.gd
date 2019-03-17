@@ -67,7 +67,7 @@ func _on_DialogueUI_on_context_finish():
 ## Vikrams Stuff 
 ## TODO commenting 
 func _on_SwitcherBlock_body_entered(body):
-	scene_id = $World/WorldMapComponents/SwitcherBlock.room_name
+	scene_id = $World/SwitcherBlock.room_name
 	print(scene_id)
 	var file2Check = File.new()
 	var doFileExists = file2Check.file_exists("res://resources/levels/Rooms/Temp_resource_saver/" + str(scene_id) + ".tscn")
@@ -76,16 +76,4 @@ func _on_SwitcherBlock_body_entered(body):
 		get_tree().change_scene("res://resources/levels/Rooms/Temp_resource_saver/" + str(scene_id) + ".tscn")
 	else:
 		print("doesnt exist")
-		new_map()
-
-## Loads game state from folder
-func load_game_scene():
-	var packed_scene = load("res://resources/levels/Rooms/Temp_resource_saver/" + str(scene_id) + ".tscn")
-	var my_scene = packed_scene.instance()
-	$World.add_child(my_scene)
-	my_scene.set_owner(self)
-
-func new_map():
-	var mySprite = preload("res://resources/levels/Rooms/Procedural/mainRooms.tscn")
-	mySprite.init(2, 10, 15, scene_id)
-	get_tree().change_scene("res://resources/levels/Rooms/Procedural/mainRooms.tscn")
+		get_tree().change_scene("res://resources/levels/Rooms/Procedural/mainRooms.tscn")
