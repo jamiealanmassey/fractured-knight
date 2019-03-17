@@ -5,9 +5,9 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 9.29761 )
+extents = Vector2( 63.4906, 48.6793 )
 
-[node name="SwitcherBlock" type="Area2D"]
+[node name="SwitcherBlock" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -21,7 +21,7 @@ _sections_unfolded = [ "Visibility" ]
 __meta__ = {
 "_edit_group_": true
 }
-room_name = null
+worldScene = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 

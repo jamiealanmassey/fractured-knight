@@ -262,14 +262,15 @@ format = 1
 tile_data = PoolIntArray( -5701671, 6, 0, -5701661, 5, 0, -5177289, 6, 0, -4980671, 0, 0, -4259831, 4, 0, -4259826, 4, 0, -4259821, 4, 0, -4259816, 4, 0, -4259811, 4, 0, -4259806, 4, 0, -4194304, 1, 0, -4063260, 1, 0, -4128681, 1, 0, -4063193, 3, 0, -4063155, 6, 0, -3801110, 0, 0, -3866619, 0, 0, -2752430, 1, 0, -2752403, 1, 0, -2686905, 3, 0, -2686861, 3, 0, -2424860, 5, 0, -2424855, 5, 0, -2424841, 3, 0, -2490366, 5, 0, -2490361, 6, 0, -1703892, 0, 0 )
 _sections_unfolded = [ "Cell" ]
 
-[node name="SwitcherBlock" parent="World" index="10" instance=ExtResource( 12 )]
+[node name="toDungon" parent="World" index="10" instance=ExtResource( 12 )]
 
-position = Vector2( 1447.81, -742.829 )
-scale = Vector2( 2.33551, 1 )
-room_name = "55"
+position = Vector2( 2387.19, 1249.18 )
+scale = Vector2( 0.70754, 1.06752 )
+worldScene = "res://resources/levels/Rooms/Merlins_tomb/Tomb.tscn"
 
 [node name="DialogueUI" parent="World" index="11"]
 
+visible = false
 margin_bottom = -64.0
 dialogue_file_names = [ "complex" ]
 dialogue_file_locations = [ "res://test/dialogue/complex.fml" ]
@@ -277,6 +278,7 @@ dialogue_file_locations = [ "res://test/dialogue/complex.fml" ]
 [node name="Entities" parent="World" index="12"]
 
 editor/display_folded = true
+visible = false
 
 [node name="DialogueTest" type="Node" parent="World" index="13"]
 
@@ -284,6 +286,7 @@ script = SubResource( 1 )
 
 [node name="CombatTest" type="Button" parent="World" index="14"]
 
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -307,8 +310,6 @@ text = "Combat Test"
 flat = false
 align = 1
 script = SubResource( 2 )
-
-[connection signal="body_entered" from="World/SwitcherBlock" to="." method="_on_SwitcherBlock_body_entered"]
 
 [connection signal="on_context_finish" from="World/DialogueUI" to="World/DialogueTest" method="_on_DialogueUI_on_context_finish"]
 

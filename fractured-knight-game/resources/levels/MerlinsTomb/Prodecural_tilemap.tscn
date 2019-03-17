@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://resources/levels/world_map/world_tileset/DungeonCrawl_ProjectUtumnoTileset.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 15.226, 15.066 )
 
 [node name="Node2D" type="Node2D" index="0"]
 
@@ -17,9 +22,24 @@ _sections_unfolded = [ "Animation", "Offset", "Region" ]
 
 position = Vector2( 565.284, 188.677 )
 texture = ExtResource( 1 )
-centered = false
 region_enabled = true
 region_rect = Rect2( 1472, 384, 32, 32 )
 _sections_unfolded = [ "Animation", "Offset", "Region" ]
+
+[node name="Area2D" type="Area2D" parent="1" index="0"]
+
+position = Vector2( 0.231995, 0.115982 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="1/Area2D" index="0"]
+
+position = Vector2( -0.115967, 0 )
+shape = SubResource( 1 )
 
 

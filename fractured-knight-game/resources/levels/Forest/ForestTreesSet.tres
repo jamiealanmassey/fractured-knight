@@ -49,4 +49,5 @@
 4/occluder_offset = Vector2( 64, 64 )
 4/navigation_offset = Vector2( 64, 64 )
 4/shapes = [  ]
+_sections_unfolded = [ "0", "1", "2", "3", "4" ]
 

@@ -70,7 +70,7 @@ func make_areas():
 	path = find_min_span_tree(pos_rooms)
 	map()
 	player()
-	save_game_scene()
+	#save_game_scene()
 
 
 ## Draws paths to conect the rooms but draww the lines stright
@@ -197,7 +197,6 @@ func finding_rooms():
 func player():
 	var play = player.instance()
 	add_child(play)
-	$Player.get_node("CollisionShape2D").disabled = true
 	$Player.position = starting_room.position
 	
 
