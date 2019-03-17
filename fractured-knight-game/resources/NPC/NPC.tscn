@@ -53,6 +53,7 @@ patrol_path = null
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "default"
+frame = 1
 playing = true
 _sections_unfolded = [ "Material", "Transform", "Visibility" ]
 

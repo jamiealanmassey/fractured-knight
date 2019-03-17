@@ -183,9 +183,10 @@ func calculate_movement(position_a, position_b):
 	var dist_x_abs = abs(dist_x)
 	var dist_y_abs = abs(dist_y)
 	
-	if (dist_x_abs > patrol_dist_bias && dist_x_abs >= dist_y_abs):
+	if (dist_x_abs > patrol_dist_bias):
 		patrol_velocity.x = max(-1, min(1, dist_x)) * movement_speed
-	elif (dist_y_abs > patrol_dist_bias):
+	
+	if (dist_y_abs > patrol_dist_bias):
 		patrol_velocity.y = max(-1, min(1, dist_y)) * movement_speed
 	
 	return (abs(dist_x) <= patrol_dist_bias && abs(dist_y) <= patrol_dist_bias)
