@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://resources/NPC/NPC.gd" type="Script" id=1]
 [ext_resource path="res://resources/NPC/emote_dots1.png" type="Texture" id=2]
 [ext_resource path="res://resources/NPC/emote_dots2.png" type="Texture" id=3]
 [ext_resource path="res://resources/NPC/emote_dots3.png" type="Texture" id=4]
+[ext_resource path="res://resources/NPC/danger.png" type="Texture" id=5]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -14,27 +15,39 @@ animations = [ {
 "speed": 2.5
 } ]
 
-[sub_resource type="CircleShape2D" id=2]
-
-custom_solver_bias = 0.0
-radius = 10.0
-
 [sub_resource type="CircleShape2D" id=3]
 
 custom_solver_bias = 0.0
 radius = 150.0
 
-[node name="NPC" type="Node2D"]
+[sub_resource type="RectangleShape2D" id=4]
 
+custom_solver_bias = 0.0
+extents = Vector2( 29.5077, 5.54074 )
+
+[node name="NPC" type="KinematicBody2D" index="0"]
+
+input_pickable = false
+collision_layer = 4
+collision_mask = 2
+collision/safe_margin = 0.08
 script = ExtResource( 1 )
+_sections_unfolded = [ "Collision" ]
 combat_actor = null
 dialogue_name = null
 frames = null
-collision_size = 10
-npc_type = 0
-interaction_radius = 150
+npc_type = null
+npc_state = null
+npc_patrol = null
+interaction_radius = 40
+chase_radius = 250
+movement_speed = 150
+min_idle_time = 0.5
+max_idle_time = 1.0
+idle_chance = 0.5
 interaction_offset = 80
 interaction_anim_speed = 0.25
+patrol_path = null
 
 [node name="InteractionIcon" type="AnimatedSprite" parent="." index="0"]
 
@@ -45,7 +58,13 @@ frame = 2
 playing = true
 _sections_unfolded = [ "Material", "Transform", "Visibility" ]
 
-[node name="Polygon2D" type="Polygon2D" parent="." index="1"]
+[node name="ChaseIcon" type="Sprite" parent="." index="1"]
+
+scale = Vector2( 0.08, 0.08 )
+texture = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Polygon2D" type="Polygon2D" parent="." index="2"]
 
 polygon = PoolVector2Array( -30, -40, -30, 40, 30, 40, 30, -40 )
 uv = PoolVector2Array(  )
@@ -61,43 +80,39 @@ invert_enable = false
 invert_border = 100.0
 _sections_unfolded = [ "Transform" ]
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="2"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="3"]
 
 animation = "default"
-_sections_unfolded = [ "Transform" ]
 
-[node name="CollisionDetection" type="Area2D" parent="." index="3"]
-
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionDetection" index="0"]
-
-shape = SubResource( 2 )
-
-[node name="Area2D" type="Area2D" parent="." index="4"]
+[node name="InteractionArea2D" type="Area2D" parent="." index="4"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+collision_layer = 0
 collision_mask = 16
 audio_bus_override = false
 audio_bus_name = "Master"
 _sections_unfolded = [ "Audio Bus", "Collision" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea2D" index="0"]
 
 shape = SubResource( 3 )
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="5"]
 
-[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
+position = Vector2( 0, 34.9137 )
+scale = Vector2( 1, 0.928082 )
+shape = SubResource( 4 )
+
+[connection signal="area_entered" from="InteractionArea2D" to="." method="_on_InteractionArea2D_area_entered"]
+
+[connection signal="area_exited" from="InteractionArea2D" to="." method="_on_InteractionArea2D_area_exited"]
+
+[connection signal="area_shape_entered" from="InteractionArea2D" to="." method="_on_interaction_shape_entered"]
+
+[connection signal="area_shape_exited" from="InteractionArea2D" to="." method="_on_interaction_shape_exited"]
 
 

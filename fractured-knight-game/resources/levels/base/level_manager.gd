@@ -5,7 +5,7 @@ var pause_menu = null
 
 func _ready():
 	var dialogue = get_node('World/DialogueUI')
-	var player = get_node('World/Player')
+	var player = get_node('World/Entities/Player')
 	pause_menu = get_node('PauseMenu')
 	
 	if (dialogue != null):
@@ -23,6 +23,14 @@ func _process(delta):
 func start_dialogue(name):
 	get_node('World/DialogueUI').start_dialogue(name)
 	get_node('World/Entities/Player').lock_movement = true
+	
+
+func is_dialogue_playing():
+	var dialogue = get_node('World/DialogueUI')
+	if (dialogue != null && dialogue.processing):
+		return true
+		
+	return false
 	
 
 func initiate_combat(enemy):
