@@ -15,14 +15,14 @@ export (SpriteFrames) var frames
 export (NPCType) var npc_type = NPCType.Friendly
 export (NPCState) var npc_state = NPCState.Patrol
 export (NPCPatrol) var npc_patrol = NPCPatrol.Continuous
-export (int) var collision_size = 10
+export (int) var interaction_radius = 40
+export (int) var chase_radius = 250
 export (float) var movement_speed = 150
 export (float) var min_idle_time = 0.5
 export (float) var max_idle_time = 1.0
 export (float, 0, 1) var idle_chance = 0.5
 
 # Interaction animation tweakable variables
-export (float) var interaction_radius = 150
 export (float) var interaction_offset = 80
 export (float) var interaction_anim_speed = 0.25
 
@@ -40,12 +40,18 @@ var npc_state_last = NPCState.Patrol
 var patrol_curr_index = 0
 var patrol_velocity = Vector2()
 var patrol_dist_bias = 5
+var patrol_last_location = Vector2()
+
+var chase_area = null
+var chase_area_collider = null
+var chase_area_shape = null
+var chase_distance = 0
 
 func _ready():
 	interact_scale_x = $InteractionIcon.scale.x
 	interact_position_x = $InteractionIcon.position.y
 	interact_icon_tweener = Tween.new()
-	$CollisionDetection/CollisionShape2D.shape.radius = collision_size
+	$InteractionArea2D/CollisionShape2D.shape.radius = interaction_radius
 	$InteractionIcon.scale.x = 0
 	$InteractionIcon.modulate.a = 0
 	$AnimatedSprite.frames = self.frames
@@ -56,6 +62,19 @@ func _ready():
 	idle_timer.connect('timeout', self, '_on_idle_timeout')
 	self.add_child(interact_icon_tweener)
 	self.add_child(idle_timer)
+	
+	if (npc_type == NPCType.Hostile):
+		chase_distance = chase_radius * chase_radius
+		chase_area = Area2D.new()
+		chase_area_collider = CollisionShape2D.new()
+		chase_area_shape = CircleShape2D.new()
+		chase_area_shape.radius = chase_radius
+		chase_area_collider.set_shape(chase_area_shape)
+		chase_area.add_child(chase_area_collider)
+		chase_area.set_collision_mask_bit(16, true)
+		chase_area.connect('body_entered', self, '_on_chase_body_entered')
+		chase_area.connect('body_exited', self, '_on_chase_body_exited')
+		self.add_child(chase_area)
 	
 	if (npc_patrol == NPCPatrol.BackForward || npc_patrol == NPCPatrol.Reverse):
 		patrol_curr_index = patrol_path.size() - 1
@@ -87,6 +106,18 @@ func process_hostile_npc():
 			pass
 		NPCState.Patrol:
 			self.process_patrol()
+		NPCState.Chase:
+			if current_player != null:
+				var position_b = patrol_last_location
+				var dist = (pow(position.x - position_b.x, 2) + pow(position.y - position_b.y, 2))
+				calculate_movement(position, current_player.position)
+				if dist > chase_distance + (15 * 15):
+					switch_npc_state(NPCState.Return)
+			else:
+				switch_npc_state(NPCState.Return)
+		NPCState.Return:
+			if calculate_movement(position, patrol_last_location):
+				switch_npc_state(NPCState.Patrol)
 
 func process_friendly_npc():
 	var level_manager = get_node('/root/LevelManager')
@@ -118,7 +149,8 @@ func process_friendly_interaction(level_manager):
 	
 
 func process_patrol():
-	if (patrol_path.size() == 0):
+	if (patrol_path == null || patrol_path.size() == 0):
+		switch_npc_state(NPCState.Idle)
 		return
 	
 	if (calculate_movement(position, patrol_path[patrol_curr_index])):
@@ -148,10 +180,12 @@ func process_patrol():
 func calculate_movement(position_a, position_b):
 	var dist_x = position_b.x - position_a.x
 	var dist_y = position_b.y - position_a.y
-	if (abs(dist_x) > patrol_dist_bias):
-		patrol_velocity.x = max(-1, min(1, dist_x)) * movement_speed
+	var dist_x_abs = abs(dist_x)
+	var dist_y_abs = abs(dist_y)
 	
-	if (abs(dist_y) > patrol_dist_bias):
+	if (dist_x_abs > patrol_dist_bias && dist_x_abs >= dist_y_abs):
+		patrol_velocity.x = max(-1, min(1, dist_x)) * movement_speed
+	elif (dist_y_abs > patrol_dist_bias):
 		patrol_velocity.y = max(-1, min(1, dist_y)) * movement_speed
 	
 	return (abs(dist_x) <= patrol_dist_bias && abs(dist_y) <= patrol_dist_bias)
@@ -178,9 +212,17 @@ func is_idling():
 func _on_idle_timeout():
 	self.switch_npc_state(npc_state_last)
 
-func _on_Area2D_body_entered(area):
-	is_inside = false
-	current_player = area.get_parent()
+func _on_chase_body_entered(body):
+	current_player = body
+	patrol_last_location = position if (self.npc_state == NPCState.Patrol || self.npc_state == NPCState.Idle) else patrol_last_location
+	switch_npc_state(NPCState.Chase)
+
+func _on_chase_body_exited(body):
+	current_player = null
+	switch_npc_state(NPCState.Return)
+
+func _on_InteractionArea2D_area_entered(area):
+	is_inside = true
 	match self.npc_type:
 		NPCType.Friendly:
 			interact_icon_tweener.stop_all()
@@ -190,12 +232,10 @@ func _on_Area2D_body_entered(area):
 			interact_icon_tweener.start()
 		NPCType.Hostile:
 			get_node('/root/LevelManager').initiate_combat(self)
-		
-	
 
-func _on_Area2D_body_exited(area):
+
+func _on_InteractionArea2D_area_exited(area):
 	is_inside = false
-	current_player = null
 	match self.npc_type:
 		NPCType.Friendly:
 			interact_icon_tweener.stop_all()
@@ -203,6 +243,5 @@ func _on_Area2D_body_exited(area):
 			interact_icon_tweener.interpolate_property($InteractionIcon, 'scale:x', $InteractionIcon.scale.x, 0, interaction_anim_speed, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 			interact_icon_tweener.interpolate_property($InteractionIcon, 'modulate:a', $InteractionIcon.modulate.a, 0, interaction_anim_speed, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 			interact_icon_tweener.start()
-			
 		
 	
