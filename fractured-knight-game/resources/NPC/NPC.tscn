@@ -29,7 +29,7 @@ radius = 150.0
 custom_solver_bias = 0.0
 extents = Vector2( 29.5077, 5.54074 )
 
-[node name="NPC" type="KinematicBody2D"]
+[node name="NPC" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 4
@@ -44,13 +44,14 @@ npc_type = null
 npc_state = null
 npc_patrol = null
 collision_size = 10
+movement_speed = 150
 min_idle_time = 0.5
 max_idle_time = 1.0
 idle_chance = 0.5
 interaction_radius = 150
 interaction_offset = 80
 interaction_anim_speed = 0.25
-patrol_path = PoolVector2Array(  )
+patrol_path = null
 
 [node name="InteractionIcon" type="AnimatedSprite" parent="." index="0"]
 

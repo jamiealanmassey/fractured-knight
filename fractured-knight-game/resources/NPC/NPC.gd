@@ -16,6 +16,7 @@ export (NPCType) var npc_type = NPCType.Friendly
 export (NPCState) var npc_state = NPCState.Patrol
 export (NPCPatrol) var npc_patrol = NPCPatrol.Continuous
 export (int) var collision_size = 10
+export (float) var movement_speed = 150
 export (float) var min_idle_time = 0.5
 export (float) var max_idle_time = 1.0
 export (float, 0, 1) var idle_chance = 0.5
@@ -26,7 +27,7 @@ export (float) var interaction_offset = 80
 export (float) var interaction_anim_speed = 0.25
 
 # Patrol and Chase tweakable variables
-export (Array, Vector2) var patrol_path = PoolVector2Array()
+export (Array, Vector2) var patrol_path
 
 # Internal variables
 var interact_icon_tweener = null
@@ -38,8 +39,7 @@ var current_player = null
 var npc_state_last = NPCState.Patrol
 var patrol_curr_index = 0
 var patrol_velocity = Vector2()
-var patrol_speed = 250
-var patrol_dist_bias = 4
+var patrol_dist_bias = 5
 
 func _ready():
 	interact_scale_x = $InteractionIcon.scale.x
@@ -56,6 +56,9 @@ func _ready():
 	idle_timer.connect('timeout', self, '_on_idle_timeout')
 	self.add_child(interact_icon_tweener)
 	self.add_child(idle_timer)
+	
+	if (npc_patrol == NPCPatrol.BackForward || npc_patrol == NPCPatrol.Reverse):
+		patrol_curr_index = patrol_path.size() - 1
 	
 	if (combat_actor != null):
 		combat_actor = combat_actor.duplicate(true)
@@ -79,12 +82,13 @@ func _physics_process(delta):
 	move_and_slide(patrol_velocity)
 
 func process_hostile_npc():
-	pass
+	match self.npc_state:
+		NPCState.Idle:
+			pass
+		NPCState.Patrol:
+			self.process_patrol()
 
 func process_friendly_npc():
-	if !is_inside || dialogue_name == null:
-		return
-	
 	var level_manager = get_node('/root/LevelManager')
 	match self.npc_state:
 		NPCState.Talk:
@@ -105,6 +109,9 @@ func process_radius_interaction():
 		start_idling()
 
 func process_friendly_interaction(level_manager):
+	if !is_inside || dialogue_name == null:
+		return
+	
 	if Input.is_action_just_pressed('interact'):
 		level_manager.start_dialogue(dialogue_name)
 		self.switch_npc_state(NPCState.Talk)
@@ -118,33 +125,34 @@ func process_patrol():
 		match self.npc_patrol:
 			NPCPatrol.Continuous:
 				patrol_curr_index = patrol_curr_index + 1
-				patrol_curr_index = 0 if patrol_curr_index == patrol_path.size() else patrol_curr_index
+				patrol_curr_index = 0 if patrol_curr_index == patrol_path.size() - 1 else patrol_curr_index
 			NPCPatrol.BackForward:
 				patrol_curr_index = patrol_curr_index - 1
 				npc_patrol = NPCPatrol.ForwardBack if patrol_curr_index == 0 else NPCPatrol.BackForward
 			NPCPatrol.ForwardBack:
 				patrol_curr_index = patrol_curr_index + 1
-				npc_patrol = NPCPatrol.BackForward if patrol_curr_index == patrol_path.size() else NPCPatrol.ForwardBack
+				npc_patrol = NPCPatrol.BackForward if patrol_curr_index == patrol_path.size() - 1 else NPCPatrol.ForwardBack
 			NPCPatrol.Once:
 				patrol_curr_index = patrol_curr_index + 1
-				npc_patrol = NPCPatrol.None if patrol_curr_index == patrol_path.size() else NPCPatrol.Once
+				npc_patrol = NPCPatrol.None if patrol_curr_index == patrol_path.size() - 1 else NPCPatrol.Once
 			NPCPatrol.Reverse:
 				patrol_curr_index = patrol_curr_index - 1
 				npc_patrol = NPCPatrol.None if patrol_curr_index == 0 else NPCPatrol.Reverse
 			NPCPatrol.OnceReverse:
 				patrol_curr_index = patrol_curr_index + 1
-				npc_patrol = NPCPatrol.Reverse if patrol_curr_index == patrol_path.size() else NPCPatrol.OnceReverse
+				npc_patrol = NPCPatrol.Reverse if patrol_curr_index == patrol_path.size() - 1 else NPCPatrol.OnceReverse
 			
-		
+		if (randf() < idle_chance):
+			start_idling()
 
 func calculate_movement(position_a, position_b):
-	var dist_x = position_a - position_b
-	var dist_y = position_a - position_b
+	var dist_x = position_b.x - position_a.x
+	var dist_y = position_b.y - position_a.y
 	if (abs(dist_x) > patrol_dist_bias):
-		patrol_velocity.x = max(-1, min(1, dist_x)) * patrol_speed
+		patrol_velocity.x = max(-1, min(1, dist_x)) * movement_speed
 	
 	if (abs(dist_y) > patrol_dist_bias):
-		patrol_velocity.y = max(-1, min(1, dist_y)) * patrol_speed
+		patrol_velocity.y = max(-1, min(1, dist_y)) * movement_speed
 	
 	return (abs(dist_x) <= patrol_dist_bias && abs(dist_y) <= patrol_dist_bias)
 
