@@ -3,7 +3,7 @@
 [ext_resource path="res://resources/combat/combat_core/combat.gd" type="Script" id=1]
 [ext_resource path="res://resources/combat/combat_ui/combat_sprite/combat_sprite.tscn" type="PackedScene" id=2]
 [ext_resource path="res://resources/combat/combat_ui/health_bar/health_bar.tscn" type="PackedScene" id=3]
-[ext_resource path="res://resources/combat/Combat background images/image1.jpeg" type="Texture" id=4]
+[ext_resource path="res://resources/combat/Combat background images/image4.jpg" type="Texture" id=4]
 [ext_resource path="res://resources/combat/combat_ui/combat_interface.tscn" type="PackedScene" id=5]
 
 [node name="Combat" type="Control" index="0"]
@@ -46,8 +46,7 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="background_image" type="Sprite" parent="." index="4"]
 
-position = Vector2( 766.166, 332.77 )
-scale = Vector2( 2.25, 2.25 )
+position = Vector2( 946.368, 274.469 )
 texture = ExtResource( 4 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
@@ -55,11 +54,11 @@ _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
 _sections_unfolded = [ "Focus", "Grow Direction", "Hint", "Margin", "Mouse", "Rect" ]
 
-[connection signal="UI_get_ready" from="." to="combatInterface" method="_on_Combat_UI_get_ready"]
+[connection signal="UI_get_ready" from="." to="enemy_combat_sprite" method="combat_started"]
 
 [connection signal="UI_get_ready" from="." to="player_combat_sprite" method="combat_started"]
 
-[connection signal="UI_get_ready" from="." to="enemy_combat_sprite" method="combat_started"]
+[connection signal="UI_get_ready" from="." to="combatInterface" method="_on_Combat_UI_get_ready"]
 
 [connection signal="combat_finished" from="." to="combatInterface" method="_on_Combat_combat_finished"]
 
@@ -67,9 +66,9 @@ _sections_unfolded = [ "Focus", "Grow Direction", "Hint", "Margin", "Mouse", "Re
 
 [connection signal="display_text" from="." to="combatInterface" method="_on_Combat_display_text"]
 
-[connection signal="enemy_attack_hit" from="." to="player_combat_sprite" method="on_received_hit"]
-
 [connection signal="enemy_attack_hit" from="." to="enemy_combat_sprite" method="on_attack_hit"]
+
+[connection signal="enemy_attack_hit" from="." to="player_combat_sprite" method="on_received_hit"]
 
 [connection signal="enemy_attack_miss" from="." to="enemy_combat_sprite" method="on_attack_miss"]
 
@@ -77,9 +76,9 @@ _sections_unfolded = [ "Focus", "Grow Direction", "Hint", "Margin", "Mouse", "Re
 
 [connection signal="enemy_health_update" from="." to="enemy_health_bar" method="update_health"]
 
-[connection signal="player_attack_hit" from="." to="player_combat_sprite" method="on_attack_hit"]
-
 [connection signal="player_attack_hit" from="." to="enemy_combat_sprite" method="on_received_hit"]
+
+[connection signal="player_attack_hit" from="." to="player_combat_sprite" method="on_attack_hit"]
 
 [connection signal="player_attack_miss" from="." to="player_combat_sprite" method="on_attack_miss"]
 
