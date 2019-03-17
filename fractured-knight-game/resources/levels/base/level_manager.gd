@@ -28,6 +28,9 @@ func start_dialogue(name):
 	get_node('World/Entities/Player').lock_movement = true
 	
 
+func set_player_position(position):
+	$World/Entities/Player.position = position
+
 func initiate_combat(enemy):
 	var combat_scene = load('res://resources/combat/combat_core/combat.tscn')
 	var camera_pos = get_node('/root/game_manager').current_camera.get_camera_position()

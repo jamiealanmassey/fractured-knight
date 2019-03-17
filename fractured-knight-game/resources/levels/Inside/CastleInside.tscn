@@ -5,7 +5,7 @@
 [ext_resource path="res://resources/levels/level_room_switcher/SwitcherBlock.tscn" type="PackedScene" id=3]
 [ext_resource path="res://resources/fonts/dynamic_font_btn.tres" type="DynamicFont" id=4]
 
-[node name="LevelManager" index="0" instance=ExtResource( 1 )]
+[node name="LevelManager" instance=ExtResource( 1 )]
 
 [node name="Room" parent="World" index="0" instance=ExtResource( 2 )]
 
@@ -17,6 +17,7 @@ position = Vector2( 42, 44 )
 
 position = Vector2( 2583.96, 1656.7 )
 worldScene = "res://resources/levels/world_map/world_tilemap/master_world_plane.tscn"
+entry_position = Vector2( 3720, -2700 )
 
 [node name="Label" type="Label" parent="World/SwitcherBlock" index="1"]
 

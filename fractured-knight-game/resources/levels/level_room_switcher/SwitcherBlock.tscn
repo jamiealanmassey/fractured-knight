@@ -19,6 +19,7 @@ audio_bus_name = "Master"
 script = ExtResource( 1 )
 _sections_unfolded = [ "Visibility" ]
 worldScene = null
+entry_position = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
