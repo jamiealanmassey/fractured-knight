@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://resources/combat/combat_core/actor.gd" type="Script" id=1]
+
+[resource]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Resource" ]
+stats = {
+"accuracy": 0,
+"damage": 0
+}
+moves = null
+health = null
+
