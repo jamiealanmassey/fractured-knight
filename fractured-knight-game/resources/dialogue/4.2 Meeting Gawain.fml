@@ -1,0 +1,98 @@
+write The Detective: Sir Gawain? 
+write ... 
+write Gawain: Yes, and who are you? 
+write The Detective: I am the Detective, I am a companion of Bedivere 
+write The Detective: I am here to fix what has been done. 
+write ... 
+write Gawain: Detective, tell me, how do you intend to fix what has been done? 
+write The Detective: I plan to bring the pieces of the round table to Merlin’s tomb in order to combine them together and correct the timeline. 
+write The Detective: I was told you would know where to find the tomb.
+write ...  
+write Gawain: I am aware of the location of the tomb, but that would not fix what has been done. 
+write Gawain: Tell me Detective, what information has Bedivere bestowed upon you? 
+write The Detective: He told me that the knights turned on each other. 
+write The Detective: That Merlin banished you all from the round table and your reality. 
+write The Detective: It cost him his life, but he did it to protect innocent people
+write The Detective: From a war they would not survive. 
+write ... 
+write Gawain: Did he tell you why? 
+write The Detective: Tell me why? 
+write Gawain: Yes, why a war was breaking out amongst my brothers? 
+write ...
+write The Detective: No, he didn't. 
+write Gawain: Lancelot caused our downfall. 
+write Gawain: He was a good man, but he fell victim to his desires. 
+write The Detective: Desires? 
+write Gawain: Love, Detective. He desired a woman. 
+write The Detective: Love? The knights of the round table were banished because of love? 
+write ...
+write Gawain: It was a forbidden love, she was already wed. 
+write The Detective: Lancelot fell in love with a married woman? 
+write Gawain: Not just a Married woman. 
+write Gawain: Lancelot fell in love with Guinevere. 
+write The Detective: Arthur's wife?? 
+write ... 
+write Gawain: Correct. Their actions together casued the end of the round table. 
+write Gawain: Arthur was furious. He unleashed his wrath upon Lancelot. 
+write Gawain: The knights had to decide who they were loyal to. 
+write Gawain: Some chose to side with Arthur, other chose to side with Lancelot. 
+write The Detective: So Merlin intervened? 
+write ...
+write Gawain: Yes. Merlin had bestowed us all with increased power through his magic. 
+write Gawain: A war between two armies with that level of strength, the results would have been 
+write ... 
+write Gawain: Catastrophic. 
+write Gawain: Detective, it is my duty to drive Excalibur through the heart of that traitor. 
+write ...
+write The Detective: Gawain, I understand your resentment. 
+write The Detective: But I cannot allow you to do that. 
+write Gawain: It is not your duty to protect a traitor, Detective. 
+write The Detective: No, but I also cannot allow you to take his life. 
+write ... 
+write Gawain: Why not?
+write The Detective: You are all bound to the table, the magic that is coursing through your veins 
+write The Detective: Is the same magic that Merlin used to banish you all, it is the same magic that is in his tomb.
+write ... 
+write The Detective: Gawain, the only way to put things right is for every knight to be present when the round table is combined 
+write Gawain: He has betrayed the round table; his soul does not deserve redemption. 
+write The Detective: When the timeline has been fixed, Lancelot can be punished accordingly
+write The Detective: Until then, you must show restraint. 
+write The Detective: If a single knight dies before the round table is put together, 
+write The Detective: the consequences will be dire. 
+write The Detective: If we can't fix what has been done, the two universes will collide. 
+write The Detective: This universe and every aspect of it, will cease to exist, as will yours. 
+write ... 
+write Gawain: I will only agree to your terms, if you allow me to bring Lancelot to justice.
+write The Detective: What you do to him in your own time is none of my concern, 
+write The Detective: As long as he lives long enough to make it back there. But I need your help. 
+write ... 
+write Gawain: What do you require from me? 
+write The Detective: I need to know where Merlin’s tomb is. 
+write Gawain: Merlin’s tomb cannot simply be accessed by mere mortals; it is hidden in this world, 
+write Gawain: only to be found by those who are worthy. 
+write Gawain: The knights can enter it, if they know the location, but mortals need protection. 
+write ...
+write The Detective: Protection?
+write ... 
+write Gawain: You must take Caliburn into the heart of the lake, 
+write Gawain: Merlin has bestowed Caliburn with the power to protect whoever wields it. 
+write Gawain: This is the only way you will be granted safe passage to the tomb. 
+write The Detective: Caliburn?  
+write PL2010: Caliburn is another name for Excalibur. 
+write The Detective: How am I supposed to find that?! 
+write Gawain: You simply ask, Detective. 
+write ...
+write PL2010: Told you 
+write The Detective: Shut up, pl. Gawain you have Excalibur? 
+write Gawain: Yes, I will allow you to use it to gain passage into the tomb, 
+write Gawain: but you must not use it against mortals, 
+write Gawain: Excalibur was is more powerful than you could comprehend. 
+write ... 
+write The Detective: Okay, don’t use it on mortals. Got it! 
+write Gawain: I will meet you at the tomb when you have gathered all the pieces, should you survive. 
+trigger[excalibur]
+write PL2010: Sir scans reveal two knights at the lake, 
+write PL2010: further scans show that one of the knights is Galahad, 
+write PL2010: the identity of the other knight is still unknown. 
+write ...
+write The Detective: It must be Lancelot.     

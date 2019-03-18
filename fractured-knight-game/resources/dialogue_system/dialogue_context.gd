@@ -11,6 +11,7 @@ enum WriteState {
 }
 
 var DialogueNode = load('res://resources/dialogue_system/dialogue_node.gd')
+var DialogueParser = load('res://resources/dialogue_system/dialogue_parser.gd')
 
 export (Array, String) var dialogue_file_names = []
 export (Array, String) var dialogue_file_locations = []
@@ -24,6 +25,7 @@ var wait_branch = false                ## State indicating that the context is w
 var write_state = WriteState.WriteNone ## State indicating that the context is waiting for the player to progress write node
 var error = null                       ## State of the context as an error (if one exists we cannot progress)
 var test_mode = false                  ## Special flag for testing
+var parser = null
 
 signal on_context_begin   ## Called when the context has begun or has been reset
 signal on_context_process ## Called each time the context progresses its state through the graph to a new node
@@ -31,6 +33,7 @@ signal on_context_finish  ## Called when the end of the current dialogue graph i
 signal on_context_trigger ## Called when a trigger has been executed in the script
 
 func _ready():
+	parser = DialogueParser.new()
 	if dialogue_file_names != null:
 		for index in dialogue_file_names.size(): 
 			self.add_dialogue_file(dialogue_file_names[index], dialogue_file_locations[index])
@@ -47,8 +50,9 @@ func _process(delta):
 
 ## Parses the given dialogue file and adds it to the context for use in the Dialogue System
 func add_dialogue_file(dialogue_name, file_name):
-	$Parser.parse(file_name)
-	dialogues[dialogue_name] = $Parser.result_full
+	parser = DialogueParser.new()
+	parser.parse(file_name)
+	dialogues[dialogue_name] = parser.result_full
 
 ## Initiates the Dialogue Context with a new dialogue that has been stored
 func start_dialogue(dialogue_name, process = true):
@@ -176,6 +180,3 @@ func load_symbols():
 	symbol_file.close()
 	return symbol_json
 	
-
-func _on_Player_player_moved(position):
-	self.rect_position = position
