@@ -32,7 +32,7 @@ collision_layer = 4
 collision_mask = 2
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision" ]
+_sections_unfolded = [ "Collision", "Transform" ]
 combat_actor = null
 dialogue_name = null
 frames = null
@@ -45,47 +45,35 @@ movement_speed = 150
 min_idle_time = 0.5
 max_idle_time = 1.0
 idle_chance = 0.5
+sprite_offset_x = 0
 interaction_offset = 80
 interaction_anim_speed = 0.25
 patrol_path = null
 
 [node name="InteractionIcon" type="AnimatedSprite" parent="." index="0"]
 
+modulate = Color( 1, 1, 1, 0 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "default"
-frame = 2
 playing = true
 _sections_unfolded = [ "Material", "Transform", "Visibility" ]
 
 [node name="ChaseIcon" type="Sprite" parent="." index="1"]
 
+modulate = Color( 1, 1, 1, 0 )
 scale = Vector2( 0.08, 0.08 )
 texture = ExtResource( 5 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="Polygon2D" type="Polygon2D" parent="." index="2"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="2"]
 
-polygon = PoolVector2Array( -30, -40, -30, 40, 30, 40, 30, -40 )
-uv = PoolVector2Array(  )
-color = Color( 0.0078125, 0, 1, 1 )
-vertex_colors = PoolColorArray(  )
-offset = Vector2( 0, 0 )
-antialiased = false
-texture = null
-texture_offset = Vector2( 0, 0 )
-texture_scale = Vector2( 1, 1 )
-texture_rotation_degrees = 0.0
-invert_enable = false
-invert_border = 100.0
-_sections_unfolded = [ "Transform" ]
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="3"]
-
+scale = Vector2( 0.08, 0.08 )
 animation = "idle"
+_sections_unfolded = [ "Transform" ]
 playing = true
 
-[node name="InteractionArea2D" type="Area2D" parent="." index="4"]
+[node name="InteractionArea2D" type="Area2D" parent="." index="3"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -102,7 +90,7 @@ _sections_unfolded = [ "Audio Bus", "Collision" ]
 
 shape = SubResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="4"]
 
 position = Vector2( 0, 34.9137 )
 scale = Vector2( 1, 0.928082 )
