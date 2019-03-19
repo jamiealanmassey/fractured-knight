@@ -1,12 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://resources/menus/main_menu/main_menu.gd" type="Script" id=1]
 [ext_resource path="res://resources/menus/main_menu/Images/BackgroundWallaper.jpg" type="Texture" id=2]
 [ext_resource path="res://resources/menus/main_menu/Images/Logo.png" type="Texture" id=3]
 [ext_resource path="res://resources/menus/main_menu/PlayfairDisplay-Bold.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://resources/menus/main_menu/about.gd" type="Script" id=5]
-[ext_resource path="res://resources/menus/main_menu/Images/White_box_28x52.png" type="Texture" id=6]
-[ext_resource path="res://resources/menus/settings_menu/settings_menu.tscn" type="PackedScene" id=7]
+[ext_resource path="res://resources/menus/settings_menu/settings_menu.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -33,7 +32,7 @@ use_mipmaps = false
 use_filter = false
 font_data = ExtResource( 4 )
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" index="0"]
 
 modulate = Color( 0.961182, 0.96875, 0.965912, 1 )
 anchor_left = 0.0
@@ -278,14 +277,20 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Background" type="Sprite" parent="AboutUs" index="0"]
+[node name="Background" type="Panel" parent="AboutUs" index="0"]
 
-modulate = Color( 0.153107, 0.675781, 0.504279, 1 )
-position = Vector2( 0, 7.78125 )
-scale = Vector2( 0.705532, 0.409453 )
-texture = ExtResource( 6 )
-centered = false
-_sections_unfolded = [ "Region", "Transform", "Visibility" ]
+self_modulate = Color( 0.957031, 0.934601, 0.934601, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Region", "Transform" ]
 
 [node name="RichTextLabel" type="Label" parent="AboutUs" index="2"]
 
@@ -304,7 +309,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Fractured Knight is a medieval-space themed adventure game that incorporates text-based interaction and has a combat system that takes heavy influence from Pokémon!"
 align = 1
 valign = 1
@@ -312,7 +317,7 @@ autowrap = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Grow Direction", "custom_fonts" ]
+_sections_unfolded = [ "custom_colors" ]
 
 [node name="Button" type="Button" parent="AboutUs" index="3"]
 
@@ -333,7 +338,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color_disabled = Color( 0.636719, 0.104462, 0.104462, 1 )
-custom_colors/font_color = Color( 0.308664, 0.0254059, 0.722656, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 toggle_mode = false
@@ -345,7 +350,110 @@ flat = true
 align = 1
 _sections_unfolded = [ "custom_colors" ]
 
-[node name="SettingsMenu" parent="." index="4" instance=ExtResource( 7 )]
+[node name="Help" type="PopupMenu" parent="." index="4"]
+
+editor/display_folded = true
+visible = false
+modulate = Color( 0.941406, 0.90831, 0.90831, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 708.0
+margin_top = 172.0
+margin_right = 1274.0
+margin_bottom = 793.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+popup_exclusive = false
+items = [  ]
+hide_on_state_item_selection = false
+script = ExtResource( 5 )
+_sections_unfolded = [ "Visibility" ]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Background" type="Panel" parent="Help" index="0"]
+
+self_modulate = Color( 0.957031, 0.934601, 0.934601, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Region", "Transform" ]
+
+[node name="RichTextLabel" type="Label" parent="Help" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 33.0
+margin_top = 35.0
+margin_right = 508.0
+margin_bottom = 89.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "HELP"
+align = 1
+valign = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors" ]
+
+[node name="Button" type="Button" parent="Help" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 144.0
+margin_top = 524.0
+margin_right = 408.0
+margin_bottom = 582.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color_disabled = Color( 0.636719, 0.104462, 0.104462, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Close"
+flat = true
+align = 1
+_sections_unfolded = [ "custom_colors" ]
+
+[node name="SettingsMenu" parent="." index="5" instance=ExtResource( 6 )]
 
 visible = false
 
@@ -360,5 +468,7 @@ visible = false
 [connection signal="pressed" from="VBoxContainer/BtnQuit" to="." method="_on_BtnQuit_pressed"]
 
 [connection signal="pressed" from="AboutUs/Button" to="AboutUs" method="_on_Button_pressed"]
+
+[connection signal="pressed" from="Help/Button" to="Help" method="_on_Button_pressed"]
 
 
