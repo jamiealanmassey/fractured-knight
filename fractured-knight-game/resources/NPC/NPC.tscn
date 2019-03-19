@@ -71,6 +71,7 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 scale = Vector2( 0.08, 0.08 )
 animation = "idle"
 _sections_unfolded = [ "Transform" ]
+playing = true
 
 [node name="InteractionArea2D" type="Area2D" parent="." index="3"]
 
