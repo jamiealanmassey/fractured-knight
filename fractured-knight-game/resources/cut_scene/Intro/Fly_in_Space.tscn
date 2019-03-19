@@ -45,17 +45,18 @@ _sections_unfolded = [ "Resource" ]
 
 script/source = "extends Sprite
 
-var video = load(\"res://resources/cut_scene/Intro/Flash_cutscene.tscn\")
+var video = preload(\"res://resources/cut_scene/Intro/Flash_cutscene.tscn\")
 
 func _ready():
+	video = video.instance()
 	pass
 
 func fly_out():
 	var vector = Vector2(-8,0)
 	translate(vector)
 	if (position.x <= -900):
-		get_node(\"../..\").add_child(video.instance())
-		null
+		get_node(\"../..\").add_child(video)
+		#get_node('/root/game_manager').switch_scene('res://resources/cut_scene/Intro/Falling.tscn')
 	pass
 
 func fly_in():
@@ -91,7 +92,7 @@ func set_position(pos):
 	pass"
 _sections_unfolded = [ "Resource" ]
 
-[node name="Node" type="Node" index="0"]
+[node name="Node" type="Node"]
 
 [node name="Space" type="Sprite" parent="." index="0"]
 
