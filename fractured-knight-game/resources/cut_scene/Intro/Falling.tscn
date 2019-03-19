@@ -3,12 +3,12 @@
 [ext_resource path="res://resources/cut_scene/Intro/Falling.gd" type="Script" id=1]
 [ext_resource path="res://resources/cut_scene/Sprite/Space.png" type="Texture" id=2]
 [ext_resource path="res://resources/cut_scene/Sprite/desert.png" type="Texture" id=3]
-[ext_resource path="res://resources/cut_scene/Sprite/r1.png" type="Texture" id=4]
-[ext_resource path="res://resources/cut_scene/Sprite/r2.png" type="Texture" id=5]
-[ext_resource path="res://resources/cut_scene/Sprite/rocket02.png" type="Texture" id=6]
-[ext_resource path="res://resources/cut_scene/Sprite/r3.png" type="Texture" id=7]
-[ext_resource path="res://resources/cut_scene/Sprite/rocket(1).png" type="Texture" id=8]
-[ext_resource path="res://resources/cut_scene/Sprite/rocket04.png" type="Texture" id=9]
+[ext_resource path="res://resources/cut_scene/Sprite/rocket04.png" type="Texture" id=4]
+[ext_resource path="res://resources/cut_scene/Sprite/r1.png" type="Texture" id=5]
+[ext_resource path="res://resources/cut_scene/Sprite/r2.png" type="Texture" id=6]
+[ext_resource path="res://resources/cut_scene/Sprite/rocket02.png" type="Texture" id=7]
+[ext_resource path="res://resources/cut_scene/Sprite/r3.png" type="Texture" id=8]
+[ext_resource path="res://resources/cut_scene/Sprite/rocket(1).png" type="Texture" id=9]
 
 [sub_resource type="GDScript" id=1]
 
@@ -18,19 +18,25 @@ script/source = "extends Node2D
 onready var sprite = get_node(\"AnimatedSprite\")
 
 var velocity = Vector2(0,15)
+var time = 0
+var ttime =0
 
 func _ready():
 	set_process(true)
 	pass
 
 func _process(delta):
+	ttime += delta
 	move()
+	print (ttime)
 	pass
 
 func move():
 	if (sprite.position.x <-50):
+		time += 1
 		sprite.fly_in()
 	elif (position.y <= 0):
+		time +=1
 		translate(velocity)
 	else:
 		sprite.on_hitting_ground()
@@ -41,19 +47,19 @@ _sections_unfolded = [ "Resource" ]
 [sub_resource type="SpriteFrames" id=2]
 
 animations = [ {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "Stay",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "Hit",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 8 ) ],
-"loop": true,
-"name": "Fall",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 9 ) ],
 "loop": true,
-"name": "Stay",
+"name": "Fall",
 "speed": 5.0
 } ]
 _sections_unfolded = [ "Resource" ]
