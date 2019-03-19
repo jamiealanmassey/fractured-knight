@@ -10,4 +10,8 @@ combat_actor = ExtResource( 2 )
 dialogue_name = "bedivere"
 frames = ExtResource( 3 )
 
+[node name="InteractionIcon" parent="." index="0"]
+
+frame = 0
+
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://resources/levels/base/level_base.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resources/levels/Inside/InsideFloorAuto.tscn" type="PackedScene" id=2]
 [ext_resource path="res://resources/levels/level_room_switcher/SwitcherBlock.tscn" type="PackedScene" id=3]
 [ext_resource path="res://resources/fonts/dynamic_font_21pt.tres" type="DynamicFont" id=4]
+[ext_resource path="res://resources/NPCs/NPC_scenes/Galahad/Galahad.tscn" type="PackedScene" id=5]
 
 [node name="LevelManager" index="0" instance=ExtResource( 1 )]
 
@@ -42,12 +43,8 @@ _sections_unfolded = [ "custom_fonts" ]
 
 visible = false
 
-[node name="Entities" parent="World" index="2"]
+[node name="Galahad" parent="World/Entities" index="1" instance=ExtResource( 5 )]
 
-visible = false
-
-[node name="Player" parent="World/Entities" index="0"]
-
-visible = false
+position = Vector2( 498.284, 139.438 )
 
 
