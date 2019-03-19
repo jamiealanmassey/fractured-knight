@@ -4,7 +4,7 @@
 [ext_resource path="res://resources/fonts/dynamic_font_21pt.tres" type="DynamicFont" id=2]
 [ext_resource path="res://resources/fonts/dynamic_font_btn.tres" type="DynamicFont" id=3]
 
-[node name="SettingsMenu" type="Control"]
+[node name="SettingsMenu" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -112,7 +112,7 @@ tick_count = 0
 ticks_on_borders = false
 focus_mode = 2
 
-[node name="AmbientVoumeLabel" type="Label" parent="VBoxContainer" index="3"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" index="3"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -120,157 +120,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 73.0
 margin_right = 612.0
-margin_bottom = 91.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = ExtResource( 3 )
-text = "Ambient Volume"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
-
-[node name="AmbientVolumeSlider" type="HSlider" parent="VBoxContainer" index="4"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 95.0
-margin_right = 612.0
-margin_bottom = 111.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 0
-min_value = 0.0
-max_value = 100.0
-step = 1.0
-page = 0.0
-value = 0.0
-exp_edit = false
-rounded = false
-editable = true
-tick_count = 0
-ticks_on_borders = false
-focus_mode = 2
-
-[node name="MusicVolumeLabel" type="Label" parent="VBoxContainer" index="5"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 115.0
-margin_right = 612.0
-margin_bottom = 133.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = ExtResource( 3 )
-text = "Music Volume"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
-
-[node name="MusicVolumeSlider" type="HSlider" parent="VBoxContainer" index="6"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 137.0
-margin_right = 612.0
-margin_bottom = 153.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 0
-min_value = 0.0
-max_value = 100.0
-step = 1.0
-page = 0.0
-value = 0.0
-exp_edit = false
-rounded = false
-editable = true
-tick_count = 0
-ticks_on_borders = false
-focus_mode = 2
-
-[node name="SfxVolumeLabel" type="Label" parent="VBoxContainer" index="7"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 157.0
-margin_right = 612.0
-margin_bottom = 175.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = ExtResource( 3 )
-text = "SFX Volume"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
-
-[node name="SfxVolumeSlider" type="HSlider" parent="VBoxContainer" index="8"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 179.0
-margin_right = 612.0
-margin_bottom = 195.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 0
-min_value = 0.0
-max_value = 100.0
-step = 1.0
-page = 0.0
-value = 0.0
-exp_edit = false
-rounded = false
-editable = true
-tick_count = 0
-ticks_on_borders = false
-focus_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" index="9"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 199.0
-margin_right = 612.0
-margin_bottom = 223.0
+margin_bottom = 97.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -326,15 +176,15 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" index="10"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" index="4"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 227.0
+margin_top = 101.0
 margin_right = 612.0
-margin_bottom = 251.0
+margin_bottom = 125.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -389,15 +239,15 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="ResolutionLabel" type="Label" parent="VBoxContainer" index="11"]
+[node name="ResolutionLabel" type="Label" parent="VBoxContainer" index="5"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 255.0
+margin_top = 129.0
 margin_right = 612.0
-margin_bottom = 273.0
+margin_bottom = 147.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -405,21 +255,21 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = ExtResource( 3 )
-text = "SFX Volume"
+text = "Resolution"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="ResolutionOptions" type="OptionButton" parent="VBoxContainer" index="12"]
+[node name="ResolutionOptions" type="OptionButton" parent="VBoxContainer" index="6"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 277.0
+margin_top = 151.0
 margin_right = 612.0
-margin_bottom = 297.0
+margin_bottom = 171.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
