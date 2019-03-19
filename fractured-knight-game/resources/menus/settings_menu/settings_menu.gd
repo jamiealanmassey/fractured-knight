@@ -26,9 +26,6 @@ func load_settings_menu():
 		$VBoxContainer/ResolutionOptions.selected = settings['resolution']
 	else:
 		$VBoxContainer/MasterVolumeSlider.value = 100
-		$VBoxContainer/AmbientVolumeSlider.value = 100
-		$VBoxContainer/MusicVolumeSlider.value = 100
-		$VBoxContainer/SfxVolumeSlider.value = 100
 		$VBoxContainer/HBoxContainer/FullScreenCheck.pressed = OS.window_fullscreen
 		$VBoxContainer/HBoxContainer2/VSyncCheck.pressed = OS.vsync_enabled
 		$VBoxContainer/ResolutionOptions.selected = game_manager.find_resolution_index()
