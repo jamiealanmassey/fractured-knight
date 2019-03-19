@@ -7,8 +7,8 @@ write Ship: The Spaceship has crashed, main system is in need of urgent repairs.
 write The Detective: We're going to need parts to fix the ship. 
 write The Detective: I request an independent AI. 
 write ...
-write Ship: Request accepted. write PL20102010 will accompany with you.
-write PL2010: Detective, you can call me write PL2010, I’ll be happy to assist you with any needs you have.
+write Ship: Request accepted. PL2010 will accompany with you.
+write PL2010: Detective, you can call me PL2010, I’ll be happy to assist you with any needs you have.
 write PL2010: Atmospheric scans reveal this planet has breathable air; no helmet needed. 
 write PL2010: Further scans reveal there is machinery on this planet. 
 write The Detective: We can use that to repair the ship, let's go. 
