@@ -53,8 +53,9 @@ func _ready():
 func fly_out():
 	var vector = Vector2(-8,0)
 	translate(vector)
-	if (position.x <= -500):
+	if (position.x <= -900):
 		get_node(\"../..\").add_child(video.instance())
+		null
 	pass
 
 func fly_in():
@@ -63,9 +64,9 @@ func fly_in():
 	pass
 
 func shift():
-	if Input.is_action_pressed(\"ui_right\") and (position.y <500):
+	if Input.is_action_pressed(\"ui_right\") and (position.y > -300):
 		position.y -= 5
-	elif Input.is_action_pressed(\"ui_left\") and (position.y >-500):
+	elif Input.is_action_pressed(\"ui_left\") and (position.y < 300):
 		position.y += 5
 	pass"
 
@@ -90,7 +91,7 @@ func set_position(pos):
 	pass"
 _sections_unfolded = [ "Resource" ]
 
-[node name="Node" type="Node"]
+[node name="Node" type="Node" index="0"]
 
 [node name="Space" type="Sprite" parent="." index="0"]
 
