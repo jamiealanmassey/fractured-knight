@@ -396,8 +396,6 @@ margin_left = 15.0
 margin_top = 3.0
 margin_right = 15.0
 margin_bottom = -61.0
-dialogue_file_names = [ "complex" ]
-dialogue_file_locations = [ "res://test/dialogue/complex.fml" ]
 
 [node name="Entities" parent="World" index="14"]
 
@@ -412,6 +410,7 @@ position = Vector2( -30.1467, -24.1177 )
 position = Vector2( 490.954, -284.53 )
 dialogue_name = "complex"
 npc_type = 0
+npc_state = 0
 
 [node name="DialogueTest" type="Node" parent="World" index="15"]
 
