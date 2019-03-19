@@ -15,24 +15,24 @@ animations = [ {
 "speed": 2.5
 } ]
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=2]
 
 custom_solver_bias = 0.0
 radius = 150.0
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
 extents = Vector2( 29.5077, 5.54074 )
 
-[node name="NPC" type="KinematicBody2D" index="0"]
+[node name="NPC" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 4
 collision_mask = 2
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision" ]
+_sections_unfolded = [ "Collision", "Transform" ]
 combat_actor = null
 dialogue_name = null
 frames = null
@@ -51,40 +51,28 @@ patrol_path = null
 
 [node name="InteractionIcon" type="AnimatedSprite" parent="." index="0"]
 
+modulate = Color( 1, 1, 1, 0 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "default"
-frame = 2
+frame = 1
 playing = true
 _sections_unfolded = [ "Material", "Transform", "Visibility" ]
 
 [node name="ChaseIcon" type="Sprite" parent="." index="1"]
 
+modulate = Color( 1, 1, 1, 0 )
 scale = Vector2( 0.08, 0.08 )
 texture = ExtResource( 5 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="2"]
+
+scale = Vector2( 0.08, 0.08 )
+animation = "idle"
 _sections_unfolded = [ "Transform" ]
 
-[node name="Polygon2D" type="Polygon2D" parent="." index="2"]
-
-polygon = PoolVector2Array( -30, -40, -30, 40, 30, 40, 30, -40 )
-uv = PoolVector2Array(  )
-color = Color( 0.0078125, 0, 1, 1 )
-vertex_colors = PoolColorArray(  )
-offset = Vector2( 0, 0 )
-antialiased = false
-texture = null
-texture_offset = Vector2( 0, 0 )
-texture_scale = Vector2( 1, 1 )
-texture_rotation_degrees = 0.0
-invert_enable = false
-invert_border = 100.0
-_sections_unfolded = [ "Transform" ]
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="3"]
-
-animation = "default"
-
-[node name="InteractionArea2D" type="Area2D" parent="." index="4"]
+[node name="InteractionArea2D" type="Area2D" parent="." index="3"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -99,20 +87,16 @@ _sections_unfolded = [ "Audio Bus", "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea2D" index="0"]
 
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="4"]
 
 position = Vector2( 0, 34.9137 )
 scale = Vector2( 1, 0.928082 )
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 
 [connection signal="area_entered" from="InteractionArea2D" to="." method="_on_InteractionArea2D_area_entered"]
 
 [connection signal="area_exited" from="InteractionArea2D" to="." method="_on_InteractionArea2D_area_exited"]
-
-[connection signal="area_shape_entered" from="InteractionArea2D" to="." method="_on_interaction_shape_entered"]
-
-[connection signal="area_shape_exited" from="InteractionArea2D" to="." method="_on_interaction_shape_exited"]
 
 
