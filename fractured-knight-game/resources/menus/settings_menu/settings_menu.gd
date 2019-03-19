@@ -10,9 +10,6 @@ func _ready():
 func save_settings_menu():
 	var settings = {}
 	settings['master_volume'] = $VBoxContainer/MasterVolumeSlider.value
-	settings['ambient_volume'] = $VBoxContainer/AmbientVolumeSlider.value
-	settings['music_volume'] = $VBoxContainer/MusicVolumeSlider.value
-	settings['sfx_volume'] = $VBoxContainer/SfxVolumeSlider.value
 	settings['fullscreen'] = $VBoxContainer/HBoxContainer/FullScreenCheck.pressed
 	settings['vsync'] = $VBoxContainer/HBoxContainer2/VSyncCheck.pressed
 	settings['resolution'] = $VBoxContainer/ResolutionOptions.selected
@@ -24,9 +21,6 @@ func load_settings_menu():
 	var settings = game_manager.load_settings()
 	if (settings != null):
 		$VBoxContainer/MasterVolumeSlider.value = settings['master_volume']
-		$VBoxContainer/AmbientVolumeSlider.value = settings['ambient_volume']
-		$VBoxContainer/MusicVolumeSlider.value = settings['music_volume']
-		$VBoxContainer/SfxVolumeSlider.value = settings['sfx_volume']
 		$VBoxContainer/HBoxContainer/FullScreenCheck.pressed = settings['fullscreen']
 		$VBoxContainer/HBoxContainer2/VSyncCheck.pressed = settings['vsync']
 		$VBoxContainer/ResolutionOptions.selected = settings['resolution']
@@ -40,3 +34,7 @@ func load_settings_menu():
 		$VBoxContainer/ResolutionOptions.selected = game_manager.find_resolution_index()
 		
 	
+
+
+func _on_ApplyButton_pressed():
+	save_settings_menu()

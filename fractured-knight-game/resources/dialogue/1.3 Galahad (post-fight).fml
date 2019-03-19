@@ -2,16 +2,16 @@ write The Detective: Now, answer the questions, Galahad.
 write ...
 write Galahad: You have proven yourself a worthy rival..
 write Galahad: I do not know what happened.
-write Galahad: Last I remember I was at the round table when Merlin entered and- 
+write Galahad: Last I remember I was at the round table when Merlin entered and-
 write Galahad: Now I am here.
 write ...
-write The Detective: That’s IT?! 
-write The Detective: I accepted your terms, I have bested you in combat, now give me ANSWERS. 
+write The Detective: That's IT?!
+write The Detective: I accepted your terms, I have bested you in combat, now give me ANSWERS.
 write ...
-write Galahad: I…
+write Galahad: I...
 write (Galahad disappears)
 trigger[disappears]
-write The Detective: What was that?? 
+write The Detective: What was that??
 write PL2010: He seems to have disappeared
-write The Detective: I can see that, write PL2010, but how? 
-write PL2010: I don’t know sir. 
+write The Detective: I can see that, PL2010, but how?
+write PL2010: I don't know sir. 

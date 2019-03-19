@@ -26,7 +26,7 @@ func _ready():
 	pass
 
 func _process(delta):
-	if (stream_position >= 3.0):
+	if (stream_position >= 17.0):
 		get_tree().paused = false
 		get_parent().queue_free()
 		get_node('/root/game_manager').switch_scene('res://resources/cut_scene/Intro/Falling.tscn')
@@ -37,7 +37,7 @@ func _process(delta):
 "
 _sections_unfolded = [ "Resource" ]
 
-[node name="CansvasLayer" type="CanvasLayer"]
+[node name="CansvasLayer" type="CanvasLayer" index="0"]
 
 layer = 1
 offset = Vector2( 0, 0 )

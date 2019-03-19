@@ -33,7 +33,7 @@ use_mipmaps = false
 use_filter = false
 font_data = ExtResource( 4 )
 
-[node name="MainMenu" type="Control" index="0"]
+[node name="MainMenu" type="Control"]
 
 modulate = Color( 0.961182, 0.96875, 0.965912, 1 )
 anchor_left = 0.0
@@ -101,9 +101,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 111.0
+margin_top = 168.0
 margin_right = 495.0
-margin_bottom = 205.0
+margin_bottom = 262.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -125,47 +125,16 @@ flat = true
 align = 1
 _sections_unfolded = [ "Visibility", "custom_colors", "custom_constants" ]
 
-[node name="BtnLoadGame" type="Button" parent="VBoxContainer" index="1"]
+[node name="BtnOptions" type="Button" parent="VBoxContainer" index="1"]
 
 light_mask = 31775
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 225.0
+margin_top = 282.0
 margin_right = 495.0
-margin_bottom = 319.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color_disabled = Color( 0.960938, 0.923401, 0.923401, 1 )
-custom_colors/font_color = Color( 0.972656, 0.94986, 0.94986, 1 )
-custom_colors/font_color_hover = Color( 0.949219, 0.897308, 0.897308, 1 )
-custom_colors/font_color_pressed = Color( 0.972656, 0.930862, 0.930862, 1 )
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-text = "Load Game"
-flat = true
-align = 1
-_sections_unfolded = [ "Visibility", "custom_colors", "custom_constants" ]
-
-[node name="BtnOptions" type="Button" parent="VBoxContainer" index="2"]
-
-light_mask = 31775
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 339.0
-margin_right = 495.0
-margin_bottom = 433.0
+margin_bottom = 376.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -187,16 +156,16 @@ flat = true
 align = 1
 _sections_unfolded = [ "Visibility", "custom_colors", "custom_constants" ]
 
-[node name="BtnHelp" type="Button" parent="VBoxContainer" index="3"]
+[node name="BtnHelp" type="Button" parent="VBoxContainer" index="2"]
 
 light_mask = 31775
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 453.0
+margin_top = 396.0
 margin_right = 495.0
-margin_bottom = 547.0
+margin_bottom = 490.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -218,16 +187,16 @@ flat = true
 align = 1
 _sections_unfolded = [ "Visibility", "custom_colors", "custom_constants" ]
 
-[node name="BtnAbout" type="Button" parent="VBoxContainer" index="4"]
+[node name="BtnAbout" type="Button" parent="VBoxContainer" index="3"]
 
 light_mask = 31775
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 567.0
+margin_top = 510.0
 margin_right = 495.0
-margin_bottom = 661.0
+margin_bottom = 604.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -249,16 +218,16 @@ flat = true
 align = 1
 _sections_unfolded = [ "Visibility", "custom_colors", "custom_constants" ]
 
-[node name="BtnQuit" type="Button" parent="VBoxContainer" index="5"]
+[node name="BtnQuit" type="Button" parent="VBoxContainer" index="4"]
 
 light_mask = 31775
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 681.0
+margin_top = 624.0
 margin_right = 495.0
-margin_bottom = 775.0
+margin_bottom = 718.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -381,8 +350,6 @@ _sections_unfolded = [ "custom_colors" ]
 visible = false
 
 [connection signal="pressed" from="VBoxContainer/BtnStart" to="." method="_on_BtnStart_pressed"]
-
-[connection signal="pressed" from="VBoxContainer/BtnLoadGame" to="." method="_on_BtnLoadGame_pressed"]
 
 [connection signal="pressed" from="VBoxContainer/BtnOptions" to="." method="_on_BtnOptions_pressed"]
 

@@ -62,7 +62,7 @@ func process_settings(settings):
 	if settings == null:
 		return
 	
-	# TODO set volume channels
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), settings['master_volume'])
 	OS.window_fullscreen = settings['fullscreen']
 	OS.vsync_enabled = settings['vsync']
 	OS.window_size = screen_resolutions[settings['resolution']]
