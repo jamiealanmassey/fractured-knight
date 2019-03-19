@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://resources/player/player.gd" type="Script" id=1]
 [ext_resource path="res://resources/player/player_actor.tres" type="Resource" id=2]
 [ext_resource path="res://resources/player-sprite/Player.png" type="Texture" id=3]
 [ext_resource path="res://resources/player/Sprite.gd" type="Script" id=4]
+[ext_resource path="res://resources/sfx/sound effects/Walking-on-gravel-sound-effect.wav" type="AudioStream" id=5]
 
 [sub_resource type="Animation" id=1]
 
@@ -184,5 +185,16 @@ _sections_unfolded = [ "Collision" ]
 
 position = Vector2( 0, 7.19667 )
 shape = SubResource( 7 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="4"]
+
+stream = ExtResource( 5 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
 
 
