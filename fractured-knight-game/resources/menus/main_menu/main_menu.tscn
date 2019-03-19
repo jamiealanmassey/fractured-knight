@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://resources/menus/main_menu/main_menu.gd" type="Script" id=1]
 [ext_resource path="res://resources/menus/main_menu/Images/BackgroundWallaper.jpg" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://resources/menus/main_menu/about.gd" type="Script" id=5]
 [ext_resource path="res://resources/menus/main_menu/Images/White_box_28x52.png" type="Texture" id=6]
 [ext_resource path="res://resources/menus/settings_menu/settings_menu.tscn" type="PackedScene" id=7]
+[ext_resource path="res://resources/sfx/background music/main menu.wav" type="AudioStream" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -33,7 +34,7 @@ use_mipmaps = false
 use_filter = false
 font_data = ExtResource( 4 )
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" index="0"]
 
 modulate = Color( 0.961182, 0.96875, 0.965912, 1 )
 anchor_left = 0.0
@@ -379,6 +380,17 @@ _sections_unfolded = [ "custom_colors" ]
 [node name="SettingsMenu" parent="." index="4" instance=ExtResource( 7 )]
 
 visible = false
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="." index="5"]
+
+stream = ExtResource( 8 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = true
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
 
 [connection signal="pressed" from="VBoxContainer/BtnStart" to="." method="_on_BtnStart_pressed"]
 
