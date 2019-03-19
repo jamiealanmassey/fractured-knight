@@ -1,0 +1,557 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://resources/cut_scene/Sprite/piece_002.png" type="Texture" id=1]
+[ext_resource path="res://resources/cut_scene/Sprite/NicePng_dot-png_267557.png" type="Texture" id=2]
+[ext_resource path="res://resources/cut_scene/Sprite/Glow-effect-collection-by-shehab-editz (22).png" type="Texture" id=3]
+[ext_resource path="res://resources/cut_scene/Sprite/pngkey.com-sun-rays-png-transparent-713579.png" type="Texture" id=4]
+[ext_resource path="res://resources/cut_scene/Sprite/pngkey.com-light-effects-png-543874.png" type="Texture" id=5]
+[ext_resource path="res://resources/cut_scene/Sprite/958c97eb7d421f20f2078fc612597782.png" type="Texture" id=6]
+[ext_resource path="res://resources/cut_scene/Sprite/Table-001 (1).png" type="Texture" id=7]
+[ext_resource path="res://resources/cut_scene/Sprite/white.png" type="Texture" id=8]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Node2D
+onready var camera = get_node('../Camera2D')
+
+var time
+
+func _ready():
+	var vsize = get_viewport_rect().size
+	get_node(\"../CanvasLayer/ColorRect\").set_size(vsize)
+	time = 0
+	set_process(true)
+	pass
+
+func _process(delta):
+	time += delta
+	if time >= 2:
+		if !(check_set_up()):
+			set_up()
+		else:
+			acting()
+	pass
+
+func acting():
+	for N in self.get_children():
+		if N.get_child_count() >0:
+			rotating(N)
+	pass
+
+func rotating(node):
+	var sp = node.get_node('light')
+	if (sp.position != Vector2(0,0)):
+		node.rotate(0.01)
+		if (sp.position.x > node.position.x):
+			sp.position.x -=1
+		if (sp.position.x < node.position.x):
+			sp.position.x +=1
+		if (sp.position.y > node.position.y):
+			sp.position.y -=1
+		if( sp.position.y< node.position.y):
+			sp.position.y +=1
+	if (sp.position.x > -1) && (sp.position.x < 1):
+		sp.position.x = 0
+	if  (sp.position.y >-1) && (sp.position.y < 1):
+		sp.position.y = 0
+	pass
+
+func set_up():
+	for N in self.get_children():
+		if N.get_child_count() >0:
+			var light = N.get_node('light')
+			light.visible = true
+			light.increase()
+	pass
+
+func check_set_up():
+	var count = 0
+	for N in self.get_children():
+		if N.get_child_count() >0:
+			if N.get_node('light').fit == true:
+				N.get_node('piece').visible = false
+				count +=1
+	if count == 5:
+		return true
+	else:
+		return false
+	return count
+	pass	
+
+func is_united():
+	var count = 0
+	for N in self.get_children():
+		if N.get_child_count() >0:
+			if(N.get_node('light').is_united()):
+				count += 1
+	if count == 5:
+		return true
+	else:
+		return false
+	pass
+
+func fade():
+	var count = 0
+	for N in self.get_children():
+		if N.get_child_count() >0:
+			N.get_node('light').decrease()
+	pass"
+
+[sub_resource type="GDScript" id=2]
+
+resource_local_to_scene = true
+script/source = "extends Sprite
+
+var s_size = Vector2(0.02, 0.02)
+var m_size = Vector2(0.2,0.2)
+var i_size = Vector2(0.002, 0.002)
+var fit = false
+var united = false
+
+func _ready():
+	pass
+
+func increase():
+	if (s_size < m_size):
+		s_size += i_size
+		scale.x = s_size.x
+		scale.y = s_size.y
+	else:
+		fit = true
+	pass
+
+func decrease():
+	var size_end = Vector2(0,0)
+	if (scale > size_end):
+		scale -= i_size
+		if (scale == s_size):
+			visible = false
+	pass
+
+func is_united():
+	if position == Vector2(0,0):
+		return true
+	else:
+		return false
+	pass"
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="GDScript" id=3]
+
+resource_local_to_scene = true
+script/source = "extends Sprite
+
+var s_size = Vector2(0.042, 0.042)
+var m_size = Vector2(0.42,0.42)
+var i_size = Vector2(0.0042, 0.0042)
+var fit = false
+var united = false
+
+func _ready():
+	pass
+
+func increase():
+	if (s_size < m_size):
+		s_size += i_size
+		scale.x = s_size.x
+		scale.y = s_size.y
+	else:
+		fit = true
+	pass
+
+func decrease():
+	var size_end = Vector2(0,0)
+	if (scale > size_end):
+		scale -= i_size
+		if (scale == s_size):
+			visible = false
+	pass
+
+func is_united():
+	if position == Vector2(0,0):
+		return true
+	else:
+		return false
+	pass"
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="GDScript" id=4]
+
+resource_local_to_scene = true
+script/source = "extends Sprite
+
+var s_size = Vector2(0.042, 0.042)
+var m_size = Vector2(0.42,0.42)
+var i_size = Vector2(0.0042, 0.0042)
+var fit = false
+var united = false
+
+func _ready():
+	pass
+
+func increase():
+	if (s_size < m_size):
+		s_size += i_size
+		scale.x = s_size.x
+		scale.y = s_size.y
+	else:
+		fit = true
+	pass
+
+func decrease():
+	var size_end = Vector2(0,0)
+	if (scale > size_end):
+		scale -= i_size
+		if (scale == s_size):
+			visible = false
+	pass
+
+func is_united():
+	if position == Vector2(0,0):
+		return true
+	else:
+		return false
+	pass"
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="GDScript" id=5]
+
+resource_local_to_scene = true
+script/source = "extends Sprite
+
+var s_size = Vector2(0.06, 0.06)
+var m_size = Vector2(0.6,0.6)
+var i_size = Vector2(0.006, 0.006)
+var fit = false
+var united = false
+
+func _ready():
+	pass
+
+func increase():
+	if (s_size < m_size):
+		s_size += i_size
+		scale.x = s_size.x
+		scale.y = s_size.y
+	else:
+		fit = true
+	pass
+	
+func decrease():
+	var size_end = Vector2(0,0)
+	if (scale > size_end):
+		scale -= i_size
+		if (scale == s_size):
+			visible = false
+	pass
+
+func is_united():
+	if position == Vector2(0,0):
+		return true
+	else:
+		return false
+	pass"
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="GDScript" id=6]
+
+script/source = "extends Sprite
+
+var s_size = Vector2(0.06, 0.06)
+var m_size = Vector2(0.6,0.6)
+var i_size = Vector2(0.006, 0.006)
+var fit = false
+var united = false
+
+func _ready():
+	pass
+
+func increase():
+	if (s_size < m_size):
+		s_size += i_size
+		scale.x = s_size.x
+		scale.y = s_size.y
+	else:
+		fit = true
+	pass
+
+func decrease():
+	var size_end = Vector2(0,0)
+	if (scale > size_end):
+		scale -= i_size
+		if (scale == s_size):
+			visible = false
+	pass
+
+func is_united():
+	if position == Vector2(0,0):
+		return true
+	else:
+		return false
+	pass"
+
+[sub_resource type="GDScript" id=7]
+
+resource_local_to_scene = true
+script/source = "extends Node2D
+
+onready var one_piece = get_node('../One_piece')
+onready var light = get_node('Light')
+onready var the_table = get_node('Table')
+
+func _ready():
+	set_process(true)
+	pass
+
+func _process(delta):
+	if one_piece.is_united():
+		one_piece.fade()
+		light.expand()
+		light.shinking()
+		the_table.rotate(0.005)
+	pass
+"
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="GDScript" id=8]
+
+resource_local_to_scene = true
+script/source = "extends Sprite
+
+
+func _ready():
+	visible = false
+	pass
+
+"
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="GDScript" id=9]
+
+resource_local_to_scene = true
+script/source = "extends Sprite
+
+onready var table = get_node('../Table')
+
+const s_size = Vector2(0.01, 0.01)
+const m_size = Vector2(1.5,1.5)
+const i_size = Vector2(0.005, 0.005)
+var can_shink
+var show_table
+
+func _ready():
+	visible = false
+	can_shink = false
+	show_table = false
+	scale = s_size
+	pass
+
+func expand():	
+	if can_shink == false:
+		visible = true
+		scale += i_size
+		if scale >= m_size:
+			can_shink = true
+			print(can_shink)
+	pass
+
+func shinking():
+	if can_shink== true:
+		table.visible = true
+		scale -= i_size
+		if scale <= s_size:
+			visible = false
+			show_table = true
+	pass
+
+func showing_table():
+	if show_table == true:
+		return true
+	else:
+		return false
+	pass"
+_sections_unfolded = [ "Resource" ]
+
+[node name="Node2D" type="Node" index="0"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="0"]
+
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 688.0
+margin_bottom = 460.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0, 0, 0, 1 )
+_sections_unfolded = [ "Grow Direction", "Margin" ]
+
+[node name="Camera2D" type="Camera2D" parent="CanvasLayer" index="1"]
+
+anchor_mode = 1
+rotating = true
+current = true
+zoom = Vector2( 3, 3 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="One_piece" type="Node2D" parent="." index="1"]
+
+script = SubResource( 1 )
+
+[node name="piece_1" type="Node2D" parent="One_piece" index="0"]
+
+editor/display_folded = true
+
+[node name="piece" type="Sprite" parent="One_piece/piece_1" index="0"]
+
+position = Vector2( 0, -400 )
+rotation = -1.69297
+scale = Vector2( 0.04, 0.04 )
+texture = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="light" type="Sprite" parent="One_piece/piece_1" index="1"]
+
+visible = false
+position = Vector2( 0, -400 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 2 )
+script = SubResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="piece_2" type="Node2D" parent="One_piece" index="1"]
+
+_sections_unfolded = [ "Transform" ]
+
+[node name="piece" type="Sprite" parent="One_piece/piece_2" index="0"]
+
+position = Vector2( 380.423, -123.607 )
+rotation = -0.785398
+scale = Vector2( 0.04, 0.04 )
+texture = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="light" type="Sprite" parent="One_piece/piece_2" index="1"]
+
+visible = false
+position = Vector2( 380.423, -123.607 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+script = SubResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="piece_3" type="Node2D" parent="One_piece" index="2"]
+
+_sections_unfolded = [ "Transform" ]
+
+[node name="piece" type="Sprite" parent="One_piece/piece_3" index="0"]
+
+position = Vector2( 235.114, 323.607 )
+rotation = 0.785398
+scale = Vector2( 0.04, 0.04 )
+texture = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="light" type="Sprite" parent="One_piece/piece_3" index="1"]
+
+visible = false
+position = Vector2( 235.114, 323.607 )
+scale = Vector2( 0.42, 0.42 )
+texture = ExtResource( 4 )
+script = SubResource( 4 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="piece_4" type="Node2D" parent="One_piece" index="3"]
+
+_sections_unfolded = [ "Transform" ]
+
+[node name="piece" type="Sprite" parent="One_piece/piece_4" index="0"]
+
+position = Vector2( -235.114, 323.607 )
+rotation = 2.18166
+scale = Vector2( 0.04, 0.04 )
+texture = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="light" type="Sprite" parent="One_piece/piece_4" index="1"]
+
+visible = false
+position = Vector2( -235.114, 323.607 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 5 )
+script = SubResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="piece_5" type="Node2D" parent="One_piece" index="4"]
+
+_sections_unfolded = [ "Transform" ]
+
+[node name="piece" type="Sprite" parent="One_piece/piece_5" index="0"]
+
+position = Vector2( -380.423, -123.607 )
+rotation = -2.96706
+scale = Vector2( 0.04, 0.04 )
+texture = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="light" type="Sprite" parent="One_piece/piece_5" index="1"]
+
+visible = false
+position = Vector2( -380.423, -123.607 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 6 )
+script = SubResource( 6 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Node2D" type="Node2D" parent="." index="2"]
+
+editor/display_folded = true
+script = SubResource( 7 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Table" type="Sprite" parent="Node2D" index="0"]
+
+scale = Vector2( 0.055, 0.05 )
+texture = ExtResource( 7 )
+script = SubResource( 8 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Light" type="Sprite" parent="Node2D" index="1"]
+
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 8 )
+script = SubResource( 9 )
+_sections_unfolded = [ "Transform" ]
+
+
