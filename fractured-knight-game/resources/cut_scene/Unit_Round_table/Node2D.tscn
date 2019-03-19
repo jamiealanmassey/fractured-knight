@@ -14,17 +14,22 @@
 script/source = "extends Node2D
 onready var camera = get_node('../Camera2D')
 
+var time
+
 func _ready():
 	var vsize = get_viewport_rect().size
 	get_node(\"../CanvasLayer/ColorRect\").set_size(vsize)
+	time = 0
 	set_process(true)
 	pass
 
 func _process(delta):
-	if !(check_set_up()):
-		set_up()
-	else:
-		acting()
+	time += delta
+	if time >= 2:
+		if !(check_set_up()):
+			set_up()
+		else:
+			acting()
 	pass
 
 func acting():
@@ -54,7 +59,9 @@ func rotating(node):
 func set_up():
 	for N in self.get_children():
 		if N.get_child_count() >0:
-			N.get_node('light').increase()
+			var light = N.get_node('light')
+			light.visible = true
+			light.increase()
 	pass
 
 func check_set_up():
@@ -306,7 +313,7 @@ func _process(delta):
 "
 _sections_unfolded = [ "Resource" ]
 
-[sub_resource type="GDScript" id=9]
+[sub_resource type="GDScript" id=8]
 
 resource_local_to_scene = true
 script/source = "extends Sprite
@@ -319,7 +326,7 @@ func _ready():
 "
 _sections_unfolded = [ "Resource" ]
 
-[sub_resource type="GDScript" id=8]
+[sub_resource type="GDScript" id=9]
 
 resource_local_to_scene = true
 script/source = "extends Sprite
@@ -420,10 +427,11 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="One_piece" type="Node2D" parent="." index="1"]
 
-editor/display_folded = true
 script = SubResource( 1 )
 
 [node name="piece_1" type="Node2D" parent="One_piece" index="0"]
+
+editor/display_folded = true
 
 [node name="piece" type="Sprite" parent="One_piece/piece_1" index="0"]
 
@@ -435,6 +443,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="light" type="Sprite" parent="One_piece/piece_1" index="1"]
 
+visible = false
 position = Vector2( 0, -400 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 2 )
@@ -455,6 +464,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="light" type="Sprite" parent="One_piece/piece_2" index="1"]
 
+visible = false
 position = Vector2( 380.423, -123.607 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
@@ -475,6 +485,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="light" type="Sprite" parent="One_piece/piece_3" index="1"]
 
+visible = false
 position = Vector2( 235.114, 323.607 )
 scale = Vector2( 0.42, 0.42 )
 texture = ExtResource( 4 )
@@ -483,7 +494,6 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="piece_4" type="Node2D" parent="One_piece" index="3"]
 
-editor/display_folded = true
 _sections_unfolded = [ "Transform" ]
 
 [node name="piece" type="Sprite" parent="One_piece/piece_4" index="0"]
@@ -496,6 +506,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="light" type="Sprite" parent="One_piece/piece_4" index="1"]
 
+visible = false
 position = Vector2( -235.114, 323.607 )
 scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 5 )
@@ -504,7 +515,6 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="piece_5" type="Node2D" parent="One_piece" index="4"]
 
-editor/display_folded = true
 _sections_unfolded = [ "Transform" ]
 
 [node name="piece" type="Sprite" parent="One_piece/piece_5" index="0"]
@@ -517,6 +527,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="light" type="Sprite" parent="One_piece/piece_5" index="1"]
 
+visible = false
 position = Vector2( -380.423, -123.607 )
 scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 6 )
@@ -525,6 +536,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Node2D" type="Node2D" parent="." index="2"]
 
+editor/display_folded = true
 script = SubResource( 7 )
 _sections_unfolded = [ "Visibility" ]
 
@@ -532,14 +544,14 @@ _sections_unfolded = [ "Visibility" ]
 
 scale = Vector2( 0.055, 0.05 )
 texture = ExtResource( 7 )
-script = SubResource( 9 )
+script = SubResource( 8 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Light" type="Sprite" parent="Node2D" index="1"]
 
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 8 )
-script = SubResource( 8 )
+script = SubResource( 9 )
 _sections_unfolded = [ "Transform" ]
 
 

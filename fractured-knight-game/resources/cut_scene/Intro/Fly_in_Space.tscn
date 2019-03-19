@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://resources/cut_scene/Sprite/Space.png" type="Texture" id=1]
-[ext_resource path="res://resources/cut_scene/Sprite/rocket(1).png" type="Texture" id=2]
 
 [sub_resource type="GDScript" id=1]
 
@@ -42,35 +41,6 @@ func check_is_out():
 "
 _sections_unfolded = [ "Resource" ]
 
-[sub_resource type="GDScript" id=2]
-
-script/source = "extends Sprite
-
-var video = load(\"res://resources/cut_scene/Intro/Flash_cutscene.tscn\")
-
-func _ready():
-	pass
-
-func fly_out():
-	var vector = Vector2(-8,0)
-	translate(vector)
-	if (position.x <= -1000):
-		null
-		get_node(\"../..\").add_child(video.instance())
-	pass
-
-func fly_in():
-	var vector = Vector2(-8,0)
-	translate(vector)
-	pass
-
-func shift():
-	if Input.is_action_pressed(\"ui_right\") && (position.y >= -300):
-		position.y -= 5
-	elif Input.is_action_pressed(\"ui_left\") &&(position.y <= 300):
-		position.y += 5
-	pass"
-
 [sub_resource type="GDScript" id=3]
 
 resource_local_to_scene = true
@@ -92,7 +62,7 @@ func set_position(pos):
 	pass"
 _sections_unfolded = [ "Resource" ]
 
-[node name="Node" type="Node" index="0"]
+[node name="Node" type="Node"]
 
 [node name="Space" type="Sprite" parent="." index="0"]
 
@@ -105,15 +75,6 @@ _sections_unfolded = [ "Transform" ]
 
 position = Vector2( 1600, 0 )
 script = SubResource( 1 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Sprite" type="Sprite" parent="Spaceship" index="0"]
-
-position = Vector2( 1000, 0 )
-rotation = 1.5708
-scale = Vector2( 0.1, 0.1 )
-texture = ExtResource( 2 )
-script = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Camera2D" type="Camera2D" parent="." index="2"]
