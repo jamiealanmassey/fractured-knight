@@ -108,6 +108,19 @@ func _process(delta):
 	
 func _physics_process(delta):
 	move_and_slide(patrol_velocity)
+	if $AnimatedSprite.frames:
+		if patrol_velocity.x < 0:
+			$AnimatedSprite.play('walk')
+			$AnimatedSprite.flip_h = true
+			$AnimatedSprite.position.x = -sprite_offset_x
+		elif (patrol_velocity.x > 0 || patrol_velocity.y != 0):
+			$AnimatedSprite.play('walk')
+			$AnimatedSprite.flip_h = false
+			$AnimatedSprite.position.x = sprite_offset_x
+		else:
+			$AnimatedSprite.play('idle')
+			$AnimatedSprite.flip_h = false
+			$AnimatedSprite.position.x = sprite_offset_x
 
 func process_hostile_npc():
 	match self.npc_state:
@@ -226,7 +239,7 @@ func _on_chase_body_entered(body):
 	match self.npc_type:
 		NPCType.Hostile:
 			current_player = body
-			patrol_last_location = position if (self.npc_state == NPCState.Patrol || self.npc_state == NPCState.Idle) else patrol_last_location
+			patrol_last_location = position if (self.npc_state == NPCState.Patrol || self.npc_state == NPCState.Idle) || patrol_path == null else patrol_last_location
 			switch_npc_state(NPCState.Chase)
 			chase_icon_tweener.stop_all()
 			chase_icon_tweener.interpolate_property($ChaseIcon, 'position:y', $ChaseIcon.position.y, chase_icon_position_y - interaction_offset, interaction_anim_speed, Tween.TRANS_LINEAR, Tween.EASE_OUT)
