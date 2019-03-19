@@ -393,8 +393,6 @@ margin_left = 15.0
 margin_top = 3.0
 margin_right = 15.0
 margin_bottom = -61.0
-dialogue_file_names = [ "complex" ]
-dialogue_file_locations = [ "res://test/dialogue/complex.fml" ]
 
 [node name="Entities" parent="World" index="14"]
 
