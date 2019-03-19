@@ -35,6 +35,7 @@ func _on_BtnOptions_pressed():
 ## opens the help pop-up
 func _on_BtnHelp_pressed():
 	emit_signal("game_help")
+	$Help.show()
 	
 
 ## opens the about us pop-up
