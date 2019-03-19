@@ -34,3 +34,7 @@ func load_settings_menu():
 		$VBoxContainer/ResolutionOptions.selected = game_manager.find_resolution_index()
 		
 	
+
+
+func _on_ApplyButton_pressed():
+	save_settings_menu()

@@ -114,6 +114,7 @@ focus_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" index="3"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -178,6 +179,7 @@ _sections_unfolded = [ "custom_fonts" ]
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" index="4"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -287,6 +289,32 @@ align = 0
 items = [  ]
 selected = -1
 
+[node name="ApplyButton" type="Button" parent="VBoxContainer" index="7"]
+
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -306.0
+margin_top = -20.0
+margin_right = 306.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 3 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Apply"
+flat = false
+align = 1
+_sections_unfolded = [ "custom_fonts" ]
+
 [node name="Container" type="Container" parent="." index="1"]
 
 anchor_left = 0.0
@@ -301,5 +329,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+
+[connection signal="pressed" from="VBoxContainer/ApplyButton" to="." method="_on_ApplyButton_pressed"]
 
 
