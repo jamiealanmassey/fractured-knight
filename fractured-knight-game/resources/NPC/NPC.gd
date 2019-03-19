@@ -21,6 +21,7 @@ export (float) var movement_speed = 150
 export (float) var min_idle_time = 0.5
 export (float) var max_idle_time = 1.0
 export (float, 0, 1) var idle_chance = 0.5
+export (float) var sprite_offset_x = 0
 
 # Interaction animation tweakable variables
 export (float) var interaction_offset = 80
@@ -61,6 +62,7 @@ func _ready():
 	$InteractionIcon.scale.x = 0
 	$InteractionIcon.modulate.a = 0
 	$AnimatedSprite.frames = self.frames
+	$AnimatedSprite.position.x = sprite_offset_x
 	npc_state_last = npc_state
 	idle_timer = Timer.new()
 	idle_timer.one_shot = true
