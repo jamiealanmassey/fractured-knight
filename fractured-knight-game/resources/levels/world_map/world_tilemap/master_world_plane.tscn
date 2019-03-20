@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://resources/levels/base/level_base.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resources/player/World_camera_Bounds.gd" type="Script" id=2]
@@ -19,7 +19,9 @@
 [ext_resource path="res://resources/NPCs/NPC_scenes/Galahad/Galahad.tscn" type="PackedScene" id=17]
 [ext_resource path="res://resources/NPCs/NPC_scenes/Bedivere/Bedivere.tscn" type="PackedScene" id=18]
 [ext_resource path="res://resources/NPCs/NPC_scenes/Percival/Percival.tscn" type="PackedScene" id=19]
-[ext_resource path="res://resources/dialogue_area/dialogue_area.tscn" type="PackedScene" id=20]
+[ext_resource path="res://resources/NPC/NPC.tscn" type="PackedScene" id=20]
+[ext_resource path="res://resources/NPCs/NPC_scenes/Lancelot/Lancelot_animated_sprite.tres" type="SpriteFrames" id=21]
+[ext_resource path="res://resources/dialogue_area/dialogue_area.tscn" type="PackedScene" id=22]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -418,7 +420,19 @@ npc_state = 1
 npc_patrol = 1
 patrol_path = [ Vector2( 1225, 2850 ), Vector2( 1600, 2850 ), Vector2( 1600, 3280 ), Vector2( 800, 3280 ), Vector2( 800, 3450 ), Vector2( 1225, 3450 ), Vector2( 1225, 3450 ) ]
 
-[node name="Area2D" parent="World" index="16" instance=ExtResource( 20 )]
+[node name="Lancelot" parent="World/Entities" index="4" instance=ExtResource( 20 )]
+
+position = Vector2( 2237.65, 1364.78 )
+scale = Vector2( 1, 1.19968 )
+combat_actor = ExtResource( 21 )
+dialogue_name = "5.1_lancelot"
+dialogue_name_post = "5.2_beating_lancelot"
+dialogue_name_lose = null
+frames = ExtResource( 21 )
+npc_state = 2
+npc_patrol = 0
+
+[node name="Area2D" parent="World" index="16" instance=ExtResource( 22 )]
 
 position = Vector2( -540.729, -2512.38 )
 scale = Vector2( 1, 1.0426 )
