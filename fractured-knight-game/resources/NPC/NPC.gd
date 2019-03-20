@@ -148,8 +148,7 @@ func process_friendly_npc():
 		NPCState.Talk:
 			if !level_manager.is_dialogue_playing():
 				if combat_actor != null:
-					get_node('/root/LevelManager').queue_dialogue(post_combat_dialogue)
-					get_node('/root/LevelManager').initiate_combat(self)
+					pass
 				self.switch_npc_state(NPCState.Idle)
 				self.start_idling()
 		NPCState.Idle:
@@ -171,6 +170,10 @@ func process_friendly_interaction(level_manager):
 	
 	if Input.is_action_just_pressed('interact'):
 		level_manager.start_dialogue(dialogue_name)
+		if combat_actor != null:
+			get_node('/root/LevelManager').queue_combat(self)
+			if post_combat_dialogue != null: 
+				get_node('/root/LevelManager').queue_dialogue(post_combat_dialogue)
 		self.switch_npc_state(NPCState.Talk)
 	
 

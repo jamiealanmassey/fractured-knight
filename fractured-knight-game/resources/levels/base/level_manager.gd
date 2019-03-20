@@ -3,6 +3,7 @@ extends Node
 var current_combat = null
 var pause_menu = null
 var queued_diagloue = null
+var queued_enemy = null
 
 var scene_id
 
@@ -81,9 +82,16 @@ func _on_PauseMenu_resume_game():
 
 func _on_DialogueUI_on_context_finish():
 	get_node('World/Entities/Player').lock_movement = false
+	if (queued_enemy != null):
+		initiate_combat(queued_enemy)
+		queued_enemy = null
 
 func queue_dialogue(dialogue):
 	queued_diagloue = dialogue
+	
+
+func queue_combat(enemy):
+	queued_enemy = enemy
 
 ## Vikrams Stuff 
 ## TODO commenting 
