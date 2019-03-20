@@ -412,6 +412,7 @@ position = Vector2( -889.408, -2564.81 )
 
 position = Vector2( -578.247, -1791.25 )
 dialogue_name = "1.2_galahad"
+dialogue_name_post = "1.3_galahad_post_fight"
 post_combat_dialogue = "1.3_galahad_post_fight"
 npc_type = 0
 npc_state = 0
@@ -420,6 +421,7 @@ npc_state = 0
 
 position = Vector2( -378.426, 1467.45 )
 dialogue_name = "2.2_meeting_bedivere"
+dialogue_name_post = null
 post_combat_dialogue = null
 npc_type = 0
 npc_state = 0
@@ -428,6 +430,7 @@ npc_patrol = 0
 [node name="Percival" parent="World/Entities" index="3" instance=ExtResource( 18 )]
 
 position = Vector2( 1227.78, 3283.9 )
+dialogue_name_post = null
 post_combat_dialogue = null
 
 [node name="DialogueTest" type="Node" parent="World" index="15"]
