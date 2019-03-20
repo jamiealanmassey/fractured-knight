@@ -57,6 +57,7 @@ func calulate_input():
 		update_input(key_states[key_index])
 	
 	if lock_movement:
+		$Sprite.stop_moving()
 		return
 	
 	key_states.sort_custom(KeyStateSorter, 'sort')
@@ -85,8 +86,7 @@ func calulate_input():
 		
 	if (!moving):
 		$Sprite.stop_moving()
-		pass
-
+	
 
 func _ready():
 	key_states = [
