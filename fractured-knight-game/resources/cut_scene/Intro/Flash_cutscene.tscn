@@ -10,7 +10,7 @@ script/source = "extends VideoPlayer
 var falling = load(\"res://resources/cut_scene/Intro/Falling.tscn\")
 
 var aspect_ratio= 16.0/9.0
-var vid_length =25.646
+var vid_length = 25.646
 
 func _ready():
 	var vsize = get_viewport_rect().size
@@ -23,16 +23,13 @@ func _ready():
 		set_position(Vector2(0, (vsize.y - vsize.x / aspect_ratio) / 2))
 	play()
 	set_process(true)
-	pass
+	
 
 func _process(delta):
 	if (stream_position >= 17.0):
 		get_tree().paused = false
 		get_parent().queue_free()
 		get_node('/root/game_manager').switch_scene('res://resources/cut_scene/Intro/Falling.tscn')
-	pass
-	
-
 	
 "
 _sections_unfolded = [ "Resource" ]
