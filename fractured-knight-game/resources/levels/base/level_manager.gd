@@ -82,6 +82,7 @@ func _on_PauseMenu_resume_game():
 	pause_menu.active = false
 	pause_menu.visible = false
 	get_tree().paused = false
+	$World/Sound.playing = true
 	
 
 func _on_DialogueUI_on_context_finish():
