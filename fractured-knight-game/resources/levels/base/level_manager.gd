@@ -2,6 +2,7 @@ extends Node
 
 var current_combat = null
 var pause_menu = null
+var queued_diagloue = null
 
 var scene_id
 
@@ -60,6 +61,10 @@ func _on_combat_finished(player, enemy, message):
 	if (message == 'Player won'):
 		enemy.queue_free()
 		print('enemy dead and destroyed')
+		if queued_diagloue != null:
+			print("starting queued dialogue")
+			start_dialogue(queued_diagloue)
+			queued_diagloue = null
 		
 	current_combat.queue_free()
 	current_combat = null
@@ -76,6 +81,9 @@ func _on_PauseMenu_resume_game():
 
 func _on_DialogueUI_on_context_finish():
 	get_node('World/Entities/Player').lock_movement = false
+
+func queue_dialogue(dialogue):
+	queued_diagloue = dialogue
 
 ## Vikrams Stuff 
 ## TODO commenting 

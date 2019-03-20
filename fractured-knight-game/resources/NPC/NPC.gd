@@ -9,6 +9,7 @@ export (Resource) var combat_actor = null
 
 # Dialogue name for use by the dialogue system
 export (String) var dialogue_name = null
+export (String) var post_combat_dialogue = null
 
 # Animted sprite frames for animated sprite node and states/general variables
 export (SpriteFrames) var frames
@@ -146,6 +147,9 @@ func process_friendly_npc():
 	match self.npc_state:
 		NPCState.Talk:
 			if !level_manager.is_dialogue_playing():
+				if combat_actor != null:
+					get_node('/root/LevelManager').queue_dialogue(post_combat_dialogue)
+					get_node('/root/LevelManager').initiate_combat(self)
 				self.switch_npc_state(NPCState.Idle)
 				self.start_idling()
 		NPCState.Idle:
