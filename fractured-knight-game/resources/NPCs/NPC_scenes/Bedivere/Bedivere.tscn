@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://resources/NPC/NPC.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/NPCs/NPC_scenes/Bedivere/bedivere_combat_actor.tres" type="Resource" id=2]
+[ext_resource path="res://resources/NPCs/NPC_scenes/Bedivere/bedivere_animated_sprite.tres" type="SpriteFrames" id=3]
+
+[node name="Bedivere" index="0" instance=ExtResource( 1 )]
+
+combat_actor = ExtResource( 2 )
+dialogue_name = "bedivere"
+frames = ExtResource( 3 )
+
+[node name="InteractionIcon" parent="." index="0"]
+
+frame = 0
+
+

@@ -45,6 +45,7 @@ movement_speed = 150
 min_idle_time = 0.5
 max_idle_time = 1.0
 idle_chance = 0.5
+sprite_offset_x = 0
 interaction_offset = 80
 interaction_anim_speed = 0.25
 patrol_path = null
@@ -55,7 +56,6 @@ modulate = Color( 1, 1, 1, 0 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "default"
-frame = 1
 playing = true
 _sections_unfolded = [ "Material", "Transform", "Visibility" ]
 
@@ -70,6 +70,7 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 
 scale = Vector2( 0.08, 0.08 )
 animation = "idle"
+playing = true
 _sections_unfolded = [ "Transform" ]
 
 [node name="InteractionArea2D" type="Area2D" parent="." index="3"]

@@ -24,7 +24,7 @@ func _on_Combat_display_text(text):
 	emit_signal("finished_displaying_text")
 	
 
-func _on_Combat_combat_finished():
+func _on_Combat_combat_finished(player, enemy, state):
 	#Use this function to hide buttons etc. Wrap up combat
 	print("combat finished signal recieved")
 	$UIBox.hide()

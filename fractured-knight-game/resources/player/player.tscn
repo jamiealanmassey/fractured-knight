@@ -99,7 +99,7 @@ func _ready():
 custom_solver_bias = 0.0
 radius = 37.6544
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1

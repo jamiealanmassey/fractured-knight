@@ -5,9 +5,10 @@
 [resource]
 
 script = ExtResource( 1 )
-move_name = "Slash"
+_sections_unfolded = [ "Resource" ]
+move_name = "Stab"
 attributes = {
-"accuracy": 50,
-"damage": 5
+"accuracy": 30,
+"damage": 10
 }
 

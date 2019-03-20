@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://resources/levels/base/level_base.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resources/player/World_camera_Bounds.gd" type="Script" id=2]
@@ -15,6 +15,10 @@
 [ext_resource path="res://resources/levels/Castle/castle_outside.tres" type="TileSet" id=13]
 [ext_resource path="res://resources/levels/MerlinsTomb/black_void.tres" type="TileSet" id=14]
 [ext_resource path="res://resources/levels/level_room_switcher/SwitcherBlock.tscn" type="PackedScene" id=15]
+[ext_resource path="res://resources/NPCs/NPC_scenes/Galahad/Galahad.tscn" type="PackedScene" id=16]
+[ext_resource path="res://resources/NPCs/NPC_scenes/Bedivere/Bedivere.tscn" type="PackedScene" id=17]
+[ext_resource path="res://resources/NPCs/NPC_scenes/Percival/Percival.tscn" type="PackedScene" id=18]
+[ext_resource path="res://resources/dialogue_area/dialogue_area.tscn" type="PackedScene" id=19]
 
 [sub_resource type="GDScript" id=1]
 
@@ -27,7 +31,7 @@ func _input(event):
 
 
 func _on_DialogueUI_on_context_finish():
-	get_node('/root/LevelManager/World/Player').lock_movement = false
+	get_node('/root/LevelManager/World/Entities/Player').lock_movement = false
 "
 
 [sub_resource type="GDScript" id=2]
@@ -315,6 +319,8 @@ _sections_unfolded = [ "Cell" ]
 
 [node name="Links" type="Node2D" parent="World" index="12"]
 
+editor/display_folded = true
+
 [node name="toDungon" parent="World/Links" index="0" instance=ExtResource( 15 )]
 
 position = Vector2( 2387.19, 1249.18 )
@@ -400,7 +406,29 @@ position = Vector2( 72.3522, 45.2202 )
 
 [node name="Player" parent="World/Entities" index="0"]
 
-position = Vector2( -30.1467, -24.1177 )
+position = Vector2( -889.408, -2564.81 )
+
+[node name="Galahad" parent="World/Entities" index="1" instance=ExtResource( 16 )]
+
+position = Vector2( -578.247, -1791.25 )
+dialogue_name = "1.2_galahad"
+post_combat_dialogue = "1.3_galahad_post_fight"
+npc_type = 0
+npc_state = 0
+
+[node name="Bedivere" parent="World/Entities" index="2" instance=ExtResource( 17 )]
+
+position = Vector2( -378.426, 1467.45 )
+dialogue_name = "2.2_meeting_bedivere"
+post_combat_dialogue = null
+npc_type = 0
+npc_state = 0
+npc_patrol = 0
+
+[node name="Percival" parent="World/Entities" index="3" instance=ExtResource( 18 )]
+
+position = Vector2( 1227.78, 3283.9 )
+post_combat_dialogue = null
 
 [node name="DialogueTest" type="Node" parent="World" index="15"]
 
@@ -447,6 +475,12 @@ bounce = 0.0
 
 position = Vector2( 0, 43 )
 shape = SubResource( 3 )
+
+[node name="Area2D" parent="World" index="18" instance=ExtResource( 19 )]
+
+position = Vector2( -750.097, -2330.86 )
+scale = Vector2( 1, 1.0426 )
+dialogue_name = "1.1_intro"
 
 [connection signal="on_context_finish" from="World/DialogueUI" to="World/DialogueTest" method="_on_DialogueUI_on_context_finish"]
 
