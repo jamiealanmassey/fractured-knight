@@ -37,6 +37,7 @@ func _ready():
 	if dialogue_file_names != null:
 		for index in dialogue_file_names.size(): 
 			self.add_dialogue_file(dialogue_file_names[index], dialogue_file_locations[index])
+	print("test")
 
 func _process(delta):
 	if processing:
