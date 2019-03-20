@@ -4,11 +4,11 @@
 [ext_resource path="res://resources/cut_scene/Sprite/Space.png" type="Texture" id=2]
 [ext_resource path="res://resources/cut_scene/Sprite/desert.png" type="Texture" id=3]
 [ext_resource path="res://resources/cut_scene/Sprite/rocket04.png" type="Texture" id=4]
-[ext_resource path="res://resources/cut_scene/Sprite/r1.png" type="Texture" id=5]
-[ext_resource path="res://resources/cut_scene/Sprite/r2.png" type="Texture" id=6]
-[ext_resource path="res://resources/cut_scene/Sprite/rocket02.png" type="Texture" id=7]
-[ext_resource path="res://resources/cut_scene/Sprite/r3.png" type="Texture" id=8]
-[ext_resource path="res://resources/cut_scene/Sprite/rocket(1).png" type="Texture" id=9]
+[ext_resource path="res://resources/cut_scene/Sprite/rocket(1).png" type="Texture" id=5]
+[ext_resource path="res://resources/cut_scene/Sprite/r1.png" type="Texture" id=6]
+[ext_resource path="res://resources/cut_scene/Sprite/r2.png" type="Texture" id=7]
+[ext_resource path="res://resources/cut_scene/Sprite/rocket02.png" type="Texture" id=8]
+[ext_resource path="res://resources/cut_scene/Sprite/r3.png" type="Texture" id=9]
 [ext_resource path="res://resources/sfx/sound effects/crash.wav" type="AudioStream" id=10]
 
 [sub_resource type="GDScript" id=1]
@@ -52,14 +52,14 @@ animations = [ {
 "name": "Stay",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "Hit",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 9 ) ],
+"frames": [ ExtResource( 5 ) ],
 "loop": true,
 "name": "Fall",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "Hit",
 "speed": 5.0
 } ]
 _sections_unfolded = [ "Resource" ]

@@ -22,7 +22,6 @@ game_manager="*res://resources/game_manager.gd"
 
 window/size/width=1920
 window/size/height=1080
-window/stretch/mode="2d"
 window/stretch/aspect="keep_height"
 
 [editor_plugins]

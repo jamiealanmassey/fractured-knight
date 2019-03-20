@@ -66,6 +66,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 texture = ExtResource( 2 )
+expand = true
 stretch_mode = 0
 
 [node name="TextureRect" type="TextureRect" parent="." index="1"]

@@ -48,7 +48,6 @@ func _on_resize():
 	var position = Vector2(camera_pos.x - size.x / 2, camera_pos.y - size.y / 2)
 	self.rect_position = position
 	$ColorRect.rect_size = get_viewport().size
-	$ColorRect.rect_position = position
 
 
 func _on_SettingsMenu_apply_pressed():
