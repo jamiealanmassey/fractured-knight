@@ -26,7 +26,7 @@ func _process(delta):
 	
 
 func start_dialogue(name):
-	get_node('World/DialogueUI').start_dialogue(name)
+	get_node('World/DialogueUI').start_dialogue(name, true, true)
 	get_node('World/Entities/Player').lock_movement = true
 	
 
@@ -59,13 +59,17 @@ func initiate_combat(enemy):
 
 func _on_combat_finished(player, enemy, message):
 	print(message)
+	if enemy.dialogue_name_post != null:
+		start_dialogue(enemy.dialogue_name_post)
+	
 	if (message == 'Player won'):
 		enemy.queue_free()
 		print('enemy dead and destroyed')
-		if queued_diagloue != null:
-			print("starting queued dialogue")
-			start_dialogue(queued_diagloue)
-			queued_diagloue = null
+		#if queued_diagloue != null:
+		#	print("starting queued dialogue")
+		#	start_dialogue(queued_diagloue)
+		#	queued_diagloue = null
+		
 		
 	current_combat.queue_free()
 	current_combat = null

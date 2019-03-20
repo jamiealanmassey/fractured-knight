@@ -76,6 +76,7 @@ func _input(event):
 func _react_context_begin():
 	self.rect_position.y = 0
 	self.show()
+	controller_end_tween.stop_all()
 	controller_begin_tween.interpolate_property(self, 'rect_position:y', 0, -230, 0.25, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	controller_begin_tween.interpolate_property(self, 'modulate:a', 0, 1, 0.35, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	controller_begin_tween.start()

@@ -56,11 +56,14 @@ func add_dialogue_file(dialogue_name, file_name):
 	dialogues[dialogue_name] = parser.result_full
 
 ## Initiates the Dialogue Context with a new dialogue that has been stored
-func start_dialogue(dialogue_name, process = true):
+func start_dialogue(dialogue_name, process = true, force = false):
 	if dialogues.has(dialogue_name):
 		current_dialogue = dialogues[dialogue_name]
 		current_node = current_dialogue['root']
 		processing = process
+		if force:
+			$DialogueController._react_context_begin()
+		
 		emit_signal('on_context_begin')
 	else:
 		error = 'Starting Dialogue Error: no dialogue stored with that name'
