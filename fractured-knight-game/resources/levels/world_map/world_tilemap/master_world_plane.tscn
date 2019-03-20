@@ -384,7 +384,7 @@ position = Vector2( 72.3522, 45.2202 )
 
 [node name="Player" parent="World/Entities" index="0"]
 
-position = Vector2( -341.454, 1256.62 )
+position = Vector2( -804.405, -2475.49 )
 
 [node name="Galahad" parent="World/Entities" index="1" instance=ExtResource( 17 )]
 
@@ -418,14 +418,9 @@ npc_state = 1
 npc_patrol = 1
 patrol_path = [ Vector2( 1225, 2850 ), Vector2( 1600, 2850 ), Vector2( 1600, 3280 ), Vector2( 800, 3280 ), Vector2( 800, 3450 ), Vector2( 1225, 3450 ), Vector2( 1225, 3450 ) ]
 
-[node name="Node2D" type="Node2D" parent="World/Entities" index="4"]
-
-position = Vector2( 1225, 3450 )
-_sections_unfolded = [ "Transform" ]
-
 [node name="Area2D" parent="World" index="16" instance=ExtResource( 20 )]
 
-position = Vector2( -750.097, -2330.86 )
+position = Vector2( -728.461, -2426.68 )
 scale = Vector2( 1, 1.0426 )
 dialogue_name = "1.1_intro"
 
