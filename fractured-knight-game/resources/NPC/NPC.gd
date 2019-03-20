@@ -172,8 +172,6 @@ func process_friendly_interaction(level_manager):
 		level_manager.start_dialogue(dialogue_name)
 		if combat_actor != null:
 			get_node('/root/LevelManager').queue_combat(self)
-			if post_combat_dialogue != null: 
-				get_node('/root/LevelManager').queue_dialogue(post_combat_dialogue)
 		self.switch_npc_state(NPCState.Talk)
 	
 
