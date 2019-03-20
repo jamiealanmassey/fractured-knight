@@ -18,5 +18,5 @@ func _ready():
 func _on_Area2D_body_entered(body):
 	if body.name == 'Player':
 		print("play dialogue from area");
-		get_node('/root/game_manager').start_dialogue(dialogue_name)
+		get_node('/root/LevelManager').start_dialogue(dialogue_name)
 	pass # replace with function body
