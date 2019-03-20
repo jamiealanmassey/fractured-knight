@@ -10,7 +10,6 @@ export (Resource) var combat_actor = null
 # Dialogue name for use by the dialogue system
 export (String) var dialogue_name = null
 export (String) var dialogue_name_post = null
-export (String) var post_combat_dialogue = null
 
 # Animted sprite frames for animated sprite node and states/general variables
 export (SpriteFrames) var frames

@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 32, 6 )
+extents = Vector2( 22.2651, 6 )
 
 [sub_resource type="GDScript" id=2]
 
@@ -86,5 +86,3 @@ _sections_unfolded = [ "Collision" ]
 
 position = Vector2( 0, 7.19667 )
 shape = SubResource( 3 )
-
-
