@@ -59,18 +59,16 @@ func initiate_combat(enemy):
 
 func _on_combat_finished(player, enemy, message):
 	print(message)
-	if enemy.dialogue_name_post != null:
-		start_dialogue(enemy.dialogue_name_post)
-	
 	if (message == 'Player won'):
+		if enemy.dialogue_name_post != null:
+			start_dialogue(enemy.dialogue_name_post)
+		
 		enemy.queue_free()
 		print('enemy dead and destroyed')
-		#if queued_diagloue != null:
-		#	print("starting queued dialogue")
-		#	start_dialogue(queued_diagloue)
-		#	queued_diagloue = null
-		
-		
+	elif (message == 'Player Lost'):
+		if enemy.dialogue_name_lose:
+			start_dialogue(enemy.dialogue_name_lost)
+	
 	current_combat.queue_free()
 	current_combat = null
 	get_node('World').visible = true

@@ -10,6 +10,7 @@ export (Resource) var combat_actor = null
 # Dialogue name for use by the dialogue system
 export (String) var dialogue_name = null
 export (String) var dialogue_name_post = null
+export (String) var dialogue_name_lose = null
 
 # Animted sprite frames for animated sprite node and states/general variables
 export (SpriteFrames) var frames
@@ -161,7 +162,7 @@ func process_friendly_npc():
 	
 
 func process_radius_interaction():
-	if is_inside():
+	if is_inside:
 		start_idling()
 
 func process_friendly_interaction(level_manager):

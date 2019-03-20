@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://resources/levels/base/level_base.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resources/player/World_camera_Bounds.gd" type="Script" id=2]
@@ -20,39 +20,6 @@
 [ext_resource path="res://resources/NPCs/NPC_scenes/Bedivere/Bedivere.tscn" type="PackedScene" id=18]
 [ext_resource path="res://resources/NPCs/NPC_scenes/Percival/Percival.tscn" type="PackedScene" id=19]
 [ext_resource path="res://resources/dialogue_area/dialogue_area.tscn" type="PackedScene" id=20]
-
-[sub_resource type="GDScript" id=1]
-
-script/source = "extends Node
-
-func _input(event):
-	if Input.is_key_pressed(KEY_Z):
-		get_node('/root/LevelManager/World/DialogueUI').start_dialogue('complex')
-		get_node('/root/LevelManager/World/Player').lock_movement = true
-
-
-func _on_DialogueUI_on_context_finish():
-	get_node('/root/LevelManager/World/Entities/Player').lock_movement = false
-"
-
-[sub_resource type="GDScript" id=2]
-
-script/source = "extends Button
-
-onready var enemy_npc = load('res://resources/NPC/NPC.tscn')
-onready var enemy_combat_actor = load('res://resources/combat/combat_test/actor_enemy.tres')
-
-var enemy = null
-
-func _pressed():
-	if (enemy != null):
-		enemy.queue_free()
-		enemy = null
-	
-	enemy = enemy_npc.instance()
-	enemy.combat_actor = enemy_combat_actor
-	get_node('/root/LevelManager').initiate_combat(enemy)
-"
 
 [sub_resource type="RectangleShape2D" id=3]
 
@@ -417,67 +384,52 @@ position = Vector2( 72.3522, 45.2202 )
 
 [node name="Player" parent="World/Entities" index="0"]
 
-position = Vector2( -889.408, -2564.81 )
+position = Vector2( -341.454, 1256.62 )
 
 [node name="Galahad" parent="World/Entities" index="1" instance=ExtResource( 17 )]
 
-position = Vector2( -578.247, -1791.25 )
+position = Vector2( -460, -2305 )
 dialogue_name = "1.2_galahad"
 dialogue_name_post = "1.3_galahad_post_fight"
+dialogue_name_lose = null
 npc_type = 0
-npc_state = 0
+npc_state = 1
+npc_patrol = 1
+patrol_path = [ Vector2( -680, -2305 ), Vector2( -150, -2305 ) ]
 
 [node name="Bedivere" parent="World/Entities" index="2" instance=ExtResource( 18 )]
 
-position = Vector2( -378.426, 1467.45 )
+position = Vector2( -480, 1542 )
 dialogue_name = "2.2_meeting_bedivere"
 dialogue_name_post = "Null"
+dialogue_name_lose = null
 npc_type = 0
-npc_state = 0
+npc_state = 1
 npc_patrol = 0
+patrol_path = [ Vector2( -487, 1554 ), Vector2( -487, 630 ), Vector2( -177, 630 ), Vector2( -177, 210 ), Vector2( 475, 210 ), Vector2( 475, 625 ), Vector2( 1595, 625 ), Vector2( 1595, 1200 ), Vector2( 1760, 1200 ), Vector2( 1760, 1968 ), Vector2( 990, 1968 ), Vector2( 990, 1554 ), Vector2( 985, 1554 ) ]
 
 [node name="Percival" parent="World/Entities" index="3" instance=ExtResource( 19 )]
 
-position = Vector2( 1227.78, 3283.9 )
+position = Vector2( 1225, 3280 )
 dialogue_name_post = "3.3_percival_post_fight_win"
+dialogue_name_lose = null
+npc_type = 0
+npc_state = 1
+npc_patrol = 1
+patrol_path = [ Vector2( 1225, 2850 ), Vector2( 1600, 2850 ), Vector2( 1600, 3280 ), Vector2( 800, 3280 ), Vector2( 800, 3450 ), Vector2( 1225, 3450 ), Vector2( 1225, 3450 ) ]
 
-[node name="DialogueTest" type="Node" parent="World" index="16"]
+[node name="Node2D" type="Node2D" parent="World/Entities" index="4"]
 
-script = SubResource( 1 )
+position = Vector2( 1225, 3450 )
+_sections_unfolded = [ "Transform" ]
 
-[node name="CombatTest" type="Button" parent="World" index="17"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 374.0
-margin_top = 454.0
-margin_right = 532.0
-margin_bottom = 502.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-text = "Combat Test"
-flat = false
-align = 1
-script = SubResource( 2 )
-
-[node name="Area2D" parent="World" index="18" instance=ExtResource( 20 )]
+[node name="Area2D" parent="World" index="16" instance=ExtResource( 20 )]
 
 position = Vector2( -750.097, -2330.86 )
 scale = Vector2( 1, 1.0426 )
 dialogue_name = "1.1_intro"
 
-[node name="water" type="StaticBody2D" parent="World" index="19"]
+[node name="water" type="StaticBody2D" parent="World" index="17"]
 
 position = Vector2( 3034.21, 1192.56 )
 input_pickable = false
@@ -492,7 +444,5 @@ bounce = 0.0
 
 position = Vector2( 0, 43 )
 shape = SubResource( 3 )
-
-[connection signal="on_context_finish" from="World/DialogueUI" to="World/DialogueTest" method="_on_DialogueUI_on_context_finish"]
 
 
