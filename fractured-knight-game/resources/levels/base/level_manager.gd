@@ -30,7 +30,6 @@ func start_dialogue(name):
 	get_node('World/Entities/Player').lock_movement = true
 	
 
-
 func set_player_position(position):
 	$World/Entities/Player.position = position
 
@@ -41,7 +40,6 @@ func is_dialogue_playing():
 		
 	return false
 	
-
 
 func initiate_combat(enemy):
 	var combat_scene = load('res://resources/combat/combat_core/combat.tscn')

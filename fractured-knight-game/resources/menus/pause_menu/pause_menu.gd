@@ -41,3 +41,16 @@ func _on_SettingsBtn_pressed():
 func _on_QuitBtn_pressed():
 	get_tree().quit()
 	
+
+func _on_resize():
+	var camera_pos = get_node('/root/game_manager').current_camera.get_camera_position()
+	var size = get_viewport().size
+	var position = Vector2(camera_pos.x - size.x / 2, camera_pos.y - size.y / 2)
+	self.rect_position = position
+	$ColorRect.rect_size = get_viewport().size
+	$ColorRect.rect_position = position
+
+
+func _on_SettingsMenu_apply_pressed():
+	emit_signal('resume_game')
+	$BiasTimer.start()

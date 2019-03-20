@@ -5,7 +5,7 @@
 [ext_resource path="res://resources/menus/settings_menu/settings_menu.tscn" type="PackedScene" id=3]
 [ext_resource path="res://resources/sfx/background music/main menu.wav" type="AudioStream" id=4]
 
-[node name="PauseMenu" type="Control" index="0"]
+[node name="PauseMenu" type="Control"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -155,5 +155,7 @@ area_mask = 1
 [connection signal="pressed" from="VBoxContainer/SettingsBtn" to="." method="_on_SettingsBtn_pressed"]
 
 [connection signal="pressed" from="VBoxContainer/QuitBtn" to="." method="_on_QuitBtn_pressed"]
+
+[connection signal="apply_pressed" from="SettingsMenu" to="." method="_on_SettingsMenu_apply_pressed"]
 
 
