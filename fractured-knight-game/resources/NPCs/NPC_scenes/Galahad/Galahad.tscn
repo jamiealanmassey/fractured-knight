@@ -13,6 +13,6 @@ npc_type = 1
 
 [node name="InteractionIcon" parent="." index="0"]
 
-frame = 0
+frame = 1
 
 

@@ -3,7 +3,7 @@
 [ext_resource path="res://resources/levels/Castle/castle_inside.tres" type="TileSet" id=1]
 [ext_resource path="res://resources/levels/Castle/castle_dec.tres" type="TileSet" id=2]
 
-[node name="Node2D" type="Node2D" index="0"]
+[node name="Node2D" type="Node2D"]
 
 [node name="Floor" type="TileMap" parent="." index="0"]
 
