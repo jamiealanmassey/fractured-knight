@@ -34,7 +34,7 @@ use_mipmaps = false
 use_filter = false
 font_data = ExtResource( 4 )
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" index="0"]
 
 modulate = Color( 0.961182, 0.96875, 0.965912, 1 )
 anchor_left = 0.0
