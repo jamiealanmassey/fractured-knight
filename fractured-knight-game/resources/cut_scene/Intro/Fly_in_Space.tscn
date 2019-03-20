@@ -95,7 +95,7 @@ func set_position(pos):
 	pass"
 _sections_unfolded = [ "Resource" ]
 
-[node name="Node" type="Node"]
+[node name="Node" type="Node" index="0"]
 
 [node name="Space" type="Sprite" parent="." index="0"]
 

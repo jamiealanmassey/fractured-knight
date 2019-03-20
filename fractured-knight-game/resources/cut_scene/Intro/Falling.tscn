@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://resources/cut_scene/Intro/Falling.gd" type="Script" id=1]
 [ext_resource path="res://resources/cut_scene/Sprite/Space.png" type="Texture" id=2]
@@ -18,9 +18,8 @@ script/source = "extends Node2D
 
 onready var sprite = get_node(\"AnimatedSprite\")
 
-
-
-var velocity = Vector2(0,15)
+var motion1 = Vector2(0,11)
+var motion2 = Vector2(0,25)
 
 func _ready():
 	set_process(true)
@@ -37,7 +36,10 @@ func move():
 		if position.y >= 0:
 			sprite.on_hitting_ground()
 		else:
-			translate(velocity)
+			if (position.y >= -2000):
+				translate(motion2)
+			else:
+				translate(motion1)
 	pass
 "
 _sections_unfolded = [ "Resource" ]
@@ -107,7 +109,27 @@ func set_position(pos):
 	pass"
 _sections_unfolded = [ "Resource" ]
 
-[node name="Node" type="Node" index="0"]
+[sub_resource type="GDScript" id=5]
+
+script/source = "extends AudioStreamPlayer2D
+
+# class member variables go here, for example:
+# var a = 2
+# var b = \"textvar\"
+
+func _ready():
+	# Called when the node is added to the scene for the first time.
+	# Initialization 
+	play(4.7)
+	pass
+
+#func _process(delta):
+#	# Called every frame. Delta is time since last frame.
+#	# Update game logic here.
+#	pass
+"
+
+[node name="Node" type="Node"]
 
 script = ExtResource( 1 )
 
@@ -118,8 +140,8 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="space" type="Sprite" parent="Background" index="0"]
 
-position = Vector2( 0, -2556.33 )
-scale = Vector2( 5, 7.63713 )
+position = Vector2( 0, -3779.78 )
+scale = Vector2( 5, 9.54877 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
@@ -131,7 +153,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Spaceship" type="Node2D" parent="." index="1"]
 
-position = Vector2( 0, -6500 )
+position = Vector2( 0, -8300 )
 z_index = 2
 script = SubResource( 1 )
 _sections_unfolded = [ "Transform", "Z Index" ]
@@ -148,7 +170,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Camera2D" type="Camera2D" parent="." index="2"]
 
-position = Vector2( 0, -6500 )
+position = Vector2( 0, -8300 )
 anchor_mode = 1
 rotating = false
 current = true
@@ -174,16 +196,19 @@ editor_draw_drag_margin = false
 script = SubResource( 4 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Sound_crashing" type="AudioStreamPlayer2D" parent="." index="3"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="3"]
 
+position = Vector2( 0, -3000 )
 stream = ExtResource( 10 )
 volume_db = 0.0
 pitch_scale = 1.0
-autoplay = true
-max_distance = 2000.0
+autoplay = false
+max_distance = 6500.0
 attenuation = 1.0
 bus = "Master"
 area_mask = 1
+script = SubResource( 5 )
+_sections_unfolded = [ "Transform" ]
 
 [connection signal="finished_animation" from="Spaceship/AnimatedSprite" to="." method="_on_AnimatedSprite_finished_animation"]
 
