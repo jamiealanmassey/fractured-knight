@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://resources/levels/base/level_base.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resources/player/World_camera_Bounds.gd" type="Script" id=2]
@@ -20,8 +20,9 @@
 [ext_resource path="res://resources/NPCs/NPC_scenes/Bedivere/Bedivere.tscn" type="PackedScene" id=18]
 [ext_resource path="res://resources/NPCs/NPC_scenes/Percival/Percival.tscn" type="PackedScene" id=19]
 [ext_resource path="res://resources/NPC/NPC.tscn" type="PackedScene" id=20]
-[ext_resource path="res://resources/NPCs/NPC_scenes/Lancelot/Lancelot_animated_sprite.tres" type="SpriteFrames" id=21]
-[ext_resource path="res://resources/dialogue_area/dialogue_area.tscn" type="PackedScene" id=22]
+[ext_resource path="res://resources/NPCs/NPC_scenes/Lancelot/combat_actor.tres" type="Resource" id=21]
+[ext_resource path="res://resources/NPCs/NPC_scenes/Lancelot/Lancelot_animated_sprite.tres" type="SpriteFrames" id=22]
+[ext_resource path="res://resources/dialogue_area/dialogue_area.tscn" type="PackedScene" id=23]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -301,77 +302,87 @@ _sections_unfolded = [ "Cell" ]
 
 [node name="Links" type="Node2D" parent="World" index="13"]
 
-[node name="toDungon" parent="World/Links" index="0" instance=ExtResource( 16 )]
+[node name="toDungeon" parent="World/Links" index="0" instance=ExtResource( 16 )]
 
-position = Vector2( 2387.19, 1249.18 )
+position = Vector2( 2366.68, 1251.23 )
 scale = Vector2( 0.70754, 1.06752 )
-worldScene = "res://resources/levels/Inside/Tomb.tscn"
+_sections_unfolded = [ "Collision", "Material", "Transform", "Visibility" ]
 
 [node name="toCastleInside" parent="World/Links" index="1" instance=ExtResource( 16 )]
 
 position = Vector2( 3777.88, -2758.72 )
 scale = Vector2( 0.70754, 1.06752 )
-worldScene = "res://resources/levels/Inside/CastleInside.tscn"
+_sections_unfolded = [ "Collision", "Material", "Transform", "Visibility", "Z Index" ]
 
 [node name="Bulding1" parent="World/Links" index="2" instance=ExtResource( 16 )]
 
 position = Vector2( 837.825, -725.85 )
 scale = Vector2( 1, 0.327348 )
-worldScene = "res://resources/levels/Inside/Inside_buildings.tscn"
+tombScene = null
+castleScene = null
 
 [node name="Bulding2" parent="World/Links" index="3" instance=ExtResource( 16 )]
 
 position = Vector2( 1449.51, -745.303 )
 scale = Vector2( 1, 0.327348 )
-worldScene = "res://resources/levels/Inside/Inside_buildings.tscn"
+tombScene = null
+castleScene = null
 
 [node name="Bulding3" parent="World/Links" index="4" instance=ExtResource( 16 )]
 
 position = Vector2( -92.4853, -1013.3 )
 scale = Vector2( 1, 0.327348 )
-worldScene = "res://resources/levels/Inside/Inside_buildings.tscn"
+tombScene = null
+castleScene = null
 
 [node name="Bulding4" parent="World/Links" index="5" instance=ExtResource( 16 )]
 
 position = Vector2( 368.456, -1777.13 )
 scale = Vector2( 1, 0.305006 )
-worldScene = "res://resources/levels/Inside/Inside_buildings.tscn"
+tombScene = null
+castleScene = null
 
 [node name="Bulding5" parent="World/Links" index="6" instance=ExtResource( 16 )]
 
 position = Vector2( 530.228, -1779.13 )
 scale = Vector2( 1, 0.38089 )
-worldScene = "res://resources/levels/Inside/Inside_buildings.tscn"
+tombScene = null
+castleScene = null
 
 [node name="Bulding6" parent="World/Links" index="7" instance=ExtResource( 16 )]
 
 position = Vector2( 700.865, -1779.13 )
 scale = Vector2( 1, 0.38089 )
-worldScene = "res://resources/levels/Inside/Inside_buildings.tscn"
+tombScene = null
+castleScene = null
 
 [node name="Bulding7" parent="World/Links" index="8" instance=ExtResource( 16 )]
 
 position = Vector2( 862.638, -1779.13 )
 scale = Vector2( 1, 0.38089 )
-worldScene = "res://resources/levels/Inside/Inside_buildings.tscn"
+tombScene = null
+castleScene = null
 
 [node name="Bulding8" parent="World/Links" index="9" instance=ExtResource( 16 )]
 
 position = Vector2( 1015.55, -1781.35 )
 scale = Vector2( 1, 0.38089 )
-worldScene = "res://resources/levels/Inside/Inside_buildings.tscn"
+tombScene = null
+castleScene = null
 
 [node name="Bulding9" parent="World/Links" index="10" instance=ExtResource( 16 )]
 
 position = Vector2( 1175.1, -1785.78 )
 scale = Vector2( 1, 0.38089 )
-worldScene = "res://resources/levels/Inside/Inside_buildings.tscn"
+tombScene = null
+castleScene = null
 
 [node name="Bulding10" parent="World/Links" index="11" instance=ExtResource( 16 )]
 
 position = Vector2( 1447.68, -1781.35 )
 scale = Vector2( 1, 0.38089 )
-worldScene = "res://resources/levels/Inside/Inside_buildings.tscn"
+tombScene = null
+castleScene = null
 
 [node name="DialogueUI" parent="World" index="14"]
 
@@ -386,7 +397,7 @@ position = Vector2( 72.3522, 45.2202 )
 
 [node name="Player" parent="World/Entities" index="0"]
 
-position = Vector2( -615, -2600 )
+position = Vector2( 1964.56, 1500.68 )
 
 [node name="Galahad" parent="World/Entities" index="1" instance=ExtResource( 17 )]
 
@@ -422,19 +433,19 @@ patrol_path = [ Vector2( 1225, 2850 ), Vector2( 1600, 2850 ), Vector2( 1600, 328
 
 [node name="Lancelot" parent="World/Entities" index="4" instance=ExtResource( 20 )]
 
-position = Vector2( 2237.65, 1364.78 )
-scale = Vector2( 1, 1.19968 )
+position = Vector2( 2176.13, 1411.94 )
 combat_actor = ExtResource( 21 )
 dialogue_name = "5.1_lancelot"
 dialogue_name_post = "5.2_beating_lancelot"
 dialogue_name_lose = null
-frames = ExtResource( 21 )
-npc_state = 2
+frames = ExtResource( 22 )
+npc_type = 0
+npc_state = 0
 npc_patrol = 0
 
-[node name="Area2D" parent="World" index="16" instance=ExtResource( 22 )]
+[node name="Area2D" parent="World" index="16" instance=ExtResource( 23 )]
 
-position = Vector2( -540.729, -2512.38 )
+position = Vector2( -230.168, -2030.69 )
 scale = Vector2( 1, 1.0426 )
 dialogue_name = "1.1_intro"
 
@@ -453,5 +464,11 @@ bounce = 0.0
 
 position = Vector2( 0, 43 )
 shape = SubResource( 1 )
+
+[connection signal="area_entered" from="World/Links/toDungeon" to="World/Links/toDungeon" method="_on_toDungeon_area_entered"]
+
+[connection signal="area_entered" from="World/Links/toCastleInside" to="World/Links/toCastleInside" method="_on_toCastleInside_area_entered"]
+
+[connection signal="tree_exited" from="World/Entities/Lancelot" to="World/Links/toDungeon" method="_on_Lancelot_tree_exited"]
 
 

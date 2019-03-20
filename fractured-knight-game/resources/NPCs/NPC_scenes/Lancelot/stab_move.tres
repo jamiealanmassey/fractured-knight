@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://resources/combat/combat_core/move.gd" type="Script" id=1]
+
+[resource]
+
+script = ExtResource( 1 )
+move_name = "Stab"
+attributes = {
+"accuracy": 60,
+"damage": 2
+}
+

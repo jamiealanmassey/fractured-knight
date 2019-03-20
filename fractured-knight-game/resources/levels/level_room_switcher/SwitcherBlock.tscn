@@ -9,16 +9,19 @@ extents = Vector2( 63.4906, 48.6793 )
 
 [node name="SwitcherBlock" type="Area2D"]
 
+light_mask = 16
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+collision_mask = 16
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
-_sections_unfolded = [ "Visibility" ]
-worldScene = null
+_sections_unfolded = [ "Collision", "Material", "Visibility" ]
+tombScene = "res://resources/levels/Inside/Tomb.tscn"
+castleScene = "res://resources/levels/Inside/CastleInside.tscn"
 entry_position = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]

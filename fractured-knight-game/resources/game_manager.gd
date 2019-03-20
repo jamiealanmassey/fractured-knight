@@ -4,6 +4,9 @@ var current_scene = null
 var current_camera = null
 var player_combat_data = null
 var screen_resolutions = []
+var defeat_percival = false
+var defeat_lancelot = false
+var defeat_arthur = false
 
 const settings_file_name = 'user://settings.save'
 

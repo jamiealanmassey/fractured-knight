@@ -73,7 +73,7 @@ func evaluate_current_node():
 	if current_node == null || !processing || wait_branch:
 		return
 	
-	match current_node.type:
+	match self.current_node.type:
 		DialogueNode.NodeType.Write:
 			if write_state == WriteState.WriteNone:
 				write_state = WriteState.WriteProcess

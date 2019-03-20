@@ -47,7 +47,6 @@ position = Vector2( 42, 44 )
 [node name="Percival" parent="World/Entities" index="1" instance=ExtResource( 5 )]
 
 position = Vector2( 842.497, 358.347 )
-scale = Vector2( 1, 0.932224 )
 combat_actor = ExtResource( 6 )
 dialogue_name = "3.1_percival_pre_fight"
 dialogue_name_post = "3.3_percival_post_fight_win"
@@ -59,8 +58,9 @@ npc_patrol = 1
 [node name="SwitcherBlock" parent="World" index="4" instance=ExtResource( 8 )]
 
 position = Vector2( 2583.96, 1656.7 )
-worldScene = "res://resources/levels/world_map/world_tilemap/master_world_plane.tscn"
-entry_position = Vector2( 3720, -2700 )
+tombScene = null
+castleScene = null
+entry_position = Vector2( 3777, -2700 )
 
 [node name="Label" type="Label" parent="World/SwitcherBlock" index="1"]
 
@@ -96,5 +96,9 @@ max_distance = 2000.0
 attenuation = 1.0
 bus = "Master"
 area_mask = 1
+
+[connection signal="tree_exited" from="World/Entities/Percival" to="World/SwitcherBlock" method="_on_Percival_tree_exited"]
+
+[connection signal="area_entered" from="World/SwitcherBlock" to="World/SwitcherBlock" method="_on_SwitcherBlock_area_entered2"]
 
 
