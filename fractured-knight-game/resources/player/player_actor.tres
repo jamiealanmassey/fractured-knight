@@ -1,15 +1,17 @@
-[gd_resource type="Resource" load_steps=3 format=2]
+[gd_resource type="Resource" load_steps=5 format=2]
 
 [ext_resource path="res://resources/player/move_punch.tres" type="Resource" id=1]
-[ext_resource path="res://resources/combat/combat_core/actor.gd" type="Script" id=2]
+[ext_resource path="res://resources/player/move_stab.tres" type="Resource" id=2]
+[ext_resource path="res://resources/player/heavy_swing_move.tres" type="Resource" id=3]
+[ext_resource path="res://resources/combat/combat_core/actor.gd" type="Script" id=4]
 
 [resource]
 
-script = ExtResource( 2 )
+script = ExtResource( 4 )
 stats = {
-"accuracy": 100,
-"damage": 20
+"accuracy": 10,
+"damage": 3
 }
-moves = [ ExtResource( 1 ) ]
+moves = [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ) ]
 health = 100
 

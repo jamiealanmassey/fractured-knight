@@ -5,9 +5,10 @@
 [resource]
 
 script = ExtResource( 1 )
-move_name = "slash"
+_sections_unfolded = [ "Resource" ]
+move_name = "Heavy Swing"
 attributes = {
-"accuracy": 70,
-"damage": 1
+"accuracy": 30,
+"damage": 10
 }
 

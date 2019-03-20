@@ -5,7 +5,7 @@
 [resource]
 
 script = ExtResource( 1 )
-move_name = "Punch"
+move_name = "Slash"
 attributes = {
 "accuracy": 50,
 "damage": 5

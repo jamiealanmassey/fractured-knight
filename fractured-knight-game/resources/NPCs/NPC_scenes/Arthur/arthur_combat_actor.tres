@@ -9,8 +9,8 @@
 script = ExtResource( 3 )
 stats = {
 "accuracy": 0,
-"damage": 0
+"damage": 5
 }
 moves = [ ExtResource( 1 ), ExtResource( 2 ) ]
-health = null
+health = 70
 

@@ -8,7 +8,7 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Resource" ]
 move_name = "Stab"
 attributes = {
-"accuracy": 50,
-"damage": 5
+"accuracy": 60,
+"damage": 4
 }
 

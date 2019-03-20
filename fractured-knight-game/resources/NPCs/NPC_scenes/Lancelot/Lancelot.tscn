@@ -8,6 +8,11 @@
 
 combat_actor = ExtResource( 2 )
 dialogue_name = "lancelot"
+post_combat_dialogue = null
 frames = ExtResource( 3 )
+
+[node name="InteractionIcon" parent="." index="0"]
+
+frame = 1
 
 

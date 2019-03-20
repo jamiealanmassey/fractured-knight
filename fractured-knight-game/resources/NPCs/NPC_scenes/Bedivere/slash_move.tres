@@ -8,6 +8,6 @@ script = ExtResource( 1 )
 move_name = "Slash"
 attributes = {
 "accuracy": 50,
-"damage": 5
+"damage": 4
 }
 
