@@ -105,12 +105,14 @@ func _react_context_process(node):
 func _on_resize():
 	if context && context.processing:
 		self.rect_position.y = -230
+		$ColorRect.rect_size.x = get_viewport().size.x
 		if context.wait_branch:
 			for i in range(buttons.size()):
 				buttons[i].rect_position.x = self.rect_size.x - (buttons[i].rect_size.x + 10)
 				buttons[i].rect_position.y = self.rect_size.y - (button_offset + (button_spacing * i))
 	else:
 		self.rect_position.y = 0
+		$ColorRect.rect_size.x = get_viewport().size.x
 		for i in range(buttons.size()):
 			buttons[i].rect_position.x = self.rect_size.x
 			buttons[i].rect_position.y = self.rect_size.y - (button_offset + (button_spacing * i))

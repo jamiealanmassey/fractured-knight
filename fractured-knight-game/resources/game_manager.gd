@@ -4,6 +4,10 @@ var current_scene = null
 var current_camera = null
 var player_combat_data = null
 var screen_resolutions = []
+var defeated = []
+#var defeat_percival = false
+#var defeat_lancelot = false
+#var defeat_arthur = false
 
 const settings_file_name = 'user://settings.save'
 
@@ -65,7 +69,6 @@ func process_settings(settings):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), settings['master_volume'])
 	OS.window_fullscreen = settings['fullscreen']
 	OS.vsync_enabled = settings['vsync']
-	OS.window_size = screen_resolutions[settings['resolution']]
 	
 
 func load_settings():

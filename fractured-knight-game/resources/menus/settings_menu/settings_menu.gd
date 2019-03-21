@@ -1,9 +1,8 @@
 extends Control
 
-func _ready():
-	for resolution in get_node('/root/game_manager').screen_resolutions:
-		$VBoxContainer/ResolutionOptions.add_item(str(resolution.x) + 'x' + str(resolution.y))
-	
+signal apply_pressed
+
+func _ready():	
 	self.load_settings_menu()
 	
 
@@ -12,7 +11,6 @@ func save_settings_menu():
 	settings['master_volume'] = $VBoxContainer/MasterVolumeSlider.value
 	settings['fullscreen'] = $VBoxContainer/HBoxContainer/FullScreenCheck.pressed
 	settings['vsync'] = $VBoxContainer/HBoxContainer2/VSyncCheck.pressed
-	settings['resolution'] = $VBoxContainer/ResolutionOptions.selected
 	get_node('/root/game_manager').save_settings(settings)
 	
 
@@ -23,15 +21,13 @@ func load_settings_menu():
 		$VBoxContainer/MasterVolumeSlider.value = settings['master_volume']
 		$VBoxContainer/HBoxContainer/FullScreenCheck.pressed = settings['fullscreen']
 		$VBoxContainer/HBoxContainer2/VSyncCheck.pressed = settings['vsync']
-		$VBoxContainer/ResolutionOptions.selected = settings['resolution']
 	else:
 		$VBoxContainer/MasterVolumeSlider.value = 100
 		$VBoxContainer/HBoxContainer/FullScreenCheck.pressed = OS.window_fullscreen
 		$VBoxContainer/HBoxContainer2/VSyncCheck.pressed = OS.vsync_enabled
-		$VBoxContainer/ResolutionOptions.selected = game_manager.find_resolution_index()
 		
 	
 
-
 func _on_ApplyButton_pressed():
 	save_settings_menu()
+	emit_signal('apply_pressed')

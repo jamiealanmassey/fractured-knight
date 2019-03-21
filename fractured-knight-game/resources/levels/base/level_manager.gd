@@ -30,7 +30,6 @@ func start_dialogue(name):
 	get_node('World/Entities/Player').lock_movement = true
 	
 
-
 func set_player_position(position):
 	$World/Entities/Player.position = position
 
@@ -41,7 +40,6 @@ func is_dialogue_playing():
 		
 	return false
 	
-
 
 func initiate_combat(enemy):
 	var combat_scene = load('res://resources/combat/combat_core/combat.tscn')
@@ -59,18 +57,16 @@ func initiate_combat(enemy):
 
 func _on_combat_finished(player, enemy, message):
 	print(message)
-	if enemy.dialogue_name_post != null:
-		start_dialogue(enemy.dialogue_name_post)
-	
 	if (message == 'Player won'):
+		if enemy.dialogue_name_post != null:
+			start_dialogue(enemy.dialogue_name_post)
+		
 		enemy.queue_free()
 		print('enemy dead and destroyed')
-		#if queued_diagloue != null:
-		#	print("starting queued dialogue")
-		#	start_dialogue(queued_diagloue)
-		#	queued_diagloue = null
-		
-		
+	elif (message == 'Enemy Won'):
+		get_node('/root/game_manager').defeated.clear()
+		get_tree().change_scene('res://resources/menus/main_menu/main_menu.tscn')
+	
 	current_combat.queue_free()
 	current_combat = null
 	get_node('World').visible = true
@@ -111,3 +107,7 @@ func queue_combat(enemy):
 #	else:
 #		print("doesnt exist")
 #		get_tree().change_scene("res://resources/levels/Rooms/Procedural/mainRooms.tscn")
+
+
+func _on_Bedivere_tree_exited():
+	pass # replace with function body

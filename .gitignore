@@ -6,3 +6,6 @@ export_presets.cfg
 # C# specific ignores
 .vs/
 fractured-dialogue-tool/obj/
+
+# executables
+bin/
