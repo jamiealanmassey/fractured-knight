@@ -8,7 +8,7 @@
 [ext_resource path="res://resources/NPCs/NPC_scenes/Arthur/arthur_combat_actor.tres" type="Resource" id=6]
 [ext_resource path="res://resources/NPCs/NPC_scenes/Arthur/arthur_animated_sprite.tres" type="SpriteFrames" id=7]
 [ext_resource path="res://resources/levels/level_room_switcher/SwitcherBlock.tscn" type="PackedScene" id=8]
-[ext_resource path="res://resources/fonts/dynamic_font_btn.tres" type="DynamicFont" id=9]
+[ext_resource path="res://resources/fonts/dynamic_font_21pt.tres" type="DynamicFont" id=9]
 [ext_resource path="res://resources/sfx/background music/background alternative.wav" type="AudioStream" id=10]
 
 [node name="LevelManager" instance=ExtResource( 1 )]
@@ -46,16 +46,20 @@ position = Vector2( -160, -30 )
 
 [node name="Arthur" parent="World/Entities" index="1" instance=ExtResource( 5 )]
 
-position = Vector2( 2226.03, 616.482 )
+position = Vector2( 1170, 920 )
 combat_actor = ExtResource( 6 )
-dialogue_name = "res://resources/dialogue/6.2 Meeting Arthur.fml"
-dialogue_name_post = "res://resources/dialogue/6.3 Defeating Arthur.fml"
+dialogue_name = "6.2_meeting_arthur"
+dialogue_name_post = "6.3_defeating_arthur"
 dialogue_name_lose = null
 frames = ExtResource( 7 )
+npc_type = 0
+npc_state = 1
+npc_patrol = 0
+patrol_path = [ Vector2( 1170, 920 ), Vector2( 990, 920 ), Vector2( 990, 740 ), Vector2( 938, 740 ), Vector2( 938, 615 ), Vector2( 1170, 615 ), Vector2( 1170, 615 ) ]
 
 [node name="SwitcherBlock" parent="World" index="4" instance=ExtResource( 8 )]
 
-position = Vector2( 2189.36, 1329.37 )
+position = Vector2( 2306.62, 1388.81 )
 scale = Vector2( 0.328945, 0.285499 )
 tombScene = null
 castleScene = null
@@ -67,8 +71,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 2.0
-margin_top = 2.0
+margin_left = -27.0
+margin_top = -6.0
 margin_right = 62.0
 margin_bottom = 55.0
 rect_pivot_offset = Vector2( 0, 0 )

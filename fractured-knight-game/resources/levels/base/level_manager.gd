@@ -64,9 +64,7 @@ func _on_combat_finished(player, enemy, message):
 		enemy.queue_free()
 		print('enemy dead and destroyed')
 	elif (message == 'Enemy Won'):
-		get_node('/root/game_manager').defeat_lancelot = false
-		get_node('/root/game_manager').defeat_percival = false
-		get_node('/root/game_manager').defeat_arthur = false
+		get_node('/root/game_manager').defeated.clear()
 		get_tree().change_scene('res://resources/menus/main_menu/main_menu.tscn')
 	
 	current_combat.queue_free()
@@ -109,3 +107,7 @@ func queue_combat(enemy):
 #	else:
 #		print("doesnt exist")
 #		get_tree().change_scene("res://resources/levels/Rooms/Procedural/mainRooms.tscn")
+
+
+func _on_Bedivere_tree_exited():
+	pass # replace with function body

@@ -414,7 +414,7 @@ patrol_path = [ Vector2( 200, -1530 ), Vector2( 1600, -1530 ) ]
 
 position = Vector2( -480, 1542 )
 dialogue_name = "2.2_meeting_bedivere"
-dialogue_name_post = "Null"
+dialogue_name_post = "2.3_defeating_bedivere"
 dialogue_name_lose = null
 npc_type = 0
 npc_state = 1
@@ -468,6 +468,12 @@ shape = SubResource( 1 )
 [connection signal="area_entered" from="World/Links/toDungeon" to="World/Links/toDungeon" method="_on_toDungeon_area_entered"]
 
 [connection signal="area_entered" from="World/Links/toCastleInside" to="World/Links/toCastleInside" method="_on_toCastleInside_area_entered"]
+
+[connection signal="tree_exited" from="World/Entities/Galahad" to="World/Links/toDungeon" method="_on_Galahad_tree_exited"]
+
+[connection signal="tree_exited" from="World/Entities/Bedivere" to="World/Links/toDungeon" method="_on_Bedivere_tree_exited"]
+
+[connection signal="tree_exited" from="World/Entities/Percival" to="World/Links/toDungeon" method="_on_Percival_tree_exited"]
 
 [connection signal="tree_exited" from="World/Entities/Lancelot" to="World/Links/toDungeon" method="_on_Lancelot_tree_exited"]
 

@@ -11,7 +11,7 @@
 [ext_resource path="res://resources/fonts/dynamic_font_btn.tres" type="DynamicFont" id=9]
 [ext_resource path="res://resources/sfx/background music/castle.wav" type="AudioStream" id=10]
 
-[node name="LevelManager" index="0" instance=ExtResource( 1 )]
+[node name="LevelManager" instance=ExtResource( 1 )]
 
 [node name="World" parent="." index="0"]
 
