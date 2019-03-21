@@ -397,7 +397,7 @@ position = Vector2( 72.3522, 45.2202 )
 
 [node name="Player" parent="World/Entities" index="0"]
 
-position = Vector2( 1964.56, 1500.68 )
+position = Vector2( -619.237, -2588.48 )
 
 [node name="Galahad" parent="World/Entities" index="1" instance=ExtResource( 17 )]
 
@@ -445,7 +445,7 @@ npc_patrol = 0
 
 [node name="Area2D" parent="World" index="16" instance=ExtResource( 23 )]
 
-position = Vector2( -230.168, -2030.69 )
+position = Vector2( -548.475, -2497.05 )
 scale = Vector2( 1, 1.0426 )
 dialogue_name = "1.1_intro"
 
