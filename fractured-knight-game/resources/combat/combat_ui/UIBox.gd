@@ -34,12 +34,12 @@ func find_pressed():
 	var all_Buttons = $BtnContainer.get_children()
 	for item in all_Buttons:
 		if(item.pressed):
-			emit_signal("btnPressed", (get_index(item.text, array)))
+			emit_signal("btnPressed", (get_index_item(item.text, array)))
 			for children in all_Buttons:
 				$BtnContainer.remove_child(children)
 
 
-func get_index(name, array):
+func get_index_item(name, array):
 	for i in range(0, array.size()):
 		if(array[i] == name):
 			return i

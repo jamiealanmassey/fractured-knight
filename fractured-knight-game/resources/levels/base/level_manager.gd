@@ -107,7 +107,3 @@ func queue_combat(enemy):
 #	else:
 #		print("doesnt exist")
 #		get_tree().change_scene("res://resources/levels/Rooms/Procedural/mainRooms.tscn")
-
-
-func _on_Bedivere_tree_exited():
-	pass # replace with function body

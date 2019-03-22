@@ -3,7 +3,6 @@
 [ext_resource path="res://resources/combat/combat_core/move.gd" type="Script" id=1]
 
 [resource]
-
 script = ExtResource( 1 )
 move_name = "Slash"
 attributes = {
