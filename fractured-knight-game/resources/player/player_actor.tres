@@ -6,7 +6,6 @@
 [ext_resource path="res://resources/combat/combat_core/actor.gd" type="Script" id=4]
 
 [resource]
-
 script = ExtResource( 4 )
 stats = {
 "accuracy": 10,

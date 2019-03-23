@@ -7,9 +7,6 @@ func _ready():
 	# Initialization here
 	pass
 
-
-
-
 func _on_AnimatedSprite_finished_animation():
 	emit_signal("finished_animation")
 	get_node('/root/game_manager').switch_scene('res://resources/levels/world_map/world_tilemap/master_world_plane.tscn')

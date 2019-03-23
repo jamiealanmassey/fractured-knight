@@ -5,9 +5,7 @@
 [ext_resource path="res://resources/combat/combat_core/actor.gd" type="Script" id=3]
 
 [resource]
-
 script = ExtResource( 3 )
-_sections_unfolded = [ "Resource" ]
 stats = {
 "accuracy": 7,
 "damage": 2

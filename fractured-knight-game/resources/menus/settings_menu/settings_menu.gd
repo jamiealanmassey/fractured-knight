@@ -22,9 +22,9 @@ func load_settings_menu():
 		$VBoxContainer/HBoxContainer/FullScreenCheck.pressed = settings['fullscreen']
 		$VBoxContainer/HBoxContainer2/VSyncCheck.pressed = settings['vsync']
 	else:
-		$VBoxContainer/MasterVolumeSlider.value = 100
+		$VBoxContainer/MasterVolumeSlider.value = 10
 		$VBoxContainer/HBoxContainer/FullScreenCheck.pressed = OS.window_fullscreen
-		$VBoxContainer/HBoxContainer2/VSyncCheck.pressed = OS.vsync_enabled
+		$VBoxContainer/HBoxContainer2/VSyncCheck.pressed = true
 		
 	
 

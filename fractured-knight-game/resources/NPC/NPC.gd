@@ -1,4 +1,4 @@
-extends Node2D
+extends KinematicBody2D
 
 enum NPCType { Friendly, Hostile }
 enum NPCState { Idle, Patrol, Chase, Return, Talk }

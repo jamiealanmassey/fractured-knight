@@ -56,7 +56,6 @@ func start_combat(player, enemy, seeded = null):
 	#$player_combat_sprite.frames = player.frames 
 	
 	$enemy_health_bar.max_health = self.enemy.combat_actor.health
-	$player_health_bar.update_health(self.player.combat_actor.health)
 	if seeded == null:
 		randomize()
 	else:
